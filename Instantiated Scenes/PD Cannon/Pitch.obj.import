@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bo5irpoyfvca0"
+path="res://.godot/imported/Pitch.obj-20c35a65e51475e0c210c290b3cde4ce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pitch.obj-20c35a65e51475e0c210c290b3cde4ce.mesh"]
+
+source_file="res://Instantiated Scenes/PD Cannon/Pitch.obj"
+dest_files=["res://.godot/imported/Pitch.obj-20c35a65e51475e0c210c290b3cde4ce.mesh", "res://.godot/imported/Pitch.obj-20c35a65e51475e0c210c290b3cde4ce.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

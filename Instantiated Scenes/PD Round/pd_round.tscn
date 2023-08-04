@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnwdf313tdeie"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/PD Round/pd_round.gd" id="1_pppn0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5iw4"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 16.0
+backlight = Color(1, 1, 0, 1)
+
+[sub_resource type="PointMesh" id="PointMesh_j2f8q"]
+material = SubResource("StandardMaterial3D_b5iw4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqojb"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_nh5k1"]
+material = SubResource("StandardMaterial3D_xqojb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0b5r1"]
+size = Vector3(10, 10, 10)
+
+[node name="pd_round" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_pppn0")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PointMesh_j2f8q")
+
+[node name="mesh2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nh5k1")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0b5r1")
+
+[node name="area" type="Area3D" parent="."]
+
+[node name="collision" type="CollisionShape3D" parent="area"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0b5r1")
+
+[node name="on_screen_notifier" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="self_destruct_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="screen_exited" from="on_screen_notifier" to="." method="_on_on_screen_notifier_screen_exited"]
+[connection signal="timeout" from="self_destruct_timer" to="." method="_on_self_destruct_timer_timeout"]

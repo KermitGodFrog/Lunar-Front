@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://csg8q5uig1ops"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/PD Cannon/pd_cannon.gd" id="1_3mulx"]
+[ext_resource type="Script" path="res://Data/health.gd" id="2_4ydui"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="3_kmul6"]
+
+[sub_resource type="Resource" id="Resource_cyyl0"]
+script = ExtResource("2_4ydui")
+max_health = 5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gp6st"]
+points = PackedVector3Array(-8, -8, -8, 8, 8, 8, 8, -8, 8, 8, 8, -8, -8, 8, 8, 8, -8, -8, -8, -8, 8, -8, 8, -8)
+
+[node name="pd_cannon" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_3mulx")
+health = SubResource("Resource_cyyl0")
+turret_mode = 1
+PROJECTILE_SPEED = 1000
+base_node = NodePath(".")
+spawn_marker = NodePath("spawn_marker")
+cooldown_timer = NodePath("cooldown_timer")
+short_range_raycast = NodePath("short_range_raycast")
+long_range_raycast = NodePath("long_range_raycast")
+
+[node name="spawn_marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="short_range_raycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -25)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="long_range_raycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -500)
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="cooldown_timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("3_kmul6")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_gp6st")

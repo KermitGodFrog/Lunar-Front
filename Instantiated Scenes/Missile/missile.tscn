@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmg7hahyu7jfh"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/Missile/missile.gd" id="1_myeqj"]
+[ext_resource type="ArrayMesh" uid="uid://bcb2ashdlnvdf" path="res://Instantiated Scenes/Missile/Missile Model.obj" id="2_4ddmg"]
+[ext_resource type="Script" path="res://Data/health.gd" id="2_vudoh"]
+
+[sub_resource type="Resource" id="Resource_2jf42"]
+script = ExtResource("2_vudoh")
+max_health = 5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kjbe0"]
+points = PackedVector3Array(-0.0254684, -0.60873, -0.0912562, 0.0268904, 0.438725, 0.100794, 0.0967333, 0.421333, 0.0658662, -0.0254684, 0.421333, -0.10873, -0.0953302, -0.416653, 0.0658662, 0.0967333, -0.60873, 0.0134852, 0.0792679, 0.421333, -0.0738027, -0.0953302, 0.421333, 0.0658662, 0.044337, -0.60873, 0.0833197, -0.0953302, -0.60873, -0.0214012, 0.0618024, -0.416653, -0.0912562, -0.0778459, 0.421333, -0.0738027, -0.042915, -0.416653, 0.100794, -0.0243358, 0.484549, -0.0206467, -0.0603993, -0.416653, -0.0912562, 0.044337, -0.416653, 0.100794, 0.0967333, -0.416653, 0.0658662, -0.042915, -0.60873, 0.0833197, 0.0268904, -0.416653, -0.10873, 0.0792679, -0.60873, -0.0563492, -0.042915, 0.421333, 0.100794, 0.0268904, 0.421333, -0.10873, -0.0254684, -0.416653, -0.10873, 0.0257402, 0.484193, -0.0206356, 0.0967333, -0.60873, -0.00396825, -0.0851863, 0.371546, -0.0508162, 0.044337, 0.403941, 0.100794, 0.085868, 0.368005, -0.0504226, 0.0268904, -0.60873, -0.0912562, -0.0241596, 0.480787, 0.0291929, -0.0953302, -0.60873, 0.0134852, -0.0778459, -0.60873, -0.0563492)
+
+[node name="missile" type="CharacterBody3D" groups=["missile"]]
+motion_mode = 1
+script = ExtResource("1_myeqj")
+health = SubResource("Resource_2jf42")
+DAMAGE = 50
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, -3.0598e-07, 7, 0, -7, -3.0598e-07, 0, 0, 0)
+mesh = ExtResource("2_4ddmg")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, -3.0598e-07, 7, 0, -7, -3.0598e-07, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_kjbe0")
+
+[node name="area" type="Area3D" parent="."]
+
+[node name="collision" type="CollisionShape3D" parent="area"]
+transform = Transform3D(7, 0, 0, 0, -3.0598e-07, 7, 0, -7, -3.0598e-07, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_kjbe0")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnmvepsfmndgn"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
+[ext_resource type="PackedScene" uid="uid://e34u5wp8up1l" path="res://Instantiated Scenes/Player/player.tscn" id="2_g6iam"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="3_pnnb3"]
+
+[sub_resource type="Environment" id="Environment_qku8b"]
+ambient_light_color = Color(1, 1, 1, 1)
+glow_bloom = 0.5
+volumetric_fog_length = 10.0
+adjustment_saturation = 8.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8f2mt"]
+points = PackedVector3Array(-8, -8, -8, 8, 8, 8, 8, -8, 8, 8, 8, -8, -8, 8, 8, 8, -8, -8, -8, -8, 8, -8, 8, -8)
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_8p2g1")
+
+[node name="environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qku8b")
+
+[node name="player" parent="." instance=ExtResource("2_g6iam")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="GreenCube" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("3_pnnb3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8f2mt")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.185, 87.3343, 0)
+
+[node name="GreenCube" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = ExtResource("3_pnnb3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_8f2mt")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.344, 87.3343, 159.696)
+
+[node name="GreenCube" type="MeshInstance3D" parent="StaticBody3D3"]
+mesh = ExtResource("3_pnnb3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("ConvexPolygonShape3D_8f2mt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)

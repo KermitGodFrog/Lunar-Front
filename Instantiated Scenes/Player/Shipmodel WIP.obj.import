@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c14epwgdb2ubv"
+path="res://.godot/imported/Shipmodel WIP.obj-b53b3a2abb6d4ab66ab72433ab4843bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Shipmodel WIP.obj-b53b3a2abb6d4ab66ab72433ab4843bf.mesh"]
+
+source_file="res://Instantiated Scenes/Player/Shipmodel WIP.obj"
+dest_files=["res://.godot/imported/Shipmodel WIP.obj-b53b3a2abb6d4ab66ab72433ab4843bf.mesh", "res://.godot/imported/Shipmodel WIP.obj-b53b3a2abb6d4ab66ab72433ab4843bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
