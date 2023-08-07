@@ -59,7 +59,9 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	weapons()
-	
+
+	#Git pull test.
+
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
