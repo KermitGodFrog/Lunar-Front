@@ -4,9 +4,15 @@ extends CharacterBody3D
 
 const ACCELERATION_FORWARD = 1.0
 const ACCELERATION_MOVEMENT = 1.0
-const YAW_SPEED = 1.0
 const PITCH_SPEED = 1.0
+const YAW_SPEED = 1.0
 const ROLL_SPEED = 1.0
+const ROTATION_INTERPOLATION = 0.1
+const FA_INTERPOLATION = 0.01
+
+var PITCH_TIME: float
+var YAW_TIME: float
+var ROLL_TIME: float
 
 var rot_x: float
 var rot_y: float
@@ -52,7 +58,7 @@ func _input(event):
 	pass
 
 func _physics_process(delta):
-	movement()
+	movement(delta)
 	weapons()
 	
 	var collision = move_and_collide(velocity * delta)
@@ -61,7 +67,7 @@ func _physics_process(delta):
 		#rotation = rotation.bounce(-collision.get_normal()) * 0.8
 	pass
 
-func movement():
+func movement(delta):
 	var is_accelerating = false
 	
 	if Input.is_action_just_pressed("fa_toggle"):
@@ -81,21 +87,45 @@ func movement():
 		velocity += global_transform.basis.y * move_y_dir * ACCELERATION_MOVEMENT
 		is_accelerating = true
 	
-	var yaw_dir = Input.get_axis("yaw_up", "yaw_down")
-	if yaw_dir:
-		rotate_object_local(Vector3(yaw_dir, 0, 0), deg_to_rad(YAW_SPEED))
+	#PITCH AND YAW ARE OPPOSITE
 	
-	var pitch_dir = Input.get_axis("pitch_right", "pitch_left")
-	if pitch_dir:
-		rotate_object_local(Vector3(0, pitch_dir, 0), deg_to_rad(PITCH_SPEED))
 	
-	var roll_dir = Input.get_axis("roll_left", "roll_right")
-	if roll_dir:
-		rotate_object_local(Vector3(0, 0, roll_dir), deg_to_rad(ROLL_SPEED))
+	
+	var pitch_axis = Input.get_axis("pitch_up", "pitch_down")
+	if pitch_axis:
+		PITCH_TIME = lerp(PITCH_TIME, pitch_axis * PITCH_SPEED, ROTATION_INTERPOLATION)
+		is_accelerating = true
+	else:
+		if is_fa_toggle == true:
+			PITCH_TIME = lerp(PITCH_TIME, 0.0, ROTATION_INTERPOLATION)
+	
+	
+	var yaw_axis = Input.get_axis("yaw_right", "yaw_left")
+	if yaw_axis:
+		YAW_TIME = lerp(YAW_TIME, yaw_axis * YAW_SPEED, ROTATION_INTERPOLATION)
+		is_accelerating = true
+	else:
+		if is_fa_toggle == true:
+			YAW_TIME = lerp(YAW_TIME, 0.0, ROTATION_INTERPOLATION)
+	
+	
+	var roll_axis = Input.get_axis("roll_left", "roll_right")
+	if roll_axis:
+		ROLL_TIME = lerp(ROLL_TIME, roll_axis * ROLL_SPEED, ROTATION_INTERPOLATION)
+		is_accelerating = true
+	else:
+		if is_fa_toggle == true:
+			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
+	
+	if PITCH_TIME != 0:
+		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME))
+	if YAW_TIME != 0:
+		rotate_object_local(Vector3(0, 1, 0), deg_to_rad(YAW_TIME))
+	if ROLL_TIME != 0:
+		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME))
 	
 	if is_fa_toggle == true and is_accelerating == false:
-		velocity = lerp(velocity, Vector3.ZERO, 0.01)
-	
+		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
 	pass
 
 func weapons():
