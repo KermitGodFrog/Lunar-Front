@@ -95,6 +95,7 @@ func movement():
 	
 	if is_fa_toggle == true and is_accelerating == false:
 		velocity = lerp(velocity, Vector3.ZERO, 0.01)
+	
 	pass
 
 func weapons():

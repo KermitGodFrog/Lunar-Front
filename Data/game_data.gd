@@ -7,10 +7,12 @@ func spawn_pd_round(spawning_body: Object, spawn_speed: int, DAMAGE: int, spawn_
 	var pd_round = preload("res://Instantiated Scenes/PD Round/pd_round.tscn")
 	var pd_round_instance = pd_round.instantiate()
 	pd_round_instance.transform = spawn_transform.orthonormalized()
-	pd_round_instance.velocity = spawning_body.velocity + -pd_round_instance.basis.z * spawn_speed
+	
+	pd_round_instance.velocity = -pd_round_instance.basis.z * spawn_speed
+	pd_round_instance.velocity += spawning_body.velocity
 	pd_round_instance.DAMAGE = DAMAGE
 	base_node.add_child(pd_round_instance)
-	print("pd round ", pd_round_instance.transform.basis)
+	print("pd round ", pd_round_instance.global_transform.origin)
 	pass
 
 func spawn_missile(spawning_body: Object, spawn_velocity: Vector3, ACCELERATION_FORWARD: int, MAX_SPEED: int, DAMAGE: int, spawn_transform: Transform3D):
@@ -23,15 +25,6 @@ func spawn_missile(spawning_body: Object, spawn_velocity: Vector3, ACCELERATION_
 	missile_instance.DAMAGE = DAMAGE
 	base_node.add_child(missile_instance)
 	pass
-
-#func manual_fire_check(asker_node: Object, node: Object, node_collision_check: Object):
-	#if node_collision_check.is_colliding() == false:
-		#return true
-	#else:
-		#if node_collision_check.get_collider() != asker_node:
-			#return true
-		#else:
-			#return false
 
 func get_closest_body(bodies, global_position):
 	if bodies.size() > 0:
