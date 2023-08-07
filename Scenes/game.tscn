@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnmvepsfmndgn"]
+[gd_scene load_steps=9 format=3 uid="uid://bnmvepsfmndgn"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
 [ext_resource type="PackedScene" uid="uid://e34u5wp8up1l" path="res://Instantiated Scenes/Player/player.tscn" id="2_g6iam"]
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_prbnl"]
 [ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="3_pnnb3"]
 
-[sub_resource type="Environment" id="Environment_qku8b"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7euel"]
+panorama = ExtResource("2_prbnl")
+
+[sub_resource type="Sky" id="Sky_2fgoa"]
+sky_material = SubResource("PanoramaSkyMaterial_7euel")
+
+[sub_resource type="Environment" id="Environment_c2w0f"]
+background_mode = 2
+sky = SubResource("Sky_2fgoa")
 ambient_light_color = Color(1, 1, 1, 1)
-glow_bloom = 0.5
-volumetric_fog_length = 10.0
-adjustment_saturation = 8.0
+glow_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8f2mt"]
 points = PackedVector3Array(-8, -8, -8, 8, 8, 8, 8, -8, 8, 8, 8, -8, -8, 8, 8, 8, -8, -8, -8, -8, 8, -8, 8, -8)
@@ -17,7 +26,7 @@ points = PackedVector3Array(-8, -8, -8, 8, 8, 8, 8, -8, 8, 8, 8, -8, -8, 8, 8, 8
 script = ExtResource("1_8p2g1")
 
 [node name="environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_qku8b")
+environment = SubResource("Environment_c2w0f")
 
 [node name="player" parent="." instance=ExtResource("2_g6iam")]
 
@@ -51,5 +60,13 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_8f2mt")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+[node name="light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+light_energy = 3.0
+light_indirect_energy = 6.0
+light_volumetric_fog_energy = 3.0
+light_angular_distance = 20.0
+
+[node name="light2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, -0.5, -0.5, 0, -100, -100)
+light_angular_distance = 20.0

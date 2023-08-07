@@ -1,29 +1,40 @@
 extends CharacterBody3D
+class_name Player
 
 @export var health: Health
+
+#MOVEMENT
 
 const ACCELERATION_FORWARD = 1.0
 const ACCELERATION_MOVEMENT = 1.0
 const PITCH_SPEED = 1.0
 const YAW_SPEED = 1.0
 const ROLL_SPEED = 1.0
-const ROTATION_INTERPOLATION = 0.1
+const ROTATION_INTERPOLATION = 0.05
 const FA_INTERPOLATION = 0.01
 
 var PITCH_TIME: float
 var YAW_TIME: float
 var ROLL_TIME: float
 
+#MOUSE
+
 var rot_x: float
 var rot_y: float
 var mouse_sens = 0.1
 
-var is_right_mouse_button_down = false
-var is_left_mouse_button_down = false
-var is_fa_toggle = false
+#WEAPONS
 
 var selected_fire_group: int
 signal commence_firing
+
+#MISC
+
+var is_left_mouse_button_down = false
+var is_right_mouse_button_down = false
+var is_fa_toggle = false
+var is_first_person_toggle = false
+var is_movement = false
 
 func _ready():
 	health.reset()
@@ -59,9 +70,7 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	weapons()
-
-	#Git pull test.
-
+	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
@@ -69,33 +78,42 @@ func _physics_process(delta):
 	pass
 
 func movement(delta):
-	var is_accelerating = false
+	is_movement = false
 	
 	if Input.is_action_just_pressed("fa_toggle"):
 		is_fa_toggle = !is_fa_toggle
+	
+	if Input.is_action_just_pressed("first_person_toggle"):
+		is_first_person_toggle = !is_first_person_toggle
+		
+		if is_first_person_toggle == true:
+			$first_person_camera.set_current(true)
+		if is_first_person_toggle == false:
+			$camera_offset/camera.set_current(true)
+		pass
 	
 	#ACCELERATION
 	
 	var accelerate_dir = Input.get_axis("accelerate_backward", "accelerate_forward")
 	if accelerate_dir:
 		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD
-		is_accelerating = true
+		is_movement = true
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
 	if move_x_dir:
 		velocity += global_transform.basis.x * move_x_dir * ACCELERATION_MOVEMENT
-		is_accelerating = true
+		is_movement = true
 	if move_y_dir:
 		velocity += global_transform.basis.y * move_y_dir * ACCELERATION_MOVEMENT
-		is_accelerating = true
+		is_movement = true
 	
 	#ROTATION
 	
 	var pitch_axis = Input.get_axis("pitch_up", "pitch_down")
 	if pitch_axis:
 		PITCH_TIME = lerp(PITCH_TIME, pitch_axis * PITCH_SPEED, ROTATION_INTERPOLATION)
-		is_accelerating = true
+		is_movement = true
 	else:
 		if is_fa_toggle == true:
 			PITCH_TIME = lerp(PITCH_TIME, 0.0, ROTATION_INTERPOLATION)
@@ -103,7 +121,7 @@ func movement(delta):
 	var yaw_axis = Input.get_axis("yaw_right", "yaw_left")
 	if yaw_axis:
 		YAW_TIME = lerp(YAW_TIME, yaw_axis * YAW_SPEED, ROTATION_INTERPOLATION)
-		is_accelerating = true
+		is_movement = true
 	else:
 		if is_fa_toggle == true:
 			YAW_TIME = lerp(YAW_TIME, 0.0, ROTATION_INTERPOLATION)
@@ -111,7 +129,7 @@ func movement(delta):
 	var roll_axis = Input.get_axis("roll_left", "roll_right")
 	if roll_axis:
 		ROLL_TIME = lerp(ROLL_TIME, roll_axis * ROLL_SPEED, ROTATION_INTERPOLATION)
-		is_accelerating = true
+		is_movement = true
 	else:
 		if is_fa_toggle == true:
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
@@ -123,8 +141,21 @@ func movement(delta):
 	if ROLL_TIME != 0:
 		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME))
 	
-	if is_fa_toggle == true and is_accelerating == false:
+	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+	
+	
+	
+	
+	
+	
+	
+	$pitch_thrusters.update_axis(pitch_axis)
+	$pitch_thrusters.update_time(PITCH_TIME)
+	$yaw_thrusters.update_axis(yaw_axis)
+	$yaw_thrusters.update_time(YAW_TIME)
+	$roll_thrusters.update_axis(roll_axis)
+	$roll_thrusters.update_time(ROLL_TIME)
 	pass
 
 func weapons():
@@ -153,4 +184,3 @@ func _on_health_changed(current_health):
 	if current_health == 0:
 		queue_free()
 	pass
-
