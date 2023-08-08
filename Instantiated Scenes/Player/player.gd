@@ -10,7 +10,7 @@ const ACCELERATION_MOVEMENT = 1.0
 const PITCH_SPEED = 1.0
 const YAW_SPEED = 1.0
 const ROLL_SPEED = 1.0
-const ROTATION_INTERPOLATION = 0.05
+const ROTATION_INTERPOLATION = 0.025
 const FA_INTERPOLATION = 0.01
 
 var PITCH_TIME: float
@@ -68,7 +68,7 @@ func _input(event):
 	pass
 
 func _physics_process(delta):
-	movement(delta)
+	movement()
 	weapons()
 	
 	var collision = move_and_collide(velocity * delta)
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		#rotation = rotation.bounce(-collision.get_normal()) * 0.8
 	pass
 
-func movement(delta):
+func movement():
 	is_movement = false
 	
 	if Input.is_action_just_pressed("fa_toggle"):
@@ -144,18 +144,14 @@ func movement(delta):
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
 	
-	
-	
-	
-	
-	
-	
 	$pitch_thrusters.update_axis(pitch_axis)
 	$pitch_thrusters.update_time(PITCH_TIME)
+	
 	$yaw_thrusters.update_axis(yaw_axis)
 	$yaw_thrusters.update_time(YAW_TIME)
-	$roll_thrusters.update_axis(roll_axis)
-	$roll_thrusters.update_time(ROLL_TIME)
+	
+	$roll_thrusters.update_axis(-roll_axis)
+	$roll_thrusters.update_time(-ROLL_TIME)
 	pass
 
 func weapons():
@@ -184,3 +180,4 @@ func _on_health_changed(current_health):
 	if current_health == 0:
 		queue_free()
 	pass
+

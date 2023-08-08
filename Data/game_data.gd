@@ -6,13 +6,19 @@ var player
 func spawn_pd_round(spawning_body: Object, spawn_speed: int, DAMAGE: int, spawn_transform: Transform3D):
 	var pd_round = preload("res://Instantiated Scenes/PD Round/pd_round.tscn")
 	var pd_round_instance = pd_round.instantiate()
-	pd_round_instance.transform = spawn_transform.orthonormalized()
+	base_node.add_child(pd_round_instance)
 	
-	pd_round_instance.velocity = -pd_round_instance.basis.z * spawn_speed
+	
+	pd_round_instance.transform.origin = spawn_transform.origin
+	pd_round_instance.transform.basis = spawn_transform.basis
+	
+	
+	pd_round_instance.velocity += -pd_round_instance.basis.z * spawn_speed
 	pd_round_instance.velocity += spawning_body.velocity
 	pd_round_instance.DAMAGE = DAMAGE
-	base_node.add_child(pd_round_instance)
-	print("pd round ", pd_round_instance.global_transform.origin)
+	
+	
+	print("pd round ", pd_round_instance.transform.basis)
 	pass
 
 func spawn_missile(spawning_body: Object, spawn_velocity: Vector3, ACCELERATION_FORWARD: int, MAX_SPEED: int, DAMAGE: int, spawn_transform: Transform3D):

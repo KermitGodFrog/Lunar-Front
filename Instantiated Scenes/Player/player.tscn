@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://e34u5wp8up1l"]
+[gd_scene load_steps=12 format=3 uid="uid://e34u5wp8up1l"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_rkrb2"]
 [ext_resource type="ArrayMesh" uid="uid://bs3j0aifunkb0" path="res://Instantiated Scenes/Player/USS_YELLOWSTONE_PATROL.obj" id="2_0eqeb"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_ogqss"]
 [ext_resource type="Script" path="res://Instantiated Scenes/PD Cannon/pd_cannon.gd" id="4_3ilx8"]
-[ext_resource type="PackedScene" uid="uid://csg8q5uig1ops" path="res://Instantiated Scenes/PD Cannon/pd_cannon.tscn" id="4_ki55p"]
 [ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="5_2w5dq"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="7_nkr3b"]
 
@@ -49,7 +48,7 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114
 shape = SubResource("ConcavePolygonShape3D_nk06n")
 
 [node name="pd_cannon" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5)
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -85,24 +84,6 @@ mesh = ExtResource("5_2w5dq")
 [node name="collision" type="CollisionShape3D" parent="pd_cannon"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gp6st")
-
-[node name="pd_cannon2" parent="." instance=ExtResource("4_ki55p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
-PROJECTILE_SPEED = 2000
-
-[node name="pd_cannon3" parent="." instance=ExtResource("4_ki55p")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 9)
-turret_mode = 5
-weapon_group = 1
-PROJECTILE_SPEED = 2000
-
-[node name="pd_cannon4" parent="." instance=ExtResource("4_ki55p")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 9)
-turret_mode = 5
-weapon_group = 1
-PROJECTILE_SPEED = 2000
 
 [node name="pitch_thrusters" type="Node3D" parent="."]
 script = ExtResource("7_nkr3b")

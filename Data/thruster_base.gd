@@ -21,9 +21,9 @@ func _physics_process(delta):
 	check_children(axis)
 	
 	if get_node(input_body).is_fa_toggle == true and get_node(input_body).is_movement == false:
-		if time > 0.1:
+		if time > 0.01:
 			check_children(-1)
-		if time < -0.1:
+		if time < -0.01:
 			check_children(1)
 	pass
 
