@@ -5,13 +5,13 @@ class_name Player
 
 #MOVEMENT
 
-const ACCELERATION_FORWARD = 1.0
-const ACCELERATION_MOVEMENT = 1.0
-const PITCH_SPEED = 1.0
-const YAW_SPEED = 1.0
-const ROLL_SPEED = 1.0
+const ACCELERATION_FORWARD = 100.0
+const ACCELERATION_MOVEMENT = 100.0
+const PITCH_SPEED = 50.0
+const YAW_SPEED = 50.0
+const ROLL_SPEED = 50.0
 const ROTATION_INTERPOLATION = 0.025
-const FA_INTERPOLATION = 0.01
+const FA_INTERPOLATION = 0.85
 
 var PITCH_TIME: float
 var YAW_TIME: float
@@ -68,7 +68,7 @@ func _input(event):
 	pass
 
 func _physics_process(delta):
-	movement()
+	movement(delta)
 	weapons()
 	
 	var collision = move_and_collide(velocity * delta)
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		#rotation = rotation.bounce(-collision.get_normal()) * 0.8
 	pass
 
-func movement():
+func movement(delta):
 	is_movement = false
 	
 	if Input.is_action_just_pressed("fa_toggle"):
@@ -96,16 +96,16 @@ func movement():
 	
 	var accelerate_dir = Input.get_axis("accelerate_backward", "accelerate_forward")
 	if accelerate_dir:
-		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD
+		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD * delta
 		is_movement = true
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
 	if move_x_dir:
-		velocity += global_transform.basis.x * move_x_dir * ACCELERATION_MOVEMENT
+		velocity += global_transform.basis.x * move_x_dir * ACCELERATION_MOVEMENT * delta
 		is_movement = true
 	if move_y_dir:
-		velocity += global_transform.basis.y * move_y_dir * ACCELERATION_MOVEMENT
+		velocity += global_transform.basis.y * move_y_dir * ACCELERATION_MOVEMENT * delta
 		is_movement = true
 	
 	#ROTATION
@@ -135,14 +135,14 @@ func movement():
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
 	
 	if PITCH_TIME != 0:
-		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME))
+		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
 	if YAW_TIME != 0:
-		rotate_object_local(Vector3(0, 1, 0), deg_to_rad(YAW_TIME))
+		rotate_object_local(Vector3(0, 1, 0), deg_to_rad(YAW_TIME * delta))
 	if ROLL_TIME != 0:
-		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME))
+		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME * delta))
 	
 	if is_fa_toggle == true and is_movement == false:
-		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION * delta)
 	
 	$pitch_thrusters.update_axis(pitch_axis)
 	$pitch_thrusters.update_time(PITCH_TIME)
