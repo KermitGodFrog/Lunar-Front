@@ -27,7 +27,6 @@ func _physics_process(delta):
 			check_children(1)
 	pass
 
-
 func check_children(check_axis: int):
 	for child in get_children():
 		if child.is_in_group("axis_" + str(check_axis)):

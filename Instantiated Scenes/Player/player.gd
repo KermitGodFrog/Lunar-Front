@@ -177,6 +177,13 @@ func movement(delta):
 	
 	$roll_thrusters.update_axis(-roll_axis)
 	$roll_thrusters.update_time(-ROLL_TIME)
+	
+	$acceleration_thrusters.update_axis(accelerate_dir)
+	$acceleration_thrusters.update_time(velocity.length())
+	
+	print(velocity.length())
+	
+	
 	pass
 
 func weapons():
