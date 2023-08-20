@@ -46,7 +46,7 @@ func _ready():
 	game_data.player = self
 	pass
 
-func _input(event):         
+func _input(event):
 	if event is InputEventMouseMotion:
 		match is_first_person_toggle:
 			true:
