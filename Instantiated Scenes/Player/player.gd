@@ -46,19 +46,41 @@ func _ready():
 	game_data.player = self
 	pass
 
-func _input(event):         
+func _input(event):
 	if event is InputEventMouseMotion:
-		if is_right_mouse_button_down == true:
-			rot_x += event.relative.x * deg_to_rad(mouse_sens)
-			rot_y += event.relative.y * deg_to_rad(mouse_sens)
-			$camera_offset.transform.basis = Basis()
-			$camera_offset.rotate_object_local(Vector3(0, -1, 0), rot_x)
-			$camera_offset.rotate_object_local(Vector3(1, 0, 0), rot_y)
-		if is_left_mouse_button_down == true:
-			if event.relative.y < 0:
-				$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z + 2.5, 0.7)
-			if event.relative.y > 0:
-				$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
+		match is_first_person_toggle:
+			true:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				var event_normalized = event.relative.normalized()
+				YAW_TIME = lerp(YAW_TIME, -event_normalized.x * YAW_SPEED, ROTATION_INTERPOLATION)
+				PITCH_TIME = lerp(PITCH_TIME, event_normalized.y * PITCH_SPEED, ROTATION_INTERPOLATION)
+			false:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				if is_right_mouse_button_down == true:
+					rot_x += event.relative.x * deg_to_rad(mouse_sens)
+					rot_y += event.relative.y * deg_to_rad(mouse_sens)
+					$camera_offset.transform.basis = Basis()
+					$camera_offset.rotate_object_local(Vector3(0, -1, 0), rot_x)
+					$camera_offset.rotate_object_local(Vector3(1, 0, 0), rot_y)
+				if is_left_mouse_button_down == true:
+					if event.relative.y < 0:
+						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z + 2.5, 0.7)
+					if event.relative.y > 0:
+						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
+	if event is InputEventJoypadMotion:
+		match is_first_person_toggle:
+			true:
+				match event.axis:
+					0:
+						YAW_TIME = lerp(YAW_TIME, -1 * YAW_SPEED, ROTATION_INTERPOLATION)
+					2:
+						YAW_TIME = lerp(YAW_TIME, 1 * YAW_SPEED, ROTATION_INTERPOLATION)
+					1:
+						PITCH_TIME = lerp(PITCH_TIME, -1 * PITCH_SPEED, ROTATION_INTERPOLATION)
+					3:
+						PITCH_TIME = lerp(PITCH_TIME, 1 * PITCH_SPEED, ROTATION_INTERPOLATION)
+			false:
+				pass
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_right_mouse_button_down = event.pressed
@@ -74,7 +96,6 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	weapons()
-	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
