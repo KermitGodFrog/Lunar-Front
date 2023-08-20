@@ -81,7 +81,6 @@ func _input(event):
 						PITCH_TIME = lerp(PITCH_TIME, 1 * PITCH_SPEED, ROTATION_INTERPOLATION)
 			false:
 				pass
-		pass
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_right_mouse_button_down = event.pressed
