@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqjiq7m6gy3j7"
+path="res://.godot/imported/Railgun barrel.obj-cfd47736c8357f6e99d8097d7f6fdad0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Railgun barrel.obj-cfd47736c8357f6e99d8097d7f6fdad0.mesh"]
+
+source_file="res://Models/Railgun barrel.obj"
+dest_files=["res://.godot/imported/Railgun barrel.obj-cfd47736c8357f6e99d8097d7f6fdad0.mesh", "res://.godot/imported/Railgun barrel.obj-cfd47736c8357f6e99d8097d7f6fdad0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

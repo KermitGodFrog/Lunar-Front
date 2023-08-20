@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnmvepsfmndgn"]
+[gd_scene load_steps=20 format=3 uid="uid://bnmvepsfmndgn"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
 [ext_resource type="PackedScene" uid="uid://e34u5wp8up1l" path="res://Instantiated Scenes/Player/player.tscn" id="2_g6iam"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_prbnl"]
-[ext_resource type="ArrayMesh" uid="uid://boe7ea78k6ypd" path="res://Stationplaceholder.obj" id="2_qdi46"]
+[ext_resource type="ArrayMesh" uid="uid://boe7ea78k6ypd" path="res://Models/Stationplaceholder.obj" id="2_qdi46"]
 [ext_resource type="Script" path="res://Scenes/space_station.gd" id="2_ytxta"]
-[ext_resource type="PackedScene" uid="uid://bmg7hahyu7jfh" path="res://Instantiated Scenes/Missile/missile.tscn" id="3_f5nob"]
+[ext_resource type="ArrayMesh" uid="uid://bg7jj2awi5gsy" path="res://Models/Asteroids/Red/Asteroid1.obj" id="6_2okfm"]
+[ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="7_leyms"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnd1j"]
 albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
@@ -42,6 +43,12 @@ ambient_light_color = Color(1, 1, 1, 1)
 glow_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xc3u6"]
+points = PackedVector3Array(2.49904, 0.094855, -1.28217, 1.4334, -0.147608, -0.928603, 1.45898, -0.202142, -0.985897, 2.54051, -0.482172, -0.78059, 1.69992, 0.41475, -0.779673, 1.64468, -0.03455, -1.52726, 2.39006, -0.555061, -1.20896, 1.75579, -0.428051, -0.610829, 1.86835, 0.527176, -1.34115, 2.52861, -0.162011, -0.75051, 1.87068, -0.551624, -1.02339, 2.09178, 0.496547, -1.11503, 1.53336, 0.356997, -1.15354, 1.55264, -0.053106, -0.59476, 2.14872, 0.226416, -1.47049, 2.61404, -0.276512, -1.20922, 1.56872, -0.165599, -1.43481, 1.96294, -0.311772, -0.561386, 2.20256, -0.292229, -1.41, 2.22352, -0.632113, -0.911101, 1.56932, -0.408564, -0.761267, 1.53055, 0.377984, -0.872934, 1.53014, 0.0778672, -1.45448, 2.27808, 0.392186, -1.22727, 1.80134, 0.327588, -0.734109, 2.07355, -0.438861, -1.3358, 1.75389, 0.55025, -1.07926, 2.56367, -0.561431, -1.00402, 1.86875, 0.226922, -1.52732, 2.61988, -0.222511, -0.891241, 1.99933, -0.542553, -0.68412, 1.43864, 0.114884, -0.892235)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8rwji"]
+points = PackedVector3Array(1.59044, -0.243983, 1.26045, 2.49361, -0.324908, 0.981048, 2.49083, -0.356302, 0.981527, 1.85395, -0.0791533, 0.550814, 2.0355, 0.298749, 1.32571, 1.96947, -0.542242, 1.49295, 1.67378, -0.490413, 0.865446, 1.98635, 0.329765, 0.702666, 2.25041, -0.425915, 0.633257, 2.00254, -0.0294904, 1.55887, 2.2836, -0.591656, 1.0297, 1.87183, 0.280275, 1.29164, 1.55221, -0.305672, 0.966233, 1.68728, -0.427253, 1.46099, 2.24643, -0.0312881, 1.40377, 2.28286, -0.458471, 1.34309, 2.11661, 0.245172, 0.737805, 1.62166, -0.525949, 0.980068, 2.0358, -0.295998, 0.526869, 1.75313, -0.311435, 1.56135, 2.06866, 0.102933, 0.583075, 2.3987, -0.3102, 0.749145, 1.91915, 0.237908, 0.62946, 2.44936, -0.525845, 1.01319, 2.11588, 0.210101, 1.40154, 1.98637, -0.488528, 0.71919, 2.1183, -0.442712, 1.49255, 1.54466, -0.423034, 0.948277, 1.98662, 0.212251, 1.45241, 1.58408, -0.209124, 1.0145, 2.05218, -0.592403, 1.06275, 1.81852, -0.31248, 1.59771)
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_8p2g1")
@@ -96,5 +103,26 @@ light_angular_distance = 20.0
 transform = Transform3D(-0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, -0.5, -0.5, 0, -500, -100)
 light_angular_distance = 20.0
 
-[node name="missile" parent="." instance=ExtResource("3_f5nob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 0, 0)
+[node name="asteroid" type="StaticBody3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -532.946, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="asteroid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.1)
+mesh = ExtResource("6_2okfm")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="asteroid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.1)
+shape = SubResource("ConvexPolygonShape3D_xc3u6")
+
+[node name="asteroid2" type="StaticBody3D" parent="."]
+transform = Transform3D(5000, 0, 0, 0, 5000, 0, 0, 0, 5000, 535.989, 476.116, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="asteroid2"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0223684, 0, -0.0120055)
+mesh = ExtResource("7_leyms")
+skeleton = NodePath("../..")
+
+[node name="mesh2" type="CollisionShape3D" parent="asteroid2"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0223684, 0, -0.0120055)
+shape = SubResource("ConvexPolygonShape3D_8rwji")

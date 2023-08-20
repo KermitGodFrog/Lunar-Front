@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://boe7ea78k6ypd"
-path="res://.godot/imported/Stationplaceholder.obj-f828ad1b77bf41d54acc4eb2accbc3e0.mesh"
+path="res://.godot/imported/Stationplaceholder.obj-caaaebe0b352ca1cf98e85250aa997b4.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Stationplaceholder.obj-f828ad1b77bf41d54acc4eb2accbc3e0.mesh"]
+files=["res://.godot/imported/Stationplaceholder.obj-caaaebe0b352ca1cf98e85250aa997b4.mesh"]
 
-source_file="res://Stationplaceholder.obj"
-dest_files=["res://.godot/imported/Stationplaceholder.obj-f828ad1b77bf41d54acc4eb2accbc3e0.mesh", "res://.godot/imported/Stationplaceholder.obj-f828ad1b77bf41d54acc4eb2accbc3e0.mesh"]
+source_file="res://Models/Stationplaceholder.obj"
+dest_files=["res://.godot/imported/Stationplaceholder.obj-caaaebe0b352ca1cf98e85250aa997b4.mesh", "res://.godot/imported/Stationplaceholder.obj-caaaebe0b352ca1cf98e85250aa997b4.mesh"]
 
 [params]
 
