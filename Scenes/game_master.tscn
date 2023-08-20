@@ -22,7 +22,9 @@ grow_vertical = 2
 stretch = true
 
 [node name="game_viewport" type="SubViewport" parent="game_container"]
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="game" parent="game_container/game_viewport" instance=ExtResource("1_5e1ec")]
 
