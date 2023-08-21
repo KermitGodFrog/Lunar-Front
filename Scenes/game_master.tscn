@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://v33c4ywpoohx"]
+[gd_scene load_steps=8 format=3 uid="uid://v33c4ywpoohx"]
 
 [ext_resource type="PackedScene" uid="uid://bnmvepsfmndgn" path="res://Scenes/game.tscn" id="1_5e1ec"]
+[ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Instantiated Scenes/Player/boost_meter.png" id="2_seue8"]
 [ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Instantiated Scenes/Player/fa_png.png" id="2_ursdu"]
 [ext_resource type="Script" path="res://Scenes/movement_mode.gd" id="3_f8kr5"]
+[ext_resource type="Script" path="res://Scenes/boost_meter.gd" id="3_nrii2"]
 [ext_resource type="Script" path="res://Scenes/collision_warning.gd" id="4_iimki"]
 [ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Instantiated Scenes/Player/collision_warning_png.png" id="4_mi843"]
 
@@ -31,6 +33,22 @@ render_target_update_mode = 4
 [node name="game" parent="game_container/game_viewport" instance=ExtResource("1_5e1ec")]
 
 [node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="boost_meter" type="TextureRect" parent="ui_layer"]
+texture_filter = 1
+layout_direction = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = -10.0
+grow_vertical = 0
+texture = ExtResource("2_seue8")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("3_nrii2")
 
 [node name="ui_container" type="GridContainer" parent="ui_layer"]
 texture_filter = 1

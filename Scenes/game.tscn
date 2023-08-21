@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnmvepsfmndgn"]
+[gd_scene load_steps=21 format=3 uid="uid://bnmvepsfmndgn"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_prbnl"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bg7jj2awi5gsy" path="res://Models/Asteroids/Red/Asteroid1.obj" id="6_2okfm"]
 [ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="7_leyms"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="7_y2hrx"]
+[ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Ring/boost_ring.tscn" id="8_6tbx2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnd1j"]
 albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
@@ -126,3 +127,8 @@ shape = SubResource("ConvexPolygonShape3D_8rwji")
 
 [node name="player_phantom" parent="." instance=ExtResource("7_y2hrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 536.365, 0, 0)
+
+[node name="boost_ring" parent="." instance=ExtResource("8_6tbx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 88.4621, 0)
+BOOST_TIME_INCREASE = 1000.0
+COOLDOWN = 5
