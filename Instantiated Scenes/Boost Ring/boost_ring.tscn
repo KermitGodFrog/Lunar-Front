@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj3hxgqwdtfjo"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/Boost Ring/boost_ring_base.gd" id="1_2ebi5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
+size = Vector3(15, 15, 15)
+
+[node name="boost_ring" type="Area3D"]
+script = ExtResource("1_2ebi5")
+cooldown_timer = NodePath("cooldown_timer")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_toffo")
+
+[node name="cooldown_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
