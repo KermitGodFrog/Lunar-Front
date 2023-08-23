@@ -112,12 +112,8 @@ func _physics_process(delta):
 	movement(delta)
 	weapons()
 	
-	if Input.is_action_just_pressed("camera_look_at_checkpoint"):
-		$camera_offset.transform.basis = Basis()
-		#rotation stuff
-		pass
-	
-	current_time += delta
+	if current_checkpoint:
+		current_time += delta
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
