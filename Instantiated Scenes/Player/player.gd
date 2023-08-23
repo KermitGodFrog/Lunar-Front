@@ -3,6 +3,12 @@ class_name Player
 
 @export var health: Health
 
+#GAMEPLAY
+
+var current_checkpoint: Checkpoint
+var current_time: float
+var best_time: float
+
 #MOVEMENT
 
 const ACCELERATION_FORWARD = 1.5
@@ -11,7 +17,8 @@ const PITCH_SPEED = 50.0
 const YAW_SPEED = 50.0
 const ROLL_SPEED = 50.0
 const ROTATION_INTERPOLATION = 0.025
-const FA_INTERPOLATION = 0.010
+const FA_INTERPOLATION = 0.015
+const SECRET_FA_INTERPOLATION = 0.010
 
 var PITCH_TIME: float
 var YAW_TIME: float
@@ -20,7 +27,8 @@ var ROLL_TIME: float
 #BOOST
 
 var BOOST: int
-var BOOST_TIME: float = 500
+var BOOST_STARTING_TIME: float = 500
+var BOOST_TIME: float = BOOST_STARTING_TIME
 const BOOST_MULTIPLIER = 3
 const BOOST_REGEN_DIVIDER = 1.125
 const BOOST_MAX_REGEN = 300
@@ -40,9 +48,13 @@ signal commence_firing
 
 var is_left_mouse_button_down = false
 var is_right_mouse_button_down = false
+
 var is_fa_toggle = false
 var is_first_person_toggle = false
+var is_mouse_movement_toggle = false
 var is_movement = false
+var is_acceleration = false
+var is_rotation = false
 
 func _ready():
 	health.reset()
@@ -54,10 +66,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		match is_first_person_toggle:
 			true:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-				var event_normalized = event.relative.normalized()
-				YAW_TIME = lerp(YAW_TIME, -event_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-				PITCH_TIME = lerp(PITCH_TIME, event_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+				Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
@@ -72,20 +81,20 @@ func _input(event):
 					if event.relative.y > 0:
 						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
 	
-	if event is InputEventJoypadMotion:
-		match is_first_person_toggle:
-			true:
-				match event.axis:
-					0:
-						YAW_TIME = lerp(YAW_TIME, -1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-					2:
-						YAW_TIME = lerp(YAW_TIME, 1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-					1:
-						PITCH_TIME = lerp(PITCH_TIME, -1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
-					3:
-						PITCH_TIME = lerp(PITCH_TIME, 1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
-			false:
-				pass
+	#if event is InputEventJoypadMotion:
+		#match is_first_person_toggle:
+			#true:
+				#match event.axis:
+					#0:
+						#YAW_TIME = lerp(YAW_TIME, -1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+					#2:
+						#YAW_TIME = lerp(YAW_TIME, 1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+					#1:
+						#3PITCH_TIME = lerp(PITCH_TIME, -1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+					#3:
+						#PITCH_TIME = lerp(PITCH_TIME, 1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+			#false:
+				#pass
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
@@ -102,7 +111,10 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	weapons()
-	print(BOOST_TIME)
+	
+	if current_checkpoint:
+		current_time += delta
+	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
@@ -111,25 +123,16 @@ func _physics_process(delta):
 
 func movement(delta):
 	is_movement = false
-	
-	#BOOSTING
-	
-	if Input.is_action_pressed("boost"):
-		BOOST_TIME = maxi(0, BOOST_TIME - delta)
-		if BOOST_TIME > 0:
-			BOOST = BOOST_MULTIPLIER
-		else:
-			BOOST = 1
-	else:
-		BOOST = 1
-	
-	if BOOST_TIME < BOOST_MAX_REGEN:
-		BOOST_TIME += delta / BOOST_REGEN_DIVIDER
+	is_acceleration = false
+	is_rotation = false
 	
 	#TOGGLES
 	
 	if Input.is_action_just_pressed("fa_toggle"):
 		is_fa_toggle = !is_fa_toggle
+	
+	if Input.is_action_just_pressed("mouse_movement_toggle"):
+		is_mouse_movement_toggle = !is_mouse_movement_toggle
 	
 	if Input.is_action_just_pressed("first_person_toggle"):
 		is_first_person_toggle = !is_first_person_toggle
@@ -146,15 +149,18 @@ func movement(delta):
 	if accelerate_dir:
 		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD * BOOST
 		is_movement = true
+		is_acceleration = true
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
 	if move_x_dir:
 		velocity += global_transform.basis.x * move_x_dir * ACCELERATION_MOVEMENT * BOOST
 		is_movement = true
+		is_acceleration = true
 	if move_y_dir:
 		velocity += global_transform.basis.y * move_y_dir * ACCELERATION_MOVEMENT * BOOST
 		is_movement = true
+		is_acceleration = true
 	
 	#ROTATION
 	
@@ -162,6 +168,7 @@ func movement(delta):
 	if pitch_axis:
 		PITCH_TIME = lerp(PITCH_TIME, pitch_axis * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
 		is_movement = true
+		is_rotation = true
 	else:
 		if is_fa_toggle == true:
 			PITCH_TIME = lerp(PITCH_TIME, 0.0, ROTATION_INTERPOLATION)
@@ -170,6 +177,7 @@ func movement(delta):
 	if yaw_axis:
 		YAW_TIME = lerp(YAW_TIME, yaw_axis * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
 		is_movement = true
+		is_rotation = true
 	else:
 		if is_fa_toggle == true:
 			YAW_TIME = lerp(YAW_TIME, 0.0, ROTATION_INTERPOLATION)
@@ -178,9 +186,16 @@ func movement(delta):
 	if roll_axis:
 		ROLL_TIME = lerp(ROLL_TIME, roll_axis * ROLL_SPEED * BOOST, ROTATION_INTERPOLATION)
 		is_movement = true
+		is_rotation = true
 	else:
 		if is_fa_toggle == true:
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
+	
+	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
+		var viewport_rect_size = get_viewport().get_visible_rect().size
+		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
+		YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+		PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
 	
 	if PITCH_TIME != 0:
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
@@ -189,8 +204,30 @@ func movement(delta):
 	if ROLL_TIME != 0:
 		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME * delta))
 	
+	#FA
+	
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+	
+	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
+		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
+	
+	#BOOSTING
+	
+	if Input.is_action_pressed("boost"):
+		if is_movement:
+			BOOST_TIME = maxi(0, BOOST_TIME - delta)
+			if BOOST_TIME > 0:
+				BOOST = BOOST_MULTIPLIER
+			else:
+				BOOST = 1
+		else:
+			BOOST = 1
+	else:
+		BOOST = 1
+	
+	if BOOST_TIME < BOOST_MAX_REGEN:
+		BOOST_TIME += delta / BOOST_REGEN_DIVIDER
 	
 	#THRUSTERS
 	
@@ -205,6 +242,10 @@ func movement(delta):
 	
 	$acceleration_thrusters.update_axis(accelerate_dir)
 	$acceleration_thrusters.update_time(velocity.length())
+	
+	$movement_x_thrusters.update_axis(move_x_dir)
+	$movement_y_thrusters.update_axis(-move_y_dir)
+	
 	pass
 
 func weapons():
