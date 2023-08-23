@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=10 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
 [ext_resource type="ArrayMesh" uid="uid://c46okn0bj6kbd" path="res://Models/Phantom.obj" id="2_hlmna"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="3_6ls8t"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/draw_control.gd" id="3_hc835"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -18,7 +19,8 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_w5hof"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="player_phantom" type="CharacterBody3D" groups=["player"]]
+[node name="player" type="CharacterBody3D" groups=["player"]]
+motion_mode = 1
 script = ExtResource("1_oahw1")
 health = SubResource("Resource_kysq3")
 
@@ -32,6 +34,13 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 
 current = true
 size = 100.0
 
+[node name="draw_control" type="Control" parent="camera_offset/camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_hc835")
+
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)
 mesh = ExtResource("2_hlmna")
@@ -43,54 +52,6 @@ shape = SubResource("ConcavePolygonShape3D_op0s2")
 [node name="pitch_thrusters" type="Node3D" parent="."]
 script = ExtResource("3_6ls8t")
 input_body = NodePath("..")
-
-[node name="test_thruster_particles" type="CPUParticles3D" parent="pitch_thrusters" groups=["axis_-1"]]
-transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -1.9, -1.7, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-
-[node name="test_thruster_particles5" type="CPUParticles3D" parent="pitch_thrusters" groups=["axis_1"]]
-transform = Transform3D(0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 0, 0, 1, -2.45, -0.75, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-
-[node name="test_thruster_particles6" type="CPUParticles3D" parent="pitch_thrusters" groups=["axis_1"]]
-transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, 2.45, -0.75, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-
-[node name="test_thruster_particles2" type="CPUParticles3D" parent="pitch_thrusters" groups=["axis_-1"]]
-transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 1.9, -1.7, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
 
 [node name="test_thruster_particles3" type="CPUParticles3D" parent="pitch_thrusters" groups=["axis_-1"]]
 transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -0.65, -1.02, 5.6)
@@ -144,28 +105,6 @@ scale_amount_min = 0.1
 script = ExtResource("3_6ls8t")
 input_body = NodePath("..")
 
-[node name="test_thruster_particles" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_-1"]]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.6, 2.5, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_w5hof")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-
-[node name="test_thruster_particles3" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_1"]]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.6, 2.5, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_w5hof")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-
 [node name="test_thruster_particles2" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_-1"]]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.6, 1.1, 5.6)
 emitting = false
@@ -188,32 +127,8 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 
-[node name="test_thruster_particles5" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_-1"]]
-transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -1.9, -1.7, -0.4)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-
 [node name="test_thruster_particles6" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_-1"]]
 transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -0.65, -1.02, 5.6)
-emitting = false
-local_coords = true
-mesh = SubResource("BoxMesh_sbhfj")
-direction = Vector3(0, 1, 0)
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-
-[node name="test_thruster_particles7" type="CPUParticles3D" parent="yaw_thrusters" groups=["axis_1"]]
-transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 1.9, -1.7, -0.4)
 emitting = false
 local_coords = true
 mesh = SubResource("BoxMesh_sbhfj")
@@ -467,3 +382,199 @@ spread = 15.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
+
+[node name="movement_x_thrusters" type="Node3D" parent="."]
+script = ExtResource("3_6ls8t")
+input_body = NodePath("..")
+
+[node name="test_thruster_particles" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.6, 2.5, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_w5hof")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="test_thruster_particles3" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_1"]]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.6, 2.5, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_w5hof")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="test_thruster_particles2" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.6, 1.1, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_w5hof")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="test_thruster_particles4" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_1"]]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.6, 1.1, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_w5hof")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="test_thruster_particles5" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -1.9, -1.7, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles6" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -0.65, -1.02, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles7" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_1"]]
+transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 1.9, -1.7, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles8" type="CPUParticles3D" parent="movement_x_thrusters" groups=["axis_1"]]
+transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 0.65, -1.02, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="movement_y_thrusters" type="Node3D" parent="."]
+script = ExtResource("3_6ls8t")
+input_body = NodePath("..")
+
+[node name="test_thruster_particles" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -1.9, -1.7, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles5" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_1"]]
+transform = Transform3D(0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 0, 0, 1, -2.45, -0.75, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles6" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_1"]]
+transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, 2.45, -0.75, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles2" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 1.9, -1.7, -0.4)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles3" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 0, 0, 1, -0.65, -1.02, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles7" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_1"]]
+transform = Transform3D(0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 0, 0, 1, -1.25, 0, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles8" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_1"]]
+transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, 1.25, 0, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
+
+[node name="test_thruster_particles4" type="CPUParticles3D" parent="movement_y_thrusters" groups=["axis_-1"]]
+transform = Transform3D(-0.819152, -0.573576, 0, 0.573576, -0.819152, 0, 0, 0, 1, 0.65, -1.02, 5.6)
+emitting = false
+local_coords = true
+mesh = SubResource("BoxMesh_sbhfj")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.1
