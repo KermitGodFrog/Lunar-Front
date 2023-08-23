@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj3hxgqwdtfjo"]
+[gd_scene load_steps=4 format=3 uid="uid://dj3hxgqwdtfjo"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Boost Ring/boost_ring_base.gd" id="1_2ebi5"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="2_eq75l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
 size = Vector3(15, 15, 15)
@@ -14,5 +15,8 @@ shape = SubResource("BoxShape3D_toffo")
 
 [node name="cooldown_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_eq75l")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

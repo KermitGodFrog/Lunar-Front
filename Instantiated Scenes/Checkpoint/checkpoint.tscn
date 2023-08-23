@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://1cdn6gf8jn6h"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/Checkpoint/checkpoint_base.gd" id="1_1bo2i"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="2_12ni5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylaeg"]
+size = Vector3(16, 16, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyf6r"]
+albedo_color = Color(0.247059, 0.741176, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 3.0
+
+[node name="checkpoint" type="Area3D" groups=["checkpoint"]]
+script = ExtResource("1_1bo2i")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_ylaeg")
+
+[node name="next_checkpoint_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_cyf6r")
+transparency = 0.5
+mesh = ExtResource("2_12ni5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
