@@ -44,12 +44,18 @@ var mouse_sens = 0.1
 var selected_fire_group: int
 signal commence_firing
 
+#CAMERA
+
+var is_camera_offset_toggle = false
+var CAMERA_OFFSET_LOCATION: Vector3 = Vector3(0,0,0)
+const CAMERA_OFFSET_INTERPOLATION = 0.15
+
 #MISC
 
 var is_left_mouse_button_down = false
 var is_right_mouse_button_down = false
 
-var is_fa_toggle = false
+var is_fa_toggle = true
 var is_first_person_toggle = false
 var is_mouse_movement_toggle = false
 var is_movement = false
@@ -81,21 +87,6 @@ func _input(event):
 					if event.relative.y > 0:
 						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
 	
-	#if event is InputEventJoypadMotion:
-		#match is_first_person_toggle:
-			#true:
-				#match event.axis:
-					#0:
-						#YAW_TIME = lerp(YAW_TIME, -1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-					#2:
-						#YAW_TIME = lerp(YAW_TIME, 1 * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-					#1:
-						#3PITCH_TIME = lerp(PITCH_TIME, -1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
-					#3:
-						#PITCH_TIME = lerp(PITCH_TIME, 1 * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
-			#false:
-				#pass
-	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_right_mouse_button_down = event.pressed
@@ -110,6 +101,7 @@ func _input(event):
 
 func _physics_process(delta):
 	movement(delta)
+	camera()
 	weapons()
 	
 	if current_checkpoint:
@@ -141,7 +133,6 @@ func movement(delta):
 			$first_person_camera.set_current(true)
 		if is_first_person_toggle == false:
 			$camera_offset/camera.set_current(true)
-		pass
 	
 	#ACCELERATION
 	
@@ -245,6 +236,20 @@ func movement(delta):
 	
 	$movement_x_thrusters.update_axis(move_x_dir)
 	$movement_y_thrusters.update_axis(-move_y_dir)
+	
+	pass
+
+func camera():
+	if Input.is_action_just_pressed("camera_offset_toggle"):
+		is_camera_offset_toggle = !is_camera_offset_toggle
+		match is_camera_offset_toggle:
+			false:
+				CAMERA_OFFSET_LOCATION = Vector3(0,0,0)
+			true:
+				CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
+	$camera_offset.position = $camera_offset.position.lerp(CAMERA_OFFSET_LOCATION, CAMERA_OFFSET_INTERPOLATION)
+	
+	#camera lagged following maybe
 	
 	pass
 
