@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dj3hxgqwdtfjo"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Boost Pickup/boost_pickup_base.gd" id="1_0eu5u"]
-[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="2_eq75l"]
+[ext_resource type="Texture2D" uid="uid://gnvghvxfwyf5" path="res://Instantiated Scenes/Boost Pickup/boost_pickup_png.png" id="2_m0iqk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
 size = Vector3(15, 15, 15)
@@ -13,7 +13,10 @@ script = ExtResource("1_0eu5u")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_toffo")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_eq75l")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 0, 0, 0)
+billboard = 1
+texture_filter = 2
+texture = ExtResource("2_m0iqk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

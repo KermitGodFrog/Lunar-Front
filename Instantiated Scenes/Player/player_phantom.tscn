@@ -14,6 +14,7 @@ max_health = 100
 albedo_color = Color(0.8, 0.8, 0.8, 1)
 emission_enabled = true
 emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5em0d"]
 albedo_color = Color(0.470774, 0.470774, 0.470774, 1)
@@ -38,6 +39,14 @@ health = SubResource("Resource_kysq3")
 
 [node name="first_person_camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 7)
+
+[node name="draw_control" type="Control" parent="first_person_camera"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_hc835")
 
 [node name="camera_offset" type="Node3D" parent="."]
 
@@ -64,7 +73,6 @@ surface_material_override/14 = SubResource("StandardMaterial3D_5em0d")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)
-visible = false
 shape = SubResource("ConcavePolygonShape3D_op0s2")
 
 [node name="pitch_thrusters" type="Node3D" parent="."]

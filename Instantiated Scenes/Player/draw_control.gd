@@ -9,7 +9,8 @@ func _draw():
 	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	var next_checkpoint_two = map_data.get_next_checkpoint_two()
 	
-	draw_texture(movement_dir_png, get_parent().unproject_position(game_data.player.global_transform.origin + game_data.player.velocity))
+	var unprojected_position = get_parent().unproject_position(game_data.player.global_transform.origin + game_data.player.velocity)
+	draw_texture(movement_dir_png, Vector2(unprojected_position.x - 8, unprojected_position.y - 8))
 	
 	if next_checkpoint_one:
 		draw_line(get_parent().unproject_position(game_data.player.global_transform.origin), get_parent().unproject_position(next_checkpoint_one.global_transform.origin), Color.LIGHT_GREEN, 1)

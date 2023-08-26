@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnmvepsfmndgn"]
+[gd_scene load_steps=24 format=3 uid="uid://bnmvepsfmndgn"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_prbnl"]
 [ext_resource type="ArrayMesh" uid="uid://boe7ea78k6ypd" path="res://Models/Stationplaceholder.obj" id="2_qdi46"]
 [ext_resource type="Script" path="res://Scenes/space_station.gd" id="2_ytxta"]
+[ext_resource type="ArrayMesh" uid="uid://44r84vvbld3e" path="res://Models/Railgun.obj" id="4_bk7y1"]
+[ext_resource type="ArrayMesh" uid="uid://bqjiq7m6gy3j7" path="res://Models/Railgun barrel.obj" id="5_2rkxl"]
 [ext_resource type="ArrayMesh" uid="uid://bg7jj2awi5gsy" path="res://Models/Asteroids/Red/Asteroid1.obj" id="6_2okfm"]
 [ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="7_leyms"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="7_y2hrx"]
@@ -95,6 +97,42 @@ shape = SubResource("ConvexPolygonShape3D_48c0s")
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ltvm2")
 
+[node name="Railgun" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 260, 40, 0)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun2" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-20, 0, 1.74846e-06, 0, 20, 0, -1.74846e-06, 0, -20, -260, 40, 0)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun2"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun3" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-8.74228e-07, 0, -20, 0, 20, 0, 20, 0, -8.74228e-07, 0, 40, 260)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun3"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun4" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, 40, -260)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun4"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
 [node name="environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c2w0f")
 
@@ -130,7 +168,7 @@ mesh = ExtResource("6_2okfm")
 skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="asteroid3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.1)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -2.5, 0, 1.1)
 shape = SubResource("ConvexPolygonShape3D_xc3u6")
 
 [node name="asteroid2" type="StaticBody3D" parent="."]

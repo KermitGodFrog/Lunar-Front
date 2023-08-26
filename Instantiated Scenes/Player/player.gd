@@ -131,8 +131,12 @@ func movement(delta):
 		
 		if is_first_person_toggle == true:
 			$first_person_camera.set_current(true)
+			$first_person_camera/draw_control.show()
+			$camera_offset/camera/draw_control.hide()
 		if is_first_person_toggle == false:
 			$camera_offset/camera.set_current(true)
+			$first_person_camera/draw_control.hide()
+			$camera_offset/camera/draw_control.show()
 	
 	#ACCELERATION
 	
@@ -184,9 +188,12 @@ func movement(delta):
 	
 	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
 		var viewport_rect_size = get_viewport().get_visible_rect().size
+		var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
 		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
-		YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-		PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+		if mouse_pos.x > 25 or mouse_pos.x < -25:
+			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+		if mouse_pos.y > 25 or mouse_pos.y < -25:
+			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
 	
 	if PITCH_TIME != 0:
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
