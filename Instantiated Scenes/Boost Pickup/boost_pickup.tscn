@@ -13,7 +13,7 @@ script = ExtResource("1_0eu5u")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_toffo")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="sprite" type="Sprite3D" parent="."]
 transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 0, 0, 0)
 billboard = 1
 texture_filter = 2

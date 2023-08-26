@@ -1,6 +1,7 @@
 extends Area3D
 class_name Checkpoint
 
+@export var ROTATION_SPEED: int = 25
 @export var CHECKPOINT_NUMBER: int
 
 func _on_body_entered(body):
@@ -26,8 +27,9 @@ func _on_body_entered(body):
 	pass
 
 func _physics_process(delta):
-	var next_checkpoint_one = map_data.get_next_checkpoint_one()
+	rotation.z += deg_to_rad(ROTATION_SPEED) * delta
 	
+	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	if next_checkpoint_one == self:
 		$next_checkpoint_mesh.show()
 	else:

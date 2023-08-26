@@ -133,6 +133,42 @@ skeleton = NodePath("../..")
 mesh = ExtResource("5_2rkxl")
 skeleton = NodePath("../../..")
 
+[node name="Railgun5" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(20, 0, 0, 0, -20, 1.74846e-06, 0, -1.74846e-06, -20, 260, -40, 0)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun5"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun6" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-20, -2.64009e-13, -3.01992e-06, 0, -20, 1.74846e-06, -3.01992e-06, 1.74846e-06, 20, -260, -40, 0)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun6"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun7" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-8.74228e-07, 1.74846e-06, 20, 0, -20, 1.74846e-06, 20, 7.64274e-14, 8.74228e-07, 0, -40, 260)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun7"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
+[node name="Railgun8" type="MeshInstance3D" parent="space_station"]
+transform = Transform3D(-8.74228e-07, -1.74846e-06, -20, 0, -20, 1.74846e-06, -20, 7.64274e-14, 8.74228e-07, 0, -40, -260)
+mesh = ExtResource("4_bk7y1")
+skeleton = NodePath("../..")
+
+[node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun8"]
+mesh = ExtResource("5_2rkxl")
+skeleton = NodePath("../../..")
+
 [node name="environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c2w0f")
 
