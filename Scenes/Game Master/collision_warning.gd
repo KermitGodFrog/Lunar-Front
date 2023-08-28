@@ -1,6 +1,6 @@
 extends TextureRect
-var collision_warning_png = preload("res://Instantiated Scenes/Player/collision_warning_png.png")
-var collision_fine_png = preload("res://Instantiated Scenes/Player/collision_fine_png.png")
+var collision_warning_png = preload("res://Graphics/HUD/collision_warning_png.png")
+var collision_fine_png = preload("res://Graphics/HUD/collision_fine_png.png")
 
 func _physics_process(delta):
 	var space_state = game_data.base_node.get_world_3d().direct_space_state

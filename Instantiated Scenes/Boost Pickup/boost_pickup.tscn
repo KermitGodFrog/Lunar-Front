@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dj3hxgqwdtfjo"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Boost Pickup/boost_pickup_base.gd" id="1_0eu5u"]
-[ext_resource type="Texture2D" uid="uid://gnvghvxfwyf5" path="res://Instantiated Scenes/Boost Pickup/boost_pickup_png.png" id="2_m0iqk"]
+[ext_resource type="Texture2D" uid="uid://gnvghvxfwyf5" path="res://Graphics/boost_pickup_png.png" id="2_m0iqk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
 size = Vector3(15, 15, 15)
