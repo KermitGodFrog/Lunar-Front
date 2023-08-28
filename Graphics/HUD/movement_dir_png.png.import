@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c202doyjjiago"
-path="res://.godot/imported/diamond_medal.png-4ba89aeff670dd41776e555da726f0d0.ctex"
+uid="uid://c52egpbxhia6o"
+path="res://.godot/imported/movement_dir_png.png-c2e3f82e727966d7b482f9ca2a725beb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/diamond_medal.png"
-dest_files=["res://.godot/imported/diamond_medal.png-4ba89aeff670dd41776e555da726f0d0.ctex"]
+source_file="res://Graphics/HUD/movement_dir_png.png"
+dest_files=["res://.godot/imported/movement_dir_png.png-c2e3f82e727966d7b482f9ca2a725beb.ctex"]
 
 [params]
 

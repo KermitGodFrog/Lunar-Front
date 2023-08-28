@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c80bihdxrmlc7"
-path="res://.godot/imported/direction_png.png-98f56fa9d9826ea645807698627dba44.ctex"
+uid="uid://c3s6tt81ffpk5"
+path="res://.godot/imported/collision_warning_png.png-843902abc12c6cf5b88de5d079afe4bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Instantiated Scenes/Player/direction_png.png"
-dest_files=["res://.godot/imported/direction_png.png-98f56fa9d9826ea645807698627dba44.ctex"]
+source_file="res://Graphics/HUD/collision_warning_png.png"
+dest_files=["res://.godot/imported/collision_warning_png.png-843902abc12c6cf5b88de5d079afe4bc.ctex"]
 
 [params]
 
