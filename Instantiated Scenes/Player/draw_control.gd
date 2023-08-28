@@ -1,6 +1,6 @@
 extends Control
-var movement_dir_png = preload("res://Instantiated Scenes/Player/movement_dir_png.png")
-var direction_png = preload("res://Instantiated Scenes/Player/direction_png.png")
+var movement_dir_png = preload("res://Graphics/HUD/movement_dir_png.png")
+var direction_png = preload("res://Graphics/HUD/direction_png.png")
 
 func _physics_process(delta):
 	queue_redraw()

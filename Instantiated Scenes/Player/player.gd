@@ -110,7 +110,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
-		#rotation = rotation.bounce(-collision.get_normal()) * 0.8
+		health.remove_health(abs(velocity.length()))
 	pass
 
 func movement(delta):
@@ -276,6 +276,6 @@ func weapons():
 
 func _on_health_changed(current_health):
 	if current_health == 0:
-		queue_free()
+		get_tree().reload_current_scene()
 	pass
 
