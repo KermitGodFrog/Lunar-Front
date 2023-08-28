@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c448eibhwplt8" path="res://Models/checkpoint.obj" id="2_rn3ho"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylaeg"]
-size = Vector3(16, 16, 1)
+size = Vector3(16, 16, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyf6r"]
 albedo_color = Color(0.247059, 0.741176, 0, 1)

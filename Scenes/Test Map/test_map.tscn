@@ -1,16 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnmvepsfmndgn"]
+[gd_scene load_steps=30 format=3 uid="uid://bnmvepsfmndgn"]
 
-[ext_resource type="Script" path="res://Scenes/game.gd" id="1_8p2g1"]
-[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_prbnl"]
-[ext_resource type="ArrayMesh" uid="uid://boe7ea78k6ypd" path="res://Models/Stationplaceholder.obj" id="2_qdi46"]
-[ext_resource type="Script" path="res://Scenes/space_station.gd" id="2_ytxta"]
-[ext_resource type="ArrayMesh" uid="uid://44r84vvbld3e" path="res://Models/Railgun.obj" id="4_bk7y1"]
-[ext_resource type="ArrayMesh" uid="uid://bqjiq7m6gy3j7" path="res://Models/Railgun barrel.obj" id="5_2rkxl"]
-[ext_resource type="ArrayMesh" uid="uid://bg7jj2awi5gsy" path="res://Models/Asteroids/Red/Asteroid1.obj" id="6_2okfm"]
-[ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="7_leyms"]
-[ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="7_y2hrx"]
-[ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="8_6tbx2"]
-[ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="9_kf6d0"]
+[ext_resource type="Script" path="res://Scenes/Test Map/test_map.gd" id="1_8x8bv"]
+[ext_resource type="Script" path="res://Scenes/Test Map/space_station.gd" id="2_ly6j5"]
+[ext_resource type="ArrayMesh" uid="uid://boe7ea78k6ypd" path="res://Models/Stationplaceholder.obj" id="3_1jmgq"]
+[ext_resource type="ArrayMesh" uid="uid://44r84vvbld3e" path="res://Models/Railgun.obj" id="4_h5scy"]
+[ext_resource type="ArrayMesh" uid="uid://bqjiq7m6gy3j7" path="res://Models/Railgun barrel.obj" id="5_vtnmx"]
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="6_kakil"]
+[ext_resource type="ArrayMesh" uid="uid://bg7jj2awi5gsy" path="res://Models/Asteroids/Red/Asteroid1.obj" id="7_h8hlm"]
+[ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="8_mk5xr"]
+[ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="9_cu2sy"]
+[ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="10_b1v52"]
+[ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="11_jnuje"]
+[ext_resource type="ArrayMesh" uid="uid://cv4cl7qaea5em" path="res://Models/Asteroids/Grey/Asteroid3.obj" id="12_fupl4"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="13_6aws2"]
+[ext_resource type="ArrayMesh" uid="uid://bxdmew3ynp21l" path="res://Models/Asteroids/Grey/Asteroid4.obj" id="14_3w8i0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnd1j"]
 albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
@@ -35,14 +38,14 @@ points = PackedVector3Array(-4.0338, -1, -5.86557, -1.73115, 0.208053, 0.663805,
 points = PackedVector3Array(1.33325, -1.33333, 1.11094, -1.55556, -2.88904, -0.222005, -1.55556, -2.88904, 0.222005, 0.888628, -5.11111, -0.444314, 0.444314, -1.33333, -1.55556, -0.444314, -5.11111, 0.888628, -1.11094, -1.33333, 1.33325, -0.444314, -5.11111, -0.888628, -1.33325, -1.33333, -1.11094, 1.33325, -2.22231, -1.11094, 0.222005, -4.66625, 1.11094, 1.55556, -2.88904, 0.222005, 0.222005, -2.88904, -1.55556, 0.222005, -2.88904, 1.55556, 0.888628, -4.44438, 0.888628, 1.55556, -1.33333, -0.444314, -0.888628, -5.11111, -0.444314, -1.11094, -2.22231, -1.33325, -0.888628, -4.44438, 0.888628, -1.55556, -1.33333, 0.444314, 0.444314, -5.11111, -0.888628, 0.444314, -1.33333, 1.55556, 0.888628, -5.11111, 0.444314, -1.11094, -2.22231, 1.33325, 1.11094, -2.22231, 1.33325, -0.222005, -2.88904, 1.55556, -1.11094, -4.66625, 0.222005, -0.444314, -1.33333, -1.55556, 1.55556, -2.88904, -0.222005, -0.222005, -2.88904, -1.55556, 1.11094, -1.33333, -1.33325, -1.33325, -2.22231, 1.11094)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7euel"]
-panorama = ExtResource("2_prbnl")
+panorama = ExtResource("6_kakil")
 
-[sub_resource type="Sky" id="Sky_2fgoa"]
+[sub_resource type="Sky" id="Sky_285ka"]
 sky_material = SubResource("PanoramaSkyMaterial_7euel")
 
 [sub_resource type="Environment" id="Environment_c2w0f"]
 background_mode = 2
-sky = SubResource("Sky_2fgoa")
+sky = SubResource("Sky_285ka")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 reflected_light_source = 2
@@ -61,16 +64,32 @@ points = PackedVector3Array(2.49904, 0.094855, -1.28217, 1.4334, -0.147608, -0.9
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8rwji"]
 points = PackedVector3Array(1.59044, -0.243983, 1.26045, 2.49361, -0.324908, 0.981048, 2.49083, -0.356302, 0.981527, 1.85395, -0.0791533, 0.550814, 2.0355, 0.298749, 1.32571, 1.96947, -0.542242, 1.49295, 1.67378, -0.490413, 0.865446, 1.98635, 0.329765, 0.702666, 2.25041, -0.425915, 0.633257, 2.00254, -0.0294904, 1.55887, 2.2836, -0.591656, 1.0297, 1.87183, 0.280275, 1.29164, 1.55221, -0.305672, 0.966233, 1.68728, -0.427253, 1.46099, 2.24643, -0.0312881, 1.40377, 2.28286, -0.458471, 1.34309, 2.11661, 0.245172, 0.737805, 1.62166, -0.525949, 0.980068, 2.0358, -0.295998, 0.526869, 1.75313, -0.311435, 1.56135, 2.06866, 0.102933, 0.583075, 2.3987, -0.3102, 0.749145, 1.91915, 0.237908, 0.62946, 2.44936, -0.525845, 1.01319, 2.11588, 0.210101, 1.40154, 1.98637, -0.488528, 0.71919, 2.1183, -0.442712, 1.49255, 1.54466, -0.423034, 0.948277, 1.98662, 0.212251, 1.45241, 1.58408, -0.209124, 1.0145, 2.05218, -0.592403, 1.06275, 1.81852, -0.31248, 1.59771)
 
-[node name="game" type="Node3D"]
-script = ExtResource("1_8p2g1")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnsoc"]
+albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
+metallic = 0.5
+
+[sub_resource type="MultiMesh" id="MultiMesh_1ivqb"]
+transform_format = 1
+instance_count = 30
+mesh = ExtResource("12_fupl4")
+buffer = PackedFloat32Array(-98.0926, 6.49075, 19.0045, -467.938, 4.43137, -85.4218, 52.0475, -2400, 19.5873, 51.8309, 83.3987, -2247.81, 53.7563, 50.5743, 68.0184, -762.582, 84.7401, -30.3185, -44.4287, -2400, -1.84058, 81.2221, -58.9372, 577.988, 95.2857, -4.81514, -29.9842, 1332.84, -29.0962, 13.8052, -94.6806, -2400, 8.69769, 98.9334, 11.7524, 1862.39, 90.9732, 26.9485, -33.0862, -2400, -38.1468, 16.4418, -91.496, 682.949, -19.1243, 95.3964, 25.116, 100.925, -46.5635, 77.08, -42.9023, -194.019, 31.9897, -30.456, -89.4381, -1867.81, -82.2106, -55.5086, -10.5025, 2400, 67.4949, 18.7657, 71.719, 2400, 7.09312, 94.9113, -31.5094, 49.3375, -73.7933, 26.287, 62.5689, -595.607, -11.5586, -83.4772, 53.7405, 2215.19, -42.0745, 53.1235, 73.4692, -2011.79, -89.9234, -14.1261, -41.2835, -2400, -24.3817, -94.5019, -21.1345, 2400, 71.2725, -2.75857, -69.8883, 2060.75, 65.5554, -32.1485, 68.1228, 1123.97, -13.2811, 82.5577, 54.0432, -949.507, -81.811, -39.7003, 40.5421, 624.383, 55.1669, -38.9992, 73.1334, -2400, -82.0934, -42.3741, 38.8351, -2308.98, -49.9202, 19.0008, -84.7938, 1487.72, 28.4904, -88.8057, -36.6728, -2400, 25.6858, -92.1187, -27.4933, 381.479, 95.8674, 26.6624, 0.23016, 1474.23, 7.15367, -26.5473, 95.6324, -2400, -29.485, 0.156491, -95.2754, -2400, -94.033, 16.0063, 29.1268, -526.644, 15.3365, 98.4406, -4.58452, 2130.66, -24.9138, 70.1335, 67.0558, -444.213, 86.8676, -14.7259, 47.6764, -2356.44, 43.2342, 70.0023, -57.1521, 2400, -17.3758, 11.6791, -97.4453, 1387.72, -73.2518, -67.4036, 4.98329, -395.966, -65.3159, 72.4863, 20.3344, 2400, -75.9186, 40.9382, 49.8222, 1094.87, -64.1327, -55.9574, -51.7454, 150.064, 6.7219, -71.5168, 69.0072, 2400, 57.4764, -44.2931, -68.2269, -2400, -69.0062, 17.6817, -69.612, 2375.26, 43.0689, 87.4403, -20.484, -1513.13, 53.8469, 34.5338, 77.0459, 2198.43, 79.2307, 10.9082, -60.2632, -1110.26, -29.1744, 93.3626, -21.4575, -2400, -97.0218, 22.1403, -9.96058, 2400, -21.5316, -59.5154, 77.4399, -1837.39, 11.2159, 77.2681, 62.5019, -1621.23, 18.1851, 71.7243, -66.6566, 1212.03, 64.5241, 42.216, 63.0288, -2323.78, 73.6486, -54.6957, -38.7613, -2400, 17.9714, 61.6211, 76.2958, -384.923, -24.4527, 77.9319, -57.1828, -883.813, -94.9751, -8.40457, 29.1593, -2400, 3.58665, 99.7402, -3.07332, 1225.04, -79.9242, 1.03003, -59.8456, 1535.45, -59.7469, 4.6096, 79.8717, 2400, 76.5022, -54.5371, 32.9779, -195.513, -60.3313, -45.3643, 64.9356, 1799.14, -20.5419, -69.8728, -67.8988, -2400, -10.5061, -76.725, 62.546, 1387.76, 10.2834, -63.4029, -76.0488, -2400, 98.4529, -1.56497, 14.6177, 1506.86, -44.9442, -75.7674, -46.765, -995.515, 25.4254, 39.2826, -88.0799, 1799.25, 85.33, -51.6123, 1.61317, 2400, 20.1636, -96.5659, 19.1974, 456.046, -35.4233, 11.1682, 93.3839, -2248.99, -91.8624, -25.5026, -31.7962, -2400, -82.3747, -47.588, -31.8037, 2400, 18.0611, -74.4995, 64.694, 2184.27, -54.3129, 47.4015, 69.7488, 1505.36, -93.6387, -18.5322, 28.8638, -2400, -16.725, -48.5963, -85.4602, -921.369, 29.9472, -85.0866, 42.523, 562.123, 32.1204, -50.6298, 80.2482, 708.979, -29.2474, 75.3133, 59.223, 860.101, -90.2648, -42.4193, 9.36676, -2400, 37.6256, 15.6371, -91.7086, 1599.71, -92.5853, -3.39054, -38.5634, -2400, -9.1075, 99.0689, 13.1556, 21.6294, 12.231, 99.3757, -5.42761, 1656.25, -51.2793, 1.60591, -86.1536, -1237.83, -85.2961, 13.2845, 51.0165, -2400)
+
+[sub_resource type="MultiMesh" id="MultiMesh_iu3qa"]
+transform_format = 1
+instance_count = 30
+mesh = ExtResource("14_3w8i0")
+buffer = PackedFloat32Array(74.5503, 35.858, 56.9141, -2400, 67.2458, -37.5316, -64.4371, -2370.46, -1.73797, 85.9554, -51.8787, -1146.2, 98.3058, 5.67002, -18.6766, 2400, 18.9516, -4.78598, 98.3002, -387.15, 4.66928, -99.9497, -5.7665, -761.984, -75.753, -35.0613, -55.9519, -2400, -65.6108, 49.546, 57.7828, -1132.82, 7.42607, 80.0895, -60.2408, -1362.4, 92.9315, -37.2071, -7.20912, 2179.68, 24.3967, 73.3398, -64.0209, -2400, 29.0023, 57.5283, 76.9542, 293.913, 24.438, -53.3593, -81.4604, 1114.61, 83.9799, -30.9701, 45.4803, 1084.8, -49.299, -79.2077, 37.0941, -2400, -32.9922, -4.35527, 93.785, -1349.99, -27.5742, 95.4726, -5.26657, -1261.51, -89.7456, -27.7327, -32.8591, 2400, -87.1405, 35.2458, -32.6321, -1158.15, 29.5288, 92.626, 21.1914, -2400, 37.8837, 8.8746, -91.5787, -863.087, -95.0322, 29.5347, -4.53293, -586.644, 9.3549, 15.0553, -98.0295, -2400, -28.3784, -93.9415, -17.1356, -368.289, 49.2786, 79.3803, -35.3029, 1558.31, -3.4316, -38.7765, -91.981, 495.918, -86.8087, 46.5946, -16.4043, -2400, -50.3877, 70.4073, -49.0512, 1779.74, -69.2378, 0.242083, 71.4717, 2400, 50.6887, 70.3199, 48.8662, 2062.38, 89.2002, 0.178521, -45.2936, 1587.25, 45.2803, -2.80262, 89.1631, -666.392, -1.10977, -100.002, -2.57972, 2400, 91.6227, 39.625, 4.49159, -1149.3, -7.70179, 28.6253, -95.427, 2400, -39.128, 87.1521, 29.3011, -1235.08, 89.9947, 31.4242, 31.0502, -1741.41, -16.0081, -42.478, 89.3868, -1273.41, 41.1745, -85.1984, -33.1138, 2400, 94.7504, -10.9497, -29.0685, -1435.55, -8.68458, 80.2523, -58.5378, -2400, 29.8237, 58.1567, 75.3052, 2357.7, 0.536429, -88.5548, 47.3899, 558.722, 96.9223, -11.9722, -23.4688, 2400, 26.3406, 45.8559, 85.3901, 1659.58, 91.7111, -3.41703, -39.6419, -2400, 37.6972, 39.3301, 83.822, -250.884, 12.7307, -91.8452, 37.3693, 2242.45, 74.13, -28.1693, -60.9798, -2400, -28.4124, 69.1416, -66.4791, -1867.73, 60.8669, 66.5824, 43.2353, 581.796, 51.5189, 45.6123, 72.1297, 1290.68, 84.7911, -17.8034, -49.3041, -2400, -9.67756, 86.8328, -47.9978, -1451.92, 49.288, -26.5499, 82.4364, -2400, -83.7724, 9.45033, 53.1304, 84.5466, -21.9737, -95.5812, -17.6455, -1179.61, 60.2981, 6.75261, 79.5815, 1437.48, -53.8244, 77.1055, 34.2397, -72.3821, -59.0063, -63.4336, 50.091, -2400, 65.811, -3.20124, -75.1851, -2400, -74.5412, -16.4802, -64.5457, -1471.53, -10.3274, 98.551, -13.2359, 1778.65, -87.4315, 47.8542, 12.5897, 1126.78, -4.36984, 17.9935, -98.7418, 2400, -49.2892, -86.4812, -13.578, 327.631, 58.8747, -8.56947, -80.8403, -256.354, 69.4638, -46.5481, 55.5237, 2400, -42.23, -88.5136, -21.3726, -1380.51, -8.85291, 35.7102, -92.5733, 1900.17, 80.4922, -51.7601, -27.6641, -2400, -58.0176, -77.2598, -24.2547, 1905.19, -74.7273, 62.402, -24.4184, 1378.36, -64.3322, -56.5736, 52.2995, 618.786, 18.7519, 54.5882, 82.1154, -2400, 21.0417, -18.2978, 95.9178, -1487.67, -76.6317, -63.9065, 4.61973, 2400, 60.5196, -74.5583, -27.4995, -1078.83, -18.6002, -67.7205, -71.1465, -1861.02, 8.48768, -73.2482, 67.502, -666.246, -97.8563, 6.51881, 19.3781, -2400, -44.3291, -81.4207, -36.3696, -1388.12, -85.8752, 28.0315, 41.9148, 2291.51, -24.0321, 50.0205, -82.6896, -2400, -37.3608, 83.8187, 39.1338, -1543.36, 45.3898, 53.3859, -71.0111, 2400, -80.6028, -8.78828, -58.1277, 2093.37, -26.7115, 14.3696, 95.803, 2400, -75.1831, 59.5956, -29.9011, -1615.6, -61.0918, -79.6247, -5.09045, 1338.62)
+
+[node name="test_map" type="Node3D"]
+script = ExtResource("1_8x8bv")
 
 [node name="space_station" type="StaticBody3D" parent="."]
-script = ExtResource("2_ytxta")
+script = ExtResource("2_ly6j5")
 
 [node name="mesh" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_cnd1j")
-mesh = ExtResource("2_qdi46")
+mesh = ExtResource("3_1jmgq")
 skeleton = NodePath("../..")
 
 [node name="@CollisionShape3D@43209" type="CollisionShape3D" parent="space_station"]
@@ -99,74 +118,74 @@ shape = SubResource("ConvexPolygonShape3D_ltvm2")
 
 [node name="Railgun" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 260, 40, 0)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun2" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-20, 0, 1.74846e-06, 0, 20, 0, -1.74846e-06, 0, -20, -260, 40, 0)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun2"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun3" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-8.74228e-07, 0, -20, 0, 20, 0, 20, 0, -8.74228e-07, 0, 40, 260)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun3"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun4" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, 40, -260)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun4"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun5" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(20, 0, 0, 0, -20, 1.74846e-06, 0, -1.74846e-06, -20, 260, -40, 0)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun5"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun6" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-20, -2.64009e-13, -3.01992e-06, 0, -20, 1.74846e-06, -3.01992e-06, 1.74846e-06, 20, -260, -40, 0)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun6"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun7" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-8.74228e-07, 1.74846e-06, 20, 0, -20, 1.74846e-06, 20, 7.64274e-14, 8.74228e-07, 0, -40, 260)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun7"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="Railgun8" type="MeshInstance3D" parent="space_station"]
 transform = Transform3D(-8.74228e-07, -1.74846e-06, -20, 0, -20, 1.74846e-06, -20, 7.64274e-14, 8.74228e-07, 0, -40, -260)
-mesh = ExtResource("4_bk7y1")
+mesh = ExtResource("4_h5scy")
 skeleton = NodePath("../..")
 
 [node name="RailgunBarrel" type="MeshInstance3D" parent="space_station/Railgun8"]
-mesh = ExtResource("5_2rkxl")
+mesh = ExtResource("5_vtnmx")
 skeleton = NodePath("../../..")
 
 [node name="environment" type="WorldEnvironment" parent="."]
@@ -188,7 +207,7 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -532.946, 0, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="asteroid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.1)
-mesh = ExtResource("6_2okfm")
+mesh = ExtResource("7_h8hlm")
 skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="asteroid"]
@@ -200,7 +219,7 @@ transform = Transform3D(120.697, 0, -159.475, 0, 200, 0, 159.475, 0, 120.697, -1
 
 [node name="mesh" type="MeshInstance3D" parent="asteroid3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.1)
-mesh = ExtResource("6_2okfm")
+mesh = ExtResource("7_h8hlm")
 skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="asteroid3"]
@@ -212,35 +231,63 @@ transform = Transform3D(5000, 0, 0, 0, 5000, 0, 0, 0, 5000, 535.989, 476.116, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="asteroid2"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0223684, 0, -0.0120055)
-mesh = ExtResource("7_leyms")
+mesh = ExtResource("8_mk5xr")
 skeleton = NodePath("../..")
 
 [node name="mesh2" type="CollisionShape3D" parent="asteroid2"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0223684, 0, -0.0120055)
 shape = SubResource("ConvexPolygonShape3D_8rwji")
 
-[node name="player_phantom" parent="." instance=ExtResource("7_y2hrx")]
+[node name="player_phantom" parent="." instance=ExtResource("9_cu2sy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 536.365, 0, 0)
 
-[node name="checkpoint" parent="." instance=ExtResource("9_kf6d0")]
+[node name="checkpoint" parent="." instance=ExtResource("10_b1v52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 253.062, 0)
 
-[node name="checkpoint2" parent="." instance=ExtResource("9_kf6d0")]
+[node name="checkpoint2" parent="." instance=ExtResource("10_b1v52")]
 transform = Transform3D(-4.37114e-08, -0.309017, 0.951057, 0, 0.951057, 0.309017, -1, 1.35076e-08, -4.1572e-08, -685.191, 155.47, 0)
 CHECKPOINT_NUMBER = 1
 
-[node name="checkpoint3" parent="." instance=ExtResource("9_kf6d0")]
+[node name="checkpoint3" parent="." instance=ExtResource("10_b1v52")]
 transform = Transform3D(7.21897e-09, 0.986268, -0.165151, 4.31112e-08, -0.165151, -0.986268, -1, 0, -4.37114e-08, -1743.19, -364.996, -97.0731)
 CHECKPOINT_NUMBER = 2
 
-[node name="checkpoint4" parent="." instance=ExtResource("9_kf6d0")]
+[node name="checkpoint4" parent="." instance=ExtResource("10_b1v52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -300, 0)
 CHECKPOINT_NUMBER = 3
 
-[node name="checkpoint5" parent="." instance=ExtResource("9_kf6d0")]
-transform = Transform3D(1, 0, 0, 0, 0.981644, 0.190723, 0, -0.190723, 0.981644, 0, 0, -664.018)
+[node name="checkpoint5" parent="." instance=ExtResource("10_b1v52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1155.79, 0, 0)
 CHECKPOINT_NUMBER = 4
 
-[node name="boost_pickup" parent="." instance=ExtResource("8_6tbx2")]
+[node name="boost_pickup" parent="." instance=ExtResource("11_jnuje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1000, 100, 0)
 BOOST_INCREASE = 500.0
+
+[node name="multi_mesh_test" type="Node" parent="."]
+
+[node name="multi_mesh" type="MultiMeshInstance3D" parent="multi_mesh_test"]
+material_override = SubResource("StandardMaterial3D_cnsoc")
+multimesh = SubResource("MultiMesh_1ivqb")
+
+[node name="area_mesh" type="MeshInstance3D" parent="multi_mesh_test"]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
+visible = false
+mesh = ExtResource("13_6aws2")
+skeleton = NodePath("../..")
+
+[node name="source_mesh" type="MeshInstance3D" parent="multi_mesh_test"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
+mesh = ExtResource("12_fupl4")
+skeleton = NodePath("../..")
+
+[node name="multi_mesh2" type="MultiMeshInstance3D" parent="multi_mesh_test"]
+material_override = SubResource("StandardMaterial3D_cnsoc")
+multimesh = SubResource("MultiMesh_iu3qa")
+
+[node name="source_mesh2" type="MeshInstance3D" parent="multi_mesh_test"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
+mesh = ExtResource("14_3w8i0")
+skeleton = NodePath("../..")

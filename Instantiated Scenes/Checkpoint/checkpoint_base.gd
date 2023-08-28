@@ -14,6 +14,9 @@ func _on_body_entered(body):
 					if game_data.player.best_time == 0:
 						game_data.player.best_time = game_data.player.current_time
 					if game_data.player.current_time < game_data.player.best_time:
+						
+						get_tree().call_group("time_decrease_label", "tween_new_time", game_data.player.best_time - game_data.player.current_time)
+						
 						game_data.player.best_time = game_data.player.current_time
 					
 					game_data.player.current_time = 0
