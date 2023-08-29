@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://thei535sr20b"
+path="res://.godot/imported/Station.obj-5b1908698abd7c0844758cc7d59e9fc2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Station.obj-5b1908698abd7c0844758cc7d59e9fc2.mesh"]
+
+source_file="res://Models/Station.obj"
+dest_files=["res://.godot/imported/Station.obj-5b1908698abd7c0844758cc7d59e9fc2.mesh", "res://.godot/imported/Station.obj-5b1908698abd7c0844758cc7d59e9fc2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
