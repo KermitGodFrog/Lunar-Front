@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
-[ext_resource type="ArrayMesh" uid="uid://d10x42dbectho" path="res://Models/Phantom/Phantom.obj" id="2_hlmna"]
+[ext_resource type="ArrayMesh" uid="uid://lgaj5pyylrcu" path="res://Models/Phantom/Phantom.obj" id="2_hlmna"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="3_6ls8t"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/draw_control.gd" id="3_hc835"]
 
