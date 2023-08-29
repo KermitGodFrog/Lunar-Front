@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://mmw2o0mews10"
+path="res://.godot/imported/Crystal5.obj-925070a333bc8c375efa77094bd2c6dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Crystal5.obj-925070a333bc8c375efa77094bd2c6dd.mesh"]
+
+source_file="res://Models/Crystal5.obj"
+dest_files=["res://.godot/imported/Crystal5.obj-925070a333bc8c375efa77094bd2c6dd.mesh", "res://.godot/imported/Crystal5.obj-925070a333bc8c375efa77094bd2c6dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
