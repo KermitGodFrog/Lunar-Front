@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 game_data="*res://Data/game_data.gd"
 map_data="*res://Data/map_data.gd"
+global_data="*res://Data/global_data.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [input]
 
