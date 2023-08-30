@@ -18,6 +18,13 @@ func _on_body_entered(body):
 						get_tree().call_group("time_decrease_label", "tween_new_time", game_data.player.best_time - game_data.player.current_time)
 						
 						game_data.player.best_time = game_data.player.current_time
+						
+						
+						
+						
+						
+					
+					#RESETTING GAMEPLAY STUFF
 					
 					game_data.player.current_time = 0
 					game_data.player.BOOST_TIME = game_data.player.BOOST_STARTING_TIME
