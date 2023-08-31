@@ -1,5 +1,6 @@
 extends Node
 
+var map_identifier: String
 var checkpoints: Array
 var boost_pickups: Array
 

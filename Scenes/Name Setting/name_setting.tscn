@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2iufim00bkxs"]
+
+[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="1_01hku"]
+[ext_resource type="Script" path="res://Scenes/Name Setting/submit_button.gd" id="2_q5jgl"]
+
+[node name="name_setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name_edit" type="TextEdit" parent="." groups=["name_edit"]]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_01hku")
+theme_override_font_sizes/font_size = 30
+highlight_current_line = true
+
+[node name="submit_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_01hku")
+theme_override_font_sizes/font_size = 30
+text = "SUBMIT"
+script = ExtResource("2_q5jgl")
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_right = 114.0
+offset_bottom = 22.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_01hku")
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+
+[connection signal="pressed" from="submit_button" to="submit_button" method="_on_pressed"]

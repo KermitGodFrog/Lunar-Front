@@ -7,7 +7,6 @@ class_name Player
 
 var current_checkpoint: Checkpoint
 var current_time: float
-var best_time: float
 
 #MOVEMENT
 
@@ -63,6 +62,9 @@ var is_acceleration = false
 var is_rotation = false
 
 func _ready():
+	#var map_identifier = owner.get("map_identifier")
+	#best_time = global_data.get(str(map_identifier, "_best_time"))
+	
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
