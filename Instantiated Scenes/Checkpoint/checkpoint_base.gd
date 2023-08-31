@@ -25,11 +25,15 @@ func _on_body_entered(body):
 					game_data.player.current_time = 0
 					game_data.player.BOOST_TIME = game_data.player.BOOST_STARTING_TIME
 					
+					get_tree().call_group("receive_race_starting", "_on_race_start")
+					
 					for boost_pickup in map_data.boost_pickups:
 						boost_pickup.is_used = false
 					
 		elif CHECKPOINT_NUMBER == 0:
 			body.current_checkpoint = self
+			
+			get_tree().call_group("receive_race_starting", "_on_race_start")
 	pass
 
 func _physics_process(delta):

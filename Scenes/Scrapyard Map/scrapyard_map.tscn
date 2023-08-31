@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=17 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="3_sok7h"]
 [ext_resource type="ArrayMesh" uid="uid://b55ay2y6kqudd" path="res://Models/junkrock01.obj" id="4_jc6ip"]
 [ext_resource type="ArrayMesh" uid="uid://cvb77bxf2x24k" path="res://Models/junkrock02.obj" id="5_4wuy6"]
+[ext_resource type="Script" path="res://Scenes/Scrapyard Map/spaceship_train_debug_animation.gd" id="7_dh28b"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Models/green_cube.obj" id="7_t8xlh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_etnun"]
 panorama = ExtResource("2_5qk2n")
@@ -34,6 +36,43 @@ points = PackedVector3Array(-0.260964, -0.625417, -0.946714, 0.344696, 0.30815, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_perxm"]
 points = PackedVector3Array(0.719985, 1.10825, -0.13588, 0.0170377, -1.2827, -0.435672, -0.523644, -0.700235, -0.768472, -0.648492, 0.0899046, 1.3529, 1.14018, 0.256288, 0.437635, -1.18917, 0.0899046, -0.435672, 0.355097, 0.119377, -1.21285, -0.648492, 1.04667, 0.105095, 0.520045, -1.13346, 0.374752, -0.690026, -1.07454, 0.271104, 1.01533, -0.450537, -0.269402, -0.606957, 0.963602, 0.85357, -1.27025, -0.111848, 0.563752, -0.274193, 0.797219, -0.809909, 0.924504, 0.481112, -0.772009, -0.39904, -0.658456, 1.06154, 0.682323, -0.825084, -0.601942, 0.324297, 0.593511, 0.846333, 0.391337, 1.17128, -0.47737, 0.183176, -0.6587, -1.01814, 0.480514, 0.161179, 0.884735, 0.932019, 0.963358, 0.104574, -1.23095, 0.297823, 0.312802, -0.939722, -0.159304, 1.10297, 0.432871, -1.24092, -0.393974, 0.973797, -0.575386, 0.187709, -0.346426, 0.88051, 0.936598, 0.474406, 1.2133, -0.269402, -0.814874, 0.256288, 1.14467, 0.973797, 0.963602, -0.102872, 0.631073, -0.462406, 0.604891, 0.483844, -1.17885, 0.337128)
 
+[sub_resource type="Animation" id="Animation_oy8q4"]
+resource_name = "spaceship_train_movement"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship_train_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 35, 45, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2700, 250, 1000), Vector3(-500, 250, 1000), Vector3(-1300, 300, 1000), Vector3(-800, 650, -3000)]
+}
+
+[sub_resource type="Animation" id="Animation_4d4if"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship_train_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2700, 0, 1000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
+_data = {
+"RESET": SubResource("Animation_4d4if"),
+"spaceship_train_movement": SubResource("Animation_oy8q4")
+}
+
 [node name="scrapyard_map" type="Node3D"]
 script = ExtResource("1_olbxj")
 
@@ -50,8 +89,36 @@ light_energy = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)
 
 [node name="checkpoint2" parent="." instance=ExtResource("3_sok7h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2000)
 CHECKPOINT_NUMBER = 1
+
+[node name="checkpoint3" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 300, 0, 3000)
+CHECKPOINT_NUMBER = 2
+
+[node name="checkpoint4" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.866025, -0.25, -0.433013, 0, 0.866025, -0.5, 0.5, 0.433013, 0.75, 1500, 200, 2500)
+CHECKPOINT_NUMBER = 3
+
+[node name="checkpoint5" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.707107, 0.183013, 0.683013, 0, 0.965926, -0.258819, -0.707107, 0.183013, 0.683013, -600, 350, 200)
+CHECKPOINT_NUMBER = 4
+
+[node name="checkpoint6" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.285756, -0.245459, 0.926333, -0.171958, 0.937816, 0.301548, -0.942748, -0.245459, 0.225778, -1900, 400, -300)
+CHECKPOINT_NUMBER = 5
+
+[node name="checkpoint7" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2936.36, 154.276, -638.08)
+CHECKPOINT_NUMBER = 6
+
+[node name="checkpoint8" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.979311, 0.19459, 0.0555369, 0, 0.274446, -0.961602, -0.20236, 0.941708, 0.268768, -2864.83, 375.832, -1387.51)
+CHECKPOINT_NUMBER = 7
+
+[node name="checkpoint9" parent="." instance=ExtResource("3_sok7h")]
+transform = Transform3D(0.404072, 0.177374, 0.897365, 1.18891e-08, 0.98102, -0.193909, -0.914727, 0.0783533, 0.396403, -1525.79, 852.861, -1656.22)
+CHECKPOINT_NUMBER = 8
 
 [node name="junk_rock_var1_1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 300)
@@ -62,6 +129,78 @@ mesh = ExtResource("4_jc6ip")
 skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="junk_rock_var1_1"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_7" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 678.362, 0, -134.993)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_7"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_7"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_4" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -441.372, 358.431, 122.425)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_4"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_4"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_2" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 300, 0, 3700)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_2"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_2"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_5" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -3499.89, 640.678, -596.464)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_5"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_5"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_6" type="StaticBody3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -2610.29, -1003.11, 12.4446)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_6"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_6"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lkfxw")
+
+[node name="junk_rock_var1_3" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 2019.28, 225.181, 3700)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var1_3"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("4_jc6ip")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var1_3"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lkfxw")
 
@@ -76,3 +215,73 @@ skeleton = NodePath("../..")
 [node name="collision" type="CollisionShape3D" parent="junk_rock_var2_1"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="junk_rock_var2_6" type="StaticBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 449.725, 266.764, -754.371)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_6"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("5_4wuy6")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var2_6"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="junk_rock_var2_4" type="StaticBody3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3134.98, 340.682, -1037.8)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_4"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("5_4wuy6")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var2_4"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="junk_rock_var2_5" type="StaticBody3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2910.72, 1201.14, -1613.27)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_5"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("5_4wuy6")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var2_5"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="junk_rock_var2_2" type="StaticBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1650, 200, 2700)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_2"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("5_4wuy6")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var2_2"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="junk_rock_var2_3" type="StaticBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1226.73, -367.25, 4852.94)
+
+[node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_3"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("5_4wuy6")
+skeleton = NodePath("../..")
+
+[node name="collision" type="CollisionShape3D" parent="junk_rock_var2_3"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_perxm")
+
+[node name="debug_animation" type="AnimationPlayer" parent="." groups=["receive_race_starting"]]
+libraries = {
+"": SubResource("AnimationLibrary_flwd5")
+}
+script = ExtResource("7_dh28b")
+
+[node name="spaceship_train_placeholder" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 2700, 0, 1000)
+mesh = ExtResource("7_t8xlh")
