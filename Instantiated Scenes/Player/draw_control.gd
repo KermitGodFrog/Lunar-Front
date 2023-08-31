@@ -38,9 +38,12 @@ func _draw():
 	#NEXT CHECKPOINT TWO DRAWING
 	
 	if next_checkpoint_one and next_checkpoint_two:
+		var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
+		var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		
 		var checkpoint_two_direction = camera_offset.global_transform.origin - next_checkpoint_two.global_transform.origin
 		var checkpoint_two_dot = checkpoint_two_direction.normalized().dot(-camera_offset.global_transform.basis.z)
 		
-		if checkpoint_two_dot > 0:
+		if checkpoint_one_dot > 0 and checkpoint_two_dot > 0:
 			draw_line(get_parent().unproject_position(next_checkpoint_one.global_transform.origin), get_parent().unproject_position(next_checkpoint_two.global_transform.origin), Color.GREEN, 1)
 	pass

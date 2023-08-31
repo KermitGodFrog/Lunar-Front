@@ -22,6 +22,28 @@ func _notification(what):
 		save_player_data()
 	pass
 
+func get_best_time_current_map():
+	match map_data.map_identifier:
+		"test_map":
+			return test_map_best_time
+		"asteroid_refinery":
+			return asteroid_refinery_best_time
+		"scrapyard":
+			return scrapyard_best_time
+		_:
+			return 0
+
+func set_best_time_current_map(time: float):
+	match map_data.map_identifier:
+		"test_map":
+			test_map_best_time = time
+		"asteroid_refinery":
+			asteroid_refinery_best_time = time
+		"scrapyard":
+			scrapyard_best_time = time
+		_:
+			return
+
 func save_player_data():
 	var file = FileAccess.open("user://saved_best_times.save", FileAccess.WRITE)
 	file.store_var(player_name)

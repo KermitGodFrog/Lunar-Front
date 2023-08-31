@@ -7,7 +7,6 @@ class_name Player
 
 var current_checkpoint: Checkpoint
 var current_time: float
-var best_time: float
 
 #MOVEMENT
 

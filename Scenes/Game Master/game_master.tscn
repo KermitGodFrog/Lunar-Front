@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://v33c4ywpoohx"]
+[gd_scene load_steps=18 format=3 uid="uid://v33c4ywpoohx"]
 
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="1_mi1rp"]
 [ext_resource type="PackedScene" uid="uid://bnmvepsfmndgn" path="res://Scenes/Test Map/test_map.tscn" id="2_0yfgq"]
 [ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Graphics/HUD/boost_meter.png" id="2_seue8"]
 [ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="2_ursdu"]
@@ -16,7 +17,29 @@
 dof_blur_near_enabled = true
 dof_blur_near_distance = 5.0
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7euel"]
+panorama = ExtResource("1_mi1rp")
+
+[sub_resource type="Sky" id="Sky_285ka"]
+sky_material = SubResource("PanoramaSkyMaterial_7euel")
+
+[sub_resource type="Environment" id="Environment_c2w0f"]
+background_mode = 2
+sky = SubResource("Sky_285ka")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 0
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+adjustment_saturation = 3.0
+
 [sub_resource type="World3D" id="World3D_bfnuh"]
+environment = SubResource("Environment_c2w0f")
 camera_attributes = SubResource("CameraAttributesPractical_5n00c")
 
 [node name="game_master" type="Control"]
