@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="10_b1v52"]
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="11_jnuje"]
 [ext_resource type="ArrayMesh" uid="uid://cv4cl7qaea5em" path="res://Models/Asteroids/Grey/Asteroid3.obj" id="12_fupl4"]
-[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Instantiated Scenes/Player/green_cube.obj" id="13_6aws2"]
+[ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Models/green_cube.obj" id="13_6aws2"]
 [ext_resource type="ArrayMesh" uid="uid://bxdmew3ynp21l" path="res://Models/Asteroids/Grey/Asteroid4.obj" id="14_3w8i0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnd1j"]
@@ -40,12 +40,12 @@ points = PackedVector3Array(1.33325, -1.33333, 1.11094, -1.55556, -2.88904, -0.2
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7euel"]
 panorama = ExtResource("6_kakil")
 
-[sub_resource type="Sky" id="Sky_285ka"]
+[sub_resource type="Sky" id="Sky_w8mtu"]
 sky_material = SubResource("PanoramaSkyMaterial_7euel")
 
 [sub_resource type="Environment" id="Environment_c2w0f"]
 background_mode = 2
-sky = SubResource("Sky_285ka")
+sky = SubResource("Sky_w8mtu")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 reflected_light_source = 2
