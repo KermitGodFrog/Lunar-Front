@@ -62,15 +62,27 @@ var is_acceleration = false
 var is_rotation = false
 
 func _ready():
-	#var map_identifier = owner.get("map_identifier")
-	#best_time = global_data.get(str(map_identifier, "_best_time"))
-	
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
 	pass
 
 func _input(event):
+	#SETTERS
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			is_right_mouse_button_down = event.pressed
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			is_left_mouse_button_down = event.pressed
+		
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			pass
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			pass
+	
+	#CAMERA
+	
 	if event is InputEventMouseMotion:
 		match is_first_person_toggle:
 			true:
@@ -89,16 +101,11 @@ func _input(event):
 					if event.relative.y > 0:
 						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
 	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			is_right_mouse_button_down = event.pressed
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			is_left_mouse_button_down = event.pressed
-		
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			pass
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			pass
+	#RETURN TO MENU
+	
+	if event.is_action_pressed("return_to_menu"):
+		get_tree().change_scene_to_file("res://Scenes/Main Menu/main_menu.tscn")
+	
 	pass
 
 func _physics_process(delta):
@@ -280,4 +287,3 @@ func _on_health_changed(current_health):
 	if current_health == 0:
 		get_tree().reload_current_scene()
 	pass
-

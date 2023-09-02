@@ -1,10 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=21 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
 [ext_resource type="ArrayMesh" uid="uid://lgaj5pyylrcu" path="res://Models/Phantom/Phantom.obj" id="2_hlmna"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="3_6ls8t"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/draw_control.gd" id="3_hc835"]
+[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="4_gi6kk"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_decrease_label.gd" id="5_5ucmm"]
+[ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Graphics/HUD/boost_meter.png" id="6_0x7rd"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/boost_meter.gd" id="7_3jp72"]
+[ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="8_c28nh"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/movement_mode.gd" id="9_nqefh"]
+[ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Graphics/HUD/collision_warning_png.png" id="10_s37jl"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/collision_warning.gd" id="11_6kbsb"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/best_time_status.gd" id="12_amrpf"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_status.gd" id="13_j44g7"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -53,6 +63,93 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_hc835")
+
+[node name="ui_control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ui_layer" type="CanvasLayer" parent="ui_control"]
+
+[node name="time_decrease_label" type="Label" parent="ui_control/ui_layer" groups=["time_decrease_label"]]
+texture_filter = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_5ucmm")
+
+[node name="boost_meter" type="TextureRect" parent="ui_control/ui_layer"]
+texture_filter = 1
+layout_direction = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = -10.0
+grow_vertical = 0
+texture = ExtResource("6_0x7rd")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("7_3jp72")
+
+[node name="ui_container" type="HBoxContainer" parent="ui_control/ui_layer"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -132.0
+offset_right = 526.0
+offset_bottom = -32.0
+grow_vertical = 0
+
+[node name="movement_mode" type="TextureRect" parent="ui_control/ui_layer/ui_container"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("8_c28nh")
+stretch_mode = 4
+script = ExtResource("9_nqefh")
+
+[node name="collision_warning" type="TextureRect" parent="ui_control/ui_layer/ui_container"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("10_s37jl")
+stretch_mode = 5
+script = ExtResource("11_6kbsb")
+
+[node name="best_time_status" type="Label" parent="ui_control/ui_layer/ui_container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("12_amrpf")
+
+[node name="time_status" type="Label" parent="ui_control/ui_layer/ui_container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("13_j44g7")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)

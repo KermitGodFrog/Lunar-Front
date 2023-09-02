@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=35 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cvb77bxf2x24k" path="res://Models/junkrock02.obj" id="5_4wuy6"]
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/spaceship_train_debug_animation.gd" id="7_dh28b"]
 [ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Models/green_cube.obj" id="7_t8xlh"]
+[ext_resource type="Texture2D" uid="uid://bjjkxxtsh2u0f" path="res://Graphics/Arrow.png" id="9_66fbo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_etnun"]
 panorama = ExtResource("2_5qk2n")
@@ -36,6 +37,21 @@ points = PackedVector3Array(-0.260964, -0.625417, -0.946714, 0.344696, 0.30815, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_perxm"]
 points = PackedVector3Array(0.719985, 1.10825, -0.13588, 0.0170377, -1.2827, -0.435672, -0.523644, -0.700235, -0.768472, -0.648492, 0.0899046, 1.3529, 1.14018, 0.256288, 0.437635, -1.18917, 0.0899046, -0.435672, 0.355097, 0.119377, -1.21285, -0.648492, 1.04667, 0.105095, 0.520045, -1.13346, 0.374752, -0.690026, -1.07454, 0.271104, 1.01533, -0.450537, -0.269402, -0.606957, 0.963602, 0.85357, -1.27025, -0.111848, 0.563752, -0.274193, 0.797219, -0.809909, 0.924504, 0.481112, -0.772009, -0.39904, -0.658456, 1.06154, 0.682323, -0.825084, -0.601942, 0.324297, 0.593511, 0.846333, 0.391337, 1.17128, -0.47737, 0.183176, -0.6587, -1.01814, 0.480514, 0.161179, 0.884735, 0.932019, 0.963358, 0.104574, -1.23095, 0.297823, 0.312802, -0.939722, -0.159304, 1.10297, 0.432871, -1.24092, -0.393974, 0.973797, -0.575386, 0.187709, -0.346426, 0.88051, 0.936598, 0.474406, 1.2133, -0.269402, -0.814874, 0.256288, 1.14467, 0.973797, 0.963602, -0.102872, 0.631073, -0.462406, 0.604891, 0.483844, -1.17885, 0.337128)
 
+[sub_resource type="Animation" id="Animation_4d4if"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship_train_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2700, 0, 1000)]
+}
+
 [sub_resource type="Animation" id="Animation_oy8q4"]
 resource_name = "spaceship_train_movement"
 length = 60.0
@@ -52,26 +68,127 @@ tracks/0/keys = {
 "values": [Vector3(2700, 250, 1000), Vector3(-500, 250, 1000), Vector3(-1300, 300, 1000), Vector3(-800, 650, -3000)]
 }
 
-[sub_resource type="Animation" id="Animation_4d4if"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spaceship_train_placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2700, 0, 1000)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
 _data = {
 "RESET": SubResource("Animation_4d4if"),
 "spaceship_train_movement": SubResource("Animation_oy8q4")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466ny"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcpfq"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk80d"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxly5"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brae7"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h2mo"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_164yt"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y8wo"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihwhh"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvg3x"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn6p0"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc5kg"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kc6r"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkgg"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlihu"]
+atlas = ExtResource("9_66fbo")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x667h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_466ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcpfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk80d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxly5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brae7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h2mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_164yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y8wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihwhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvg3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn6p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc5kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kc6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlihu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bfp3"]
+size = Vector3(1, 0.4, 0.2)
 
 [node name="scrapyard_map" type="Node3D"]
 script = ExtResource("1_olbxj")
@@ -205,7 +322,7 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lkfxw")
 
 [node name="junk_rock_var2_1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400, 0, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.488, 160.71, 300)
 
 [node name="mesh" type="MeshInstance3D" parent="junk_rock_var2_1"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
@@ -285,3 +402,131 @@ script = ExtResource("7_dh28b")
 [node name="spaceship_train_placeholder" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 2700, 0, 1000)
 mesh = ExtResource("7_t8xlh")
+
+[node name="arrow_sign1" type="StaticBody3D" parent="."]
+transform = Transform3D(67.3387, 0, -73.929, 0, 100, 0, 73.929, 0, 67.3387, -165.871, 0, 269.144)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign1"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.311483
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.281297
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.770454
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign1"]
+shape = SubResource("BoxShape3D_1bfp3")
+
+[node name="arrow_sign2" type="StaticBody3D" parent="."]
+transform = Transform3D(95.7903, 0, 28.7093, 0, 100, 0, -28.7093, 0, 95.7903, 258.383, 0, 3333.77)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign2"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.311483
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.281297
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.770454
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign2"]
+shape = SubResource("BoxShape3D_1bfp3")
+
+[node name="arrow_sign3" type="StaticBody3D" parent="."]
+transform = Transform3D(34.0298, 0, 94.0318, 0, 100, 0, -94.0318, 0, 34.0298, 1488.04, 216.803, 2725.67)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign3"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.311483
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.281297
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.770454
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign3"]
+shape = SubResource("BoxShape3D_1bfp3")
+
+[node name="arrow_sign4" type="StaticBody3D" parent="."]
+transform = Transform3D(-1.48785e-06, -0.795864, 99.9968, -100, -4.09816e-06, -1.52051e-06, 4.11013e-06, -99.9968, -0.795864, -3145.37, 610.477, -636.64)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign4"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.311483
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.281297
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_x667h")
+autoplay = "default"
+frame_progress = 0.770454
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign4"]
+shape = SubResource("BoxShape3D_1bfp3")
