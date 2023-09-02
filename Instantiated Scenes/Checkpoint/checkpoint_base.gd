@@ -19,6 +19,9 @@ func _on_body_entered(body):
 					if game_data.player.current_time < global_data.get_best_time_current_map():
 						get_tree().call_group("time_decrease_label", "tween_new_time", global_data.get_best_time_current_map() - game_data.player.current_time)
 						global_data.set_best_time_current_map(game_data.player.current_time)
+						var sw_result: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), "scrapyard_map").sw_save_score_complete
+						print("Score persisted successfully: " + str(sw_result.score_id))
+						
 					
 					#RESETTING GAMEPLAY STUFF
 					
