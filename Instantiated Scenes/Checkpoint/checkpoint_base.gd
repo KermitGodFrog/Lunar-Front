@@ -5,8 +5,6 @@ class_name Checkpoint
 @export var CHECKPOINT_NUMBER: int
 
 func _on_body_entered(body):
-	var best_time = global_data.get_best_time_current_map()
-	
 	if body is Player:
 		if body.current_checkpoint:
 			if body.current_checkpoint == map_data.checkpoints[CHECKPOINT_NUMBER - 1]:
@@ -15,14 +13,13 @@ func _on_body_entered(body):
 					
 					if global_data.get_best_time_current_map() == 0:
 						global_data.set_best_time_current_map(game_data.player.current_time)
-					
-					if game_data.player.current_time < global_data.get_best_time_current_map():
-						get_tree().call_group("time_decrease_label", "tween_new_time", global_data.get_best_time_current_map() - game_data.player.current_time)
-						global_data.set_best_time_current_map(game_data.player.current_time)
-						var sw_result: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), "scrapyard_map").sw_save_score_complete
-						print("Score persisted successfully: " + str(sw_result.score_id))
+						leaderboard_handling()
 						
-					
+					if game_data.player.current_time < global_data.get_best_time_current_map():
+						get_tree().call_group("time_decrease_label", "show_new_time", global_data.get_best_time_current_map() - game_data.player.current_time)
+						global_data.set_best_time_current_map(game_data.player.current_time)
+						leaderboard_handling()
+						
 					#RESETTING GAMEPLAY STUFF
 					
 					game_data.player.current_time = 0
@@ -39,6 +36,38 @@ func _on_body_entered(body):
 			get_tree().call_group("receive_race_starting", "_on_race_start")
 	pass
 
+func leaderboard_handling():
+	var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), str(map_data.map_identifier, "_map")).sw_save_score_complete
+	var score_id = sw_save_score.score_id
+	
+	var sw_scores_around = await SilentWolf.Scores.get_scores_around(score_id, 3, str(map_data.map_identifier, "_map")).sw_get_scores_around_complete
+	
+	get_tree().call_group("leaderboard_status_list", "update", sw_scores_around.scores_below)
+	
+	
+	
+	
+	
+	
+	
+	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func _physics_process(delta):
 	rotation.z += deg_to_rad(ROTATION_SPEED) * delta
 	
@@ -48,3 +77,5 @@ func _physics_process(delta):
 	else:
 		$next_checkpoint_mesh.hide()
 	pass
+
+

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpaycgnn8m7yn"]
+[gd_scene load_steps=5 format=3 uid="uid://cpaycgnn8m7yn"]
 
 [ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="1_08obu"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_cmg2u"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/reset_player_data_button.gd" id="3_e0qxc"]
 
 [sub_resource type="Theme" id="Theme_t41mr"]
 default_font = ExtResource("1_08obu")
@@ -29,6 +30,19 @@ text = "MAP SELECT"
 script = ExtResource("2_cmg2u")
 to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Map Select/map_select.tscn"
 
+[node name="settings_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 48.0
+offset_right = 300.0
+offset_bottom = 118.0
+grow_vertical = 2
+theme = SubResource("Theme_t41mr")
+text = "SETTINGS"
+script = ExtResource("2_cmg2u")
+
 [node name="change_name_button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -46,6 +60,22 @@ text = "CHANGE NAME"
 script = ExtResource("2_cmg2u")
 to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Name Setting/name_setting.tscn"
 
+[node name="reset_player_data_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_08obu")
+theme_override_font_sizes/font_size = 20
+text = "RESET PLAYER DATA"
+script = ExtResource("3_e0qxc")
+
 [node name="main_menu_label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -58,4 +88,7 @@ offset_bottom = 94.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_08obu")
 theme_override_font_sizes/font_size = 45
-text = "racing ggammmmee azzzhhhhfffflllnmmmm"
+text = "racing gmae!!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="reset_player_data_button" to="reset_player_data_button" method="_on_pressed"]

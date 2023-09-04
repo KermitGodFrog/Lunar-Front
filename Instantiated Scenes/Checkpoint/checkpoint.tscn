@@ -11,6 +11,7 @@ albedo_color = Color(0.247059, 0.741176, 0, 1)
 emission_enabled = true
 emission = Color(0, 1, 0, 1)
 emission_energy_multiplier = 3.0
+proximity_fade_distance = 500.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_2v3l7"]
 

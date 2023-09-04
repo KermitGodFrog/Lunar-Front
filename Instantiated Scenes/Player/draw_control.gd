@@ -2,6 +2,8 @@ extends Control
 var movement_dir_png = preload("res://Graphics/HUD/movement_dir_png.png")
 var direction_png = preload("res://Graphics/HUD/direction_png.png")
 
+var pointer_margin = 10
+
 func _physics_process(delta):
 	queue_redraw()
 	pass
@@ -14,12 +16,13 @@ func _draw():
 	
 	#VELOCITY DIRECTION DRAWING
 	
-	var unprojected_position = get_parent().unproject_position(game_data.player.global_transform.origin + game_data.player.velocity)
-	var velocity_direction = camera_offset.global_transform.origin - Vector3(game_data.player.global_transform.origin + game_data.player.velocity)
-	var velocity_dot = velocity_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+	var velocity_unprojected_position = get_parent().unproject_position(game_data.player.global_transform.origin + game_data.player.velocity)
+	#var velocity_direction = camera_offset.global_transform.origin - Vector3(game_data.player.global_transform.origin + game_data.player.velocity)
+	#var velocity_dot = velocity_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+	#if velocity_dot > 0:
 	
-	if velocity_dot > 0:
-		draw_texture(movement_dir_png, Vector2(unprojected_position.x - 8, unprojected_position.y - 8))
+	if not get_viewport().get_camera_3d().is_position_behind(game_data.player.global_transform.origin + game_data.player.velocity):
+		draw_texture(movement_dir_png, Vector2(velocity_unprojected_position.x - 8, velocity_unprojected_position.y - 8))
 	
 	#TOTAL DIRECTION DRAWING
 	
@@ -29,21 +32,23 @@ func _draw():
 	#NEXT CHECKPOINT ONE DRAWING
 	
 	if next_checkpoint_one:
-		var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
-		var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		#var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
+		#var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		#if checkpoint_one_dot > 0:
 		
-		if checkpoint_one_dot > 0:
+		if not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_one.global_transform.origin):
 			draw_line(get_parent().unproject_position(game_data.player.global_transform.origin), get_parent().unproject_position(next_checkpoint_one.global_transform.origin), Color.LIGHT_GREEN, 1)
 	
 	#NEXT CHECKPOINT TWO DRAWING
 	
 	if next_checkpoint_one and next_checkpoint_two:
-		var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
-		var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		#var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
+		#var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
 		
-		var checkpoint_two_direction = camera_offset.global_transform.origin - next_checkpoint_two.global_transform.origin
-		var checkpoint_two_dot = checkpoint_two_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		#var checkpoint_two_direction = camera_offset.global_transform.origin - next_checkpoint_two.global_transform.origin
+		#var checkpoint_two_dot = checkpoint_two_direction.normalized().dot(-camera_offset.global_transform.basis.z)
+		#if checkpoint_one_dot > 0 and checkpoint_two_dot > 0:
 		
-		if checkpoint_one_dot > 0 and checkpoint_two_dot > 0:
+		if not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_one.global_transform.origin) and not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_two.global_transform.origin):
 			draw_line(get_parent().unproject_position(next_checkpoint_one.global_transform.origin), get_parent().unproject_position(next_checkpoint_two.global_transform.origin), Color.GREEN, 1)
 	pass

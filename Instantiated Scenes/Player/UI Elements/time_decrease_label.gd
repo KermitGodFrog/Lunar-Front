@@ -1,9 +1,8 @@
 extends Label
-var tween
 
 var SPAWN_TIME: float = 1.0
 
-func tween_new_time(time: float):
+func show_new_time(time: float):
 	set_text(str("- ", time))
 	show()
 	

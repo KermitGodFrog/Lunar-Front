@@ -12,7 +12,7 @@ func _ready():
 	SilentWolf.configure({
 		"api_key": "t17Djp2d1z8Ji8tZGVYNH63HNmxrwsAS5C6RT8tv",
 		"game_id": "lunar-front",
-		"log_level": 2,
+		"log_level": 0,
 	})
 	
 	pass

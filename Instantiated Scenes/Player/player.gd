@@ -49,6 +49,9 @@ var is_camera_offset_toggle = false
 var CAMERA_OFFSET_LOCATION: Vector3 = Vector3(0,0,0)
 const CAMERA_OFFSET_INTERPOLATION = 0.15
 
+var is_camera_shake = true
+var CAMERA_SHAKE_RETURN_INTERPOLATION: float = 0.05
+
 #MISC
 
 var is_left_mouse_button_down = false
@@ -148,7 +151,6 @@ func movement(delta):
 			$camera_offset/camera/draw_control.show()
 	
 	#ACCELERATION
-	
 	var accelerate_dir = Input.get_axis("accelerate_backward", "accelerate_forward")
 	if accelerate_dir:
 		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD * BOOST
@@ -219,6 +221,23 @@ func movement(delta):
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
 	
+	#CAMERA SHAKE
+	
+	var camera_shake_time: float
+	if is_camera_shake == true:
+		if is_acceleration:
+			camera_shake_time = delta
+			
+			var h_shake = game_data.get_randf(-0.5,0.5)
+			var v_shake = game_data.get_randf(-0.5,0.5)
+			
+			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, h_shake, camera_shake_time * BOOST)
+			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, v_shake, camera_shake_time * BOOST)
+		else:
+			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+			camera_shake_time = 0.0
+	
 	#BOOSTING
 	
 	if Input.is_action_pressed("boost"):
@@ -264,8 +283,6 @@ func camera():
 			true:
 				CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
 	$camera_offset.position = $camera_offset.position.lerp(CAMERA_OFFSET_LOCATION, CAMERA_OFFSET_INTERPOLATION)
-	
-	#camera lagged following maybe
 	
 	pass
 
