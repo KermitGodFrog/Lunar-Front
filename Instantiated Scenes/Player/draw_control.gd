@@ -12,6 +12,8 @@ func _physics_process(delta):
 	pass
 
 func _draw():
+	var camera_offset = get_tree().get_first_node_in_group("camera_offset")
+	
 	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	var next_checkpoint_two = map_data.get_next_checkpoint_two()
 	var viewport_midpoint = get_viewport_rect().size / 2
@@ -35,15 +37,17 @@ func _draw():
 	#NEXT CHECKPOINT ONE DRAWING
 	
 	if next_checkpoint_one:
+		var checkpoint_marker_position: Vector2
 		#var checkpoint_one_direction = camera_offset.global_transform.origin - next_checkpoint_one.global_transform.origin
 		#var checkpoint_one_dot = checkpoint_one_direction.normalized().dot(-camera_offset.global_transform.basis.z)
 		#if checkpoint_one_dot > 0:
 		
 		if not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_one.global_transform.origin):
 			draw_line(get_parent().unproject_position(game_data.player.global_transform.origin), get_parent().unproject_position(next_checkpoint_one.global_transform.origin), Color.LIGHT_GREEN, 1)
+			checkpoint_marker_position = get_parent().unproject_position(next_checkpoint_one.global_transform.origin)
 		else:
-			draw_texture(arrow_png, viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(next_checkpoint_one.global_transform.origin)) * 500)
-			
+			checkpoint_marker_position = viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(next_checkpoint_one.global_transform.origin)) * get_viewport_rect().size.y / 4
+		draw_texture(checkpoint_marker_flipped_png, Vector2(checkpoint_marker_position.x - 8, checkpoint_marker_position.y - 8 - camera_offset.position.y))
 	
 	#NEXT CHECKPOINT TWO DRAWING
 	
