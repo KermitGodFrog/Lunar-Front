@@ -3,7 +3,7 @@ extends Label
 var SPAWN_TIME: float = 1.0
 
 func show_new_time(time: float):
-	set_text(str("- ", time))
+	set_text(str("- ", snapped(time, 0.001)))
 	show()
 	
 	var timer = get_tree().create_timer(SPAWN_TIME)

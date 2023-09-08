@@ -123,6 +123,7 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
 		health.remove_health(abs(velocity.length()))
+		game_data.hud_effect.show_effect(Color.RED, 1)
 	pass
 
 func movement(delta):

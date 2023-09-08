@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=24 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/best_time_status.gd" id="12_amrpf"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_status.gd" id="13_j44g7"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/leaderboard_status_list.gd" id="14_wnhji"]
+[ext_resource type="Texture2D" uid="uid://ck674fflp478q" path="res://Graphics/hud_effect.svg" id="15_j5ys2"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/hud_effect.gd" id="16_xlwy7"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -75,6 +77,38 @@ grow_vertical = 2
 
 [node name="ui_layer" type="CanvasLayer" parent="ui_control"]
 
+[node name="time_status" type="Label" parent="ui_control/ui_layer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = 200.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("13_j44g7")
+
+[node name="best_time_status" type="Label" parent="ui_control/ui_layer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 150.0
+offset_right = -100.0
+offset_bottom = 250.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("12_amrpf")
+
 [node name="time_decrease_label" type="Label" parent="ui_control/ui_layer" groups=["time_decrease_label"]]
 texture_filter = 1
 anchors_preset = 10
@@ -132,35 +166,30 @@ texture = ExtResource("10_s37jl")
 stretch_mode = 5
 script = ExtResource("11_6kbsb")
 
-[node name="best_time_status" type="Label" parent="ui_control/ui_layer/ui_container"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_gi6kk")
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("12_amrpf")
-
-[node name="time_status" type="Label" parent="ui_control/ui_layer/ui_container"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_gi6kk")
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("13_j44g7")
-
 [node name="leaderboard_status_list" type="ItemList" parent="ui_control/ui_layer" groups=["leaderboard_status_list"]]
 custom_minimum_size = Vector2(500, 200)
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -200.0
 grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("14_wnhji")
+
+[node name="hud_effect" type="TextureRect" parent="ui_control/ui_layer" groups=["hud_effect"]]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_j5ys2")
+expand_mode = 2
+script = ExtResource("16_xlwy7")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)

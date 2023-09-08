@@ -2,6 +2,7 @@ extends Node
 
 var base_node
 var player
+var hud_effect
 
 func get_mouse_to_3d():
 	var space_state = base_node.get_world_3d().direct_space_state
