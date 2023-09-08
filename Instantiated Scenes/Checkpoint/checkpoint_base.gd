@@ -29,6 +29,8 @@ func _on_body_entered(body):
 					
 					for boost_pickup in map_data.boost_pickups:
 						boost_pickup.is_used = false
+					for slingshot_pickup in map_data.slingshot_pickups:
+						slingshot_pickup.is_used = false
 					
 		elif CHECKPOINT_NUMBER == 0:
 			body.current_checkpoint = self

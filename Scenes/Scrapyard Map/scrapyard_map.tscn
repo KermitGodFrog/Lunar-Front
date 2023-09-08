@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=38 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/spaceship_train_debug_animation.gd" id="7_dh28b"]
 [ext_resource type="ArrayMesh" uid="uid://kj8snvn2tfit" path="res://Models/green_cube.obj" id="7_t8xlh"]
 [ext_resource type="Texture2D" uid="uid://bjjkxxtsh2u0f" path="res://Graphics/Arrow.png" id="9_66fbo"]
+[ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="10_5rogf"]
+[ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="11_yl3bw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_etnun"]
 panorama = ExtResource("2_5qk2n")
@@ -535,3 +537,11 @@ speed_scale = 5.0
 
 [node name="collision" type="CollisionShape3D" parent="arrow_sign4"]
 shape = SubResource("BoxShape3D_1bfp3")
+
+[node name="slingshot_pickup" parent="." instance=ExtResource("10_5rogf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1359, 200, 1900)
+BOOST_SPEED = 1000.0
+
+[node name="boost_pickup" parent="." instance=ExtResource("11_yl3bw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1224.78, 200, 3489.07)
+BOOST_INCREASE = 300.0

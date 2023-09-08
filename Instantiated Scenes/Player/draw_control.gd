@@ -1,6 +1,9 @@
 extends Control
 var movement_dir_png = preload("res://Graphics/HUD/movement_dir_png.png")
 var direction_png = preload("res://Graphics/HUD/direction_png.png")
+var checkpoint_marker_png = preload("res://Graphics/HUD/checkpoint_marker_png.png")
+var checkpoint_marker_flipped_png = preload("res://Graphics/HUD/checkpoint_marker_png_flipped.png")
+var arrow_png = preload("res://Graphics/arrow_png.png")
 
 var pointer_margin = 10
 
@@ -9,10 +12,10 @@ func _physics_process(delta):
 	pass
 
 func _draw():
-	var camera_offset = get_tree().get_first_node_in_group("camera_offset")
-	
 	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	var next_checkpoint_two = map_data.get_next_checkpoint_two()
+	var viewport_midpoint = get_viewport_rect().size / 2
+	
 	
 	#VELOCITY DIRECTION DRAWING
 	
@@ -38,6 +41,9 @@ func _draw():
 		
 		if not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_one.global_transform.origin):
 			draw_line(get_parent().unproject_position(game_data.player.global_transform.origin), get_parent().unproject_position(next_checkpoint_one.global_transform.origin), Color.LIGHT_GREEN, 1)
+		else:
+			draw_texture(arrow_png, viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(next_checkpoint_one.global_transform.origin)) * 500)
+			
 	
 	#NEXT CHECKPOINT TWO DRAWING
 	
