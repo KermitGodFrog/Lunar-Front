@@ -47,7 +47,7 @@ func _draw():
 			checkpoint_marker_position = get_parent().unproject_position(next_checkpoint_one.global_transform.origin)
 		else:
 			checkpoint_marker_position = viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(next_checkpoint_one.global_transform.origin)) * get_viewport_rect().size.y / 4
-		draw_texture(checkpoint_marker_flipped_png, Vector2(checkpoint_marker_position.x - 8, checkpoint_marker_position.y - 8 - camera_offset.position.y))
+		draw_texture(checkpoint_marker_flipped_png, Vector2(checkpoint_marker_position.x - 8, checkpoint_marker_position.y - 8))
 	
 	#NEXT CHECKPOINT TWO DRAWING
 	

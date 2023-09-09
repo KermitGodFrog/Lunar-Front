@@ -77,3 +77,9 @@ func reset_player_data():
 	scrapyard_best_time = 0
 	asteroid_refinery_best_time = 0
 	pass
+
+func get_randi(from: int, to: int):
+	return RandomNumberGenerator.new().randi_range(from, to)
+
+func get_randf(from: float, to: float):
+	return RandomNumberGenerator.new().randf_range(from, to)

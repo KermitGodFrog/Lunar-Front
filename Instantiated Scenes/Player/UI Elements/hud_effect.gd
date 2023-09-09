@@ -7,6 +7,9 @@ func _ready():
 	pass
 
 func circle_effect(initial_color: Color, time: float):
+	$circle_effect.set_flip_h(bool(global_data.get_randi(0,1)))
+	$circle_effect.set_flip_v(bool(global_data.get_randi(0,1)))
+	
 	$circle_effect.show()
 	$circle_effect.set_modulate(initial_color)
 	if tween:

@@ -178,6 +178,10 @@ offset_left = -500.0
 offset_top = -200.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_font_sizes/font_size = 20
+max_columns = 2
 script = ExtResource("14_wnhji")
 
 [node name="hud_effect" type="CanvasLayer" parent="ui_control/ui_layer"]

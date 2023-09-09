@@ -68,7 +68,7 @@ func _ready():
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
-	game_data.hud_effect.rectangle_effect(Color.WHITE, 4)
+	game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
 	pass
 
 func _input(event):
@@ -271,8 +271,8 @@ func camera(delta, is_movement, is_acceleration, is_rotation):
 		if is_acceleration:
 			camera_shake_time = delta
 			
-			var h_shake = game_data.get_randf(-0.5,0.5)
-			var v_shake = game_data.get_randf(-0.5,0.5)
+			var h_shake = global_data.get_randf(-0.5,0.5)
+			var v_shake = global_data.get_randf(-0.5,0.5)
 			
 			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, h_shake, camera_shake_time * BOOST)
 			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, v_shake, camera_shake_time * BOOST)
