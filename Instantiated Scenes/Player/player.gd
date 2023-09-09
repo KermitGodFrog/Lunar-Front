@@ -68,6 +68,7 @@ func _ready():
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
+	game_data.hud_effect.rectangle_effect(Color.WHITE, 4)
 	pass
 
 func _input(event):
@@ -113,7 +114,6 @@ func _input(event):
 
 func _physics_process(delta):
 	movement(delta)
-	camera()
 	weapons()
 	
 	if current_checkpoint:
@@ -123,7 +123,7 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
 		health.remove_health(abs(velocity.length()))
-		game_data.hud_effect.show_effect(Color.RED, 1)
+		game_data.hud_effect.circle_effect(Color.RED, 1)
 	pass
 
 func movement(delta):
@@ -136,22 +136,8 @@ func movement(delta):
 	if Input.is_action_just_pressed("fa_toggle"):
 		is_fa_toggle = !is_fa_toggle
 	
-	if Input.is_action_just_pressed("mouse_movement_toggle"):
-		is_mouse_movement_toggle = !is_mouse_movement_toggle
-	
-	if Input.is_action_just_pressed("first_person_toggle"):
-		is_first_person_toggle = !is_first_person_toggle
-		
-		if is_first_person_toggle == true:
-			$first_person_camera.set_current(true)
-			$first_person_camera/draw_control.show()
-			$camera_offset/camera/draw_control.hide()
-		if is_first_person_toggle == false:
-			$camera_offset/camera.set_current(true)
-			$first_person_camera/draw_control.hide()
-			$camera_offset/camera/draw_control.show()
-	
 	#ACCELERATION
+	
 	var accelerate_dir = Input.get_axis("accelerate_backward", "accelerate_forward")
 	if accelerate_dir:
 		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD * BOOST
@@ -173,7 +159,7 @@ func movement(delta):
 	
 	var pitch_axis = Input.get_axis("pitch_up", "pitch_down")
 	if pitch_axis:
-		PITCH_TIME = lerp(PITCH_TIME, pitch_axis * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+		PITCH_TIME = lerp(PITCH_TIME, pitch_axis * PITCH_SPEED, ROTATION_INTERPOLATION)
 		is_movement = true
 		is_rotation = true
 	else:
@@ -182,7 +168,7 @@ func movement(delta):
 	
 	var yaw_axis = Input.get_axis("yaw_right", "yaw_left")
 	if yaw_axis:
-		YAW_TIME = lerp(YAW_TIME, yaw_axis * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+		YAW_TIME = lerp(YAW_TIME, yaw_axis * YAW_SPEED, ROTATION_INTERPOLATION)
 		is_movement = true
 		is_rotation = true
 	else:
@@ -191,21 +177,12 @@ func movement(delta):
 	
 	var roll_axis = Input.get_axis("roll_left", "roll_right")
 	if roll_axis:
-		ROLL_TIME = lerp(ROLL_TIME, roll_axis * ROLL_SPEED * BOOST, ROTATION_INTERPOLATION)
+		ROLL_TIME = lerp(ROLL_TIME, roll_axis * ROLL_SPEED, ROTATION_INTERPOLATION)
 		is_movement = true
 		is_rotation = true
 	else:
 		if is_fa_toggle == true:
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
-	
-	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
-		var viewport_rect_size = get_viewport().get_visible_rect().size
-		var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
-		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
-		if mouse_pos.x > 25 or mouse_pos.x < -25:
-			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
-		if mouse_pos.y > 25 or mouse_pos.y < -25:
-			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
 	
 	if PITCH_TIME != 0:
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
@@ -221,23 +198,6 @@ func movement(delta):
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
-	
-	#CAMERA SHAKE
-	
-	var camera_shake_time: float
-	if is_camera_shake == true:
-		if is_acceleration:
-			camera_shake_time = delta
-			
-			var h_shake = game_data.get_randf(-0.5,0.5)
-			var v_shake = game_data.get_randf(-0.5,0.5)
-			
-			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, h_shake, camera_shake_time * BOOST)
-			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, v_shake, camera_shake_time * BOOST)
-		else:
-			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
-			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
-			camera_shake_time = 0.0
 	
 	#BOOSTING
 	
@@ -273,9 +233,28 @@ func movement(delta):
 	$movement_x_thrusters.update_axis(move_x_dir)
 	$movement_y_thrusters.update_axis(-move_y_dir)
 	
+	camera(delta, is_movement, is_acceleration, is_rotation)
+	
 	pass
 
-func camera():
+func camera(delta, is_movement, is_acceleration, is_rotation):
+	if Input.is_action_just_pressed("mouse_movement_toggle"):
+		is_mouse_movement_toggle = !is_mouse_movement_toggle
+	
+	if Input.is_action_just_pressed("first_person_toggle"):
+		is_first_person_toggle = !is_first_person_toggle
+		
+		if is_first_person_toggle == true:
+			$first_person_camera.set_current(true)
+			$first_person_camera/draw_control.show()
+			$camera_offset/camera/draw_control.hide()
+		if is_first_person_toggle == false:
+			$camera_offset/camera.set_current(true)
+			$first_person_camera/draw_control.hide()
+			$camera_offset/camera/draw_control.show()
+	
+	#CAMERA OFFSET
+	
 	if Input.is_action_just_pressed("camera_offset_toggle"):
 		is_camera_offset_toggle = !is_camera_offset_toggle
 		match is_camera_offset_toggle:
@@ -284,6 +263,34 @@ func camera():
 			true:
 				CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
 	$camera_offset.position = $camera_offset.position.lerp(CAMERA_OFFSET_LOCATION, CAMERA_OFFSET_INTERPOLATION)
+	
+	#CAMERA SHAKE
+	
+	var camera_shake_time: float
+	if is_camera_shake == true:
+		if is_acceleration:
+			camera_shake_time = delta
+			
+			var h_shake = game_data.get_randf(-0.5,0.5)
+			var v_shake = game_data.get_randf(-0.5,0.5)
+			
+			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, h_shake, camera_shake_time * BOOST)
+			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, v_shake, camera_shake_time * BOOST)
+		else:
+			$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+			$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+			camera_shake_time = 0.0
+	
+	#MOUSE MOVEMENT
+	
+	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
+		var viewport_rect_size = get_viewport().get_visible_rect().size
+		var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
+		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
+		if mouse_pos.x > 25 or mouse_pos.x < -25:
+			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+		if mouse_pos.y > 25 or mouse_pos.y < -25:
+			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
 	
 	pass
 

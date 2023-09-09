@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=25 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_status.gd" id="13_j44g7"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/leaderboard_status_list.gd" id="14_wnhji"]
 [ext_resource type="Texture2D" uid="uid://ck674fflp478q" path="res://Graphics/hud_effect.svg" id="15_j5ys2"]
+[ext_resource type="Texture2D" uid="uid://cu8c6bqsabsna" path="res://Graphics/circle_effect.svg" id="15_lce12"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/hud_effect.gd" id="16_xlwy7"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
@@ -179,9 +180,21 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("14_wnhji")
 
-[node name="hud_effect" type="TextureRect" parent="ui_control/ui_layer" groups=["hud_effect"]]
+[node name="hud_effect" type="CanvasLayer" parent="ui_control/ui_layer"]
+script = ExtResource("16_xlwy7")
+
+[node name="circle_effect" type="TextureRect" parent="ui_control/ui_layer/hud_effect"]
 visible = false
-texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_lce12")
+expand_mode = 2
+
+[node name="rectangle_effect" type="TextureRect" parent="ui_control/ui_layer/hud_effect"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -189,7 +202,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_j5ys2")
 expand_mode = 2
-script = ExtResource("16_xlwy7")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)

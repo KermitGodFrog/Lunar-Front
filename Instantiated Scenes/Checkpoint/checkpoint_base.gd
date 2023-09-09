@@ -9,7 +9,7 @@ func _on_body_entered(body):
 		if body.current_checkpoint:
 			if body.current_checkpoint == map_data.checkpoints[CHECKPOINT_NUMBER - 1]:
 				body.current_checkpoint = self
-				game_data.hud_effect.show_effect(Color.GREEN, 0.3)
+				game_data.hud_effect.rectangle_effect(Color.GREEN, 0.3)
 				if CHECKPOINT_NUMBER == 0:
 					
 					if global_data.get_best_time_current_map() == 0:
@@ -35,7 +35,7 @@ func _on_body_entered(body):
 					
 		elif CHECKPOINT_NUMBER == 0:
 			body.current_checkpoint = self
-			game_data.hud_effect.show_effect(Color.GREEN, 0.3)
+			game_data.hud_effect.rectangle_effect(Color.GREEN, 0.3)
 			get_tree().call_group("receive_race_starting", "_on_race_start")
 	pass
 

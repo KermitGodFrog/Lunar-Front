@@ -10,5 +10,5 @@ func _on_body_entered(body):
 			if game_data.player.current_checkpoint:
 				body.BOOST_TIME += BOOST_INCREASE
 				is_used = true
-				game_data.hud_effect.show_effect(Color.GOLD, 0.5)
+				game_data.hud_effect.circle_effect(Color.GOLD, 0.5)
 	pass
