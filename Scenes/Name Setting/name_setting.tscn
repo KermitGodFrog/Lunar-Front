@@ -70,6 +70,6 @@ theme_override_fonts/font = ExtResource("1_01hku")
 theme_override_font_sizes/font_size = 30
 text = "BACK"
 script = ExtResource("3_ydbfy")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Main Menu/main_menu.tscn"
+to_scene = "res://Scenes/Main Menu/main_menu.tscn"
 
 [connection signal="pressed" from="submit_button" to="submit_button" method="_on_pressed"]

@@ -1,7 +1,7 @@
 extends Button
 class_name SceneChangeButton
 
-@export_global_file("*.tscn") var to_scene
+@export_file("*.tscn") var to_scene
 
 func _ready():
 	self.pressed.connect(_on_pressed)

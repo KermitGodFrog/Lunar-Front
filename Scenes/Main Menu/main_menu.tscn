@@ -28,7 +28,7 @@ grow_vertical = 2
 theme = SubResource("Theme_t41mr")
 text = "MAP SELECT"
 script = ExtResource("2_cmg2u")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Map Select/map_select.tscn"
+to_scene = "res://Scenes/Map Select/map_select.tscn"
 
 [node name="settings_button" type="Button" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ grow_vertical = 2
 theme = SubResource("Theme_t41mr")
 text = "CHANGE NAME"
 script = ExtResource("2_cmg2u")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Name Setting/name_setting.tscn"
+to_scene = "res://Scenes/Name Setting/name_setting.tscn"
 
 [node name="reset_player_data_button" type="Button" parent="."]
 layout_mode = 1

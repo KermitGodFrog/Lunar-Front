@@ -27,7 +27,7 @@ grow_vertical = 2
 theme = SubResource("Theme_oy45s")
 text = "SCRAPYARD"
 script = ExtResource("2_3vnmj")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Scrapyard Map/scrapyard_map.tscn"
+to_scene = "res://Scenes/Scrapyard Map/scrapyard_map.tscn"
 
 [node name="test_map_button" type="Button" parent="."]
 layout_mode = 1
@@ -41,7 +41,7 @@ grow_vertical = 2
 theme = SubResource("Theme_oy45s")
 text = "TEST MAP"
 script = ExtResource("2_3vnmj")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Test Map/test_map.tscn"
+to_scene = "res://Scenes/Test Map/test_map.tscn"
 
 [node name="back_button" type="Button" parent="."]
 layout_mode = 1
@@ -55,4 +55,4 @@ theme_override_fonts/font = ExtResource("1_d07gl")
 theme_override_font_sizes/font_size = 30
 text = "BACK"
 script = ExtResource("2_3vnmj")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Main Menu/main_menu.tscn"
+to_scene = "res://Scenes/Main Menu/main_menu.tscn"
