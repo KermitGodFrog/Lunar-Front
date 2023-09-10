@@ -1,13 +1,17 @@
 extends Label
 
-var SPAWN_TIME: float = 1.0
+var tween
+
 
 func show_new_time(time: float):
 	set_text(str("- ", snapped(time, 0.001)))
+	set_modulate(Color(255, 255, 255, 255))
 	show()
 	
-	var timer = get_tree().create_timer(SPAWN_TIME)
-	await timer.timeout
+	if tween:
+		tween.kill()
 	
-	hide()
+	tween = create_tween()
+	tween.tween_property(self, "modulate", Color(255, 255, 255, 0), 5).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(self.hide)
 	pass

@@ -288,9 +288,9 @@ func camera(delta, is_movement, is_acceleration, is_rotation):
 		var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
 		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
 		if mouse_pos.x > 25 or mouse_pos.x < -25:
-			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * BOOST, ROTATION_INTERPOLATION)
+			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED, ROTATION_INTERPOLATION)
 		if mouse_pos.y > 25 or mouse_pos.y < -25:
-			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * BOOST, ROTATION_INTERPOLATION)
+			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED, ROTATION_INTERPOLATION)
 	
 	pass
 

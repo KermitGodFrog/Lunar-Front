@@ -1,6 +1,7 @@
 extends Node
 
 var player_name: String
+var player_latest_score_id: String
 
 var test_map_best_time: float
 var scrapyard_best_time: float
@@ -44,12 +45,33 @@ func set_best_time_current_map(time: float):
 		_:
 			return
 
+func get_medal_current_map():
+	var time = get_best_time_current_map()
+	if time > 0:
+		match map_data.map_identifier:
+			"test_map":
+				return null
+			"asteroid_refinery":
+				return null
+			"scrapyard":
+				if time > 50:
+					return load("res://Graphics/Medals/bronze_medal.png")
+				if time <= 50 and time >= 45:
+					return load("res://Graphics/Medals/iron_medal.png")
+				if time < 45:
+					return load("res://Graphics/Medals/gold_medal.png")
+			_:
+				return null
+	else:
+		return null
+
 func save_player_data():
 	var file = FileAccess.open("user://saved_best_times.save", FileAccess.WRITE)
 	file.store_var(player_name)
 	file.store_var(test_map_best_time)
 	file.store_var(scrapyard_best_time)
 	file.store_var(asteroid_refinery_best_time)
+	file.store_var(player_latest_score_id)
 	file.close()
 	pass
 
@@ -60,12 +82,14 @@ func load_player_data():
 		test_map_best_time = file.get_var(true)
 		scrapyard_best_time = file.get_var(true)
 		asteroid_refinery_best_time = file.get_var(true)
+		player_latest_score_id = file.get_var(true)
 		file.close()
 	else:
 		player_name = ""
 		test_map_best_time = 0
 		scrapyard_best_time = 0
 		asteroid_refinery_best_time = 0
+		player_latest_score_id = ""
 	pass
 
 func reset_player_data():
@@ -76,6 +100,7 @@ func reset_player_data():
 	test_map_best_time = 0
 	scrapyard_best_time = 0
 	asteroid_refinery_best_time = 0
+	player_latest_score_id = ""
 	pass
 
 func get_randi(from: int, to: int):

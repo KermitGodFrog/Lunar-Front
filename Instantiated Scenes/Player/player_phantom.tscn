@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=26 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Graphics/HUD/boost_meter.png" id="6_0x7rd"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/boost_meter.gd" id="7_3jp72"]
 [ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="8_c28nh"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/medal_status.gd" id="9_a8850"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/movement_mode.gd" id="9_nqefh"]
 [ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Graphics/HUD/collision_warning_png.png" id="10_s37jl"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/collision_warning.gd" id="11_6kbsb"]
@@ -123,6 +124,13 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_5ucmm")
+
+[node name="medal_status" type="TextureRect" parent="ui_control/ui_layer" groups=["medal_status"]]
+texture_filter = 1
+offset_right = 100.0
+offset_bottom = 100.0
+stretch_mode = 5
+script = ExtResource("9_a8850")
 
 [node name="boost_meter" type="TextureRect" parent="ui_control/ui_layer"]
 texture_filter = 1
