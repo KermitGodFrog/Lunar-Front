@@ -51,6 +51,15 @@ func leaderboard_handling():
 	get_tree().call_group("leaderboard_status_list", "update", sw_scores_around.scores_below)
 	pass
 
+
+
+
+
+
+
+
+
+
 func _physics_process(delta):
 	rotation.z += deg_to_rad(ROTATION_SPEED) * delta
 	
@@ -60,5 +69,3 @@ func _physics_process(delta):
 	else:
 		$next_checkpoint_mesh.hide()
 	pass
-
-

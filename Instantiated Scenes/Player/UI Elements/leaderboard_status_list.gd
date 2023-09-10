@@ -1,5 +1,12 @@
 extends ItemList
 
+func _ready():
+	await get_tree().physics_frame
+	if global_data.player_latest_score_id:
+		var sw_scores_around = await SilentWolf.Scores.get_scores_around(global_data.player_latest_score_id, 6, str(map_data.map_identifier, "_map")).sw_get_scores_around_complete
+		update(sw_scores_around.scores_below)
+	pass
+
 func update(scores):
 	clear()
 	add_item(str(global_data.player_name, ": "))

@@ -228,10 +228,17 @@ func movement(delta):
 	$roll_thrusters.update_time(-ROLL_TIME)
 	
 	$acceleration_thrusters.update_axis(accelerate_dir)
-	$acceleration_thrusters.update_time(velocity.length())
-	
 	$movement_x_thrusters.update_axis(move_x_dir)
 	$movement_y_thrusters.update_axis(-move_y_dir)
+	
+	if velocity.length() > 0.80:
+		$acceleration_thrusters.update_time(velocity.normalized().dot(transform.basis.z))
+		$movement_x_thrusters.update_time(velocity.normalized().dot(transform.basis.x))
+		$movement_y_thrusters.update_time(-velocity.normalized().dot(transform.basis.y))
+	else:
+		$acceleration_thrusters.update_time(0)
+		$movement_x_thrusters.update_time(0)
+		$movement_y_thrusters.update_time(0)
 	
 	camera(delta, is_movement, is_acceleration, is_rotation)
 	

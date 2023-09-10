@@ -127,8 +127,12 @@ script = ExtResource("5_5ucmm")
 
 [node name="medal_status" type="TextureRect" parent="ui_control/ui_layer" groups=["medal_status"]]
 texture_filter = 1
-offset_right = 100.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
 offset_bottom = 100.0
+grow_horizontal = 0
 stretch_mode = 5
 script = ExtResource("9_a8850")
 
