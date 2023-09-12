@@ -45,7 +45,7 @@ script = ExtResource("1_oahw1")
 health = SubResource("Resource_kysq3")
 
 [node name="first_person_camera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 7)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.1)
 
 [node name="draw_control" type="Control" parent="first_person_camera"]
 visible = false

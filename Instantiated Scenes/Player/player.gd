@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var health: Health
+@onready var initial_first_person_camera_basis = $first_person_camera.transform.basis
 
 #GAMEPLAY
 
@@ -37,6 +38,7 @@ const BOOST_MAX_REGEN = 300
 var rot_x: float
 var rot_y: float
 var mouse_sens = 0.1
+const headlook_mouse_sens = 1200
 
 #WEAPONS
 
@@ -60,6 +62,7 @@ var is_right_mouse_button_down = false
 var is_fa_toggle = true
 var is_first_person_toggle = false
 var is_mouse_movement_toggle = false
+var is_headlook_toggle = false
 var is_movement = false
 var is_acceleration = false
 var is_rotation = false
@@ -90,7 +93,14 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		match is_first_person_toggle:
 			true:
-				Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+				match is_headlook_toggle:
+					true:
+						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+						$first_person_camera.rotation.y -= event.relative.x / headlook_mouse_sens
+						$first_person_camera.rotation.x -= event.relative.y / headlook_mouse_sens
+						$first_person_camera.rotation.x = clamp($first_person_camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+					false:
+						Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
@@ -247,6 +257,10 @@ func movement(delta):
 func camera(delta, is_movement, is_acceleration, is_rotation):
 	if Input.is_action_just_pressed("mouse_movement_toggle"):
 		is_mouse_movement_toggle = !is_mouse_movement_toggle
+	
+	if Input.is_action_just_pressed("enable_first_person_headlook"):
+		is_headlook_toggle = !is_headlook_toggle
+		$first_person_camera.transform.basis = initial_first_person_camera_basis
 	
 	if Input.is_action_just_pressed("first_person_toggle"):
 		is_first_person_toggle = !is_first_person_toggle

@@ -38,6 +38,17 @@ func get_best_time_current_map():
 		_:
 			return 0
 
+func get_best_time_from_map(map: String):
+	match map:
+		"test_map":
+			return test_map_best_time
+		"asteroid_refinery":
+			return asteroid_refinery_best_time
+		"scrapyard":
+			return scrapyard_best_time
+		_:
+			return 0
+
 func set_best_time_current_map(time: float):
 	match map_data.map_identifier:
 		"test_map":

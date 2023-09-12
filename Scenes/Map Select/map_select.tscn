@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6x1bosgruat1"]
+[gd_scene load_steps=5 format=3 uid="uid://b6x1bosgruat1"]
 
 [ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="1_d07gl"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_3vnmj"]
+[ext_resource type="Script" path="res://Scenes/Map Select/multimap_leaderboard.gd" id="3_0gmnt"]
 
 [sub_resource type="Theme" id="Theme_oy45s"]
 default_font = ExtResource("1_d07gl")
@@ -56,3 +57,22 @@ theme_override_font_sizes/font_size = 30
 text = "BACK"
 script = ExtResource("2_3vnmj")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
+
+[node name="leaderboard_status_list" type="ItemList" parent="." groups=["leaderboard_status_list"]]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_d07gl")
+theme_override_font_sizes/font_size = 20
+max_columns = 2
+script = ExtResource("3_0gmnt")

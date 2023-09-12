@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=40 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -21,13 +21,16 @@ sky_material = SubResource("PanoramaSkyMaterial_etnun")
 [sub_resource type="Environment" id="Environment_efynh"]
 background_mode = 2
 sky = SubResource("Sky_285ka")
+ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.2
 reflected_light_source = 2
 tonemap_mode = 2
 sdfgi_read_sky_light = false
 glow_enabled = true
 glow_normalized = true
+glow_bloom = 0.15
 glow_blend_mode = 0
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_albedo = Color(0, 0, 0, 1)
@@ -37,48 +40,17 @@ adjustment_saturation = 3.0
 dof_blur_near_enabled = true
 dof_blur_near_distance = 5.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3hs1j"]
+radius = 1.0
+
+[sub_resource type="SphereOccluder3D" id="SphereOccluder3D_frx2s"]
+radius = 30.0
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lkfxw"]
 points = PackedVector3Array(-0.260964, -0.625417, -0.946714, 0.344696, 0.30815, 1.09337, -1.12524, 0.34717, 0.280995, -0.119143, 1.31444, -0.569883, 1.15731, -0.155492, -0.414922, -0.351509, -1.16154, 0.512967, 0.894861, -0.409457, 0.835608, 0.460879, -1.08374, -0.376417, 0.615492, 0.965925, 0.203514, -1.12524, -0.774489, -0.0282233, -0.273979, 0.269856, -1.0728, -0.76619, 0.185421, 0.888116, -0.772406, 0.773153, 0.527626, 0.576839, -0.116714, -1.03406, -0.854224, 0.501798, -0.608389, 0.112777, -0.735711, 1.09337, 0.306043, 0.61789, -1.03406, 0.344696, -1.04521, 0.667694, -0.660735, 1.15957, -0.376182, 0.962134, 0.410252, 0.310249, -0.476021, -0.543177, -0.932885, 0.190083, 1.27542, -0.453662, -0.351509, 0.811297, -0.917842, 0.809229, -0.767262, 0.121358, 0.460879, -0.000621654, 1.24809, 1.15731, -0.0396422, -0.414922, -0.273979, -0.890581, 0.82242, -0.741328, 0.113025, -0.798929, -0.776918, 1.00495, 0.126268, -1.08637, 0.424484, -0.0667289, 0.693022, 0.0379142, 1.05486, 0.0738999, -0.116714, -1.11154)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_perxm"]
 points = PackedVector3Array(0.719985, 1.10825, -0.13588, 0.0170377, -1.2827, -0.435672, -0.523644, -0.700235, -0.768472, -0.648492, 0.0899046, 1.3529, 1.14018, 0.256288, 0.437635, -1.18917, 0.0899046, -0.435672, 0.355097, 0.119377, -1.21285, -0.648492, 1.04667, 0.105095, 0.520045, -1.13346, 0.374752, -0.690026, -1.07454, 0.271104, 1.01533, -0.450537, -0.269402, -0.606957, 0.963602, 0.85357, -1.27025, -0.111848, 0.563752, -0.274193, 0.797219, -0.809909, 0.924504, 0.481112, -0.772009, -0.39904, -0.658456, 1.06154, 0.682323, -0.825084, -0.601942, 0.324297, 0.593511, 0.846333, 0.391337, 1.17128, -0.47737, 0.183176, -0.6587, -1.01814, 0.480514, 0.161179, 0.884735, 0.932019, 0.963358, 0.104574, -1.23095, 0.297823, 0.312802, -0.939722, -0.159304, 1.10297, 0.432871, -1.24092, -0.393974, 0.973797, -0.575386, 0.187709, -0.346426, 0.88051, 0.936598, 0.474406, 1.2133, -0.269402, -0.814874, 0.256288, 1.14467, 0.973797, 0.963602, -0.102872, 0.631073, -0.462406, 0.604891, 0.483844, -1.17885, 0.337128)
-
-[sub_resource type="Animation" id="Animation_4d4if"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spaceship_train_placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2700, 0, 1000)]
-}
-
-[sub_resource type="Animation" id="Animation_oy8q4"]
-resource_name = "spaceship_train_movement"
-length = 60.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spaceship_train_placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 35, 45, 60),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(2700, 250, 1000), Vector3(-500, 250, 1000), Vector3(-1300, 300, 1000), Vector3(-800, 650, -3000)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
-_data = {
-"RESET": SubResource("Animation_4d4if"),
-"spaceship_train_movement": SubResource("Animation_oy8q4")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_466ny"]
 atlas = ExtResource("9_66fbo")
@@ -196,6 +168,43 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bfp3"]
 size = Vector3(1, 0.4, 0.2)
 
+[sub_resource type="Animation" id="Animation_4d4if"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship_train_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2700, 0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_oy8q4"]
+resource_name = "spaceship_train_movement"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spaceship_train_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 35, 45, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2700, 250, 1000), Vector3(-500, 250, 1000), Vector3(-1300, 300, 1000), Vector3(-800, 650, -3000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
+_data = {
+"RESET": SubResource("Animation_4d4if"),
+"spaceship_train_movement": SubResource("Animation_oy8q4")
+}
+
 [node name="scrapyard_map" type="Node3D"]
 script = ExtResource("1_olbxj")
 
@@ -204,8 +213,7 @@ environment = SubResource("Environment_efynh")
 camera_attributes = SubResource("CameraAttributesPractical_d7aoc")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
-light_energy = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 1000, 500)
 
 [node name="player" parent="." instance=ExtResource("2_1t4si")]
 
@@ -254,7 +262,10 @@ skeleton = NodePath("../..")
 
 [node name="collision" type="CollisionShape3D" parent="junk_rock_var1_1"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_lkfxw")
+shape = SubResource("SphereShape3D_3hs1j")
+
+[node name="occluder" type="OccluderInstance3D" parent="junk_rock_var1_1"]
+occluder = SubResource("SphereOccluder3D_frx2s")
 
 [node name="junk_rock_var1_7" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 678.362, 0, -134.993)
@@ -400,16 +411,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_perxm")
 
-[node name="debug_animation" type="AnimationPlayer" parent="." groups=["receive_race_starting"]]
-libraries = {
-"": SubResource("AnimationLibrary_flwd5")
-}
-script = ExtResource("7_dh28b")
-
-[node name="spaceship_train_placeholder" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 2700, 0, 1000)
-mesh = ExtResource("7_t8xlh")
-
 [node name="arrow_sign1" type="StaticBody3D" parent="."]
 transform = Transform3D(67.3387, 0, -73.929, 0, 100, 0, 73.929, 0, 67.3387, -165.871, 0, 269.144)
 
@@ -545,3 +546,13 @@ BOOST_SPEED = 1000.0
 [node name="boost_pickup" parent="." instance=ExtResource("11_yl3bw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1224.78, 200, 3489.07)
 BOOST_INCREASE = 300.0
+
+[node name="debug_animation" type="AnimationPlayer" parent="." groups=["receive_race_starting"]]
+libraries = {
+"": SubResource("AnimationLibrary_flwd5")
+}
+script = ExtResource("7_dh28b")
+
+[node name="spaceship_train_placeholder" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 2700, 0, 1000)
+mesh = ExtResource("7_t8xlh")

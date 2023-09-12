@@ -1,4 +1,5 @@
 extends ItemList
+class_name PlayerCenteredLeaderboard
 
 func _ready():
 	await get_tree().physics_frame
