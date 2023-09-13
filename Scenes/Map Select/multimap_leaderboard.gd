@@ -10,12 +10,14 @@ func update(leaderboard_identifier: String):
 	if len(scores) > 0:
 		render(scores)
 	else:
+		add_item("Loading scores...")
 		var sw_get_high_scores = await SilentWolf.Scores.get_scores(0, leaderboard_identifier).sw_get_scores_complete
 		scores = sw_get_high_scores["scores"]
 		render(scores)
 	pass
 
 func render(scores):
+	clear()
 	if len(scores) > 1 and scores[0].score > scores[-1].score:
 		scores.reverse()
 	

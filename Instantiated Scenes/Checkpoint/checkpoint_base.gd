@@ -45,20 +45,9 @@ func _on_body_entered(body):
 func leaderboard_handling():
 	var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), str(map_data.map_identifier, "_map")).sw_save_score_complete
 	var score_id = sw_save_score.score_id
-	global_data.player_latest_score_id = score_id
-	
 	var sw_scores_around = await SilentWolf.Scores.get_scores_around(score_id, 6, str(map_data.map_identifier, "_map")).sw_get_scores_around_complete
 	get_tree().call_group("leaderboard_status_list", "update", sw_scores_around.scores_below)
 	pass
-
-
-
-
-
-
-
-
-
 
 func _physics_process(delta):
 	rotation.z += deg_to_rad(ROTATION_SPEED) * delta
