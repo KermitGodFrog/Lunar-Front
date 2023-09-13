@@ -1,7 +1,6 @@
 extends Node
 
 var player_name: String
-var player_latest_score_id: String
 
 var test_map_best_time: float
 var scrapyard_best_time: float
@@ -86,7 +85,6 @@ func save_player_data():
 	file.store_var(test_map_best_time)
 	file.store_var(scrapyard_best_time)
 	file.store_var(asteroid_refinery_best_time)
-	file.store_var(player_latest_score_id)
 	file.close()
 	pass
 
@@ -97,14 +95,12 @@ func load_player_data():
 		test_map_best_time = file.get_var(true)
 		scrapyard_best_time = file.get_var(true)
 		asteroid_refinery_best_time = file.get_var(true)
-		player_latest_score_id = file.get_var(true)
 		file.close()
 	else:
 		player_name = ""
 		test_map_best_time = 0
 		scrapyard_best_time = 0
 		asteroid_refinery_best_time = 0
-		player_latest_score_id = ""
 	pass
 
 func reset_player_data():
@@ -115,7 +111,6 @@ func reset_player_data():
 	test_map_best_time = 0
 	scrapyard_best_time = 0
 	asteroid_refinery_best_time = 0
-	player_latest_score_id = ""
 	pass
 
 func get_randi(from: int, to: int):

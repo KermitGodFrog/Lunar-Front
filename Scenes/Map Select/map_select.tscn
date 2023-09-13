@@ -76,3 +76,6 @@ theme_override_fonts/font = ExtResource("1_d07gl")
 theme_override_font_sizes/font_size = 20
 max_columns = 2
 script = ExtResource("3_0gmnt")
+
+[connection signal="mouse_entered" from="scrapyard_button" to="leaderboard_status_list" method="_on_scrapyard_button_mouse_entered"]
+[connection signal="mouse_entered" from="test_map_button" to="leaderboard_status_list" method="_on_test_map_button_mouse_entered"]
