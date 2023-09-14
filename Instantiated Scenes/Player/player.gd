@@ -54,6 +54,8 @@ const CAMERA_OFFSET_INTERPOLATION = 0.15
 var is_camera_shake = true
 var CAMERA_SHAKE_RETURN_INTERPOLATION: float = 0.05
 
+var HEADLOOK_RETURN_INTERPOLATION: float = 0.10
+
 #MISC
 
 var is_left_mouse_button_down = false
@@ -250,17 +252,19 @@ func movement(delta):
 		$movement_x_thrusters.update_time(0)
 		$movement_y_thrusters.update_time(0)
 	
-	camera(delta, is_movement, is_acceleration, is_rotation)
+	camera(delta)
 	
 	pass
 
-func camera(delta, is_movement, is_acceleration, is_rotation):
+func camera(_delta):
 	if Input.is_action_just_pressed("mouse_movement_toggle"):
 		is_mouse_movement_toggle = !is_mouse_movement_toggle
 	
 	if Input.is_action_just_pressed("enable_first_person_headlook"):
 		is_headlook_toggle = !is_headlook_toggle
-		$first_person_camera.transform.basis = initial_first_person_camera_basis
+	if is_headlook_toggle == false:
+		var slerp = $first_person_camera.transform.basis.slerp(initial_first_person_camera_basis, HEADLOOK_RETURN_INTERPOLATION)
+		$first_person_camera.transform.basis = slerp
 	
 	if Input.is_action_just_pressed("first_person_toggle"):
 		is_first_person_toggle = !is_first_person_toggle
@@ -290,7 +294,7 @@ func camera(delta, is_movement, is_acceleration, is_rotation):
 	var camera_shake_time: float
 	if is_camera_shake == true:
 		if is_acceleration:
-			camera_shake_time = delta
+			camera_shake_time = _delta
 			
 			var h_shake = global_data.get_randf(-0.5,0.5)
 			var v_shake = global_data.get_randf(-0.5,0.5)

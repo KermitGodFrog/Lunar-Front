@@ -79,6 +79,25 @@ func get_medal_current_map():
 	else:
 		return null
 
+func get_medal_from_map(map: String):
+	var time = get_best_time_from_map(map)
+	if time > 0:
+		match map:
+			"test_map":
+				return null
+			"asteroid_refinery":
+				return null
+			"scrapyard":
+				if time > 50:
+					return bronze_medal
+				if time <= 50 and time >= 45:
+					return iron_medal
+				if time < 45:
+					return gold_medal
+			_:
+				return null
+	pass
+
 func save_player_data():
 	var file = FileAccess.open("user://saved_best_times.save", FileAccess.WRITE)
 	file.store_var(player_name)
