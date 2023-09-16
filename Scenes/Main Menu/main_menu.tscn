@@ -1,12 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpaycgnn8m7yn"]
+[gd_scene load_steps=7 format=3 uid="uid://cpaycgnn8m7yn"]
 
-[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="1_08obu"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_cmg2u"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/reset_player_data_button.gd" id="3_e0qxc"]
+[ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_xvp1b"]
 
-[sub_resource type="Theme" id="Theme_t41mr"]
-default_font = ExtResource("1_08obu")
-default_font_size = 50
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_45hd5"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ltohk"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_e7v0b"]
+content_margin_left = 40.0
+color = Color(1, 0, 0, 1)
+thickness = 6
+vertical = true
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -16,79 +30,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="map_select_button" type="Button" parent="."]
+[node name="title_text" type="Label" parent="."]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 802.0
+offset_bottom = 159.0
+theme = ExtResource("3_xvp1b")
+text = "____ TIME TRIALS"
+
+[node name="main_ui_vbox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -35.0
-offset_right = 300.0
-offset_bottom = 35.0
+offset_left = 10.0
+offset_top = -150.0
+offset_right = 510.0
+offset_bottom = 150.0
 grow_vertical = 2
-theme = SubResource("Theme_t41mr")
+theme = ExtResource("3_xvp1b")
+
+[node name="map_select_button" type="Button" parent="main_ui_vbox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 text = "MAP SELECT"
+alignment = 0
 script = ExtResource("2_cmg2u")
 to_scene = "res://Scenes/Map Select/map_select.tscn"
 
-[node name="settings_button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = 48.0
-offset_right = 300.0
-offset_bottom = 118.0
-grow_vertical = 2
-theme = SubResource("Theme_t41mr")
-text = "SETTINGS"
+[node name="tutorial_button" type="Button" parent="main_ui_vbox"]
+layout_mode = 2
+text = "TUTORIAL"
+alignment = 0
 script = ExtResource("2_cmg2u")
 
-[node name="change_name_button" type="Button" parent="."]
+[node name="settings_button" type="Button" parent="main_ui_vbox"]
+layout_mode = 2
+text = "SETTINGS"
+alignment = 0
+script = ExtResource("2_cmg2u")
+
+[node name="data_ui_vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -357.0
-offset_top = -35.0
-offset_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 2
-theme = SubResource("Theme_t41mr")
-text = "CHANGE NAME"
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -81.0
+offset_right = 293.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("3_xvp1b")
+
+[node name="change_name_button" type="Button" parent="data_ui_vbox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxLine_45hd5")
+text = "CHANGE USERNAME"
+alignment = 0
 script = ExtResource("2_cmg2u")
 to_scene = "res://Scenes/Name Setting/name_setting.tscn"
 
-[node name="reset_player_data_button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -36.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_08obu")
-theme_override_font_sizes/font_size = 20
+[node name="reset_player_data_button" type="Button" parent="data_ui_vbox"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxLine_ltohk")
+theme_override_styles/hover = SubResource("StyleBoxLine_e7v0b")
 text = "RESET PLAYER DATA"
+alignment = 0
 script = ExtResource("3_e0qxc")
 
-[node name="main_menu_label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -529.0
-offset_top = 35.0
-offset_right = 529.0
-offset_bottom = 94.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_08obu")
-theme_override_font_sizes/font_size = 45
-text = "racing gmae!!"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="reset_player_data_button" to="reset_player_data_button" method="_on_pressed"]
+[connection signal="pressed" from="data_ui_vbox/reset_player_data_button" to="data_ui_vbox/reset_player_data_button" method="_on_pressed"]

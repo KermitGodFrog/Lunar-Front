@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cxur1i25sjsus"
-path="res://.godot/imported/protomolecule.ttf-71142dac4da1d003e760543a323ac714.fontdata"
+path="res://.godot/imported/protomolecule.ttf-8b49943bf9193fab9ae9bf6cd43b6ab8.fontdata"
 
 [deps]
 
-source_file="res://protomolecule.ttf"
-dest_files=["res://.godot/imported/protomolecule.ttf-71142dac4da1d003e760543a323ac714.fontdata"]
+source_file="res://Graphics/Fonts/protomolecule.ttf"
+dest_files=["res://.godot/imported/protomolecule.ttf-8b49943bf9193fab9ae9bf6cd43b6ab8.fontdata"]
 
 [params]
 

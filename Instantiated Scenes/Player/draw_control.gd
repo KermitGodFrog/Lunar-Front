@@ -12,8 +12,6 @@ func _physics_process(delta):
 	pass
 
 func _draw():
-	var camera_offset = get_tree().get_first_node_in_group("camera_offset")
-	
 	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	var next_checkpoint_two = map_data.get_next_checkpoint_two()
 	var viewport_midpoint = get_viewport_rect().size / 2

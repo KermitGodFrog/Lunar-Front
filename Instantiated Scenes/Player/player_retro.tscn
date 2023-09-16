@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_1qgk3"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/draw_control.gd" id="2_xwdln"]
-[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="3_88e2u"]
+[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="3_88e2u"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_status.gd" id="4_m86h6"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/best_time_status.gd" id="5_anteo"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_decrease_label.gd" id="6_e1jvd"]

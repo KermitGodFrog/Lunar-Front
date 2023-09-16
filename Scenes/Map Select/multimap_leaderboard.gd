@@ -23,8 +23,24 @@ func render(scores):
 	
 	for i in range(len(scores)):
 		var score = scores[i]
-		add_item(str(score.player_name, ": "))
-		add_item(str(snapped(score.score, 0.001)))
+		
+		var add_player_name = add_item(str(score.player_name, ": "))
+		var add_score = add_item(str(snapped(score.score, 0.001)))
+		
+		if score.player_name == global_data.player_name:
+			set_item_custom_bg_color(add_score, Color.GREEN)
+		
+		match i:
+			0:
+				set_item_custom_bg_color(add_score, Color.MEDIUM_AQUAMARINE)
+			1:
+				set_item_custom_bg_color(add_score, Color.GOLD)
+			2:
+				set_item_custom_bg_color(add_score, Color.WEB_GRAY)
+			3:
+				set_item_custom_bg_color(add_score, Color.BROWN)
+			_:
+				pass
 	pass
 
 func _on_scrapyard_button_mouse_entered():
