@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqkui2ol3b4dx"]
 
-[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="1_y3hu3"]
+[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="1_y3hu3"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_f820q"]
 
 [sub_resource type="GDScript" id="GDScript_vo3l5"]

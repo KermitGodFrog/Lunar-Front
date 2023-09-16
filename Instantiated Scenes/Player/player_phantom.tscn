@@ -1,13 +1,14 @@
-[gd_scene load_steps=54 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=56 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
 [ext_resource type="ArrayMesh" uid="uid://lgaj5pyylrcu" path="res://Models/Phantom/Phantom.obj" id="2_hlmna"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="3_6ls8t"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/draw_control.gd" id="3_hc835"]
-[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://protomolecule.ttf" id="4_gi6kk"]
+[ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="4_ijk7l"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_decrease_label.gd" id="5_5ucmm"]
 [ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Graphics/HUD/boost_meter.png" id="6_0x7rd"]
+[ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="7_01b0a"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/boost_meter.gd" id="7_3jp72"]
 [ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="8_c28nh"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/medal_status.gd" id="9_a8850"]
@@ -33,6 +34,12 @@
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
 max_health = 100
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1ipyt"]
+content_margin_left = 10.0
+color = Color(0, 1, 0, 1)
+thickness = 6
+vertical = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7vfy"]
 albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
@@ -70,7 +77,7 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ndgb"]
-albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_color = Color(0.360784, 0.360784, 0.360784, 1)
 albedo_texture = ExtResource("24_y7eal")
 uv1_triplanar = true
 texture_filter = 0
@@ -97,20 +104,18 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_croea"]
 albedo_texture = ExtResource("21_govxb")
+normal_texture = ExtResource("21_govxb")
 uv1_triplanar = true
-uv1_triplanar_sharpness = 150.0
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_466u5"]
 albedo_texture = ExtResource("21_govxb")
 uv1_triplanar = true
-uv1_triplanar_sharpness = 150.0
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odg8u"]
 albedo_texture = ExtResource("21_govxb")
 uv1_triplanar = true
-uv1_triplanar_sharpness = 150.0
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdhxa"]
@@ -198,7 +203,7 @@ grow_vertical = 2
 
 [node name="ui_layer" type="CanvasLayer" parent="ui_control"]
 
-[node name="time_status" type="Label" parent="ui_control/ui_layer"]
+[node name="time_status" type="Label" parent="ui_control/ui_layer" groups=["receive_race_starting"]]
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 1
 anchor_left = 1.0
@@ -208,7 +213,10 @@ offset_top = 100.0
 offset_right = -100.0
 offset_bottom = 200.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.294118, 0.294118, 0.294118, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("4_ijk7l")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -224,7 +232,7 @@ offset_top = 150.0
 offset_right = -100.0
 offset_bottom = 250.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_fonts/font = ExtResource("4_ijk7l")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -238,7 +246,7 @@ offset_top = 10.0
 offset_bottom = 63.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_fonts/font = ExtResource("7_01b0a")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -249,7 +257,8 @@ texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -100.0
+offset_left = -110.0
+offset_right = -10.0
 offset_bottom = 100.0
 grow_horizontal = 0
 stretch_mode = 5
@@ -305,13 +314,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -200.0
+offset_left = -510.0
+offset_top = -236.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_gi6kk")
+theme_override_fonts/font = ExtResource("7_01b0a")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/panel = SubResource("StyleBoxLine_1ipyt")
+allow_search = false
 max_columns = 2
 script = ExtResource("14_wnhji")
 
@@ -902,11 +915,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0798217, 1.87855, 1.40402)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
 texture_normal = ExtResource("28_xd38a")
-emission_energy = 0.0
 
 [node name="seven_decal2" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146643, 1.88826, 1.55923)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
 texture_normal = ExtResource("27_hs6ag")
-emission_energy = 0.0

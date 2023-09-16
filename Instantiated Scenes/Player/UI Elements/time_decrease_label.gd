@@ -2,7 +2,6 @@ extends Label
 
 var tween
 
-
 func show_new_time(time: float):
 	set_text(str("- ", snapped(time, 0.001)))
 	set_modulate(Color(255, 255, 255, 255))

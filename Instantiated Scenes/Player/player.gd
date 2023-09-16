@@ -73,7 +73,7 @@ func _ready():
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
-	game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
+	#game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
 	pass
 
 func _input(event):
