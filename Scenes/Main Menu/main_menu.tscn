@@ -37,7 +37,7 @@ offset_top = 50.0
 offset_right = 802.0
 offset_bottom = 159.0
 theme = ExtResource("3_xvp1b")
-text = "____ TIME TRIALS"
+text = "COSMIC TIME TRIALS"
 
 [node name="main_ui_vbox" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 300)

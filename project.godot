@@ -10,12 +10,15 @@ config_version=5
 
 [application]
 
-config/name="CQB Simulator"
+config/name="Cosmic Time Trials"
+config/description="3D space racing game. Formerly known as; CQB Simulator, Lunar-Front."
 run/main_scene="res://Scenes/Main Menu/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://nelson.png"
-config/icon="res://icon.svg"
+boot_splash/image="res://Graphics/loading_texture.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://Graphics/icon.png"
 
 [autoload]
 
@@ -23,6 +26,14 @@ game_data="*res://Data/game_data.gd"
 map_data="*res://Data/map_data.gd"
 global_data="*res://Data/global_data.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://Graphics/mouse_pointer_normal.png"
 
 [editor_plugins]
 
