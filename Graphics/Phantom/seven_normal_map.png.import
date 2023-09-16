@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqpmxgo7uthpo"
-path.s3tc="res://.godot/imported/Thruster.png-1c49be696bbc9829162ceaa2d2ffc8c3.s3tc.ctex"
+uid="uid://bxloju2lpw1mo"
+path.s3tc="res://.godot/imported/seven_normal_map.png-b9692acbfaf29a979a5d0faeaa917b6e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Thruster.png"
-dest_files=["res://.godot/imported/Thruster.png-1c49be696bbc9829162ceaa2d2ffc8c3.s3tc.ctex"]
+source_file="res://Graphics/Phantom/seven_normal_map.png"
+dest_files=["res://.godot/imported/seven_normal_map.png-b9692acbfaf29a979a5d0faeaa917b6e.s3tc.ctex"]
 
 [params]
 

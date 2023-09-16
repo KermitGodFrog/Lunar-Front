@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqpmxgo7uthpo"
-path.s3tc="res://.godot/imported/Thruster.png-1c49be696bbc9829162ceaa2d2ffc8c3.s3tc.ctex"
+uid="uid://ccdipsf3ap5n0"
+path.s3tc="res://.godot/imported/red_metal_texture.png-c5b72227ff7afcae3c70e27ef1874b32.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Thruster.png"
-dest_files=["res://.godot/imported/Thruster.png-1c49be696bbc9829162ceaa2d2ffc8c3.s3tc.ctex"]
+source_file="res://Graphics/Phantom/red_metal_texture.png"
+dest_files=["res://.godot/imported/red_metal_texture.png-c5b72227ff7afcae3c70e27ef1874b32.s3tc.ctex"]
 
 [params]
 
