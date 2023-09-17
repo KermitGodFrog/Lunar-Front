@@ -1,3 +1,3 @@
 # Cosmic Time Trials.
 
-# 3D Racing Game.
+# 3D Space Racing Game.
