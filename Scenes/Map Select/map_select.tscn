@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6x1bosgruat1"]
+[gd_scene load_steps=15 format=3 uid="uid://b6x1bosgruat1"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_3t0nq"]
 [ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="1_d07gl"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/Map Select/multimap_leaderboard.gd" id="3_0gmnt"]
 [ext_resource type="Script" path="res://Scenes/Map Select/medal_texture_handling.gd" id="3_kj5i4"]
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="4_m5wsd"]
+[ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="5_ahk7g"]
+[ext_resource type="Script" path="res://Scenes/Map Select/leaderboard_origin_label.gd" id="6_0cxqa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkull"]
 bg_color = Color(0, 0, 0, 0)
@@ -20,6 +22,13 @@ bg_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srekg"]
 bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnaln"]
+content_margin_left = 9.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 6
+border_color = Color(0, 1, 0, 1)
+corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id="Theme_oy45s"]
 default_font = ExtResource("1_d07gl")
@@ -75,6 +84,24 @@ theme_override_styles/selected_focus = SubResource("StyleBoxFlat_srekg")
 allow_search = false
 max_columns = 2
 script = ExtResource("3_0gmnt")
+
+[node name="leaderboard_origin_label" type="Label" parent="." groups=["leaderboard_origin_label"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.107
+anchor_right = 1.0
+anchor_bottom = 0.107
+offset_left = -512.0
+offset_top = -31.3
+offset_bottom = 31.7
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_ahk7g")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnaln")
+vertical_alignment = 2
+script = ExtResource("6_0cxqa")
 
 [node name="main_ui_vbox" type="VBoxContainer" parent="."]
 layout_mode = 1

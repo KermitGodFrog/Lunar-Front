@@ -7,6 +7,8 @@ func update(leaderboard_identifier: String):
 	if leaderboard_identifier in SilentWolf.Scores.leaderboards:
 		scores = SilentWolf.Scores.leaderboards[leaderboard_identifier]
 	
+	get_tree().call_group("leaderboard_origin_label", "update", leaderboard_identifier)
+	
 	if len(scores) > 0:
 		render(scores)
 	else:
