@@ -2,7 +2,7 @@ shader_type spatial;
 
 uniform sampler2D noise;
 uniform sampler2D thruster_texture;
-uniform float engine_length;
+uniform float engine_length : hint_range(0.0, 6.0, 0.0);
 
 uniform sampler2D texture_emission : source_color, hint_default_black,filter_nearest,repeat_enable;
 uniform vec4 emission : source_color;
@@ -11,6 +11,11 @@ varying vec3 uv1_triplanar_pos;
 uniform float uv1_blend_sharpness;
 varying vec3 uv1_power_normal;
 uniform vec3 uv1_scale;
+
+float random (vec2 uv) {
+	return fract(sin(dot(uv.xy,
+		vec2(12.9898,78.233))) * 43758.5453123);
+}
 
 float circle(vec2 position, float radius, float feather)
 {
@@ -28,7 +33,7 @@ vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) 
 void vertex() {
 	float height;
 	height = texture(noise, VERTEX.xz + TIME).x;
-	VERTEX.y += height * engine_length;
+	VERTEX.y += height * engine_length * (random(UV) * 1.5);
 	
 	TANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);
 	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);

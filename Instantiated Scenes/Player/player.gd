@@ -226,7 +226,8 @@ func movement(delta):
 			BOOST_TIME = maxi(0, BOOST_TIME - delta)
 			if BOOST_TIME > 0:
 				BOOST = BOOST_MULTIPLIER
-				main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
+				if accelerate_dir == 1:
+					main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
 			else:
 				BOOST = 1
 		else:
