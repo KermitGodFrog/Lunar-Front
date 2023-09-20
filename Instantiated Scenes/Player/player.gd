@@ -50,10 +50,8 @@ signal commence_firing
 var is_camera_offset_toggle = false
 var CAMERA_OFFSET_LOCATION: Vector3 = Vector3(0,0,0)
 const CAMERA_OFFSET_INTERPOLATION = 0.15
-
 var is_camera_shake = true
 var CAMERA_SHAKE_RETURN_INTERPOLATION: float = 0.05
-
 var HEADLOOK_RETURN_INTERPOLATION: float = 0.10
 
 #MISC
@@ -68,6 +66,10 @@ var is_headlook_toggle = false
 var is_movement = false
 var is_acceleration = false
 var is_rotation = false
+
+const MAIN_ENGINE_ACCEL_LENGTH = 3.0
+const MAIN_ENGINE_BOOST_LENGTH = 4.5
+const MAIN_ENGINE_INTERPOLATION = 0.15
 
 func _ready():
 	health.reset()
@@ -155,6 +157,12 @@ func movement(delta):
 		velocity += global_transform.basis.z * accelerate_dir * ACCELERATION_FORWARD * BOOST
 		is_movement = true
 		is_acceleration = true
+		if accelerate_dir == 1:
+			main_engine_shader_update(MAIN_ENGINE_ACCEL_LENGTH)
+		else:
+			main_engine_shader_update(0.0)
+	else:
+		main_engine_shader_update(0.0)
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
@@ -218,6 +226,7 @@ func movement(delta):
 			BOOST_TIME = maxi(0, BOOST_TIME - delta)
 			if BOOST_TIME > 0:
 				BOOST = BOOST_MULTIPLIER
+				main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
 			else:
 				BOOST = 1
 		else:
@@ -337,3 +346,9 @@ func _on_health_changed(current_health):
 	if current_health == 0:
 		get_tree().reload_current_scene()
 	pass
+
+func main_engine_shader_update(length: float):
+	var main_engine = get_tree().get_first_node_in_group("main_engine")
+	var lerp_to_new_length = lerp(main_engine.get_active_material(0).get_shader_parameter("engine_length"), length, MAIN_ENGINE_INTERPOLATION)
+	main_engine.get_active_material(0).set_shader_parameter("engine_length", lerp_to_new_length)
+	return

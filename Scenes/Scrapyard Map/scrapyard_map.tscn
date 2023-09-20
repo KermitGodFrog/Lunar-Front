@@ -1,8 +1,9 @@
-[gd_scene load_steps=114 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=115 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_5qk2n"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bb17b4jmis8va" path="res://Scenes/Scrapyard Map/scrapyard_map.occ" id="2_k3bap"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="3_sok7h"]
 [ext_resource type="ArrayMesh" uid="uid://b55ay2y6kqudd" path="res://Models/junkrock01.obj" id="4_jc6ip"]
 [ext_resource type="ArrayMesh" uid="uid://cvb77bxf2x24k" path="res://Models/junkrock02.obj" id="5_4wuy6"]
@@ -37,10 +38,15 @@ glow_normalized = true
 glow_bloom = 0.15
 glow_blend_mode = 0
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-adjustment_saturation = 3.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.278431, 0.278431, 0.278431, 1)
+volumetric_fog_emission = Color(0.219608, 0.219608, 0.219608, 1)
+volumetric_fog_ambient_inject = 4.0
+adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d7aoc"]
+dof_blur_near_enabled = true
 dof_blur_near_distance = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftlrq"]
@@ -492,13 +498,19 @@ _data = {
 [node name="scrapyard_map" type="Node3D"]
 script = ExtResource("1_olbxj")
 
+[node name="occluder" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("2_k3bap")
+
 [node name="environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_efynh")
 camera_attributes = SubResource("CameraAttributesPractical_d7aoc")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 1000, 500)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_color = Color(1, 0.717647, 1, 1)
+light_volumetric_fog_energy = 2.0
+light_angular_distance = 20.0
+shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("2_1t4si")]
 

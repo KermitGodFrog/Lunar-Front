@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4cmrjrvrem2m"
+path="res://.godot/imported/Barge part 1.obj-de95374214afd9c55af8b671350a673c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Barge part 1.obj-de95374214afd9c55af8b671350a673c.mesh"]
+
+source_file="res://Models/Barge part 1.obj"
+dest_files=["res://.godot/imported/Barge part 1.obj-de95374214afd9c55af8b671350a673c.mesh", "res://.godot/imported/Barge part 1.obj-de95374214afd9c55af8b671350a673c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

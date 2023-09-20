@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dennpuurbghw8"
+path="res://.godot/imported/FreighterUpdated.obj-a1b4e42482003d0ab02ea398e1a6cd3c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/FreighterUpdated.obj-a1b4e42482003d0ab02ea398e1a6cd3c.mesh"]
+
+source_file="res://Models/FreighterUpdated.obj"
+dest_files=["res://.godot/imported/FreighterUpdated.obj-a1b4e42482003d0ab02ea398e1a6cd3c.mesh", "res://.godot/imported/FreighterUpdated.obj-a1b4e42482003d0ab02ea398e1a6cd3c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
