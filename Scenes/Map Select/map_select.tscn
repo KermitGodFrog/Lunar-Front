@@ -1,0 +1,158 @@
+[gd_scene load_steps=15 format=3 uid="uid://b6x1bosgruat1"]
+
+[ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_3t0nq"]
+[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="1_d07gl"]
+[ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_3vnmj"]
+[ext_resource type="Script" path="res://Scenes/Map Select/multimap_leaderboard.gd" id="3_0gmnt"]
+[ext_resource type="Script" path="res://Scenes/Map Select/medal_texture_handling.gd" id="3_kj5i4"]
+[ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="4_m5wsd"]
+[ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="5_ahk7g"]
+[ext_resource type="Script" path="res://Scenes/Map Select/leaderboard_origin_label.gd" id="6_0cxqa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkull"]
+bg_color = Color(0, 0, 0, 0)
+border_width_right = 20
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr8qt"]
+bg_color = Color(0, 0.203922, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atg73"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srekg"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnaln"]
+content_margin_left = 9.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 6
+border_color = Color(0, 1, 0, 1)
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_oy45s"]
+default_font = ExtResource("1_d07gl")
+default_font_size = 50
+
+[node name="map_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -55.0
+offset_right = 124.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("1_3t0nq")
+theme_override_font_sizes/font_size = 30
+text = "< BACK"
+script = ExtResource("2_3vnmj")
+to_scene = "res://Scenes/Main Menu/main_menu.tscn"
+
+[node name="leaderboard_status_list" type="ItemList" parent="." groups=["leaderboard_status_list"]]
+clip_contents = false
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -510.0
+offset_top = 128.0
+offset_right = -10.0
+offset_bottom = -136.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 10
+theme_override_fonts/font = ExtResource("4_m5wsd")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_mkull")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_kr8qt")
+theme_override_styles/selected = SubResource("StyleBoxFlat_atg73")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_srekg")
+allow_search = false
+max_columns = 2
+script = ExtResource("3_0gmnt")
+
+[node name="leaderboard_origin_label" type="Label" parent="." groups=["leaderboard_origin_label"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.107
+anchor_right = 1.0
+anchor_bottom = 0.107
+offset_left = -512.0
+offset_top = -31.3
+offset_bottom = 31.7
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_ahk7g")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnaln")
+vertical_alignment = 2
+script = ExtResource("6_0cxqa")
+
+[node name="main_ui_vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -64.0
+offset_right = 301.0
+offset_bottom = 64.0
+grow_vertical = 2
+theme = ExtResource("1_3t0nq")
+
+[node name="test_map_container" type="HBoxContainer" parent="main_ui_vbox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="test_map_button" type="Button" parent="main_ui_vbox/test_map_container"]
+layout_mode = 2
+theme = SubResource("Theme_oy45s")
+text = "TEST MAP"
+alignment = 0
+script = ExtResource("2_3vnmj")
+to_scene = "res://Scenes/Test Map/test_map.tscn"
+
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/test_map_container"]
+texture_filter = 1
+layout_mode = 2
+expand_mode = 4
+stretch_mode = 5
+script = ExtResource("3_kj5i4")
+map = "test_map"
+
+[node name="scrapayrd_container" type="HBoxContainer" parent="main_ui_vbox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="scrapyard_button" type="Button" parent="main_ui_vbox/scrapayrd_container"]
+layout_mode = 2
+theme = SubResource("Theme_oy45s")
+text = "SCRAPYARD"
+script = ExtResource("2_3vnmj")
+to_scene = "res://Scenes/Scrapyard Map/scrapyard_map.tscn"
+
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/scrapayrd_container"]
+texture_filter = 1
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_kj5i4")
+map = "scrapyard"
+
+[connection signal="mouse_entered" from="main_ui_vbox/test_map_container/test_map_button" to="leaderboard_status_list" method="_on_test_map_button_mouse_entered"]
+[connection signal="mouse_entered" from="main_ui_vbox/scrapayrd_container/scrapyard_button" to="leaderboard_status_list" method="_on_scrapyard_button_mouse_entered"]

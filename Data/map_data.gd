@@ -3,6 +3,7 @@ extends Node
 var map_identifier: String
 var checkpoints: Array
 var boost_pickups: Array
+var slingshot_pickups: Array
 
 func get_next_checkpoint_one():
 	var next_checkpoint_one: Checkpoint

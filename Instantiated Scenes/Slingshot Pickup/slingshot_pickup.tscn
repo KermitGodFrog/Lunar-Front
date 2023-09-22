@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://hicfw0oyaceb"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.gd" id="1_rj8nr"]
+[ext_resource type="Texture2D" uid="uid://bc0lx0tpwtsv" path="res://Graphics/instantanious_boost_png.png" id="2_ciq1d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_peseu"]
+size = Vector3(15, 15, 15)
+
+[node name="slingshot_pickup" type="Area3D"]
+script = ExtResource("1_rj8nr")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_peseu")
+
+[node name="sprite" type="Sprite3D" parent="."]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 0, 0, 0)
+billboard = 1
+texture_filter = 2
+texture = ExtResource("2_ciq1d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

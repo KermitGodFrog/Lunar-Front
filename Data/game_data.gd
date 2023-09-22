@@ -2,6 +2,7 @@ extends Node
 
 var base_node
 var player
+var hud_effect
 
 func get_mouse_to_3d():
 	var space_state = base_node.get_world_3d().direct_space_state
@@ -43,9 +44,3 @@ func get_closest_body(bodies, global_position):
 		return distance_to_bodies.find_key(distance_to_bodies.values()[0])
 	else:
 		return null
-
-func get_randi(from: int, to: int):
-	return RandomNumberGenerator.new().randi_range(from, to)
-
-func get_randf(from: float, to: float):
-	return RandomNumberGenerator.new().randf_range(from, to)

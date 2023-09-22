@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://e34u5wp8up1l"]
+[gd_scene load_steps=7 format=3 uid="uid://e34u5wp8up1l"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_rkrb2"]
-[ext_resource type="ArrayMesh" uid="uid://bs3j0aifunkb0" path="res://Instantiated Scenes/Player/USS_YELLOWSTONE_PATROL.obj" id="2_0eqeb"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_ogqss"]
 [ext_resource type="Script" path="res://Data/thruster_base.gd" id="7_nkr3b"]
 
@@ -32,7 +31,6 @@ size = 100.0
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("2_0eqeb")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)

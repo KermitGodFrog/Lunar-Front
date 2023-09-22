@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1cdn6gf8jn6h"]
+[gd_scene load_steps=12 format=3 uid="uid://1cdn6gf8jn6h"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Checkpoint/checkpoint_base.gd" id="1_1bo2i"]
 [ext_resource type="ArrayMesh" uid="uid://c448eibhwplt8" path="res://Models/checkpoint.obj" id="2_rn3ho"]
+[ext_resource type="Texture2D" uid="uid://cxti756p4u7rb" path="res://Graphics/monotone_arrow_texture.png" id="3_y736a"]
+[ext_resource type="Texture2D" uid="uid://o4t6idsmmdmv" path="res://Graphics/Phantom/grey_metal_texture.png" id="4_edi2f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylaeg"]
 size = Vector3(16, 16, 3)
@@ -11,8 +13,41 @@ albedo_color = Color(0.247059, 0.741176, 0, 1)
 emission_enabled = true
 emission = Color(0, 1, 0, 1)
 emission_energy_multiplier = 3.0
+proximity_fade_distance = 500.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_2v3l7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt7mn"]
+albedo_color = Color(0.160784, 0.160784, 0.160784, 1)
+albedo_texture = ExtResource("3_y736a")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 5.0
+uv1_world_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+distance_fade_min_distance = 450.0
+distance_fade_max_distance = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_175xg"]
+albedo_color = Color(0.223529, 0.223529, 0.223529, 1)
+albedo_texture = ExtResource("4_edi2f")
+uv1_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+distance_fade_min_distance = 450.0
+distance_fade_max_distance = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lye3"]
+albedo_color = Color(0.101961, 0.101961, 0.101961, 1)
+normal_enabled = true
+uv1_triplanar_sharpness = 5.0
+uv1_world_triplanar = true
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh8ba"]
+albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+disable_receive_shadows = true
 
 [node name="checkpoint" type="Area3D" groups=["checkpoint"]]
 script = ExtResource("1_1bo2i")
@@ -27,8 +62,24 @@ material_override = SubResource("StandardMaterial3D_cyf6r")
 transparency = 0.5
 mesh = SubResource("TorusMesh_2v3l7")
 
-[node name="checkpoint_mesh" type="MeshInstance3D" parent="."]
+[node name="hlod_grouping_node" type="Node3D" parent="."]
+
+[node name="checkpoint_mesh" type="MeshInstance3D" parent="hlod_grouping_node"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visibility_range_end = 600.0
+visibility_range_end_margin = 10.0
 mesh = ExtResource("2_rn3ho")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lt7mn")
+surface_material_override/1 = SubResource("StandardMaterial3D_175xg")
+
+[node name="checkpoint_mesh_low_detail" type="MeshInstance3D" parent="hlod_grouping_node"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visibility_range_begin = 600.0
+visibility_range_begin_margin = 10.0
+mesh = ExtResource("2_rn3ho")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5lye3")
+surface_material_override/1 = SubResource("StandardMaterial3D_hh8ba")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

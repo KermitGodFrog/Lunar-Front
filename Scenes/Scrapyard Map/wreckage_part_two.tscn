@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://i2dtmd5tgr7o"]
+
+[ext_resource type="ArrayMesh" uid="uid://ohq0bwinpqse" path="res://Models/Barge part 2.obj" id="1_lugq3"]
+[ext_resource type="Texture2D" uid="uid://dedxv75yr5an2" path="res://Models/MetalScrap.png" id="2_geb73"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydcj2"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ppnh"]
+albedo_texture = ExtResource("2_geb73")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s6kg"]
+albedo_color = Color(0.478431, 0.317647, 0.243137, 1)
+
+[node name="wreckage_p2" type="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 0, -6.7)
+shape = SubResource("CapsuleShape3D_ydcj2")
+
+[node name="hlod_grouping_node" type="Node3D" parent="."]
+
+[node name="mesh" type="MeshInstance3D" parent="hlod_grouping_node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visibility_range_end = 1600.0
+visibility_range_end_margin = 10.0
+mesh = ExtResource("1_lugq3")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ppnh")
+
+[node name="mesh_low_detail" type="MeshInstance3D" parent="hlod_grouping_node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visibility_range_begin = 1600.0
+visibility_range_begin_margin = 10.0
+mesh = ExtResource("1_lugq3")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2s6kg")
