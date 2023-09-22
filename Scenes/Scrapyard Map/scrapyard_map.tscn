@@ -121,7 +121,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.5]
+"values": [0.8]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -145,7 +145,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1124,13 +1124,14 @@ script = ExtResource("7_dh28b")
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 2700, 250, 1000)
 visible = false
 material_override = SubResource("StandardMaterial3D_ahcfn")
-transparency = 0.5
+transparency = 0.8
 cast_shadow = 0
 mesh = ExtResource("16_0esfa")
 skeleton = NodePath("../..")
 
 [node name="freighter_jump_mesh_two" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 9.84808, -1.73648, 0, 1.73648, 9.84808, -1000, 650, -3000)
+visible = false
 material_override = SubResource("StandardMaterial3D_ahcfn")
 transparency = 0.8
 cast_shadow = 0
