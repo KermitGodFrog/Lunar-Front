@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=215 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://nmrn2lkoxwap" path="res://Graphics/Phantom/cushioning_texture.png" id="11_ake47"]
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="11_yl3bw"]
 [ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="13_dxicu"]
+[ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="14_tad36"]
+[ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="15_lea70"]
 [ext_resource type="ArrayMesh" uid="uid://dennpuurbghw8" path="res://Models/FreighterUpdated.obj" id="16_0esfa"]
 [ext_resource type="ArrayMesh" uid="uid://xx1g0v10fyen" path="res://Models/Barge.obj" id="19_lvi1r"]
 [ext_resource type="Texture2D" uid="uid://cxkjrvmv360ce" path="res://Graphics/Shipping Containers/green_shipping_container_scrap.png" id="21_q1fjw"]
@@ -38,14 +40,15 @@ sky_material = ExtResource("3_stqrg")
 background_mode = 2
 sky = SubResource("Sky_285ka")
 ambient_light_source = 2
-ambient_light_color = Color(1, 0.792157, 1, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.2
-reflected_light_source = 2
+reflected_light_source = 1
 tonemap_mode = 2
 sdfgi_read_sky_light = false
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 0.7
 glow_bloom = 0.15
 glow_blend_mode = 0
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
@@ -56,7 +59,6 @@ volumetric_fog_emission = Color(0.219608, 0.219608, 0.219608, 1)
 volumetric_fog_ambient_inject = 4.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d7aoc"]
-dof_blur_near_enabled = true
 dof_blur_near_distance = 5.0
 
 [sub_resource type="Animation" id="Animation_4d4if"]
@@ -73,6 +75,90 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(2700, 250, 1000)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("freighter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("freighter/main_engine:mesh:material:shader_parameter/engine_length")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("freighter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("freighter_jump_mesh_one:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("freighter_jump_mesh_one:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("freighter_jump_mesh_two:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("freighter_jump_mesh_two:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
 
 [sub_resource type="Animation" id="Animation_oy8q4"]
 resource_name = "spaceship_train_movement"
@@ -84,10 +170,94 @@ tracks/0/path = NodePath("freighter:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 20, 35.1, 45.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 35.1, 45.4),
+"transitions": PackedFloat32Array(1, 1, 0.3),
 "update": 0,
-"values": [Vector3(2700, 250, 1000), Vector3(-500, 250, 1000), Vector3(-1300, 300, 1000), Vector3(-800, 650, -3000)]
+"values": [Vector3(2700, 250, 1000), Vector3(-1000, 300, 1000), Vector3(-1000, 650, -3000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("freighter:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 35.1),
+"transitions": PackedFloat32Array(1, 0.4),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, -0.174533)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("freighter/main_engine:mesh:material:shader_parameter/engine_length")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 34, 35.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 130.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("freighter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 45.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("freighter_jump_mesh_one:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("freighter_jump_mesh_one:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("freighter_jump_mesh_two:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 45.4, 55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("freighter_jump_mesh_two:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(45.4, 55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
@@ -95,6 +265,14 @@ _data = {
 "RESET": SubResource("Animation_4d4if"),
 "spaceship_train_movement": SubResource("Animation_oy8q4")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahcfn"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("15_lea70")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oe2xc"]
 albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
@@ -181,7 +359,6 @@ albedo_color = Color(0, 0, 0, 1)
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mkp4"]
-albedo_color = Color(0.54902, 0.54902, 0.54902, 1)
 albedo_texture = ExtResource("13_dxicu")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_offset = Vector3(0, 0, 0.7)
@@ -189,7 +366,6 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jqyk"]
-albedo_color = Color(0.54902, 0.54902, 0.54902, 1)
 albedo_texture = ExtResource("13_dxicu")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_offset = Vector3(0, 0, 0.7)
@@ -197,7 +373,6 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulruv"]
-albedo_color = Color(0.54902, 0.54902, 0.54902, 1)
 albedo_texture = ExtResource("13_dxicu")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_offset = Vector3(0, 0, 0.7)
@@ -205,7 +380,6 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssa80"]
-albedo_color = Color(0.54902, 0.54902, 0.54902, 1)
 albedo_texture = ExtResource("13_dxicu")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_offset = Vector3(0, 0, 0.7)
@@ -323,6 +497,31 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4rhpg"]
 radius = 123.0
 height = 1728.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eetvw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0r51u"]
+seamless_blend_skirt = 1.0
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_eetvw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xlrg"]
+render_priority = 0
+shader = ExtResource("14_tad36")
+shader_parameter/engine_length = 0.0
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/noise = SubResource("NoiseTexture2D_0r51u")
+shader_parameter/thruster_texture = ExtResource("15_lea70")
+shader_parameter/texture_emission = ExtResource("15_lea70")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aiog5"]
+material = SubResource("ShaderMaterial_2xlrg")
+size = Vector2(64, 64)
+subdivide_width = 32
+subdivide_depth = 32
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftlrq"]
 albedo_texture = ExtResource("6_7x6if")
@@ -915,13 +1114,33 @@ shadow_enabled = true
 
 [node name="freighter_animation" type="AnimationPlayer" parent="." groups=["receive_race_starting"]]
 playback_process_mode = 0
+playback_default_blend_time = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_flwd5")
 }
 script = ExtResource("7_dh28b")
 
+[node name="freighter_jump_mesh_one" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 2700, 250, 1000)
+visible = false
+material_override = SubResource("StandardMaterial3D_ahcfn")
+transparency = 0.5
+cast_shadow = 0
+mesh = ExtResource("16_0esfa")
+skeleton = NodePath("../..")
+
+[node name="freighter_jump_mesh_two" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 9.84808, -1.73648, 0, 1.73648, 9.84808, -1000, 650, -3000)
+material_override = SubResource("StandardMaterial3D_ahcfn")
+transparency = 0.8
+cast_shadow = 0
+mesh = ExtResource("16_0esfa")
+skeleton = NodePath("../..")
+
 [node name="freighter" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2700, 250, 1000)
+visible = false
+sync_to_physics = false
 
 [node name="freighter_mesh" type="MeshInstance3D" parent="freighter"]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 0, 0, 0)
@@ -987,6 +1206,30 @@ surface_material_override/54 = SubResource("StandardMaterial3D_nui0u")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_4rhpg")
 
+[node name="main_engine" type="MeshInstance3D" parent="freighter" groups=["main_engine"]]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, 0)
+mesh = SubResource("PlaneMesh_aiog5")
+
+[node name="main_engine2" type="MeshInstance3D" parent="freighter" groups=["main_engine"]]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, 100)
+mesh = SubResource("PlaneMesh_aiog5")
+
+[node name="main_engine3" type="MeshInstance3D" parent="freighter" groups=["main_engine"]]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, -100)
+mesh = SubResource("PlaneMesh_aiog5")
+
+[node name="boost_pickup" parent="freighter" instance=ExtResource("11_yl3bw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 160, 0)
+BOOST_INCREASE = 200.0
+
+[node name="boost_pickup2" parent="freighter" instance=ExtResource("11_yl3bw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -160, 0)
+BOOST_INCREASE = 200.0
+
+[node name="slingshot_pickup" parent="freighter" instance=ExtResource("10_5rogf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -620, 160, 0)
+BOOST_SPEED = 750.0
+
 [node name="checkpoint1" parent="." instance=ExtResource("3_sok7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)
 
@@ -1029,10 +1272,6 @@ CHECKPOINT_NUMBER = 8
 [node name="slingshot_pickup" parent="." instance=ExtResource("10_5rogf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1359, 200, 1900)
 BOOST_SPEED = 1000.0
-
-[node name="boost_pickup" parent="." instance=ExtResource("11_yl3bw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1224.78, 200, 3489.07)
-BOOST_INCREASE = 300.0
 
 [node name="junk_rock_var1_1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.453991, -0.891007, 0, 0.891007, 0.453991, -200, 0, 300)

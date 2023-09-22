@@ -1,8 +1,9 @@
 shader_type spatial;
+render_mode shadows_disabled;
 
 uniform sampler2D noise;
 uniform sampler2D thruster_texture;
-uniform float engine_length : hint_range(0.0, 6.0, 0.0);
+uniform float engine_length;
 
 uniform sampler2D texture_emission : source_color, hint_default_black,filter_nearest,repeat_enable;
 uniform vec4 emission : source_color;
