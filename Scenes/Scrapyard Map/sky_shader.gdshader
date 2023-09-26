@@ -1,9 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dc251et45vaaq"]
-
-[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="1_8b837"]
-
-[sub_resource type="Shader" id="Shader_tdadn"]
-code = "shader_type sky;
+shader_type sky;
 render_mode use_half_res_pass;
 
 uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
@@ -17,9 +12,3 @@ void sky() {
 	COLOR = mix(stars, star.rgb, star.a);
 	COLOR += EYEDIR.y / 70.0;
 }
-"
-
-[resource]
-shader = SubResource("Shader_tdadn")
-shader_parameter/star_colour = Color(1, 0, 0.564706, 1)
-shader_parameter/source_panorama = ExtResource("1_8b837")

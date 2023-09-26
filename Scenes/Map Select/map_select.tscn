@@ -115,26 +115,6 @@ offset_bottom = 64.0
 grow_vertical = 2
 theme = ExtResource("1_3t0nq")
 
-[node name="test_map_container" type="HBoxContainer" parent="main_ui_vbox"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="test_map_button" type="Button" parent="main_ui_vbox/test_map_container"]
-layout_mode = 2
-theme = SubResource("Theme_oy45s")
-text = "TEST MAP"
-alignment = 0
-script = ExtResource("2_3vnmj")
-to_scene = "res://Scenes/Test Map/test_map.tscn"
-
-[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/test_map_container"]
-texture_filter = 1
-layout_mode = 2
-expand_mode = 4
-stretch_mode = 5
-script = ExtResource("3_kj5i4")
-map = "test_map"
-
 [node name="scrapayrd_container" type="HBoxContainer" parent="main_ui_vbox"]
 layout_mode = 2
 theme_override_constants/separation = 50
@@ -154,5 +134,24 @@ stretch_mode = 5
 script = ExtResource("3_kj5i4")
 map = "scrapyard"
 
-[connection signal="mouse_entered" from="main_ui_vbox/test_map_container/test_map_button" to="leaderboard_status_list" method="_on_test_map_button_mouse_entered"]
+[node name="fleet_container" type="HBoxContainer" parent="main_ui_vbox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="fleet_button" type="Button" parent="main_ui_vbox/fleet_container"]
+layout_mode = 2
+theme = SubResource("Theme_oy45s")
+text = "FLEET"
+script = ExtResource("2_3vnmj")
+to_scene = "res://Scenes/Fleet Map/fleet_map.tscn"
+
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/fleet_container"]
+texture_filter = 1
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_kj5i4")
+map = "fleet"
+
 [connection signal="mouse_entered" from="main_ui_vbox/scrapayrd_container/scrapyard_button" to="leaderboard_status_list" method="_on_scrapyard_button_mouse_entered"]
+[connection signal="mouse_entered" from="main_ui_vbox/fleet_container/fleet_button" to="leaderboard_status_list" method="_on_fleet_button_mouse_entered"]
