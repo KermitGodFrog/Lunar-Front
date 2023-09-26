@@ -43,7 +43,7 @@ func _on_body_entered(body):
 	pass
 
 func leaderboard_handling():
-	var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), str(map_data.map_identifier, "_map")).sw_save_score_complete
+	#var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), str(map_data.map_identifier, "_map")).sw_save_score_complete
 	get_tree().call_group("leaderboard_status_list", "update")
 	pass
 

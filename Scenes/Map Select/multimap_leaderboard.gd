@@ -49,6 +49,6 @@ func _on_scrapyard_button_mouse_entered():
 	update("scrapyard_map")
 	pass
 
-func _on_test_map_button_mouse_entered():
-	update("test_map")
-	pass 
+func _on_fleet_button_mouse_entered():
+	update("fleet_map")
+	pass

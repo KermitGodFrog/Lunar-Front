@@ -13,7 +13,7 @@ var current_time: float
 
 const ACCELERATION_FORWARD = 1.5
 const ACCELERATION_MOVEMENT = 1.5
-const PITCH_SPEED = 50.0
+const PITCH_SPEED = 60.0
 const YAW_SPEED = 50.0
 const ROLL_SPEED = 50.0
 const ROTATION_INTERPOLATION = 0.025
@@ -129,6 +129,10 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	weapons()
+	
+	var camera_shake_body = get_tree().get_first_node_in_group("cause_player_camera_shake")
+	if camera_shake_body:
+		proximity_camera_shake(delta, camera_shake_body, 2.5, 1000)
 	
 	if current_checkpoint:
 		current_time += delta
@@ -299,7 +303,7 @@ func camera(_delta):
 				CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
 	$camera_offset.position = $camera_offset.position.lerp(CAMERA_OFFSET_LOCATION, CAMERA_OFFSET_INTERPOLATION)
 	
-	#CAMERA SHAKE
+	#ACCELERATION CAMERA SHAKE
 	
 	var camera_shake_time: float
 	if is_camera_shake == true:
@@ -328,6 +332,25 @@ func camera(_delta):
 			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED, ROTATION_INTERPOLATION)
 	
 	pass
+
+func proximity_camera_shake(_delta, body, amount: float, begin_distance: float):
+	var camera_shake_time: float
+	if global_transform.origin.distance_to(body.global_transform.origin) < begin_distance:
+		
+		camera_shake_time = _delta
+		
+		var h_shake = global_data.get_randf(-amount, amount)
+		var v_shake = global_data.get_randf(-amount, amount)
+		
+		$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, h_shake, camera_shake_time * BOOST)
+		$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, v_shake, camera_shake_time * BOOST)
+	else:
+		$camera_offset/camera.h_offset = lerp($camera_offset/camera.h_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+		$camera_offset/camera.v_offset = lerp($camera_offset/camera.v_offset, 0.0, CAMERA_SHAKE_RETURN_INTERPOLATION)
+		camera_shake_time = 0.0
+	pass
+
+
 
 func weapons():
 	if Input.is_action_just_pressed("switch_fire_group_zero"):

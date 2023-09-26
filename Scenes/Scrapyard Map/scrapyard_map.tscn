@@ -1,11 +1,12 @@
-[gd_scene load_steps=215 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=217 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bb17b4jmis8va" path="res://Scenes/Scrapyard Map/scrapyard_map.occ" id="2_k3bap"]
+[ext_resource type="Shader" path="res://Scenes/Scrapyard Map/sky_shader.gdshader" id="3_jvuno"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="3_sok7h"]
-[ext_resource type="Material" uid="uid://dc251et45vaaq" path="res://Scenes/Scrapyard Map/sky_shader.tres" id="3_stqrg"]
 [ext_resource type="ArrayMesh" uid="uid://b55ay2y6kqudd" path="res://Models/junkrock01.obj" id="4_jc6ip"]
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="4_r3bfb"]
 [ext_resource type="ArrayMesh" uid="uid://cvb77bxf2x24k" path="res://Models/junkrock02.obj" id="5_4wuy6"]
 [ext_resource type="Texture2D" uid="uid://cnfiogtg0ur2w" path="res://Models/scrap texture.png" id="6_7x6if"]
 [ext_resource type="Texture2D" uid="uid://dppnnuvnnjy1k" path="res://Graphics/Shipping Containers/red_shipping_container_normal.png" id="7_1tad4"]
@@ -33,12 +34,17 @@
 [ext_resource type="PackedScene" uid="uid://i2dtmd5tgr7o" path="res://Scenes/Scrapyard Map/wreckage_part_two.tscn" id="26_e0j0s"]
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/big_wreckage.gd" id="26_fg3qi"]
 
-[sub_resource type="Sky" id="Sky_285ka"]
-sky_material = ExtResource("3_stqrg")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l45vr"]
+shader = ExtResource("3_jvuno")
+shader_parameter/star_colour = Color(1, 0, 0.564706, 1)
+shader_parameter/source_panorama = ExtResource("4_r3bfb")
+
+[sub_resource type="Sky" id="Sky_icrtt"]
+sky_material = SubResource("ShaderMaterial_l45vr")
 
 [sub_resource type="Environment" id="Environment_efynh"]
 background_mode = 2
-sky = SubResource("Sky_285ka")
+sky = SubResource("Sky_icrtt")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
@@ -159,6 +165,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.8]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("freighter/collision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_oy8q4"]
 resource_name = "spaceship_train_movement"
@@ -221,7 +239,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.7, 1.0]
+"values": [0.5, 1.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -258,6 +276,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.7, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("freighter/collision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 45.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flwd5"]
@@ -1138,7 +1168,7 @@ cast_shadow = 0
 mesh = ExtResource("16_0esfa")
 skeleton = NodePath("../..")
 
-[node name="freighter" type="AnimatableBody3D" parent="."]
+[node name="freighter" type="AnimatableBody3D" parent="." groups=["cause_player_camera_shake"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2700, 250, 1000)
 visible = false
 sync_to_physics = false
