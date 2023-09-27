@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2iufim00bkxs"]
+[gd_scene load_steps=4 format=3 uid="uid://c2iufim00bkxs"]
 
 [ext_resource type="Script" path="res://Scenes/Name Setting/name_edit.gd" id="2_nsy3p"]
 [ext_resource type="Script" path="res://Scenes/Name Setting/submit_button.gd" id="2_q5jgl"]
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_tsmi4"]
-[ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="3_ydbfy"]
 
 [node name="name_setting" type="Control"]
 layout_mode = 3
@@ -55,22 +54,5 @@ theme = ExtResource("3_tsmi4")
 text = "SUBMIT"
 script = ExtResource("2_q5jgl")
 to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Main Menu/main_menu.tscn"
-
-[node name="back_button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 10.0
-offset_top = -33.5
-offset_right = 197.0
-offset_bottom = 33.5
-grow_vertical = 2
-theme = ExtResource("3_tsmi4")
-theme_override_font_sizes/font_size = 30
-text = "< BACK"
-alignment = 0
-script = ExtResource("3_ydbfy")
-to_scene = "res://Scenes/Main Menu/main_menu.tscn"
 
 [connection signal="pressed" from="submit_button" to="submit_button" method="_on_pressed"]

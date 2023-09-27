@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=87 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="7_01b0a"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/boost_meter.gd" id="7_3jp72"]
 [ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="8_c28nh"]
+[ext_resource type="Texture2D" uid="uid://bwsuf33kxa2n3" path="res://Graphics/Medals/no_medal.png" id="9_4emhe"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/medal_status.gd" id="9_a8850"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/movement_mode.gd" id="9_nqefh"]
 [ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Graphics/HUD/collision_warning_png.png" id="10_s37jl"]
@@ -431,10 +432,11 @@ texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -110.0
-offset_right = -10.0
+offset_left = -100.0
 offset_bottom = 100.0
 grow_horizontal = 0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("9_4emhe")
 stretch_mode = 5
 script = ExtResource("9_a8850")
 
@@ -1141,4 +1143,3 @@ script = ExtResource("36_53deo")
 
 [node name="pause_menu" parent="pause_handling" instance=ExtResource("37_54nov")]
 visible = false
-top_level = true

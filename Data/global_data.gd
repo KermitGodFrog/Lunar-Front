@@ -11,7 +11,7 @@ var asteroid_refinery_best_time: float
 @onready var gold_medal = preload("res://Graphics/Medals/gold_medal.png")
 
 func _ready():
-	reset_player_data()
+	load_player_data()
 	settings.load_settings()
 	
 	SilentWolf.configure({
@@ -20,6 +20,8 @@ func _ready():
 		"log_level": 0,
 	})
 	
+	if player_name.is_empty():
+		get_tree().change_scene_to_file("res://Scenes/Name Setting/name_setting.tscn")
 	pass
 
 func _notification(what):
