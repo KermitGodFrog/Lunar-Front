@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7pjfsa2u87a7"]
+[gd_scene load_steps=19 format=3 uid="uid://b7pjfsa2u87a7"]
 
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Scenes/Fleet Map/sky_shader.gdshader" id="3_5lq7o"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="4_kfouj"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="6_5qgdh"]
+[ext_resource type="PackedScene" uid="uid://b40hi1cc0fmp2" path="res://Scenes/Fleet Map/cruiser.tscn" id="7_mf4ab"]
 
 [sub_resource type="Gradient" id="Gradient_gmwh2"]
 offsets = PackedFloat32Array(0.358108, 0.722973)
@@ -84,7 +85,7 @@ camera_attributes = SubResource("CameraAttributesPractical_avfw3")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-light_color = Color(0.890196, 0.796078, 0, 1)
+light_color = Color(1, 1, 0.8, 1)
 light_volumetric_fog_energy = 2.0
 light_angular_distance = 40.0
 shadow_enabled = true
@@ -102,3 +103,6 @@ CHECKPOINT_NUMBER = 1
 [node name="checkpoint3" parent="." instance=ExtResource("6_5qgdh")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 900, 0)
 CHECKPOINT_NUMBER = 2
+
+[node name="cruiser" parent="." instance=ExtResource("7_mf4ab")]
+transform = Transform3D(6.24826, 0, -13.6367, 0, 15, 0, 13.6367, 0, 6.24826, -844.853, 0, 0)

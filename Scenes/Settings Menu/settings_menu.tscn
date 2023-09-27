@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8vo6k44dw41q"]
+[gd_scene load_steps=17 format=3 uid="uid://8vo6k44dw41q"]
 
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_eggyk"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/settings_menu.gd" id="1_quyhj"]
@@ -12,6 +12,25 @@
 [ext_resource type="ButtonGroup" uid="uid://4vlcgormuav7" path="res://Scenes/Settings Menu/keybindings_button_group.tres" id="10_l66jm"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/keybind_option.gd" id="11_2mnd0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j4b4"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 15
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utr4o"]
+bg_color = Color(0, 0.635294, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77ubh"]
+bg_color = Color(0, 1, 0, 1)
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_e3gl8"]
 content_margin_left = 15.0
 color = Color(0, 1, 0, 1)
@@ -24,16 +43,6 @@ color = Color(0, 0.298039, 0, 1)
 thickness = 10
 vertical = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utr4o"]
-bg_color = Color(0, 0.635294, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77ubh"]
-bg_color = Color(0, 1, 0, 1)
-
 [node name="settings_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -43,12 +52,475 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_quyhj")
 
+[node name="scroll_container" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1006.0
+offset_top = -450.0
+offset_bottom = 450.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_1j4b4")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="options_container" type="VBoxContainer" parent="scroll_container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="first_person_mouse_control" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="checkbox" type="CheckBox" parent="scroll_container/options_container/first_person_mouse_control" groups=["bool_option"]]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("4_6k5lr")
+theme_override_icons/unchecked = ExtResource("5_s38sc")
+text = "FIRST PERSON MOUSE CONTROL"
+script = ExtResource("7_w8c2q")
+settings_variable = "first_person_mouse_control"
+
+[node name="acceleration_camera_shake" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="checkbox" type="CheckBox" parent="scroll_container/options_container/acceleration_camera_shake" groups=["bool_option"]]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("4_6k5lr")
+theme_override_icons/unchecked = ExtResource("5_s38sc")
+text = "ACCELERATION CAMERA SHAKE"
+script = ExtResource("7_w8c2q")
+settings_variable = "acceleration_camera_shake"
+
+[node name="third_person_sensitivity" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="slider" type="HSlider" parent="scroll_container/options_container/third_person_sensitivity" groups=["slider_option"]]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("8_8d1gf")
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.01
+script = ExtResource("9_v1mbt")
+settings_variable = "third_person_sensitivity"
+
+[node name="label" type="Label" parent="scroll_container/options_container/third_person_sensitivity"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "THIRD PERSON CAMERA SENSITIVITY"
+
+[node name="first_person_headlook_sensitivity" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="slider" type="HSlider" parent="scroll_container/options_container/first_person_headlook_sensitivity" groups=["slider_option"]]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("8_8d1gf")
+min_value = 100.0
+max_value = 5000.0
+value = 100.0
+script = ExtResource("9_v1mbt")
+settings_variable = "first_person_headlook_sensitivity"
+
+[node name="label" type="Label" parent="scroll_container/options_container/first_person_headlook_sensitivity"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "FIRST PERSON HEADLOOK SENSITIVITY"
+
+[node name="pause" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/pause" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "pause_key"
+action_string = "pause"
+
+[node name="label" type="Label" parent="scroll_container/options_container/pause"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "PAUSE"
+
+[node name="fa" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/fa" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "fa_key"
+action_string = "fa_toggle"
+
+[node name="label" type="Label" parent="scroll_container/options_container/fa"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "FLIGHT ASSIST TOGGLE"
+
+[node name="camera_offset" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/camera_offset" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "camera_offset_key"
+action_string = "camera_offset_toggle"
+
+[node name="label" type="Label" parent="scroll_container/options_container/camera_offset"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "THIRD PERSON CAMERA OFFSET TOGGLE"
+
+[node name="boost" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/boost" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "boost_key"
+action_string = "boost"
+
+[node name="label" type="Label" parent="scroll_container/options_container/boost"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "BOOST"
+
+[node name="accelerate_forward" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/accelerate_forward" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "accelerate_forward_key"
+action_string = "accelerate_forward"
+
+[node name="label" type="Label" parent="scroll_container/options_container/accelerate_forward"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "ACCELERATE FORWARD"
+
+[node name="accelerate_backward" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/accelerate_backward" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "accelerate_backward_key"
+action_string = "accelerate_backward"
+
+[node name="label" type="Label" parent="scroll_container/options_container/accelerate_backward"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "ACCELERATE BACKWARD"
+
+[node name="pitch_up" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/pitch_up" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "pitch_up_key"
+action_string = "pitch_up"
+
+[node name="label" type="Label" parent="scroll_container/options_container/pitch_up"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "PITCH UP"
+
+[node name="pitch_down" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/pitch_down" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "pitch_down_key"
+action_string = "pitch_down"
+
+[node name="label" type="Label" parent="scroll_container/options_container/pitch_down"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "PITCH DOWN"
+
+[node name="yaw_left" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/yaw_left" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "yaw_left_key"
+action_string = "yaw_left"
+
+[node name="label" type="Label" parent="scroll_container/options_container/yaw_left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "YAW LEFT"
+
+[node name="yaw_right" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/yaw_right" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "yaw_right_key"
+action_string = "yaw_right"
+
+[node name="label" type="Label" parent="scroll_container/options_container/yaw_right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "YAW RIGHT"
+
+[node name="roll_left" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/roll_left" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "roll_left_key"
+action_string = "roll_left"
+
+[node name="label" type="Label" parent="scroll_container/options_container/roll_left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "ROLL LEFT"
+
+[node name="roll_right" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/roll_right" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "roll_right_key"
+action_string = "roll_right"
+
+[node name="label" type="Label" parent="scroll_container/options_container/roll_right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "ROLL RIGHT
+"
+
+[node name="move_up" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/move_up" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "move_up_key"
+action_string = "move_up"
+
+[node name="label" type="Label" parent="scroll_container/options_container/move_up"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOVE UP
+"
+
+[node name="move_down" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/move_down" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "move_down_key"
+action_string = "move_down"
+
+[node name="label" type="Label" parent="scroll_container/options_container/move_down"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOVE DOWN
+"
+
+[node name="move_left" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/move_left" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "move_left_key"
+action_string = "move_left"
+
+[node name="label" type="Label" parent="scroll_container/options_container/move_left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOVE LEFT
+"
+
+[node name="move_right" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/move_right" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "move_right_key"
+action_string = "move_right"
+
+[node name="label" type="Label" parent="scroll_container/options_container/move_right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOVE RIGHT
+"
+
 [node name="grid_container" type="GridContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -450.0
+offset_right = 116.0
+offset_bottom = 450.0
 grow_vertical = 2
 theme_override_constants/h_separation = 50
 columns = 2
@@ -88,147 +560,6 @@ theme_override_styles/hover = SubResource("StyleBoxLine_1nolc")
 text = "< BACK"
 script = ExtResource("3_aywva")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
-
-[node name="options_container" type="VBoxContainer" parent="grid_container"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 10
-
-[node name="first_person_mouse_control" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="checkbox" type="CheckBox" parent="grid_container/options_container/first_person_mouse_control" groups=["bool_option"]]
-layout_mode = 2
-theme_override_constants/h_separation = 30
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-theme_override_icons/checked = ExtResource("4_6k5lr")
-theme_override_icons/unchecked = ExtResource("5_s38sc")
-text = "FIRST PERSON MOUSE CONTROL"
-script = ExtResource("7_w8c2q")
-settings_variable = "first_person_mouse_control"
-
-[node name="acceleration_camera_shake" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="checkbox" type="CheckBox" parent="grid_container/options_container/acceleration_camera_shake" groups=["bool_option"]]
-layout_mode = 2
-theme_override_constants/h_separation = 30
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-theme_override_icons/checked = ExtResource("4_6k5lr")
-theme_override_icons/unchecked = ExtResource("5_s38sc")
-text = "ACCELERATION CAMERA SHAKE"
-script = ExtResource("7_w8c2q")
-settings_variable = "acceleration_camera_shake"
-
-[node name="third_person_sensitivity" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="slider" type="HSlider" parent="grid_container/options_container/third_person_sensitivity" groups=["slider_option"]]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme = ExtResource("8_8d1gf")
-min_value = 0.01
-max_value = 1.0
-step = 0.01
-value = 0.01
-script = ExtResource("9_v1mbt")
-settings_variable = "third_person_sensitivity"
-
-[node name="label" type="Label" parent="grid_container/options_container/third_person_sensitivity"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-text = "THIRD PERSON CAMERA SENSITIVITY"
-
-[node name="first_person_headlook_sensitivity" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="slider" type="HSlider" parent="grid_container/options_container/first_person_headlook_sensitivity" groups=["slider_option"]]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme = ExtResource("8_8d1gf")
-min_value = 100.0
-max_value = 5000.0
-value = 100.0
-script = ExtResource("9_v1mbt")
-settings_variable = "first_person_headlook_sensitivity"
-
-[node name="label" type="Label" parent="grid_container/options_container/first_person_headlook_sensitivity"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-text = "FIRST PERSON HEADLOOK SENSITIVITY"
-
-[node name="pause_keybinding" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="button" type="Button" parent="grid_container/options_container/pause_keybinding" groups=["keybind_option"]]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
-toggle_mode = true
-button_group = ExtResource("10_l66jm")
-script = ExtResource("11_2mnd0")
-keybindings_button_group = ExtResource("10_l66jm")
-settings_variable = "pause_key"
-action_string = "pause"
-
-[node name="label" type="Label" parent="grid_container/options_container/pause_keybinding"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-text = "PAUSE"
-
-[node name="fa_keybinding" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="button" type="Button" parent="grid_container/options_container/fa_keybinding" groups=["keybind_option"]]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
-toggle_mode = true
-button_group = ExtResource("10_l66jm")
-script = ExtResource("11_2mnd0")
-keybindings_button_group = ExtResource("10_l66jm")
-settings_variable = "fa_key"
-action_string = "fa_toggle"
-
-[node name="label" type="Label" parent="grid_container/options_container/fa_keybinding"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-text = "FLIGHT ASSIST TOGGLE"
-
-[node name="camera_offset_keybinding" type="HBoxContainer" parent="grid_container/options_container"]
-layout_mode = 2
-
-[node name="button" type="Button" parent="grid_container/options_container/camera_offset_keybinding" groups=["keybind_option"]]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
-toggle_mode = true
-button_group = ExtResource("10_l66jm")
-script = ExtResource("11_2mnd0")
-keybindings_button_group = ExtResource("10_l66jm")
-settings_variable = "camera_offset_key"
-action_string = "camera_offset_toggle"
-
-[node name="label" type="Label" parent="grid_container/options_container/camera_offset_keybinding"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hw16d")
-theme_override_font_sizes/font_size = 30
-text = "THIRD PERSON CAMERA OFFSET TOGGLE"
 
 [connection signal="pressed" from="grid_container/save_restore_and_quit_options/save_button" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="grid_container/save_restore_and_quit_options/restore_defaults_button" to="." method="_on_restore_defaults_button_pressed"]

@@ -303,14 +303,14 @@ normal_texture = ExtResource("30_85du5")
 uv1_triplanar = true
 texture_filter = 0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ftqg0"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gk6l7"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xlgmp"]
 seamless_blend_skirt = 1.0
 bump_strength = 32.0
-noise = SubResource("FastNoiseLite_ftqg0")
+noise = SubResource("FastNoiseLite_gk6l7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lssm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvpmo"]
 render_priority = 0
 shader = ExtResource("31_5tfth")
 shader_parameter/engine_length = 3.0
@@ -323,7 +323,7 @@ shader_parameter/thruster_texture = ExtResource("21_styyg")
 shader_parameter/texture_emission = ExtResource("21_styyg")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wvi2u"]
-material = SubResource("ShaderMaterial_0lssm")
+material = SubResource("ShaderMaterial_nvpmo")
 subdivide_width = 32
 subdivide_depth = 32
 
@@ -582,7 +582,7 @@ surface_material_override/23 = SubResource("StandardMaterial3D_0bh4t")
 surface_material_override/26 = SubResource("StandardMaterial3D_qgnaf")
 surface_material_override/27 = SubResource("StandardMaterial3D_ogymy")
 
-[node name="main_engine" type="MeshInstance3D" parent="." groups=["main_engine"]]
+[node name="main_engine" type="MeshInstance3D" parent="." groups=["player_main_engine"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1)
 mesh = SubResource("PlaneMesh_wvi2u")
 

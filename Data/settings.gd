@@ -1,15 +1,33 @@
 extends Node
 
+#CHECKBOXES AND SLIDERS
+
 var first_person_mouse_control: bool
 var acceleration_camera_shake: bool
 var third_person_sensitivity: float
 var first_person_headlook_sensitivity: int
 
+#MISC 
+
 var pause_key: Array
 var fa_key: Array
 var camera_offset_key: Array
+var boost_key: Array
 
-@onready var keybindings = [pause_key, fa_key, camera_offset_key]
+#MOVEMENT
+
+var accelerate_forward_key: Array
+var accelerate_backward_key: Array
+var pitch_up_key: Array
+var pitch_down_key: Array
+var yaw_left_key: Array
+var yaw_right_key: Array
+var roll_left_key: Array
+var roll_right_key: Array
+var move_up_key: Array
+var move_down_key: Array
+var move_left_key: Array
+var move_right_key: Array
 
 func save_settings():
 	var file = FileAccess.open("user://settings.save", FileAccess.WRITE)
@@ -21,8 +39,23 @@ func save_settings():
 	file.store_var(pause_key)
 	file.store_var(fa_key)
 	file.store_var(camera_offset_key)
+	file.store_var(boost_key)
+	
+	file.store_var(accelerate_forward_key)
+	file.store_var(accelerate_backward_key)
+	file.store_var(pitch_up_key)
+	file.store_var(pitch_down_key)
+	file.store_var(yaw_left_key)
+	file.store_var(yaw_right_key)
+	file.store_var(roll_left_key)
+	file.store_var(roll_right_key)
+	file.store_var(move_up_key)
+	file.store_var(move_down_key)
+	file.store_var(move_left_key)
+	file.store_var(move_right_key)
 	
 	file.close()
+	
 	pass
 
 func load_settings():
@@ -36,11 +69,22 @@ func load_settings():
 		pause_key = file.get_var(true)
 		fa_key = file.get_var(true)
 		camera_offset_key = file.get_var(true)
+		boost_key = file.get_var(true)
+		
+		accelerate_forward_key = file.get_var(true)
+		accelerate_backward_key = file.get_var(true)
+		pitch_up_key = file.get_var(true)
+		pitch_down_key = file.get_var(true)
+		yaw_left_key = file.get_var(true)
+		yaw_right_key = file.get_var(true)
+		roll_left_key = file.get_var(true)
+		roll_right_key = file.get_var(true)
+		move_up_key = file.get_var(true)
+		move_down_key = file.get_var(true)
+		move_left_key = file.get_var(true)
+		move_right_key = file.get_var(true)
 		
 		file.close()
-		
-		if not self.is_node_ready():
-			await self.ready
 		
 		sync_keybindings()
 		
@@ -53,25 +97,40 @@ func reset_settings():
 	acceleration_camera_shake = true
 	third_person_sensitivity = 0.1
 	first_person_headlook_sensitivity = 1200
+	
 	pause_key = ["pause", KEY_ESCAPE]
 	fa_key = ["fa_toggle", KEY_QUOTELEFT]
 	camera_offset_key = ["camera_offset_toggle", KEY_X]
+	boost_key = ["boost", KEY_SPACE]
 	
-	if not self.is_node_ready():
-		await self.ready
+	accelerate_forward_key = ["accelerate_forward", KEY_R]
+	accelerate_backward_key = ["accelerate_backward", KEY_F]
+	pitch_up_key = ["pitch_up", KEY_W]
+	pitch_down_key = ["pitch_down", KEY_S]
+	yaw_left_key = ["yaw_left", KEY_A]
+	yaw_right_key = ["yaw_right", KEY_D]
+	roll_left_key = ["roll_left", KEY_Q]
+	roll_right_key = ["roll_right", KEY_E]
+	move_up_key = ["move_up", KEY_UP]
+	move_down_key = ["move_down", KEY_DOWN]
+	move_left_key = ["move_left", KEY_LEFT]
+	move_right_key = ["move_right", KEY_RIGHT]
 	
 	sync_keybindings()
 	
 	save_settings()
+	
 	pass
 
 func sync_keybindings():
+	var keybindings = [pause_key, fa_key, camera_offset_key, boost_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
+	
 	for keybind in keybindings:
 		var event = InputEventKey.new()
-		event.keycode = keybind[1]
+		event.keycode = keybind.back()
 		event.pressed = true
 		
-		if not InputMap.action_get_events(keybind[0]).is_empty():
-			InputMap.action_erase_event(keybind[0], InputMap.action_get_events(keybind[0])[0])
-		InputMap.action_add_event(keybind[0], event)
+		if not InputMap.action_get_events(keybind.front()).is_empty():
+			InputMap.action_erase_event(keybind.front(), InputMap.action_get_events(keybind.front())[0])
+		InputMap.action_add_event(keybind.front(), event)
 	pass

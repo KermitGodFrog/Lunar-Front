@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://da1tgorns37l3"
+path="res://.godot/imported/Cruiserwreck.obj-d188725d344210f3179c37f4c6d224bc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cruiserwreck.obj-d188725d344210f3179c37f4c6d224bc.mesh"]
+
+source_file="res://Models/Cruiser/Cruiserwreck.obj"
+dest_files=["res://.godot/imported/Cruiserwreck.obj-d188725d344210f3179c37f4c6d224bc.mesh", "res://.godot/imported/Cruiserwreck.obj-d188725d344210f3179c37f4c6d224bc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

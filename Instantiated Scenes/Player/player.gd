@@ -362,7 +362,7 @@ func _on_health_changed(current_health):
 	pass
 
 func main_engine_shader_update(length: float):
-	var main_engine = get_tree().get_first_node_in_group("main_engine")
+	var main_engine = get_tree().get_first_node_in_group("player_main_engine")
 	var lerp_to_new_length = lerp(main_engine.get_active_material(0).get_shader_parameter("engine_length"), length, MAIN_ENGINE_INTERPOLATION)
 	main_engine.get_active_material(0).set_shader_parameter("engine_length", lerp_to_new_length)
 	return

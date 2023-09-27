@@ -9,6 +9,7 @@ var asteroid_refinery_best_time: float
 @onready var bronze_medal = preload("res://Graphics/Medals/bronze_medal.png")
 @onready var iron_medal = preload("res://Graphics/Medals/iron_medal.png")
 @onready var gold_medal = preload("res://Graphics/Medals/gold_medal.png")
+@onready var no_medal = preload("res://Graphics/Medals/no_medal.png")
 
 func _ready():
 	load_player_data()
@@ -72,7 +73,9 @@ func get_medal_current_map():
 			"asteroid_refinery":
 				return null
 			"scrapyard":
-				if time > 50:
+				if time > 70:
+					return no_medal
+				if time > 50 and time < 70:
 					return bronze_medal
 				if time <= 50 and time >= 45:
 					return iron_medal
@@ -92,7 +95,9 @@ func get_medal_from_map(map: String):
 			"asteroid_refinery":
 				return null
 			"scrapyard":
-				if time > 50:
+				if time > 70:
+					return no_medal
+				if time > 50 and time < 70:
 					return bronze_medal
 				if time <= 50 and time >= 45:
 					return iron_medal

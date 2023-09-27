@@ -43,7 +43,7 @@ theme_override_constants/separation = 15
 [node name="unpause_label" type="Label" parent="panel/container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "( PRESS TO UNPAUSE )"
+text = "( PRESS TO RESUME )"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("2_kcpgw")

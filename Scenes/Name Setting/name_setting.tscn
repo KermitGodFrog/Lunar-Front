@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2iufim00bkxs"]
+[gd_scene load_steps=5 format=3 uid="uid://c2iufim00bkxs"]
 
 [ext_resource type="Script" path="res://Scenes/Name Setting/name_edit.gd" id="2_nsy3p"]
 [ext_resource type="Script" path="res://Scenes/Name Setting/submit_button.gd" id="2_q5jgl"]
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_tsmi4"]
+[ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="4_dvw0x"]
 
 [node name="name_setting" type="Control"]
 layout_mode = 3
@@ -54,5 +55,22 @@ theme = ExtResource("3_tsmi4")
 text = "SUBMIT"
 script = ExtResource("2_q5jgl")
 to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Main Menu/main_menu.tscn"
+
+[node name="username_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -324.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_dvw0x")
+theme_override_font_sizes/font_size = 15
+text = "( PLEASE INSERT YOUR USERNAME )"
+vertical_alignment = 1
 
 [connection signal="pressed" from="submit_button" to="submit_button" method="_on_pressed"]
