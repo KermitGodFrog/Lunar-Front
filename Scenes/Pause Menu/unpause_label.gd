@@ -1,12 +1,9 @@
 extends Label
 
 func _ready():
-	var events = InputMap.action_get_events("pause")
-	var events_string: String
-	
-	for event in events:
-		events_string += event.as_text()
-	
-	set_text(str("[ PRESS ", events_string, " TO RESUME ]"))
-	
+	if not InputMap.action_get_events("pause").is_empty():
+		var event = InputMap.action_get_events("pause")[0]
+		set_text(str("[ PRESS ", OS.get_keycode_string(event.keycode), " TO RESUME ]"))
+	else:
+		set_text(str("[ PRESS (UNSET, GOOD LUCK HAHAHAHAHA) TO RESUME ]"))
 	pass

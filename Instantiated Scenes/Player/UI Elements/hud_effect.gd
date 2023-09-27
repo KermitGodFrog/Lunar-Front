@@ -12,6 +12,7 @@ func circle_effect(initial_color: Color, time: float):
 	
 	$circle_effect.show()
 	$circle_effect.set_modulate(initial_color)
+	
 	if tween:
 		tween.kill()
 	
@@ -23,6 +24,7 @@ func circle_effect(initial_color: Color, time: float):
 func rectangle_effect(initial_color: Color, time: float):
 	$rectangle_effect.show()
 	$rectangle_effect.set_modulate(initial_color)
+	
 	if tween:
 		tween.kill()
 	

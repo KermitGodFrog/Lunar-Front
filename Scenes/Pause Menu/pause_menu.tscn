@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqkui2ol3b4dx"]
+[gd_scene load_steps=5 format=3 uid="uid://bqkui2ol3b4dx"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_7uqfg"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/unpause_label.gd" id="2_kcpgw"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/return_to_menu_button.gd" id="3_ugar4"]
+[ext_resource type="Script" path="res://Scenes/Pause Menu/quit_to_desktop_button.gd" id="4_2p80r"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 2
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(700, 700)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,12 +38,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 15
 
 [node name="unpause_label" type="Label" parent="panel/container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "( PRESS TO UNPAUSE )"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("2_kcpgw")
 
@@ -49,5 +52,24 @@ script = ExtResource("2_kcpgw")
 process_mode = 2
 layout_mode = 2
 text = "RETURN TO MENU"
+flat = true
+alignment = 2
 script = ExtResource("3_ugar4")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
+
+[node name="return_to_settings_button" type="Button" parent="panel/container"]
+process_mode = 2
+layout_mode = 2
+text = "RETURN TO SETTINGS"
+flat = true
+alignment = 2
+script = ExtResource("3_ugar4")
+to_scene = "res://Scenes/Settings Menu/settings_menu.tscn"
+
+[node name="quit_to_desktop_button" type="Button" parent="panel/container"]
+process_mode = 2
+layout_mode = 2
+text = "QUIT TO DESKTOP"
+flat = true
+alignment = 2
+script = ExtResource("4_2p80r")

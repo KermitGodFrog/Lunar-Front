@@ -75,7 +75,7 @@ func _ready():
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
-	game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
+	# game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
 	sync_settings()
 	pass
 
@@ -266,9 +266,6 @@ func movement(delta):
 	pass
 
 func camera(_delta):
-	if Input.is_action_just_pressed("mouse_movement_toggle"):
-		is_mouse_movement_toggle = !is_mouse_movement_toggle
-	
 	if Input.is_action_just_pressed("enable_first_person_headlook"):
 		is_headlook_toggle = !is_headlook_toggle
 	if is_headlook_toggle == false:

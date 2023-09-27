@@ -482,6 +482,7 @@ stretch_mode = 5
 script = ExtResource("11_6kbsb")
 
 [node name="leaderboard_status_list" type="ItemList" parent="ui_control/ui_layer" groups=["leaderboard_status_list"]]
+process_mode = 3
 custom_minimum_size = Vector2(500, 200)
 anchors_preset = 3
 anchor_left = 1.0
@@ -1140,3 +1141,4 @@ script = ExtResource("36_53deo")
 
 [node name="pause_menu" parent="pause_handling" instance=ExtResource("37_54nov")]
 visible = false
+top_level = true

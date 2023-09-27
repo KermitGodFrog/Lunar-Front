@@ -11,7 +11,7 @@ var asteroid_refinery_best_time: float
 @onready var gold_medal = preload("res://Graphics/Medals/gold_medal.png")
 
 func _ready():
-	load_player_data()
+	reset_player_data()
 	settings.load_settings()
 	
 	SilentWolf.configure({

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://10wnoidg1agh"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://10wnoidg1agh"]
 
 [ext_resource type="Texture2D" uid="uid://b72yj5npd5r7e" path="res://Graphics/arrow_png.png" id="1_3o6ni"]
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_3yovx"]
@@ -40,6 +40,17 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 15
 border_color = Color(0, 1, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8brlg"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 15
+border_color = Color(0, 1, 0, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+shadow_color = Color(0.117647, 0.117647, 0.117647, 1)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
 [resource]
 default_font = ExtResource("2_r4wgl")
 default_font_size = 50
@@ -63,3 +74,4 @@ LineEdit/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/font_sizes/font_size = 30
 LineEdit/fonts/font = ExtResource("1_3yovx")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_g8crb")
+Panel/styles/panel = SubResource("StyleBoxFlat_8brlg")
