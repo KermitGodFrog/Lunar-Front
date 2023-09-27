@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://10wnoidg1agh"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://10wnoidg1agh"]
 
+[ext_resource type="Texture2D" uid="uid://b72yj5npd5r7e" path="res://Graphics/arrow_png.png" id="1_3o6ni"]
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_3yovx"]
+[ext_resource type="Texture2D" uid="uid://e08stsqdhqyt" path="res://Graphics/HUD/checkpoint_marker_png_flipped.png" id="2_7j7vb"]
 [ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="2_r4wgl"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ei58a"]
@@ -21,6 +23,18 @@ color = Color(0, 1, 0, 1)
 thickness = 6
 vertical = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwoi6"]
+bg_color = Color(0, 0.890196, 0, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl14w"]
+bg_color = Color(0, 0.976471, 0, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i6uki"]
+color = Color(0.203922, 0.203922, 0.203922, 1)
+thickness = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8crb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 15
@@ -35,6 +49,12 @@ Button/colors/font_pressed_color = Color(0, 1, 0, 1)
 Button/styles/hover = SubResource("StyleBoxLine_ei58a")
 Button/styles/normal = SubResource("StyleBoxLine_3vn5h")
 Button/styles/pressed = SubResource("StyleBoxLine_78or5")
+HSlider/constants/grabber_offset = 15
+HSlider/icons/grabber = ExtResource("1_3o6ni")
+HSlider/icons/grabber_highlight = ExtResource("2_7j7vb")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_hwoi6")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_kl14w")
+HSlider/styles/slider = SubResource("StyleBoxLine_i6uki")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 80
 Label/styles/normal = null

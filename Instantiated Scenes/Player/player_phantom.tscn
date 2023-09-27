@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=86 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -29,8 +29,14 @@
 [ext_resource type="Texture2D" uid="uid://o4t6idsmmdmv" path="res://Graphics/Phantom/grey_metal_texture.png" id="23_oruhi"]
 [ext_resource type="Texture2D" uid="uid://nmrn2lkoxwap" path="res://Graphics/Phantom/cushioning_texture.png" id="24_y7eal"]
 [ext_resource type="Texture2D" uid="uid://c77f1i653kwfd" path="res://Graphics/Phantom/seven_texture.png" id="27_hs6ag"]
+[ext_resource type="Texture2D" uid="uid://cko1nxt2l7b1j" path="res://Graphics/Stolen Normal Maps/Metal Hexagon/metal_0076_color_1k.jpg" id="28_vir6j"]
 [ext_resource type="Texture2D" uid="uid://bxloju2lpw1mo" path="res://Graphics/Phantom/seven_normal_map.png" id="28_xd38a"]
+[ext_resource type="Texture2D" uid="uid://b81n5xbwvpbts" path="res://Graphics/Stolen Normal Maps/Metal Noise/metal_0059_color_1k.jpg" id="28_yxjac"]
+[ext_resource type="Texture2D" uid="uid://coenhfitsrsw8" path="res://Graphics/Stolen Normal Maps/Metal BIG Scratched/metal_0071_color_1k.jpg" id="30_85du5"]
+[ext_resource type="Texture2D" uid="uid://bnal22q40nks0" path="res://Graphics/Stolen Normal Maps/Metal Scratched/metal_0026_color_1k.jpg" id="30_iag4o"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="31_5tfth"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/pause_handling.gd" id="36_53deo"]
+[ext_resource type="PackedScene" uid="uid://bqkui2ol3b4dx" path="res://Scenes/Pause Menu/pause_menu.tscn" id="37_54nov"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -88,7 +94,6 @@ albedo_texture = ExtResource("21_styyg")
 emission_enabled = true
 emission = Color(0, 1, 1, 1)
 emission_texture = ExtResource("21_styyg")
-normal_enabled = true
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 0
@@ -105,7 +110,6 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_croea"]
 albedo_texture = ExtResource("21_govxb")
-normal_texture = ExtResource("21_govxb")
 uv1_triplanar = true
 texture_filter = 0
 
@@ -155,14 +159,158 @@ albedo_texture = ExtResource("23_oruhi")
 uv1_triplanar = true
 texture_filter = 0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_42kmy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84gcg"]
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_texture = ExtResource("20_76v0v")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckj30"]
+albedo_texture = ExtResource("20_76v0v")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awf6b"]
+albedo_texture = ExtResource("21_jwox6")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+clearcoat = 0.1
+clearcoat_roughness = 1.0
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oph7y"]
+albedo_texture = ExtResource("21_jwox6")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he1sa"]
+albedo_texture = ExtResource("21_jwox6")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kig2c"]
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4a82"]
+albedo_color = Color(0.360784, 0.360784, 0.360784, 1)
+albedo_texture = ExtResource("24_y7eal")
+normal_enabled = true
+normal_texture = ExtResource("30_iag4o")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kvv2"]
+albedo_texture = ExtResource("21_styyg")
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_texture = ExtResource("21_styyg")
+normal_enabled = true
+normal_texture = ExtResource("28_vir6j")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eonag"]
+albedo_texture = ExtResource("21_jwox6")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q26c5"]
+albedo_texture = ExtResource("21_jwox6")
+normal_enabled = true
+normal_texture = ExtResource("28_yxjac")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qvrf"]
+albedo_texture = ExtResource("21_govxb")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6itg3"]
+albedo_texture = ExtResource("21_govxb")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j6mj"]
+albedo_texture = ExtResource("21_govxb")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rdja"]
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hcdu"]
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmltl"]
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bh4t"]
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgnaf"]
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogymy"]
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_texture = ExtResource("23_oruhi")
+normal_enabled = true
+normal_texture = ExtResource("30_85du5")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ftqg0"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xlgmp"]
 seamless_blend_skirt = 1.0
 bump_strength = 32.0
-noise = SubResource("FastNoiseLite_42kmy")
+noise = SubResource("FastNoiseLite_ftqg0")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jmpl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lssm"]
 render_priority = 0
 shader = ExtResource("31_5tfth")
 shader_parameter/engine_length = 3.0
@@ -175,7 +323,7 @@ shader_parameter/thruster_texture = ExtResource("21_styyg")
 shader_parameter/texture_emission = ExtResource("21_styyg")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wvi2u"]
-material = SubResource("ShaderMaterial_2jmpl")
+material = SubResource("ShaderMaterial_0lssm")
 subdivide_width = 32
 subdivide_depth = 32
 
@@ -189,6 +337,7 @@ size = Vector3(0.1, 0.1, 0.1)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
+process_mode = 1
 motion_mode = 1
 script = ExtResource("1_oahw1")
 health = SubResource("Resource_kysq3")
@@ -376,9 +525,14 @@ grow_vertical = 2
 texture = ExtResource("15_j5ys2")
 expand_mode = 2
 
-[node name="mesh" type="MeshInstance3D" parent="."]
+[node name="hlod_grouping_node" type="Node3D" parent="."]
+
+[node name="mesh" type="MeshInstance3D" parent="hlod_grouping_node"]
 transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)
+visibility_range_begin = 10.0
+visibility_range_begin_margin = 5.0
 mesh = ExtResource("2_hlmna")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_l7vfy")
 surface_material_override/1 = SubResource("StandardMaterial3D_h3rbc")
 surface_material_override/2 = SubResource("StandardMaterial3D_cyohf")
@@ -399,6 +553,33 @@ surface_material_override/20 = SubResource("StandardMaterial3D_2kmcd")
 surface_material_override/23 = SubResource("StandardMaterial3D_63nkt")
 surface_material_override/26 = SubResource("StandardMaterial3D_wyi6m")
 surface_material_override/27 = SubResource("StandardMaterial3D_2iasa")
+
+[node name="high_detail_mesh" type="MeshInstance3D" parent="hlod_grouping_node"]
+transform = Transform3D(-0.866025, 8.15666e-08, 0.5, 0.5, -2.18557e-08, 0.866025, 8.15666e-08, 1, -2.18557e-08, 0, 0, 0)
+visibility_range_end = 10.0
+visibility_range_end_margin = 5.0
+mesh = ExtResource("2_hlmna")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_84gcg")
+surface_material_override/1 = SubResource("StandardMaterial3D_ckj30")
+surface_material_override/2 = SubResource("StandardMaterial3D_awf6b")
+surface_material_override/3 = SubResource("StandardMaterial3D_oph7y")
+surface_material_override/4 = SubResource("StandardMaterial3D_he1sa")
+surface_material_override/5 = SubResource("StandardMaterial3D_kig2c")
+surface_material_override/6 = SubResource("StandardMaterial3D_q4a82")
+surface_material_override/7 = SubResource("StandardMaterial3D_6kvv2")
+surface_material_override/8 = SubResource("StandardMaterial3D_eonag")
+surface_material_override/9 = SubResource("StandardMaterial3D_q26c5")
+surface_material_override/10 = SubResource("StandardMaterial3D_4qvrf")
+surface_material_override/11 = SubResource("StandardMaterial3D_6itg3")
+surface_material_override/12 = SubResource("StandardMaterial3D_8j6mj")
+surface_material_override/13 = SubResource("StandardMaterial3D_rdhxa")
+surface_material_override/14 = SubResource("StandardMaterial3D_6rdja")
+surface_material_override/17 = SubResource("StandardMaterial3D_5hcdu")
+surface_material_override/20 = SubResource("StandardMaterial3D_wmltl")
+surface_material_override/23 = SubResource("StandardMaterial3D_0bh4t")
+surface_material_override/26 = SubResource("StandardMaterial3D_qgnaf")
+surface_material_override/27 = SubResource("StandardMaterial3D_ogymy")
 
 [node name="main_engine" type="MeshInstance3D" parent="." groups=["main_engine"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1)
@@ -941,12 +1122,21 @@ scale_amount_min = 0.1
 
 [node name="seven_decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0798217, 1.87855, 1.40402)
+visible = false
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
 texture_normal = ExtResource("28_xd38a")
 
 [node name="seven_decal2" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146643, 1.88826, 1.55923)
+visible = false
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
 texture_normal = ExtResource("27_hs6ag")
+
+[node name="pause_handling" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("36_53deo")
+
+[node name="pause_menu" parent="pause_handling" instance=ExtResource("37_54nov")]
+visible = false

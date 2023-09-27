@@ -71,6 +71,7 @@ layout_mode = 2
 text = "SETTINGS"
 alignment = 0
 script = ExtResource("2_cmg2u")
+to_scene = "res://Scenes/Settings Menu/settings_menu.tscn"
 
 [node name="data_ui_vbox" type="VBoxContainer" parent="."]
 layout_mode = 1

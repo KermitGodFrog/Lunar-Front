@@ -12,6 +12,7 @@ var asteroid_refinery_best_time: float
 
 func _ready():
 	load_player_data()
+	settings.load_settings()
 	
 	SilentWolf.configure({
 		"api_key": "t17Djp2d1z8Ji8tZGVYNH63HNmxrwsAS5C6RT8tv",

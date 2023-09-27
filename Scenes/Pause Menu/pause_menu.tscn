@@ -1,11 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqkui2ol3b4dx"]
 
-[ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="1_y3hu3"]
-[ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_f820q"]
-
-[sub_resource type="GDScript" id="GDScript_vo3l5"]
-script/source = "extends Control
-"
+[ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_7uqfg"]
+[ext_resource type="Script" path="res://Scenes/Pause Menu/unpause_label.gd" id="2_kcpgw"]
+[ext_resource type="Script" path="res://Scenes/Pause Menu/return_to_menu_button.gd" id="3_ugar4"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 2
@@ -15,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_vo3l5")
 
 [node name="panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(500, 500)
@@ -31,18 +27,26 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_7uqfg")
 
-[node name="return_to_menu_button" type="Button" parent="panel"]
+[node name="container" type="VBoxContainer" parent="panel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -74.5
-offset_right = 74.5
-offset_bottom = 31.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_y3hu3")
-theme_override_font_sizes/font_size = 50
+grow_vertical = 2
+
+[node name="unpause_label" type="Label" parent="panel/container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "( PRESS TO UNPAUSE )"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_kcpgw")
+
+[node name="return_to_menu_button" type="Button" parent="panel/container"]
+process_mode = 2
+layout_mode = 2
 text = "RETURN TO MENU"
-script = ExtResource("2_f820q")
-to_scene = "/Users/kaden/Desktop/Main Godot Files/CQB Simulator/Scenes/Main Menu/main_menu.tscn"
+script = ExtResource("3_ugar4")

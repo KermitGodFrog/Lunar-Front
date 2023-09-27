@@ -38,7 +38,7 @@ const BOOST_MAX_REGEN = 300
 var rot_x: float
 var rot_y: float
 var mouse_sens = 0.1
-const headlook_mouse_sens = 1200
+var headlook_mouse_sens = 1200
 
 #WEAPONS
 
@@ -75,7 +75,8 @@ func _ready():
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
-	#game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
+	game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
+	sync_settings()
 	pass
 
 func _input(event):
@@ -118,12 +119,6 @@ func _input(event):
 						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z + 2.5, 0.7)
 					if event.relative.y > 0:
 						$camera_offset/camera.position.z = lerp($camera_offset/camera.position.z, $camera_offset/camera.position.z - 2.5, 0.7)
-	
-	#RETURN TO MENU
-	
-	if event.is_action_pressed("return_to_menu"):
-		get_tree().change_scene_to_file("res://Scenes/Main Menu/main_menu.tscn")
-	
 	pass
 
 func _physics_process(delta):
@@ -350,8 +345,6 @@ func proximity_camera_shake(_delta, body, amount: float, begin_distance: float):
 		camera_shake_time = 0.0
 	pass
 
-
-
 func weapons():
 	if Input.is_action_just_pressed("switch_fire_group_zero"):
 		selected_fire_group = 0
@@ -376,3 +369,10 @@ func main_engine_shader_update(length: float):
 	var lerp_to_new_length = lerp(main_engine.get_active_material(0).get_shader_parameter("engine_length"), length, MAIN_ENGINE_INTERPOLATION)
 	main_engine.get_active_material(0).set_shader_parameter("engine_length", lerp_to_new_length)
 	return
+
+func sync_settings():
+	is_mouse_movement_toggle = settings.first_person_mouse_control
+	is_camera_shake = settings.acceleration_camera_shake
+	mouse_sens = settings.third_person_sensitivity
+	headlook_mouse_sens = settings.first_person_headlook_sensitivity
+	pass

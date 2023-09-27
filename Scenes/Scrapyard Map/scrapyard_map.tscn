@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=219 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -34,10 +34,19 @@
 [ext_resource type="PackedScene" uid="uid://i2dtmd5tgr7o" path="res://Scenes/Scrapyard Map/wreckage_part_two.tscn" id="26_e0j0s"]
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/big_wreckage.gd" id="26_fg3qi"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nimtn"]
+frequency = 0.0626
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_424hi"]
+seamless = true
+noise = SubResource("FastNoiseLite_nimtn")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l45vr"]
 shader = ExtResource("3_jvuno")
 shader_parameter/star_colour = Color(1, 0, 0.564706, 1)
 shader_parameter/source_panorama = ExtResource("4_r3bfb")
+shader_parameter/star_noise = SubResource("NoiseTexture2D_424hi")
 
 [sub_resource type="Sky" id="Sky_icrtt"]
 sky_material = SubResource("ShaderMaterial_l45vr")
@@ -1124,6 +1133,7 @@ radius = 6.0
 height = 32.0
 
 [node name="scrapyard_map" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_olbxj")
 
 [node name="occluder" type="OccluderInstance3D" parent="."]
