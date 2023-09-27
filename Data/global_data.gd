@@ -27,6 +27,7 @@ func _ready():
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_player_data()
+		get_tree().quit()
 	pass
 
 func get_best_time_current_map():

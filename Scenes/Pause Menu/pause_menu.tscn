@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_7uqfg"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/unpause_label.gd" id="2_kcpgw"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/return_to_menu_button.gd" id="3_ugar4"]
-[ext_resource type="Script" path="res://Scenes/Pause Menu/quit_to_desktop_button.gd" id="4_2p80r"]
+[ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="4_2p80r"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 2

@@ -8,7 +8,6 @@ uniform sampler2D land_noise;
 uniform sampler2D cloud_noise;
 uniform sampler2D star_noise;
 
-
 void sky() {
 	float planet_pos = step(0.995, EYEDIR.y);
 	float star_pos = step(0.9995, EYEDIR.x);
