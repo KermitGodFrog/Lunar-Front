@@ -283,7 +283,7 @@ transform = Transform3D(-0.945848, 0, -0.324611, 0.0997498, 0.951616, -0.29065, 
 CHECKPOINT_NUMBER = 9
 
 [node name="checkpoint11" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(0.274512, -0.0994669, -0.636199, 2.6077e-09, 0.691598, -0.108128, 0.643928, 0.0424036, 0.271218, -611.123, 796.225, 100.173)
+transform = Transform3D(0.39216, -0.142096, -0.908856, 3.72529e-09, 0.987998, -0.154469, 0.919897, 0.0605766, 0.387453, -611.123, 796.225, 100.173)
 CHECKPOINT_NUMBER = 10
 
 [node name="checkpoint12" parent="." instance=ExtResource("6_5qgdh")]
