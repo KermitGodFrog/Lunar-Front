@@ -101,6 +101,20 @@ text = "ACCELERATION CAMERA SHAKE"
 script = ExtResource("7_w8c2q")
 settings_variable = "acceleration_camera_shake"
 
+[node name="third_person_camera_offset" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="checkbox" type="CheckBox" parent="scroll_container/options_container/third_person_camera_offset" groups=["bool_option"]]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("4_6k5lr")
+theme_override_icons/unchecked = ExtResource("5_s38sc")
+text = "THIRD PERSON CAMERA OFFSET"
+script = ExtResource("7_w8c2q")
+settings_variable = "third_person_camera_offset"
+
 [node name="third_person_sensitivity" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
 
@@ -186,10 +200,10 @@ theme_override_fonts/font = ExtResource("3_hw16d")
 theme_override_font_sizes/font_size = 30
 text = "FLIGHT ASSIST TOGGLE"
 
-[node name="camera_offset" type="HBoxContainer" parent="scroll_container/options_container"]
+[node name="first_third_person_toggle" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
 
-[node name="button" type="Button" parent="scroll_container/options_container/camera_offset" groups=["keybind_option"]]
+[node name="button" type="Button" parent="scroll_container/options_container/first_third_person_toggle" groups=["keybind_option"]]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hw16d")
@@ -200,14 +214,37 @@ toggle_mode = true
 button_group = ExtResource("10_l66jm")
 script = ExtResource("11_2mnd0")
 keybindings_button_group = ExtResource("10_l66jm")
-settings_variable = "camera_offset_key"
-action_string = "camera_offset_toggle"
+settings_variable = "first_third_person_key"
+action_string = "first_person_toggle"
 
-[node name="label" type="Label" parent="scroll_container/options_container/camera_offset"]
+[node name="label" type="Label" parent="scroll_container/options_container/first_third_person_toggle"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hw16d")
 theme_override_font_sizes/font_size = 30
-text = "THIRD PERSON CAMERA OFFSET TOGGLE"
+text = "FIRST/THIRD PERSON CAMERA TOGGLE"
+
+[node name="first_person_headlook_toggle" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="button" type="Button" parent="scroll_container/options_container/first_person_headlook_toggle" groups=["keybind_option"]]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_utr4o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77ubh")
+toggle_mode = true
+button_group = ExtResource("10_l66jm")
+script = ExtResource("11_2mnd0")
+keybindings_button_group = ExtResource("10_l66jm")
+settings_variable = "first_person_headlook_key"
+action_string = "enable_first_person_headlook"
+
+[node name="label" type="Label" parent="scroll_container/options_container/first_person_headlook_toggle"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "FIRST PERSON HEADLOOK TOGGLE"
 
 [node name="boost" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2

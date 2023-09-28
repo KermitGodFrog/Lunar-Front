@@ -286,13 +286,11 @@ func camera(_delta):
 	
 	#CAMERA OFFSET
 	
-	if Input.is_action_just_pressed("camera_offset_toggle"):
-		is_camera_offset_toggle = !is_camera_offset_toggle
-		match is_camera_offset_toggle:
-			false:
-				CAMERA_OFFSET_LOCATION = Vector3(0,0,0)
-			true:
-				CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
+	match is_camera_offset_toggle:
+		false:
+			CAMERA_OFFSET_LOCATION = Vector3(0,0,0)
+		true:
+			CAMERA_OFFSET_LOCATION = Vector3(0,7,0)
 	$camera_offset.position = $camera_offset.position.lerp(CAMERA_OFFSET_LOCATION, CAMERA_OFFSET_INTERPOLATION)
 	
 	#ACCELERATION CAMERA SHAKE
@@ -370,6 +368,7 @@ func main_engine_shader_update(length: float):
 func sync_settings():
 	is_mouse_movement_toggle = settings.first_person_mouse_control
 	is_camera_shake = settings.acceleration_camera_shake
+	is_camera_offset_toggle = settings.third_person_camera_offset
 	mouse_sens = settings.third_person_sensitivity
 	headlook_mouse_sens = settings.first_person_headlook_sensitivity
 	pass
