@@ -105,4 +105,4 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 900
 CHECKPOINT_NUMBER = 2
 
 [node name="cruiser" parent="." instance=ExtResource("7_mf4ab")]
-transform = Transform3D(6.24826, 0, -13.6367, 0, 15, 0, 13.6367, 0, 6.24826, -844.853, 0, 0)
+transform = Transform3D(0.41655, 0, -0.909113, 0, 1, 0, 0.909113, 0, 0.41655, -844.853, 0, 0)
