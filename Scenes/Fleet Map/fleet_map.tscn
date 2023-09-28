@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7pjfsa2u87a7"]
+[gd_scene load_steps=37 format=3 uid="uid://b7pjfsa2u87a7"]
 
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="4_kfouj"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="6_5qgdh"]
 [ext_resource type="PackedScene" uid="uid://b40hi1cc0fmp2" path="res://Scenes/Fleet Map/cruiser.tscn" id="7_mf4ab"]
+[ext_resource type="Texture2D" uid="uid://bjjkxxtsh2u0f" path="res://Graphics/Arrow.png" id="8_i80yt"]
 
 [sub_resource type="Gradient" id="Gradient_gmwh2"]
 offsets = PackedFloat32Array(0.358108, 0.722973)
@@ -39,7 +40,7 @@ noise = SubResource("FastNoiseLite_hdnyb")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0q16g"]
 shader = ExtResource("3_5lq7o")
 shader_parameter/planet_colour = Color(0, 0, 1, 1)
-shader_parameter/star_colour = Color(0.890196, 0.796078, 0, 1)
+shader_parameter/star_colour = Color(1, 0.490196, 0, 1)
 shader_parameter/source_panorama = ExtResource("4_kfouj")
 shader_parameter/land_noise = SubResource("NoiseTexture2D_1gxvh")
 shader_parameter/cloud_noise = SubResource("NoiseTexture2D_f4730")
@@ -66,12 +67,127 @@ glow_blend_mode = 0
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.278431, 0.278431, 0.278431, 1)
-volumetric_fog_emission = Color(0.219608, 0.219608, 0.219608, 1)
+volumetric_fog_albedo = Color(0.254902, 0.254902, 0.254902, 1)
 volumetric_fog_ambient_inject = 4.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_avfw3"]
 dof_blur_near_distance = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466ny"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcpfq"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk80d"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxly5"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brae7"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h2mo"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_164yt"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y8wo"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihwhh"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvg3x"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn6p0"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc5kg"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kc6r"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkgg"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlihu"]
+atlas = ExtResource("8_i80yt")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rupi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_466ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcpfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk80d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxly5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brae7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h2mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_164yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y8wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihwhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvg3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn6p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc5kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kc6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlihu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqevb"]
+size = Vector3(1, 0.4, 0.2)
 
 [node name="fleet_map" type="Node3D"]
 script = ExtResource("1_ehrov")
@@ -85,24 +201,170 @@ camera_attributes = SubResource("CameraAttributesPractical_avfw3")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-light_color = Color(1, 1, 0.8, 1)
+light_color = Color(1, 1, 0.788235, 1)
 light_volumetric_fog_energy = 2.0
 light_angular_distance = 40.0
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("2_so7l2")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 400, 0, 0)
 
 [node name="checkpoint" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 300, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 200, 0, 0)
 
 [node name="checkpoint2" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 600, 0)
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -1200, 175, 26)
+ROTATION_SPEED = -50
 CHECKPOINT_NUMBER = 1
 
 [node name="checkpoint3" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 900, 0)
+transform = Transform3D(0.866025, -5.85622e-09, -0.5, -0.5, -2.18557e-08, -0.866025, -5.85622e-09, 1, -2.18557e-08, -1300, 1000, 13)
 CHECKPOINT_NUMBER = 2
 
 [node name="cruiser" parent="." instance=ExtResource("7_mf4ab")]
 transform = Transform3D(0.41655, 0, -0.909113, 0, 1, 0, 0.909113, 0, 0.41655, -844.853, 0, 0)
+
+[node name="arrow_sign1" type="StaticBody3D" parent="."]
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -1700, 150, 0)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign1"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign1"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign4" type="StaticBody3D" parent="."]
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -1700, 150, 150)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign4"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign4"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign5" type="StaticBody3D" parent="."]
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -1700, 150, -150)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign5"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign5"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign2" type="StaticBody3D" parent="."]
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -1700, 500, 0)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign2"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign2"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign3" type="StaticBody3D" parent="."]
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -1700, -200, 0)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign3"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign3"]
+shape = SubResource("BoxShape3D_nqevb")

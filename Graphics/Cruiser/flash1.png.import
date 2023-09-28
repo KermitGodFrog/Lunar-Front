@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7x8lt2bwg0lh"
-path="res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"
+uid="uid://ctrgeqs6h7qsx"
+path.s3tc="res://.godot/imported/flash1.png-3b53655b4e927242d98e03b74f2a47c7.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Graphics/Cruiser/hull_blue.png"
-dest_files=["res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"]
+source_file="res://Graphics/Cruiser/flash1.png"
+dest_files=["res://.godot/imported/flash1.png-3b53655b4e927242d98e03b74f2a47c7.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

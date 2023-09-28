@@ -1,21 +1,26 @@
-[gd_scene load_steps=28 format=3 uid="uid://b40hi1cc0fmp2"]
+[gd_scene load_steps=36 format=3 uid="uid://b40hi1cc0fmp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://da1tgorns37l3" path="res://Models/Cruiser/Cruiserwreck.obj" id="1_ckhgp"]
 [ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="2_7tmht"]
-[ext_resource type="Texture2D" uid="uid://cnfiogtg0ur2w" path="res://Models/scrap texture.png" id="2_27pvt"]
 [ext_resource type="Texture2D" uid="uid://dk5owgsyj5h8i" path="res://Graphics/Cruiser/hull.png" id="3_3uktv"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="3_j5xcw"]
 [ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="4_6pw4p"]
-[ext_resource type="Texture2D" uid="uid://cxti756p4u7rb" path="res://Graphics/monotone_arrow_texture.png" id="4_b22fm"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="4_dww20"]
+[ext_resource type="Texture2D" uid="uid://divinf2cjkt5f" path="res://Models/MetalScrapStriped.png" id="5_yt41y"]
 [ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_8ex4q"]
+[ext_resource type="Texture2D" uid="uid://c7x8lt2bwg0lh" path="res://Graphics/Cruiser/hull_blue.png" id="6_gyu2c"]
+[ext_resource type="Texture2D" uid="uid://duhkmkp5dqlbb" path="res://Graphics/Cruiser/burn_mark1.png" id="11_nfrqm"]
+[ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="11_orclm"]
+[ext_resource type="Texture2D" uid="uid://4akym74dgeww" path="res://Graphics/Cruiser/burn_mark2.png" id="12_usgy0"]
+[ext_resource type="Texture2D" uid="uid://bx47f5nu6od6k" path="res://Graphics/Cruiser/burn_mark3.png" id="13_0rw6o"]
+[ext_resource type="Texture2D" uid="uid://bc6sgqvnwq2n8" path="res://Graphics/Phantom/white_texture.png" id="14_2orvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1a0d"]
-albedo_color = Color(0.313726, 0.313726, 0.313726, 1)
-albedo_texture = ExtResource("2_27pvt")
+albedo_color = Color(0.682353, 0.682353, 0.682353, 1)
 metallic = 1.0
 metallic_specular = 1.0
 metallic_texture = ExtResource("3_3uktv")
+metallic_texture_channel = 4
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 texture_filter = 0
@@ -30,11 +35,12 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2npa6"]
-albedo_color = Color(0.0901961, 0.32549, 1, 1)
-albedo_texture = ExtResource("4_b22fm")
+albedo_color = Color(0, 0.2, 1, 1)
+albedo_texture = ExtResource("5_yt41y")
 metallic = 1.0
 metallic_specular = 1.0
-metallic_texture = ExtResource("3_3uktv")
+metallic_texture = ExtResource("6_gyu2c")
+metallic_texture_channel = 2
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 texture_filter = 0
@@ -56,7 +62,8 @@ albedo_texture = ExtResource("2_7tmht")
 metallic_specular = 1.0
 emission_enabled = true
 emission = Color(1, 0.490196, 0, 1)
-emission_energy_multiplier = 0.2
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("2_7tmht")
 uv1_scale = Vector3(0.05, 0.05, 0.05)
 uv1_triplanar = true
 texture_filter = 0
@@ -119,6 +126,21 @@ size = Vector2(105, 105)
 subdivide_width = 32
 subdivide_depth = 32
 
+[sub_resource type="BoxMesh" id="BoxMesh_bm3hs"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eev0w"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("14_2orvi")
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 5.0
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_d3s6r"]
+material = SubResource("StandardMaterial3D_eev0w")
+
 [node name="cruiser" type="StaticBody3D"]
 
 [node name="mesh" type="MeshInstance3D" parent="."]
@@ -166,5 +188,146 @@ skeleton = NodePath("../..")
 
 [node name="engine6" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 150, -525, -75)
+visible = false
 mesh = SubResource("PlaneMesh_fw445")
 skeleton = NodePath("../..")
+
+[node name="insignia_decal" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 582, 70, 0)
+size = Vector3(100, 30, 100)
+texture_albedo = ExtResource("11_orclm")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="insignia_decal2" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -582, 70, 0)
+size = Vector3(100, 30, 100)
+texture_albedo = ExtResource("11_orclm")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="insignia_decal3" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 40, 160)
+size = Vector3(150, 30, 150)
+texture_albedo = ExtResource("11_orclm")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="burn_mark_decal_var1_1" type="Decal" parent="."]
+transform = Transform3D(0.982388, 0.18685, -8.16746e-09, 0, -4.37114e-08, -1, -0.18685, 0.982388, -4.29416e-08, 282.803, 175.818, 154.975)
+size = Vector3(100, 50, 100)
+texture_albedo = ExtResource("11_nfrqm")
+texture_normal = ExtResource("11_nfrqm")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="burn_mark_decal_var1_2" type="Decal" parent="."]
+transform = Transform3D(0.884711, -0.257719, -0.388416, -0.372916, 0.108632, -0.921484, 0.279678, 0.960094, -4.1967e-08, 463.433, -79.6721, -99.5004)
+size = Vector3(100, 50, 100)
+texture_albedo = ExtResource("11_nfrqm")
+texture_normal = ExtResource("11_nfrqm")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="burn_mark_decal_var2_1" type="Decal" parent="."]
+transform = Transform3D(0.996467, 0.0839909, -3.67136e-09, 0, -4.37114e-08, -1, -0.0839909, 0.996467, -4.35569e-08, 53.6418, 458.049, 161.099)
+size = Vector3(200, 50, 200)
+texture_albedo = ExtResource("12_usgy0")
+texture_normal = ExtResource("12_usgy0")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="burn_mark_decal_var2_2" type="Decal" parent="."]
+transform = Transform3D(0.925908, 0.32521, 0.192179, 0.18132, 0.0636858, -0.98136, -0.331387, 0.943495, -4.12415e-08, -391.724, 271.759, -123.477)
+size = Vector3(200, 50, 200)
+texture_albedo = ExtResource("12_usgy0")
+texture_normal = ExtResource("12_usgy0")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="burn_mark_decal_var3_1" type="Decal" parent="."]
+transform = Transform3D(0.996467, 0.0839909, -3.67136e-09, -0.0163326, 0.19377, -0.980911, -0.0823876, 0.977445, 0.194457, -63.9939, 1235.89, 68.1399)
+size = Vector3(150, 50, 150)
+texture_albedo = ExtResource("13_0rw6o")
+texture_normal = ExtResource("13_0rw6o")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="burn_mark_decal_var3_2" type="Decal" parent="."]
+transform = Transform3D(0.37903, -0.209912, -0.901262, -0.875586, -0.39654, -0.275874, -0.299477, 0.893697, -0.334096, 312.275, 503.995, -134.828)
+size = Vector3(150, 50, 150)
+texture_albedo = ExtResource("13_0rw6o")
+texture_normal = ExtResource("13_0rw6o")
+upper_fade = 0.1
+lower_fade = 0.1
+
+[node name="thruster_particles1" type="CPUParticles3D" parent="."]
+transform = Transform3D(1.91069e-13, -4.37114e-06, 100, -100, -4.37114e-06, 3.59989e-19, 4.37114e-06, -100, -4.37114e-06, 208.915, 1120.88, -93.6187)
+local_coords = true
+mesh = SubResource("BoxMesh_bm3hs")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="thruster_particles2" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0, 100, 316.374, 1120.88, 1.20496)
+local_coords = true
+mesh = SubResource("BoxMesh_bm3hs")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="thruster_particles3" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0, 100, 536.852, -227.916, -1.95278)
+local_coords = true
+mesh = SubResource("BoxMesh_bm3hs")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="thruster_particles4" type="CPUParticles3D" parent="."]
+transform = Transform3D(1.91069e-13, -4.37114e-06, 100, -100, -4.37114e-06, 0, 4.37114e-06, -100, -4.37114e-06, 479.605, -224.849, -90.8773)
+local_coords = true
+mesh = SubResource("BoxMesh_bm3hs")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="discharge_particles1" type="CPUParticles3D" parent="."]
+transform = Transform3D(1.37963, 0, -9.90437, 0, 10, 0, 9.90437, 0, 1.37963, 143.204, 273.781, 233.101)
+lifetime = 2.0
+speed_scale = 5.0
+explosiveness = 0.5
+randomness = 0.5
+lifetime_randomness = 1.0
+mesh = SubResource("BoxMesh_d3s6r")
+particle_flag_align_y = true
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 7.0
+color = Color(1, 1, 0, 1)
+
+[node name="discharge_particles2" type="CPUParticles3D" parent="."]
+transform = Transform3D(-8.02563, -1.34126, -5.81295, -5.77388, -0.704504, 8.13425, -1.50054, 9.88457, -0.209017, 133.583, -376.345, -89.5776)
+lifetime = 2.0
+speed_scale = 5.0
+explosiveness = 0.5
+randomness = 0.5
+lifetime_randomness = 1.0
+mesh = SubResource("BoxMesh_d3s6r")
+particle_flag_align_y = true
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 7.0
+color = Color(1, 1, 0, 1)

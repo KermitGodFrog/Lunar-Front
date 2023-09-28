@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7x8lt2bwg0lh"
-path="res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"
+uid="uid://cgm8g1dqgb2pk"
+path="res://.godot/imported/flash2.png-bb4e90009ca64b0c81ce404885d1f268.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Cruiser/hull_blue.png"
-dest_files=["res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"]
+source_file="res://Graphics/Cruiser/flash2.png"
+dest_files=["res://.godot/imported/flash2.png-bb4e90009ca64b0c81ce404885d1f268.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

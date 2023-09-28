@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7x8lt2bwg0lh"
-path="res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"
+uid="uid://eus84i86fx67"
+path.s3tc="res://.godot/imported/military_insignia.png-2bfc3772127360fca849d826871a5d7f.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Graphics/Cruiser/hull_blue.png"
-dest_files=["res://.godot/imported/hull_blue.png-ddf34bed3cf4fcb602584151d149c596.ctex"]
+source_file="res://Graphics/Cruiser/military_insignia.png"
+dest_files=["res://.godot/imported/military_insignia.png-2bfc3772127360fca849d826871a5d7f.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
