@@ -55,7 +55,7 @@ shader_parameter/texture_emission = ExtResource("9_i8xti")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ceqoi"]
 material = SubResource("ShaderMaterial_h2ff6")
-size = Vector2(60, 60)
+size = Vector2(55, 55)
 subdivide_width = 32
 subdivide_depth = 32
 
@@ -121,12 +121,12 @@ lower_fade = 0.1
 [node name="engines" type="Node3D" parent="."]
 
 [node name="engine" type="MeshInstance3D" parent="engines"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -750, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -763.526, 0)
 mesh = SubResource("PlaneMesh_ceqoi")
 skeleton = NodePath("../..")
 
 [node name="engine2" type="MeshInstance3D" parent="engines"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -100, -750, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -100, -763.526, 0)
 mesh = SubResource("PlaneMesh_ceqoi")
 skeleton = NodePath("../..")
 
