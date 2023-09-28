@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djl1etrhdyecy"]
+[gd_scene load_steps=25 format=3 uid="uid://djl1etrhdyecy"]
 
 [ext_resource type="ArrayMesh" uid="uid://cbf564l60areo" path="res://Models/Missile Carrierdamged.obj" id="1_vao0m"]
 [ext_resource type="Texture2D" uid="uid://dk5owgsyj5h8i" path="res://Graphics/Cruiser/hull.png" id="2_0qhcw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7x8lt2bwg0lh" path="res://Graphics/Cruiser/hull_blue.png" id="5_n0dyv"]
 [ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_cyubh"]
 [ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="7_sqbog"]
+[ext_resource type="Texture2D" uid="uid://bc6sgqvnwq2n8" path="res://Graphics/Phantom/white_texture.png" id="10_856ns"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6bu5"]
 albedo_color = Color(0.682353, 0.682353, 0.682353, 1)
@@ -90,6 +91,18 @@ size = Vector2(70, 70)
 subdivide_width = 64
 subdivide_depth = 64
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eev0w"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("10_856ns")
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 5.0
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7gl88"]
+material = SubResource("StandardMaterial3D_eev0w")
+
 [node name="missile_carrier" type="StaticBody3D"]
 
 [node name="mesh" type="MeshInstance3D" parent="."]
@@ -123,3 +136,20 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 286, -674, 0)
 mesh = SubResource("PlaneMesh_mj3cj")
 skeleton = NodePath("../..")
+
+[node name="discharge_particles1" type="CPUParticles3D" parent="."]
+transform = Transform3D(7.24292, -2.33496, -6.48753, 1.73927, 9.72358, -1.55788, 6.67195, 0, 7.44882, 228.892, 557.97, 92.3922)
+lifetime = 2.0
+speed_scale = 5.0
+explosiveness = 0.5
+randomness = 0.5
+lifetime_randomness = 1.0
+mesh = SubResource("BoxMesh_7gl88")
+particle_flag_align_y = true
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 7.0
+color = Color(1, 1, 0, 1)
