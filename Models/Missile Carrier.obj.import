@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c8hd83ig0geuw"
+path="res://.godot/imported/Missile Carrier.obj-a8341260f517eccf9eb247f0fae9eafd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Missile Carrier.obj-a8341260f517eccf9eb247f0fae9eafd.mesh"]
+
+source_file="res://Models/Missile Carrier.obj"
+dest_files=["res://.godot/imported/Missile Carrier.obj-a8341260f517eccf9eb247f0fae9eafd.mesh", "res://.godot/imported/Missile Carrier.obj-a8341260f517eccf9eb247f0fae9eafd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

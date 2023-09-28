@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b7pjfsa2u87a7"]
+[gd_scene load_steps=39 format=3 uid="uid://b7pjfsa2u87a7"]
 
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="6_5qgdh"]
 [ext_resource type="PackedScene" uid="uid://b40hi1cc0fmp2" path="res://Scenes/Fleet Map/cruiser.tscn" id="7_mf4ab"]
 [ext_resource type="Texture2D" uid="uid://bjjkxxtsh2u0f" path="res://Graphics/Arrow.png" id="8_i80yt"]
+[ext_resource type="PackedScene" uid="uid://djl1etrhdyecy" path="res://Scenes/Fleet Map/missile_carrier.tscn" id="9_lotf5"]
+[ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="10_vc4r0"]
 
 [sub_resource type="Gradient" id="Gradient_gmwh2"]
 offsets = PackedFloat32Array(0.358108, 0.722973)
@@ -221,6 +223,21 @@ CHECKPOINT_NUMBER = 1
 transform = Transform3D(0.866025, -5.85622e-09, -0.5, -0.5, -2.18557e-08, -0.866025, -5.85622e-09, 1, -2.18557e-08, -1300, 1000, 13)
 CHECKPOINT_NUMBER = 2
 
+[node name="checkpoint4" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(0.618943, 0.301966, -0.72507, -1.49012e-08, 0.923143, 0.384456, 0.785436, -0.237957, 0.571373, -557.717, 1670.7, -151.769)
+CHECKPOINT_NUMBER = 3
+
+[node name="checkpoint5" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(-0.388573, 0.31466, -1.37542e-08, 0, -2.18557e-08, -0.5, -0.31466, -0.388573, 1.69851e-08, 447.608, 1284.14, -712.902)
+CHECKPOINT_NUMBER = 4
+
+[node name="checkpoint6" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(-0.388573, 0.31466, -1.37542e-08, 0, -2.18557e-08, -0.5, -0.31466, -0.388573, 1.69851e-08, 447.608, 492.724, -712.902)
+CHECKPOINT_NUMBER = 5
+
+[node name="missile_carrier" parent="." instance=ExtResource("9_lotf5")]
+transform = Transform3D(-0.777146, 0, 0.629321, 0, 1, 0, -0.629321, 0, -0.777146, 270, 760, -720)
+
 [node name="cruiser" parent="." instance=ExtResource("7_mf4ab")]
 transform = Transform3D(0.41655, 0, -0.909113, 0, 1, 0, 0.909113, 0, 0.41655, -844.853, 0, 0)
 
@@ -368,3 +385,7 @@ speed_scale = 5.0
 
 [node name="collision" type="CollisionShape3D" parent="arrow_sign3"]
 shape = SubResource("BoxShape3D_nqevb")
+
+[node name="slingshot_pickup" parent="." instance=ExtResource("10_vc4r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.608, 1414.28, -712.902)
+BOOST_SPEED = 500.0
