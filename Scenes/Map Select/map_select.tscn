@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6x1bosgruat1"]
+[gd_scene load_steps=19 format=3 uid="uid://b6x1bosgruat1"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_3t0nq"]
 [ext_resource type="FontFile" uid="uid://cxur1i25sjsus" path="res://Graphics/Fonts/protomolecule.ttf" id="1_d07gl"]
@@ -8,6 +8,8 @@
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="4_m5wsd"]
 [ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="5_ahk7g"]
 [ext_resource type="Script" path="res://Scenes/Map Select/leaderboard_origin_label.gd" id="6_0cxqa"]
+[ext_resource type="Script" path="res://Scenes/Map Select/reload_leaderboard_button.gd" id="9_mu8ay"]
+[ext_resource type="Script" path="res://Scenes/Map Select/send_offline_scores_button.gd" id="10_1et5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkull"]
 bg_color = Color(0, 0, 0, 0)
@@ -33,6 +35,18 @@ corner_radius_bottom_left = 20
 [sub_resource type="Theme" id="Theme_oy45s"]
 default_font = ExtResource("1_d07gl")
 default_font_size = 50
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bnseu"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_n8h1i"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
 
 [node name="map_select" type="Control"]
 layout_mode = 3
@@ -126,13 +140,32 @@ text = "SCRAPYARD"
 script = ExtResource("2_3vnmj")
 to_scene = "res://Scenes/Scrapyard Map/scrapyard_map.tscn"
 
-[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/scrapayrd_container"]
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/scrapayrd_container" groups=["medal_texture"]]
 texture_filter = 1
 layout_mode = 2
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("3_kj5i4")
 map = "scrapyard"
+
+[node name="asteroid_refinery_container" type="HBoxContainer" parent="main_ui_vbox"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="asteroid_refinery_button" type="Button" parent="main_ui_vbox/asteroid_refinery_container"]
+layout_mode = 2
+theme = SubResource("Theme_oy45s")
+text = "ASTEROID REFINERY"
+script = ExtResource("2_3vnmj")
+to_scene = "res://Scenes/Asteroid Refinery Map/asteroid_refinery_map.tscn"
+
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/asteroid_refinery_container" groups=["medal_texture"]]
+texture_filter = 1
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_kj5i4")
+map = "asteroid_refinery"
 
 [node name="fleet_container" type="HBoxContainer" parent="main_ui_vbox"]
 layout_mode = 2
@@ -145,7 +178,7 @@ text = "FLEET"
 script = ExtResource("2_3vnmj")
 to_scene = "res://Scenes/Fleet Map/fleet_map.tscn"
 
-[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/fleet_container"]
+[node name="medal_texture" type="TextureRect" parent="main_ui_vbox/fleet_container" groups=["medal_texture"]]
 texture_filter = 1
 layout_mode = 2
 expand_mode = 2
@@ -153,5 +186,39 @@ stretch_mode = 5
 script = ExtResource("3_kj5i4")
 map = "fleet"
 
+[node name="data_ui_vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="send_offline_scores_button" type="Button" parent="data_ui_vbox"]
+layout_mode = 2
+theme = ExtResource("1_3t0nq")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxLine_bnseu")
+text = "SEND OFFLINE SCORES"
+alignment = 2
+script = ExtResource("10_1et5a")
+for_map_identifiers = PackedStringArray("scrapyard")
+
+[node name="reload_leaderboard_button" type="Button" parent="data_ui_vbox"]
+layout_mode = 2
+theme = ExtResource("1_3t0nq")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxLine_n8h1i")
+text = "FORCE RELOAD LEADERBOARD"
+alignment = 2
+script = ExtResource("9_mu8ay")
+
 [connection signal="mouse_entered" from="main_ui_vbox/scrapayrd_container/scrapyard_button" to="leaderboard_status_list" method="_on_scrapyard_button_mouse_entered"]
+[connection signal="mouse_entered" from="main_ui_vbox/asteroid_refinery_container/asteroid_refinery_button" to="leaderboard_status_list" method="_on_asteroid_refinery_button_mouse_entered"]
 [connection signal="mouse_entered" from="main_ui_vbox/fleet_container/fleet_button" to="leaderboard_status_list" method="_on_fleet_button_mouse_entered"]
+[connection signal="pressed" from="data_ui_vbox/send_offline_scores_button" to="data_ui_vbox/send_offline_scores_button" method="_on_pressed"]
+[connection signal="pressed" from="data_ui_vbox/reload_leaderboard_button" to="data_ui_vbox/reload_leaderboard_button" method="_on_pressed"]

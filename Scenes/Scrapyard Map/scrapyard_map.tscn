@@ -1268,7 +1268,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -160, 0)
 BOOST_INCREASE = 200.0
 
 [node name="slingshot_pickup" parent="freighter" instance=ExtResource("10_5rogf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -620, 160, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -780, 160, 0)
 BOOST_SPEED = 750.0
 
 [node name="checkpoint1" parent="." instance=ExtResource("3_sok7h")]

@@ -73,6 +73,7 @@ layout_mode = 2
 text = "TUTORIAL"
 alignment = 0
 script = ExtResource("2_cmg2u")
+to_scene = "res://Scenes/Tutorial/tutorial.tscn"
 
 [node name="quit_to_desktop_button" type="Button" parent="main_ui_vbox"]
 layout_mode = 2

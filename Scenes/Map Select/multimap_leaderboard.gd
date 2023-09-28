@@ -1,11 +1,14 @@
 extends ItemList
 class_name GlobalLeaderboard
 
-func update(leaderboard_identifier: String):
+var last_selected_map: String
+
+func update(leaderboard_identifier: String, force_update: bool):
 	clear()
 	var scores = []
-	if leaderboard_identifier in SilentWolf.Scores.leaderboards:
-		scores = SilentWolf.Scores.leaderboards[leaderboard_identifier]
+	if force_update == false:
+		if leaderboard_identifier in SilentWolf.Scores.leaderboards:
+			scores = SilentWolf.Scores.leaderboards[leaderboard_identifier]
 	
 	get_tree().call_group("leaderboard_origin_label", "update", leaderboard_identifier)
 	
@@ -46,9 +49,16 @@ func render(scores):
 	pass
 
 func _on_scrapyard_button_mouse_entered():
-	update("scrapyard_map")
+	update("scrapyard_map", false)
+	last_selected_map = "scrapyard_map"
 	pass
 
 func _on_fleet_button_mouse_entered():
-	update("fleet_map")
+	update("fleet_map", false)
+	last_selected_map = "fleet_map"
+	pass
+
+func _on_asteroid_refinery_button_mouse_entered():
+	update("asteroid_refinery_map", false)
+	last_selected_map = "asteroid_refinery_map"
 	pass

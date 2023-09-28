@@ -534,6 +534,15 @@ grow_vertical = 2
 texture = ExtResource("15_j5ys2")
 expand_mode = 2
 
+[node name="pause_menu_layer" type="CanvasLayer" parent="ui_control/ui_layer"]
+
+[node name="pause_handling" type="Node" parent="ui_control/ui_layer/pause_menu_layer"]
+process_mode = 3
+script = ExtResource("36_53deo")
+
+[node name="pause_menu" parent="ui_control/ui_layer/pause_menu_layer/pause_handling" instance=ExtResource("37_54nov")]
+visible = false
+
 [node name="hlod_grouping_node" type="Node3D" parent="."]
 
 [node name="mesh" type="MeshInstance3D" parent="hlod_grouping_node"]
@@ -1149,10 +1158,3 @@ texture_albedo = ExtResource("27_hs6ag")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146643, 1.88826, 1.55923)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
-
-[node name="pause_handling" type="Node" parent="."]
-process_mode = 3
-script = ExtResource("36_53deo")
-
-[node name="pause_menu" parent="pause_handling" instance=ExtResource("37_54nov")]
-visible = false

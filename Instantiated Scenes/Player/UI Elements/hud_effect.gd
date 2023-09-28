@@ -7,6 +7,8 @@ func _ready():
 	pass
 
 func circle_effect(initial_color: Color, time: float):
+	$rectangle_effect.hide()
+	
 	$circle_effect.set_flip_h(bool(global_data.get_randi(0,1)))
 	$circle_effect.set_flip_v(bool(global_data.get_randi(0,1)))
 	
@@ -22,6 +24,8 @@ func circle_effect(initial_color: Color, time: float):
 	pass
 
 func rectangle_effect(initial_color: Color, time: float):
+	$circle_effect.hide()
+	
 	$rectangle_effect.show()
 	$rectangle_effect.set_modulate(initial_color)
 	
