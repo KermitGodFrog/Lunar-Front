@@ -230,6 +230,12 @@ transform = Transform3D(0.0316201, 0, -0.9995, 0, 1, 0, 0.9995, 0, 0.0316201, -2
 [node name="freighter_normal2" parent="." instance=ExtResource("13_06luh")]
 transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, -2437.5, 615.647, -1179.82)
 
+[node name="freighter_normal5" parent="." instance=ExtResource("13_06luh")]
+transform = Transform3D(-0.620573, 0, 0.784148, 0, 1, 0, -0.784148, 0, -0.620573, 101.134, 1273.36, 2083.46)
+
+[node name="freighter_normal4" parent="." instance=ExtResource("13_06luh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 820, 299.675, -2523.8)
+
 [node name="freighter_normal3" parent="." instance=ExtResource("13_06luh")]
 transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, 1555.47, -452.573, 1108.36)
 
@@ -273,7 +279,7 @@ transform = Transform3D(-0.645418, 0, 0.76383, 0, 1, 0, -0.76383, 0, -0.645418, 
 CHECKPOINT_NUMBER = 8
 
 [node name="checkpoint10" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(-0.945848, 0, -0.324611, 0, 1, 0, 0.324611, 0, -0.945848, -1345.4, 770.224, -449.108)
+transform = Transform3D(-0.945848, 0, -0.324611, 0.0997498, 0.951616, -0.29065, 0.308905, -0.30729, -0.900084, -1345.4, 770.224, -449.108)
 CHECKPOINT_NUMBER = 9
 
 [node name="checkpoint11" parent="." instance=ExtResource("6_5qgdh")]
@@ -315,6 +321,93 @@ autoplay = "default"
 speed_scale = 5.0
 
 [node name="collision" type="CollisionShape3D" parent="arrow_sign1"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign9" type="StaticBody3D" parent="."]
+transform = Transform3D(130.351, 0, 151.686, 0, 200, 0, -151.686, 0, 130.351, -920.909, 858, 282.083)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign9"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign9"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign10" type="StaticBody3D" parent="."]
+transform = Transform3D(130.351, 0, 151.686, 0, 200, 0, -151.686, 0, 130.351, -920.909, 780, 282.083)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign10"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign10"]
+shape = SubResource("BoxShape3D_nqevb")
+
+[node name="arrow_sign11" type="StaticBody3D" parent="."]
+transform = Transform3D(130.351, 0, 151.686, 0, 200, 0, -151.686, 0, 130.351, -1205.3, 820, 613.018)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign11"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rupi2")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign11"]
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign4" type="StaticBody3D" parent="."]
@@ -376,7 +469,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign6" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 762.344, 290, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 290, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign6"]
 transparent = false
@@ -405,7 +498,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign7" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 762.344, 400, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 400, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign7"]
 transparent = false
@@ -434,7 +527,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign8" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 762.344, 180, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 180, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign8"]
 transparent = false

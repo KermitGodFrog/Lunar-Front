@@ -73,12 +73,14 @@ shape = SubResource("ConcavePolygonShape3D_nt8am")
 
 [node name="engine_decal1" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -509.666, -4.2251e-07)
-size = Vector3(500, 500, 400)
+size = Vector3(320, 127, 400)
 texture_albedo = ExtResource("3_4c1la")
+emission_energy = 0.0
+modulate = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="engine_decal2" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -756.57, -1.1215e-05)
-size = Vector3(500, 500, 110)
+size = Vector3(320, 100, 110)
 texture_albedo = ExtResource("3_4c1la")
 modulate = Color(0, 0, 0, 1)
 
