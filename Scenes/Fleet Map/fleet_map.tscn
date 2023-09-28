@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b7pjfsa2u87a7"]
+[gd_scene load_steps=43 format=3 uid="uid://b7pjfsa2u87a7"]
 
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="10_vc4r0"]
 [ext_resource type="PackedScene" uid="uid://dufp20n0xpjnk" path="res://Scenes/Fleet Map/freighter.tscn" id="11_v48sy"]
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="12_wko8v"]
+[ext_resource type="PackedScene" uid="uid://dw4in8hjxhx2n" path="res://Scenes/Fleet Map/freighter_normal.tscn" id="13_06luh"]
+[ext_resource type="PackedScene" uid="uid://0dmgvknuugft" path="res://Scenes/Fleet Map/modified_cruiser_normal.tscn" id="14_47ebn"]
 
 [sub_resource type="Gradient" id="Gradient_gmwh2"]
 offsets = PackedFloat32Array(0.358108, 0.722973)
@@ -222,6 +224,18 @@ transform = Transform3D(0.41655, 0, -0.909113, 0, 1, 0, 0.909113, 0, 0.41655, -8
 [node name="freighter" parent="." instance=ExtResource("11_v48sy")]
 transform = Transform3D(0.806362, 0, -0.591422, 0, 1, 0, 0.591422, 0, 0.806362, 1096.72, 0, -1435.15)
 
+[node name="freighter_normal" parent="." instance=ExtResource("13_06luh")]
+transform = Transform3D(0.0316201, 0, -0.9995, 0, 1, 0, 0.9995, 0, 0.0316201, -2070.81, -103.008, 2.24015)
+
+[node name="freighter_normal2" parent="." instance=ExtResource("13_06luh")]
+transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, -2437.5, 615.647, -1179.82)
+
+[node name="freighter_normal3" parent="." instance=ExtResource("13_06luh")]
+transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, 1555.47, -452.573, 1108.36)
+
+[node name="cruiser_normal" parent="." instance=ExtResource("14_47ebn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2129.12, 570.365, 0)
+
 [node name="checkpoint" parent="." instance=ExtResource("6_5qgdh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 200, 0, 0)
 
@@ -258,6 +272,22 @@ CHECKPOINT_NUMBER = 7
 transform = Transform3D(-0.645418, 0, 0.76383, 0, 1, 0, -0.76383, 0, -0.645418, -1274.94, 770.224, -1238.99)
 CHECKPOINT_NUMBER = 8
 
+[node name="checkpoint10" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(-0.945848, 0, -0.324611, 0, 1, 0, 0.324611, 0, -0.945848, -1345.4, 770.224, -449.108)
+CHECKPOINT_NUMBER = 9
+
+[node name="checkpoint11" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(0.274512, -0.0994669, -0.636199, 2.6077e-09, 0.691598, -0.108128, 0.643928, 0.0424036, 0.271218, -611.123, 796.225, 100.173)
+CHECKPOINT_NUMBER = 10
+
+[node name="checkpoint12" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(-3.0598e-08, 0.494975, -0.494975, 0, 0.494975, 0.494975, 0.7, 2.1636e-08, -2.1636e-08, 1474.17, 796.225, 91.9951)
+CHECKPOINT_NUMBER = 11
+
+[node name="checkpoint13" parent="." instance=ExtResource("6_5qgdh")]
+transform = Transform3D(-3.0598e-08, -0.494975, -0.494975, 0, 0.494975, -0.494975, 0.7, -2.1636e-08, -2.1636e-08, 1197.05, 400, 91.995)
+CHECKPOINT_NUMBER = 12
+
 [node name="arrow_sign1" type="StaticBody3D" parent="."]
 transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -2000, 150, 0)
 
@@ -288,7 +318,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign4" type="StaticBody3D" parent="."]
-transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -2000, 150, 150)
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -2000, 150, 100)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign4"]
 transparent = false
@@ -317,7 +347,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign5" type="StaticBody3D" parent="."]
-transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -2000, 150, -150)
+transform = Transform3D(3.82137e-13, 8.74228e-06, 200, 200, -8.74228e-06, 0, 8.74228e-06, 200, -8.74228e-06, -2000, 150, -100)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign5"]
 transparent = false
@@ -494,6 +524,14 @@ shape = SubResource("BoxShape3D_nqevb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.608, 1900, -712.902)
 BOOST_SPEED = 500.0
 
+[node name="slingshot_pickup2" parent="." instance=ExtResource("10_vc4r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -940.972, 864.227, 159.973)
+BOOST_SPEED = 500.0
+
 [node name="boost_pickup" parent="." instance=ExtResource("12_wko8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 534.735, 290, -2454.81)
 BOOST_INCREASE = 300.0
+
+[node name="boost_pickup2" parent="." instance=ExtResource("12_wko8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.609, 796.225, 487.431)
+BOOST_INCREASE = 200.0

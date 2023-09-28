@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=87 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://nmrn2lkoxwap" path="res://Graphics/Phantom/cushioning_texture.png" id="24_y7eal"]
 [ext_resource type="Texture2D" uid="uid://c77f1i653kwfd" path="res://Graphics/Phantom/seven_texture.png" id="27_hs6ag"]
 [ext_resource type="Texture2D" uid="uid://cko1nxt2l7b1j" path="res://Graphics/Stolen Normal Maps/Metal Hexagon/metal_0076_color_1k.jpg" id="28_vir6j"]
-[ext_resource type="Texture2D" uid="uid://bxloju2lpw1mo" path="res://Graphics/Phantom/seven_normal_map.png" id="28_xd38a"]
 [ext_resource type="Texture2D" uid="uid://b81n5xbwvpbts" path="res://Graphics/Stolen Normal Maps/Metal Noise/metal_0059_color_1k.jpg" id="28_yxjac"]
 [ext_resource type="Texture2D" uid="uid://coenhfitsrsw8" path="res://Graphics/Stolen Normal Maps/Metal BIG Scratched/metal_0071_color_1k.jpg" id="30_85du5"]
 [ext_resource type="Texture2D" uid="uid://bnal22q40nks0" path="res://Graphics/Stolen Normal Maps/Metal Scratched/metal_0026_color_1k.jpg" id="30_iag4o"]
@@ -1143,17 +1142,13 @@ scale_amount_min = 0.1
 
 [node name="seven_decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0798217, 1.87855, 1.40402)
-visible = false
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
-texture_normal = ExtResource("28_xd38a")
 
 [node name="seven_decal2" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146643, 1.88826, 1.55923)
-visible = false
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
-texture_normal = ExtResource("27_hs6ag")
 
 [node name="pause_handling" type="Node" parent="."]
 process_mode = 3
