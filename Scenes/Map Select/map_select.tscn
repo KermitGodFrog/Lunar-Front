@@ -208,7 +208,7 @@ alignment = 2
 script = ExtResource("10_1et5a")
 for_map_identifiers = PackedStringArray("scrapyard")
 
-[node name="reload_leaderboard_button" type="Button" parent="data_ui_vbox"]
+[node name="reload_leaderboard_button" type="Button" parent="data_ui_vbox" groups=["reload_leaderboard_button"]]
 layout_mode = 2
 theme = ExtResource("1_3t0nq")
 theme_override_font_sizes/font_size = 25

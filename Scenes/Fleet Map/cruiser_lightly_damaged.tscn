@@ -1,0 +1,223 @@
+[gd_scene load_steps=32 format=3 uid="uid://b7u02yl1i6npp"]
+
+[ext_resource type="ArrayMesh" uid="uid://chdmtk1fjab42" path="res://Models/CruiserlightlyDamaged.obj" id="1_yo0t1"]
+[ext_resource type="Texture2D" uid="uid://dk5owgsyj5h8i" path="res://Graphics/Cruiser/hull.png" id="2_p0kuc"]
+[ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="3_n4yxs"]
+[ext_resource type="Texture2D" uid="uid://divinf2cjkt5f" path="res://Models/MetalScrapStriped.png" id="4_chrfl"]
+[ext_resource type="Texture2D" uid="uid://c7x8lt2bwg0lh" path="res://Graphics/Cruiser/hull_blue.png" id="5_218ax"]
+[ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_x1yry"]
+[ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="7_ltnpa"]
+[ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="8_5pnh3"]
+[ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="8_5qgad"]
+[ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="9_xfrtl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojg4u"]
+albedo_color = Color(0.682353, 0.682353, 0.682353, 1)
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_p0kuc")
+metallic_texture_channel = 4
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vt07"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wgf3"]
+albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
+albedo_texture = ExtResource("3_n4yxs")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sef5f"]
+albedo_color = Color(0, 0.2, 1, 1)
+albedo_texture = ExtResource("4_chrfl")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("5_218ax")
+metallic_texture_channel = 2
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ieb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m77qy"]
+albedo_texture = ExtResource("3_n4yxs")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgtbv"]
+albedo_texture = ExtResource("6_x1yry")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iswel"]
+albedo_texture = ExtResource("7_ltnpa")
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 0.490196, 0, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("7_ltnpa")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e55ca"]
+radius = 292.009
+height = 2233.59
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hypt"]
+radius = 292.009
+height = 1813.36
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1ugwp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hkrcx"]
+seamless_blend_skirt = 1.0
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_1ugwp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g70k6"]
+render_priority = 0
+shader = ExtResource("8_5qgad")
+shader_parameter/engine_length = 80.0
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/noise = SubResource("NoiseTexture2D_hkrcx")
+shader_parameter/thruster_texture = ExtResource("9_xfrtl")
+shader_parameter/texture_emission = ExtResource("9_xfrtl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c2rex"]
+material = SubResource("ShaderMaterial_g70k6")
+size = Vector2(105, 105)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ftqg0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bhuco"]
+seamless_blend_skirt = 1.0
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_ftqg0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lssm"]
+render_priority = 0
+shader = ExtResource("8_5qgad")
+shader_parameter/engine_length = 80.0
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/noise = SubResource("NoiseTexture2D_bhuco")
+shader_parameter/thruster_texture = ExtResource("9_xfrtl")
+shader_parameter/texture_emission = ExtResource("9_xfrtl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7albh"]
+material = SubResource("ShaderMaterial_0lssm")
+size = Vector2(105, 105)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l7xr5"]
+material = SubResource("ShaderMaterial_0lssm")
+size = Vector2(105, 105)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_itxxf"]
+material = SubResource("ShaderMaterial_0lssm")
+size = Vector2(105, 105)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_adv85"]
+material = SubResource("ShaderMaterial_0lssm")
+size = Vector2(105, 105)
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="cruiser_lightly_damaged" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)
+mesh = ExtResource("1_yo0t1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ojg4u")
+surface_material_override/1 = SubResource("StandardMaterial3D_8vt07")
+surface_material_override/2 = SubResource("StandardMaterial3D_0wgf3")
+surface_material_override/3 = SubResource("StandardMaterial3D_sef5f")
+surface_material_override/4 = SubResource("StandardMaterial3D_16ieb")
+surface_material_override/5 = SubResource("StandardMaterial3D_m77qy")
+surface_material_override/6 = SubResource("StandardMaterial3D_mgtbv")
+surface_material_override/7 = SubResource("StandardMaterial3D_iswel")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 470.482, 0)
+shape = SubResource("CapsuleShape3D_e55ca")
+
+[node name="collision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.989316, -0.14579, 0, 0.14579, 0.989316, 0, 0, 0, 1, 300.347, 536.748, 0)
+shape = SubResource("CapsuleShape3D_1hypt")
+
+[node name="collision3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.989272, 0.146083, 0, -0.146083, 0.989272, 0, 0, 0, 1, -300.347, 536.748, 0)
+shape = SubResource("CapsuleShape3D_1hypt")
+
+[node name="engines" type="Node3D" parent="."]
+
+[node name="engine" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -525, -75)
+mesh = SubResource("PlaneMesh_c2rex")
+skeleton = NodePath("../..")
+
+[node name="engine2" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -525, 75)
+mesh = SubResource("PlaneMesh_7albh")
+skeleton = NodePath("../..")
+
+[node name="engine3" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 150, -525, 75)
+mesh = SubResource("PlaneMesh_l7xr5")
+skeleton = NodePath("../..")
+
+[node name="engine4" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -150, -525, 75)
+mesh = SubResource("PlaneMesh_itxxf")
+skeleton = NodePath("../..")
+
+[node name="engine5" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -150, -525, -75)
+mesh = SubResource("PlaneMesh_adv85")
+skeleton = NodePath("../..")
+
+[node name="engine6" type="MeshInstance3D" parent="engines"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 150, -525, -75)
+mesh = SubResource("PlaneMesh_adv85")
+skeleton = NodePath("../..")
+
+[node name="insignia_decal" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 582, 70, 0)
+size = Vector3(100, 30, 100)
+texture_albedo = ExtResource("8_5pnh3")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="insignia_decal2" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -582, 70, 0)
+size = Vector3(100, 30, 100)
+texture_albedo = ExtResource("8_5pnh3")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="insignia_decal3" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 40, 160)
+size = Vector3(150, 30, 150)
+texture_albedo = ExtResource("8_5pnh3")
+modulate = Color(0, 0, 0.309804, 1)
+
+[node name="insignia_decal4" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 40, -160)
+size = Vector3(150, 30, 150)
+texture_albedo = ExtResource("8_5pnh3")
+modulate = Color(0, 0, 0.309804, 1)

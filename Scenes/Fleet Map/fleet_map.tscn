@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b7pjfsa2u87a7"]
+[gd_scene load_steps=44 format=3 uid="uid://b7pjfsa2u87a7"]
 
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="12_wko8v"]
 [ext_resource type="PackedScene" uid="uid://dw4in8hjxhx2n" path="res://Scenes/Fleet Map/freighter_normal.tscn" id="13_06luh"]
 [ext_resource type="PackedScene" uid="uid://0dmgvknuugft" path="res://Scenes/Fleet Map/modified_cruiser_normal.tscn" id="14_47ebn"]
+[ext_resource type="PackedScene" uid="uid://b7u02yl1i6npp" path="res://Scenes/Fleet Map/cruiser_lightly_damaged.tscn" id="15_rjhbe"]
 
 [sub_resource type="Gradient" id="Gradient_gmwh2"]
 offsets = PackedFloat32Array(0.358108, 0.722973)
@@ -222,7 +223,7 @@ transform = Transform3D(-0.777146, 0, 0.629321, 0, 1, 0, -0.629321, 0, -0.777146
 transform = Transform3D(0.41655, 0, -0.909113, 0, 1, 0, 0.909113, 0, 0.41655, -844.853, 0, 0)
 
 [node name="freighter" parent="." instance=ExtResource("11_v48sy")]
-transform = Transform3D(0.806362, 0, -0.591422, 0, 1, 0, 0.591422, 0, 0.806362, 1096.72, 0, -1435.15)
+transform = Transform3D(0.806362, 0, -0.591422, 0, 1, 0, 0.591422, 0, 0.806362, 1096.72, -400, -1435.15)
 
 [node name="freighter_normal" parent="." instance=ExtResource("13_06luh")]
 transform = Transform3D(0.0316201, 0, -0.9995, 0, 1, 0, 0.9995, 0, 0.0316201, -2070.81, -103.008, 2.24015)
@@ -241,6 +242,9 @@ transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, 
 
 [node name="cruiser_normal" parent="." instance=ExtResource("14_47ebn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2129.12, 570.365, 0)
+
+[node name="cruiser_lightly_damaged" parent="." instance=ExtResource("15_rjhbe")]
+transform = Transform3D(-0.367979, 0, -0.929834, 0, 1, 0, 0.929834, 0, -0.367979, 3682.07, 683.165, -2004.39)
 
 [node name="checkpoint" parent="." instance=ExtResource("6_5qgdh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 200, 0, 0)
@@ -267,7 +271,7 @@ transform = Transform3D(-0.388573, 0.31466, -1.37542e-08, 0, -2.18557e-08, -0.5,
 CHECKPOINT_NUMBER = 5
 
 [node name="checkpoint7" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 939.026, 290, -1479.68)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 939.026, -110, -1479.68)
 CHECKPOINT_NUMBER = 6
 
 [node name="checkpoint8" parent="." instance=ExtResource("6_5qgdh")]
@@ -279,7 +283,7 @@ transform = Transform3D(-0.645418, 0, 0.76383, 0, 1, 0, -0.76383, 0, -0.645418, 
 CHECKPOINT_NUMBER = 8
 
 [node name="checkpoint10" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(-0.945848, 0, -0.324611, 0.0997498, 0.951616, -0.29065, 0.308905, -0.30729, -0.900084, -1345.4, 770.224, -449.108)
+transform = Transform3D(-0.79448, -0.0996888, -0.599053, 0.0997498, 0.951616, -0.29065, 0.599043, -0.29067, -0.746096, -1659.49, 770.224, -449.108)
 CHECKPOINT_NUMBER = 9
 
 [node name="checkpoint11" parent="." instance=ExtResource("6_5qgdh")]
@@ -618,7 +622,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.608, 1900, -712.902)
 BOOST_SPEED = 500.0
 
 [node name="slingshot_pickup2" parent="." instance=ExtResource("10_vc4r0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -940.972, 864.227, 159.973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -822.492, 864.227, 159.973)
 BOOST_SPEED = 500.0
 
 [node name="boost_pickup" parent="." instance=ExtResource("12_wko8v")]

@@ -80,16 +80,16 @@ shader_parameter/engine_length = 200.0
 shader_parameter/emission = Color(0, 1, 1, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv1_scale = Vector3(0.05, 0.05, 0.05)
+shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
 shader_parameter/noise = SubResource("NoiseTexture2D_he63o")
 shader_parameter/thruster_texture = ExtResource("3_y1gsu")
 shader_parameter/texture_emission = ExtResource("3_y1gsu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj3cj"]
 material = SubResource("ShaderMaterial_rauy8")
-size = Vector2(70, 70)
-subdivide_width = 64
-subdivide_depth = 64
+size = Vector2(64, 64)
+subdivide_width = 32
+subdivide_depth = 32
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eev0w"]
 albedo_color = Color(1, 1, 0, 1)

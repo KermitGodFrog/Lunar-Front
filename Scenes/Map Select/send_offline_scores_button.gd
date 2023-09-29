@@ -3,6 +3,8 @@ extends Button
 @export var for_map_identifiers: PackedStringArray
 
 func _on_pressed():
+	set_text("WORKING...")
+	
 	for map in for_map_identifiers:
 		if global_data.get_best_time_from_map(map) == 0:
 			pass
@@ -31,7 +33,10 @@ func _on_pressed():
 					#THIS IS A REALLY BAD IDEA, IF THE OFFLINE SCORE IS LOWER THAN THE SAVED SCORE BY LIKE 0.1 SECONDS THEN IT WILL FAIL. BUT FLOATING POINT INNACURACY IS A BITCH SO FIGURE SOMETHING OUT LATER.
 					
 					var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_from_map(map), str(map, "_map")).sw_save_score_complete
-					
+					get_tree().call_group("reload_leaderboard_button", "force_reload_scores")
+	
+	set_disabled(true)
+	set_text("SEND OFFLINE SCORES")
 	pass
 
 #pretty sure this works

@@ -32,7 +32,7 @@ func render(scores):
 		var add_player_name = add_item(str(score.player_name, ": "))
 		var add_score = add_item(str(snapped(score.score, 0.001)))
 		
-		if score.player_name == global_data.player_name:
+		if score.player_name.match(global_data.player_name) == true:
 			set_item_custom_bg_color(add_score, Color.GREEN)
 		
 		match i:
