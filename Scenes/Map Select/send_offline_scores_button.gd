@@ -2,6 +2,10 @@ extends Button
 
 @export var for_map_identifiers: PackedStringArray
 
+func _ready():
+	self.pressed.connect(_on_pressed)
+	pass
+
 func _on_pressed():
 	set_text("WORKING...")
 	

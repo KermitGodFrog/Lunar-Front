@@ -1,37 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://ejuahwmegov4"]
+[gd_scene load_steps=12 format=3 uid="uid://ejuahwmegov4"]
 
 [ext_resource type="Script" path="res://Scenes/Asteroid Refinery Map/asteroid_refinery_map.gd" id="1_l8gp1"]
-[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="1_m6ile"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="1_ml2ub"]
+[ext_resource type="Environment" uid="uid://cywu6x06t78ra" path="res://Scenes/Asteroid Refinery Map/asteroid_refinery_map_environment.tres" id="2_f4s01"]
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="2_kfyu2"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="4_n3q3w"]
+[ext_resource type="PackedScene" uid="uid://dqo15tnyklchv" path="res://Scenes/Asteroid Refinery Map/asteroid_var1.tscn" id="6_qq705"]
+[ext_resource type="PackedScene" uid="uid://pbww6r4nfr2r" path="res://Scenes/Asteroid Refinery Map/crystal_var1.tscn" id="6_rcobg"]
+[ext_resource type="PackedScene" uid="uid://ccqupj8yg8h3n" path="res://Scenes/Asteroid Refinery Map/asteroid_var2.tscn" id="7_ry82a"]
+[ext_resource type="PackedScene" uid="uid://chsftl43oybye" path="res://Scenes/Asteroid Refinery Map/asteroid_var3.tscn" id="8_domq3"]
+[ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="10_de8wg"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d8q2h"]
-panorama = ExtResource("1_m6ile")
-
-[sub_resource type="Sky" id="Sky_2fgoa"]
-sky_material = SubResource("PanoramaSkyMaterial_d8q2h")
-
-[sub_resource type="Environment" id="Environment_x0umd"]
-background_mode = 2
-sky = SubResource("Sky_2fgoa")
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.5
-reflected_light_source = 2
-tonemap_mode = 2
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_normalized = true
-glow_blend_mode = 0
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-adjustment_saturation = 3.0
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gdow2"]
+dof_blur_near_distance = 5.0
 
 [node name="asteroid_refinery_map" type="Node3D"]
 script = ExtResource("1_l8gp1")
 
 [node name="environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_x0umd")
+environment = ExtResource("2_f4s01")
+camera_attributes = SubResource("CameraAttributesPractical_gdow2")
+
+[node name="the_sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+light_color = Color(0.494118, 0.772549, 1, 1)
+light_volumetric_fog_energy = 2.0
+light_angular_distance = 40.0
+shadow_enabled = true
 
 [node name="checkpoint" parent="." instance=ExtResource("1_ml2ub")]
 
@@ -59,14 +54,95 @@ CHECKPOINT_NUMBER = 5
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -500, 0, -1500)
 CHECKPOINT_NUMBER = 6
 
-[node name="boost_pickup" parent="." instance=ExtResource("2_kfyu2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 326.296, 0, -1056.27)
+[node name="boost_pickup1" parent="." instance=ExtResource("2_kfyu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1813.88, 622.714, 2157.89)
+BOOST_INCREASE = 150.0
 
 [node name="boost_pickup2" parent="." instance=ExtResource("2_kfyu2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1813.88, 622.714, 2157.89)
-
-[node name="boost_pickup3" parent="." instance=ExtResource("2_kfyu2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1624.59, 695.059, -1115.63)
+BOOST_INCREASE = 250.0
+
+[node name="slingshot_pickup" parent="." instance=ExtResource("10_de8wg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1500)
+BOOST_SPEED = 800.0
 
 [node name="player_phantom" parent="." instance=ExtResource("4_n3q3w")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3.99884, 0, -542.958)
+
+[node name="asteroid_var1_1" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.626437, 0.499702, 0.598227, -0.623593, 0.781749, 0, -0.467663, -0.37305, 0.801327, -1892.82, -385.175, 2262.6)
+
+[node name="asteroid_var2_1" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(-0.73012, -0.648459, 0.215468, 0.664057, -0.747682, 0, 0.161102, 0.143083, 0.976511, -2413.69, -385.175, 2113.83)
+
+[node name="asteroid_var1_2" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.644511, -0.764595, 0, 0.764595, 0.644511, 0, 0, 0, 1, -2151.12, -930.822, 2045.13)
+
+[node name="asteroid_var3_1" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1119.02, 1149.04, 1074.21)
+
+[node name="asteroid_var2_2" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(0.0103147, 9.19557e-10, -0.999947, 0.917727, -0.3971, 0.00946659, -0.397079, -0.917776, -0.00409597, -1132.74, 1140.28, 771.476)
+
+[node name="asteroid_var1_3" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.86229, -0.17736, -0.474342, 0.155399, 0.984146, -0.0854843, 0.481983, 0, 0.876181, -1224.97, 768.383, -788.254)
+
+[node name="asteroid_var3_2" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(0.712833, -0.344971, 0.610626, 0.261989, 0.938613, 0.224425, -0.650562, 0, 0.759453, -1552.04, 665.193, -1627.78)
+
+[node name="asteroid_var2_3" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(-0.574614, -0.431331, 0.695537, -0.628015, -0.31257, -0.712669, 0.5248, -0.846318, -0.0912757, -1944.65, 871.479, -1398.87)
+
+[node name="asteroid_var3_3" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(0.512162, -0.718988, 0.469836, 0.529822, 0.695022, 0.486037, -0.676002, 0, 0.7369, -1967.64, 479.27, -1635.18)
+
+[node name="asteroid_var1_4" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.977279, -0.126344, -0.170184, 0, 0.802922, -0.596085, 0.211956, 0.582541, 0.784679, -3045.36, 349.166, -1062.72)
+
+[node name="asteroid_var2_4" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(0.921271, 0.124866, -0.368333, -0.115943, 0.992174, 0.0463549, 0.371238, 0, 0.928538, -1939.01, 622.714, 2429.69)
+
+[node name="asteroid_var2_5" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(0.778447, 0.0617825, 0.624662, -0.275417, 0.927857, 0.251451, -0.564062, -0.367784, 0.739303, -1609.13, 687.596, 2342.97)
+
+[node name="asteroid_var3_4" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(-0.00185247, -0.00868835, -0.999961, -0.978017, 0.208526, 0, 0.208518, 0.977978, -0.00888364, -1967.64, 148.551, -2132.96)
+
+[node name="asteroid_var1_5" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.731901, 0.298422, -0.612589, 0, 0.899001, 0.437948, 0.681411, -0.320534, 0.657979, -886.89, 1450.9, 917.098)
+
+[node name="asteroid_var3_5" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(-0.575523, 0.325235, 0.75033, -0.0776539, -0.935103, 0.345763, 0.81409, 0.140728, 0.563429, -2130.62, 566.404, 1988.05)
+
+[node name="asteroid_var3_6" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(0.26551, 0.536471, -0.801064, -0.321805, 0.832548, 0.450895, 0.908816, 0.138069, 0.393689, -1514.85, 898.748, 2063.64)
+
+[node name="asteroid_var3_7" parent="." instance=ExtResource("8_domq3")]
+transform = Transform3D(0.121194, -0.293797, -0.948154, -0.459934, 0.829849, -0.315929, 0.879643, 0.474377, -0.0345547, -1931.3, 928.534, 2063.64)
+
+[node name="asteroid_var1_6" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.0490416, -0.440098, -0.896609, 0, 0.897689, -0.440629, 0.998797, 0.0216091, 0.0440241, -1012.38, 0, 256.384)
+
+[node name="asteroid_var2_6" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(0.989841, -0.0584909, -0.129591, -0.0148791, 0.863842, -0.503544, 0.141399, 0.500356, 0.854196, -1240.52, 0, -214.763)
+
+[node name="crystal_var1_1" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.909216, -0.362649, -0.204479, 0.370476, 0.928842, 0, 0.189929, -0.0757546, 0.978871, -1704.12, 847.533, -1664.28)
+
+[node name="crystal_var1_2" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.949017, 0.151424, 0.276474, -0.104946, 0.978806, -0.175856, -0.297243, 0.137875, 0.944795, -1419.67, 695.059, -1018.33)
+
+[node name="crystal_var1_3" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.959859, 0.230956, -0.159153, 0, 0.567427, 0.823424, 0.280482, -0.790371, 0.54465, -3045.36, 349.166, -1457.72)
+
+[node name="crystal_var1_4" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.455066, 0.838875, 0.298671, -0.21904, -0.219651, 0.950671, 0.863098, -0.498039, 0.0837912, -1967.64, 235.807, -2132.96)
+
+[node name="crystal_var1_5" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.84765, 0.439706, 0.296897, -0.444355, 0.282606, 0.850108, 0.289893, -0.852521, 0.434937, -1130.47, 64.5037, -1135.22)
+
+[node name="crystal_var1_7" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.84765, 0.439706, 0.296897, 0.103144, -0.68549, 0.720739, 0.520434, -0.580311, -0.626409, -1533.77, 257.45, -1336.36)
+
+[node name="crystal_var1_6" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.84765, 0.439706, 0.296897, -0.258579, 0.831016, -0.492492, -0.463278, 0.34069, 0.81811, -1908.96, 275.858, -1468.62)

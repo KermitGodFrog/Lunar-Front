@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://chsftl43oybye"]
+
+[ext_resource type="ArrayMesh" uid="uid://8xf1di10nf7a" path="res://Models/Asteroids/Red/Asteroid3.obj" id="1_vn10b"]
+[ext_resource type="Material" uid="uid://cc3j0ne6oqm2m" path="res://Scenes/Asteroid Refinery Map/asteroid_material.tres" id="2_w4otr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_na5fw"]
+points = PackedVector3Array(1.59044, -0.243983, 1.26045, 2.49361, -0.324908, 0.981048, 2.49083, -0.356302, 0.981527, 1.85395, -0.0791533, 0.550814, 2.0355, 0.298749, 1.32571, 1.96947, -0.542242, 1.49295, 1.67378, -0.490413, 0.865446, 1.98635, 0.329765, 0.702666, 2.25041, -0.425915, 0.633257, 2.00254, -0.0294904, 1.55887, 2.2836, -0.591656, 1.0297, 1.87183, 0.280275, 1.29164, 1.55221, -0.305672, 0.966233, 1.68728, -0.427253, 1.46099, 2.24643, -0.0312881, 1.40377, 2.28286, -0.458471, 1.34309, 2.11661, 0.245172, 0.737805, 1.62166, -0.525949, 0.980068, 2.0358, -0.295998, 0.526869, 1.75313, -0.311435, 1.56135, 2.06866, 0.102933, 0.583075, 2.3987, -0.3102, 0.749145, 1.91915, 0.237908, 0.62946, 2.44936, -0.525845, 1.01319, 2.11588, 0.210101, 1.40154, 1.98637, -0.488528, 0.71919, 2.1183, -0.442712, 1.49255, 1.54466, -0.423034, 0.948277, 1.98662, 0.212251, 1.45241, 1.58408, -0.209124, 1.0145, 2.05218, -0.592403, 1.06275, 1.81852, -0.31248, 1.59771)
+
+[node name="asteroid_var3" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, -500, 0, -300)
+mesh = ExtResource("1_vn10b")
+surface_material_override/0 = ExtResource("2_w4otr")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, -500, 0, -300)
+shape = SubResource("ConvexPolygonShape3D_na5fw")

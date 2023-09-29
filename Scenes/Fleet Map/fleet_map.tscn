@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Fleet Map/fleet_map.gd" id="1_ehrov"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_so7l2"]
 [ext_resource type="ArrayOccluder3D" uid="uid://hn8a6n8mpnoa" path="res://Scenes/Fleet Map/fleet_map.occ" id="2_xvpgh"]
-[ext_resource type="Shader" path="res://Scenes/Fleet Map/sky_shader.gdshader" id="3_5lq7o"]
+[ext_resource type="Shader" path="res://Scenes/Fleet Map/fleet_sky_shader.gdshader" id="3_76jrk"]
 [ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="4_kfouj"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="6_5qgdh"]
 [ext_resource type="PackedScene" uid="uid://b40hi1cc0fmp2" path="res://Scenes/Fleet Map/cruiser.tscn" id="7_mf4ab"]
@@ -45,7 +45,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_hdnyb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0q16g"]
-shader = ExtResource("3_5lq7o")
+shader = ExtResource("3_76jrk")
 shader_parameter/planet_colour = Color(0, 0, 1, 1)
 shader_parameter/star_colour = Color(1, 0.490196, 0, 1)
 shader_parameter/source_panorama = ExtResource("4_kfouj")
@@ -63,7 +63,7 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.2
-reflected_light_source = 1
+reflected_light_source = 2
 tonemap_mode = 2
 sdfgi_read_sky_light = false
 glow_enabled = true
@@ -287,7 +287,7 @@ transform = Transform3D(-0.79448, -0.0996888, -0.599053, 0.0997498, 0.951616, -0
 CHECKPOINT_NUMBER = 9
 
 [node name="checkpoint11" parent="." instance=ExtResource("6_5qgdh")]
-transform = Transform3D(0.39216, -0.142096, -0.908856, 3.72529e-09, 0.987998, -0.154469, 0.919897, 0.0605766, 0.387453, -611.123, 796.225, 100.173)
+transform = Transform3D(0.39216, -0.142096, -0.908856, 3.72529e-09, 0.987998, -0.154469, 0.919897, 0.0605767, 0.387453, -606.848, 766.504, 98.3507)
 CHECKPOINT_NUMBER = 10
 
 [node name="checkpoint12" parent="." instance=ExtResource("6_5qgdh")]

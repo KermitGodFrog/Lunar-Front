@@ -1,6 +1,11 @@
 extends Button
 
+func _ready():
+	self.pressed.connect(_on_pressed)
+	pass
+
 func _on_pressed():
+	force_reload_scores()
 	pass
 
 func force_reload_scores():

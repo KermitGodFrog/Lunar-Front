@@ -6,6 +6,10 @@ var scrapyard_best_time: float
 var asteroid_refinery_best_time: float
 var fleet_best_time: float
 
+var scrapyard_par_times = [70, 50, 45]
+var asteroid_refinery_par_times = [60, 45, 35]
+var fleet_par_times = [70, 60, 55]
+
 @onready var bronze_medal = preload("res://Graphics/Medals/bronze_medal.png")
 @onready var iron_medal = preload("res://Graphics/Medals/iron_medal.png")
 @onready var gold_medal = preload("res://Graphics/Medals/gold_medal.png")
@@ -69,42 +73,110 @@ func get_medal_current_map():
 	if time > 0:
 		match map_data.map_identifier:
 			"scrapyard":
-				if time > 70:
+				if time > scrapyard_par_times[0]:
 					return no_medal
-				if time > 50 and time < 70:
+				if time > scrapyard_par_times[1] and time < scrapyard_par_times[0]:
 					return bronze_medal
-				if time <= 50 and time >= 45:
+				if time <= scrapyard_par_times[1] and time >= scrapyard_par_times[2]:
 					return iron_medal
-				if time < 45:
+				if time < scrapyard_par_times[2]:
 					return gold_medal
 			"asteroid_refinery":
-				return null
+				if time > asteroid_refinery_par_times[0]:
+					return no_medal
+				if time > asteroid_refinery_par_times[1] and time < asteroid_refinery_par_times[0]:
+					return bronze_medal
+				if time <= asteroid_refinery_par_times[1] and time >= asteroid_refinery_par_times[2]:
+					return iron_medal
+				if time < asteroid_refinery_par_times[2]:
+					return gold_medal
 			"fleet":
-				return null
+				if time > fleet_par_times[0]:
+					return no_medal
+				if time > fleet_par_times[1] and time < fleet_par_times[0]:
+					return bronze_medal
+				if time <= fleet_par_times[1] and time >= fleet_par_times[2]:
+					return iron_medal
+				if time < fleet_par_times[2]:
+					return gold_medal
 			_:
 				return null
 	else:
-		return null
+		return no_medal
+	pass
 
 func get_medal_from_map(map: String):
 	var time = get_best_time_from_map(map)
 	if time > 0:
 		match map:
 			"scrapyard":
-				if time > 70:
+				if time > scrapyard_par_times[0]:
 					return no_medal
-				if time > 50 and time < 70:
+				if time > scrapyard_par_times[1] and time < scrapyard_par_times[0]:
 					return bronze_medal
-				if time <= 50 and time >= 45:
+				if time <= scrapyard_par_times[1] and time >= scrapyard_par_times[2]:
 					return iron_medal
-				if time < 45:
+				if time < scrapyard_par_times[2]:
 					return gold_medal
 			"asteroid_refinery":
-				return null
+				if time > asteroid_refinery_par_times[0]:
+					return no_medal
+				if time > asteroid_refinery_par_times[1] and time < asteroid_refinery_par_times[0]:
+					return bronze_medal
+				if time <= asteroid_refinery_par_times[1] and time >= asteroid_refinery_par_times[2]:
+					return iron_medal
+				if time < asteroid_refinery_par_times[2]:
+					return gold_medal
 			"fleet":
-				return null
+				if time > fleet_par_times[0]:
+					return no_medal
+				if time > fleet_par_times[1] and time < fleet_par_times[0]:
+					return bronze_medal
+				if time <= fleet_par_times[1] and time >= fleet_par_times[2]:
+					return iron_medal
+				if time < fleet_par_times[2]:
+					return gold_medal
 			_:
 				return null
+	else:
+		return no_medal
+	pass
+
+func get_medal_int_from_map(map: String):
+	var time = get_best_time_from_map(map)
+	if time > 0:
+		match map:
+			"scrapyard":
+				if time > scrapyard_par_times[0]:
+					return 0
+				if time > scrapyard_par_times[1] and time < scrapyard_par_times[0]:
+					return 1
+				if time <= scrapyard_par_times[1] and time >= scrapyard_par_times[2]:
+					return 2
+				if time < scrapyard_par_times[2]:
+					return 3
+			"asteroid_refinery":
+				if time > asteroid_refinery_par_times[0]:
+					return 0
+				if time > asteroid_refinery_par_times[1] and time < asteroid_refinery_par_times[0]:
+					return 1
+				if time <= asteroid_refinery_par_times[1] and time >= asteroid_refinery_par_times[2]:
+					return 2
+				if time < asteroid_refinery_par_times[2]:
+					return 3
+			"fleet":
+				if time > fleet_par_times[0]:
+					return 0
+				if time > fleet_par_times[1] and time < fleet_par_times[0]:
+					return 1
+				if time <= fleet_par_times[1] and time >= fleet_par_times[2]:
+					return 2
+				if time < fleet_par_times[2]:
+					return 3
+			_:
+				return 0
+	else:
+		return 0
 	pass
 
 func save_player_data():

@@ -23,7 +23,7 @@ void sky() {
 	planet.rgb += planet_clouds / 2.0;
 	
 	float star_variation;
-	star_variation = texture(star_noise, EYEDIR.xz + TIME / 500.0).x;
+	star_variation = texture(star_noise, EYEDIR.yz + TIME / 500.0).x;
 	vec4 star = vec4(star_colour, star_pos);
 	star.rgb += star_variation / 2.0;
 	

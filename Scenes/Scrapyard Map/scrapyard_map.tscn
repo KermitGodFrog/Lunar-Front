@@ -1,12 +1,11 @@
-[gd_scene load_steps=219 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=213 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bb17b4jmis8va" path="res://Scenes/Scrapyard Map/scrapyard_map.occ" id="2_k3bap"]
-[ext_resource type="Shader" path="res://Scenes/Scrapyard Map/sky_shader.gdshader" id="3_jvuno"]
+[ext_resource type="Environment" uid="uid://dwkp5h0ho3uxm" path="res://Scenes/Scrapyard Map/scrapyard_map_environment.tres" id="3_oduwm"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="3_sok7h"]
 [ext_resource type="ArrayMesh" uid="uid://b55ay2y6kqudd" path="res://Models/junkrock01.obj" id="4_jc6ip"]
-[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="4_r3bfb"]
 [ext_resource type="ArrayMesh" uid="uid://cvb77bxf2x24k" path="res://Models/junkrock02.obj" id="5_4wuy6"]
 [ext_resource type="Texture2D" uid="uid://cnfiogtg0ur2w" path="res://Models/scrap texture.png" id="6_7x6if"]
 [ext_resource type="Texture2D" uid="uid://dppnnuvnnjy1k" path="res://Graphics/Shipping Containers/red_shipping_container_normal.png" id="7_1tad4"]
@@ -33,45 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://cm0bobqljn0wg" path="res://Scenes/Scrapyard Map/wreckage_part_one.tscn" id="24_gchmj"]
 [ext_resource type="PackedScene" uid="uid://i2dtmd5tgr7o" path="res://Scenes/Scrapyard Map/wreckage_part_two.tscn" id="26_e0j0s"]
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/big_wreckage.gd" id="26_fg3qi"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_nimtn"]
-frequency = 0.0626
-domain_warp_enabled = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_424hi"]
-seamless = true
-noise = SubResource("FastNoiseLite_nimtn")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l45vr"]
-shader = ExtResource("3_jvuno")
-shader_parameter/star_colour = Color(1, 0, 0.564706, 1)
-shader_parameter/source_panorama = ExtResource("4_r3bfb")
-shader_parameter/star_noise = SubResource("NoiseTexture2D_424hi")
-
-[sub_resource type="Sky" id="Sky_icrtt"]
-sky_material = SubResource("ShaderMaterial_l45vr")
-
-[sub_resource type="Environment" id="Environment_efynh"]
-background_mode = 2
-sky = SubResource("Sky_icrtt")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.5
-ambient_light_energy = 0.2
-reflected_light_source = 1
-tonemap_mode = 2
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 0.7
-glow_bloom = 0.15
-glow_blend_mode = 0
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.278431, 0.278431, 0.278431, 1)
-volumetric_fog_emission = Color(0.219608, 0.219608, 0.219608, 1)
-volumetric_fog_ambient_inject = 4.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d7aoc"]
 dof_blur_near_distance = 5.0
@@ -1140,7 +1100,7 @@ script = ExtResource("1_olbxj")
 occluder = ExtResource("2_k3bap")
 
 [node name="environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_efynh")
+environment = ExtResource("3_oduwm")
 camera_attributes = SubResource("CameraAttributesPractical_d7aoc")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]

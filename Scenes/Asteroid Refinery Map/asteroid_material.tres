@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cc3j0ne6oqm2m"]
+
+[ext_resource type="Texture2D" uid="uid://cnfiogtg0ur2w" path="res://Models/scrap texture.png" id="1_mv515"]
+
+[resource]
+albedo_color = Color(0.54902, 0.54902, 0.54902, 1)
+albedo_texture = ExtResource("1_mv515")
+uv1_triplanar = true
+texture_filter = 0

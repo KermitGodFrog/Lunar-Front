@@ -1,9 +1,15 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://10wnoidg1agh"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://10wnoidg1agh"]
 
 [ext_resource type="Texture2D" uid="uid://b72yj5npd5r7e" path="res://Graphics/arrow_png.png" id="1_3o6ni"]
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_3yovx"]
 [ext_resource type="Texture2D" uid="uid://e08stsqdhqyt" path="res://Graphics/HUD/checkpoint_marker_png_flipped.png" id="2_7j7vb"]
 [ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="2_r4wgl"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_idjop"]
+content_margin_left = 10.0
+color = Color(1, 0, 0, 1)
+thickness = 6
+vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ei58a"]
 content_margin_left = 40.0
@@ -55,8 +61,10 @@ shadow_offset = Vector2(10, 10)
 default_font = ExtResource("2_r4wgl")
 default_font_size = 50
 Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.501961)
 Button/colors/font_hover_color = Color(0.560784, 1, 0.529412, 1)
 Button/colors/font_pressed_color = Color(0, 1, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxLine_idjop")
 Button/styles/hover = SubResource("StyleBoxLine_ei58a")
 Button/styles/normal = SubResource("StyleBoxLine_3vn5h")
 Button/styles/pressed = SubResource("StyleBoxLine_78or5")

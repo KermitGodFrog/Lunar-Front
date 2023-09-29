@@ -1,0 +1,43 @@
+[gd_resource type="Environment" load_steps=7 format=3 uid="uid://dwkp5h0ho3uxm"]
+
+[ext_resource type="Shader" path="res://Scenes/Scrapyard Map/scrapyard_sky_shader.gdshader" id="1_vekmk"]
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_3sroi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nimtn"]
+frequency = 0.0626
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_424hi"]
+seamless = true
+noise = SubResource("FastNoiseLite_nimtn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l45vr"]
+shader = ExtResource("1_vekmk")
+shader_parameter/star_colour = Color(1, 0, 0.564706, 1)
+shader_parameter/source_panorama = ExtResource("2_3sroi")
+shader_parameter/star_noise = SubResource("NoiseTexture2D_424hi")
+
+[sub_resource type="Sky" id="Sky_icrtt"]
+sky_material = SubResource("ShaderMaterial_l45vr")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_icrtt")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.2
+reflected_light_source = 2
+tonemap_mode = 2
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.7
+glow_bloom = 0.15
+glow_blend_mode = 0
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.278431, 0.278431, 0.278431, 1)
+volumetric_fog_emission = Color(0.219608, 0.219608, 0.219608, 1)
+volumetric_fog_ambient_inject = 4.0
