@@ -1,25 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://b7u02yl1i6npp"]
+[gd_scene load_steps=28 format=3 uid="uid://b7u02yl1i6npp"]
 
 [ext_resource type="ArrayMesh" uid="uid://chdmtk1fjab42" path="res://Models/CruiserlightlyDamaged.obj" id="1_yo0t1"]
-[ext_resource type="Texture2D" uid="uid://dk5owgsyj5h8i" path="res://Graphics/Cruiser/hull.png" id="2_p0kuc"]
+[ext_resource type="Material" uid="uid://ccjq0idiexbrk" path="res://Scenes/Fleet Map/hull_plate_white.tres" id="2_drp3i"]
 [ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="3_n4yxs"]
-[ext_resource type="Texture2D" uid="uid://divinf2cjkt5f" path="res://Models/MetalScrapStriped.png" id="4_chrfl"]
-[ext_resource type="Texture2D" uid="uid://c7x8lt2bwg0lh" path="res://Graphics/Cruiser/hull_blue.png" id="5_218ax"]
+[ext_resource type="Material" uid="uid://ca50c5fyxf31n" path="res://Scenes/Fleet Map/hull_plate_blue.tres" id="4_eg6m0"]
+[ext_resource type="Material" uid="uid://hr16axt4xsh7" path="res://Scenes/Fleet Map/hull_burning.tres" id="6_aoalq"]
 [ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_x1yry"]
-[ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="7_ltnpa"]
 [ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="8_5pnh3"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="8_5qgad"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="9_xfrtl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojg4u"]
-albedo_color = Color(0.682353, 0.682353, 0.682353, 1)
-metallic = 1.0
-metallic_specular = 1.0
-metallic_texture = ExtResource("2_p0kuc")
-metallic_texture_channel = 4
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vt07"]
 albedo_color = Color(0, 0, 0, 1)
@@ -27,17 +16,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wgf3"]
 albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
 albedo_texture = ExtResource("3_n4yxs")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sef5f"]
-albedo_color = Color(0, 0.2, 1, 1)
-albedo_texture = ExtResource("4_chrfl")
-metallic = 1.0
-metallic_specular = 1.0
-metallic_texture = ExtResource("5_218ax")
-metallic_texture_channel = 2
-uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -51,17 +29,6 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgtbv"]
 albedo_texture = ExtResource("6_x1yry")
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iswel"]
-albedo_texture = ExtResource("7_ltnpa")
-metallic_specular = 1.0
-emission_enabled = true
-emission = Color(1, 0.490196, 0, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("7_ltnpa")
-uv1_scale = Vector3(0.05, 0.05, 0.05)
-uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e55ca"]
@@ -145,14 +112,14 @@ subdivide_depth = 32
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)
 mesh = ExtResource("1_yo0t1")
-surface_material_override/0 = SubResource("StandardMaterial3D_ojg4u")
+surface_material_override/0 = ExtResource("2_drp3i")
 surface_material_override/1 = SubResource("StandardMaterial3D_8vt07")
 surface_material_override/2 = SubResource("StandardMaterial3D_0wgf3")
-surface_material_override/3 = SubResource("StandardMaterial3D_sef5f")
+surface_material_override/3 = ExtResource("4_eg6m0")
 surface_material_override/4 = SubResource("StandardMaterial3D_16ieb")
 surface_material_override/5 = SubResource("StandardMaterial3D_m77qy")
 surface_material_override/6 = SubResource("StandardMaterial3D_mgtbv")
-surface_material_override/7 = SubResource("StandardMaterial3D_iswel")
+surface_material_override/7 = ExtResource("6_aoalq")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 470.482, 0)

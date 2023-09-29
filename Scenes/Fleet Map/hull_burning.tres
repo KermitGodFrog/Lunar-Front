@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hr16axt4xsh7"]
+
+[ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="1_2gqok"]
+
+[resource]
+albedo_texture = ExtResource("1_2gqok")
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 0.490196, 0, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("1_2gqok")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+texture_filter = 0

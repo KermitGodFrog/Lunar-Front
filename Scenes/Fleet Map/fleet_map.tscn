@@ -235,7 +235,7 @@ transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, 
 transform = Transform3D(-0.620573, 0, 0.784148, 0, 1, 0, -0.784148, 0, -0.620573, 101.134, 1273.36, 2083.46)
 
 [node name="freighter_normal4" parent="." instance=ExtResource("13_06luh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 820, 299.675, -2523.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 299.675, -2523.8)
 
 [node name="freighter_normal3" parent="." instance=ExtResource("13_06luh")]
 transform = Transform3D(0.497201, 0, 0.867635, 0, 1, 0, -0.867635, 0, 0.497201, 1555.47, -452.573, 1108.36)
@@ -473,7 +473,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign6" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 290, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 1000, 290, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign6"]
 transparent = false
@@ -502,7 +502,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign7" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 400, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 1000, 400, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign7"]
 transparent = false
@@ -531,7 +531,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="arrow_sign8" type="StaticBody3D" parent="."]
-transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 820, 180, -2454.81)
+transform = Transform3D(-200, -1.74846e-05, 0, 1.74846e-05, -200, 0, 0, 0, 200, 1000, 180, -2454.81)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign8"]
 transparent = false
@@ -618,7 +618,7 @@ speed_scale = 5.0
 shape = SubResource("BoxShape3D_nqevb")
 
 [node name="slingshot_pickup" parent="." instance=ExtResource("10_vc4r0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.608, 1900, -712.902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 447.608, 1694.72, -712.902)
 BOOST_SPEED = 500.0
 
 [node name="slingshot_pickup2" parent="." instance=ExtResource("10_vc4r0")]
@@ -626,9 +626,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -822.492, 864.227, 159.973)
 BOOST_SPEED = 500.0
 
 [node name="boost_pickup" parent="." instance=ExtResource("12_wko8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 534.735, 290, -2454.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 707.741, 290, -2430.62)
 BOOST_INCREASE = 300.0
 
 [node name="boost_pickup2" parent="." instance=ExtResource("12_wko8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.609, 796.225, 487.431)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 595.609, 796.225, 315.65)
 BOOST_INCREASE = 200.0

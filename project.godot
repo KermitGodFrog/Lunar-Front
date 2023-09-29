@@ -18,7 +18,8 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Graphics/loading_texture.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://Graphics/icon.png"
+config/icon="res://Graphics/Export Graphics/icon.png"
+config/windows_native_icon="res://Graphics/Export Graphics/icon.ico"
 
 [autoload]
 

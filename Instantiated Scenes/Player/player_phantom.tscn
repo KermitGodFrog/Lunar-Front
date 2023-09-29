@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://nmrn2lkoxwap" path="res://Graphics/Phantom/cushioning_texture.png" id="24_y7eal"]
 [ext_resource type="Texture2D" uid="uid://c77f1i653kwfd" path="res://Graphics/Phantom/seven_texture.png" id="27_hs6ag"]
 [ext_resource type="Texture2D" uid="uid://cko1nxt2l7b1j" path="res://Graphics/Stolen Normal Maps/Metal Hexagon/metal_0076_color_1k.jpg" id="28_vir6j"]
-[ext_resource type="Texture2D" uid="uid://b81n5xbwvpbts" path="res://Graphics/Stolen Normal Maps/Metal Noise/metal_0059_color_1k.jpg" id="28_yxjac"]
+[ext_resource type="Texture2D" uid="uid://b74f70tgc46p0" path="res://Graphics/Stolen Normal Maps/Metal Plate/metal_0077_color_1k.jpg" id="30_2lw74"]
 [ext_resource type="Texture2D" uid="uid://coenhfitsrsw8" path="res://Graphics/Stolen Normal Maps/Metal BIG Scratched/metal_0071_color_1k.jpg" id="30_85du5"]
 [ext_resource type="Texture2D" uid="uid://bnal22q40nks0" path="res://Graphics/Stolen Normal Maps/Metal Scratched/metal_0026_color_1k.jpg" id="30_iag4o"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="31_5tfth"]
@@ -162,21 +162,21 @@ texture_filter = 0
 albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
 albedo_texture = ExtResource("20_76v0v")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_2lw74")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckj30"]
 albedo_texture = ExtResource("20_76v0v")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_2lw74")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awf6b"]
 albedo_texture = ExtResource("21_jwox6")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_85du5")
 clearcoat = 0.1
 clearcoat_roughness = 1.0
 uv1_triplanar = true
@@ -185,14 +185,14 @@ texture_filter = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oph7y"]
 albedo_texture = ExtResource("21_jwox6")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_85du5")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he1sa"]
 albedo_texture = ExtResource("21_jwox6")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_85du5")
 uv1_triplanar = true
 texture_filter = 0
 
@@ -226,14 +226,14 @@ texture_filter = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eonag"]
 albedo_texture = ExtResource("21_jwox6")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_85du5")
 uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q26c5"]
 albedo_texture = ExtResource("21_jwox6")
 normal_enabled = true
-normal_texture = ExtResource("28_yxjac")
+normal_texture = ExtResource("30_85du5")
 uv1_triplanar = true
 texture_filter = 0
 
@@ -352,6 +352,7 @@ health = SubResource("Resource_kysq3")
 
 [node name="first_person_camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.1)
+far = 10000.0
 
 [node name="draw_control" type="Control" parent="first_person_camera"]
 visible = false
@@ -367,6 +368,7 @@ script = ExtResource("3_hc835")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -20)
 current = true
 size = 100.0
+far = 10000.0
 
 [node name="draw_control" type="Control" parent="camera_offset/camera"]
 layout_mode = 3
