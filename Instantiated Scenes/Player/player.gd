@@ -3,8 +3,6 @@ class_name Player
 
 @export var health: Health
 @onready var initial_first_person_camera_basis = $first_person_camera.transform.basis
-var bit_mouse_pointer = load("res://Graphics/HUD/bit.png")
-var normal_mouse_pointer = load("res://Graphics/HUD/mouse_pointer_normal.png")
 
 #GAMEPLAY
 
@@ -15,12 +13,13 @@ var current_time: float
 
 const ACCELERATION_FORWARD = 1.5
 const ACCELERATION_MOVEMENT = 1.5
-const PITCH_SPEED = 60.0
+const PITCH_SPEED = 70.0
 const YAW_SPEED = 50.0
 const ROLL_SPEED = 50.0
 const ROTATION_INTERPOLATION = 0.025
 const FA_INTERPOLATION = 0.015
 const SECRET_FA_INTERPOLATION = 0.010
+const SPACE_BRAKE_INTERPLATION = 0.020
 
 var PITCH_TIME: float
 var YAW_TIME: float
@@ -74,12 +73,23 @@ const MAIN_ENGINE_BOOST_LENGTH = 4.5
 const MAIN_ENGINE_INTERPOLATION = 0.15
 
 func _ready():
+	game_data.player = self
+	sync_settings()
 	get_tree().paused = false
+	
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
-	game_data.player = self
-	# game_data.hud_effect.rectangle_effect(Color.GREEN, 4)
-	sync_settings()
+	
+	$first_person_camera.set_current(true)
+	$first_person_camera/draw_control.show()
+	$camera_offset/camera/draw_control.hide()
+	is_first_person_toggle = true
+	
+	#game_data.hud_effect.ring_effect(1)
+	
+	for element in get_tree().get_nodes_in_group("always_visible_hud_element"):
+		await get_tree().create_timer(global_data.get_randf(0.05, 0.60)).timeout
+		element.show()
 	pass
 
 func _input(event):
@@ -105,7 +115,6 @@ func _input(event):
 				match is_headlook_toggle:
 					true:
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-						Input.set_custom_mouse_cursor(bit_mouse_pointer)
 						$first_person_camera.rotation.y -= event.relative.x / headlook_mouse_sens
 						$first_person_camera.rotation.x -= event.relative.y / headlook_mouse_sens
 						$first_person_camera.rotation.x = clamp($first_person_camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -113,13 +122,10 @@ func _input(event):
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 						var normalized = event.relative.normalized()
 						var distance = event.relative.distance_to(Vector2(0,0))
-						
-						YAW_TIME = lerp(YAW_TIME, -normalized.x * YAW_SPEED * clamp(distance, 0, YAW_SPEED / 5.0), ROTATION_INTERPOLATION)
-						#YAW_TIME = -normalized.x * YAW_SPEED
-						PITCH_TIME = lerp(PITCH_TIME, normalized.y * PITCH_SPEED * clamp(distance, 0, PITCH_SPEED / 5.0), ROTATION_INTERPOLATION)
-						#PITCH_TIME = normalized.y * PITCH_SPEED
+						YAW_TIME = -normalized.x * clamp(distance, 0, YAW_SPEED)
+						PITCH_TIME = normalized.y * clamp(distance, 0, PITCH_SPEED)
 			false:
-				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
 					rot_x += event.relative.x * deg_to_rad(mouse_sens)
 					rot_y += event.relative.y * deg_to_rad(mouse_sens)
@@ -229,6 +235,9 @@ func movement(delta):
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
+	
+	if Input.is_action_pressed("space_brake"):
+		velocity = lerp(velocity, Vector3.ZERO, SPACE_BRAKE_INTERPLATION)
 	
 	#BOOSTING
 	

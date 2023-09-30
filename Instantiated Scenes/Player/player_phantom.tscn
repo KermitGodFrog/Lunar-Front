@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=88 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ck674fflp478q" path="res://Graphics/hud_effect.svg" id="15_j5ys2"]
 [ext_resource type="Texture2D" uid="uid://cu8c6bqsabsna" path="res://Graphics/circle_effect.svg" id="15_lce12"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/hud_effect.gd" id="16_xlwy7"]
+[ext_resource type="Texture2D" uid="uid://dix1vcmopdgoj" path="res://Graphics/HUD/ring_hud_effect.svg" id="17_c75ph"]
 [ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="20_76v0v"]
 [ext_resource type="Texture2D" uid="uid://bc6sgqvnwq2n8" path="res://Graphics/Phantom/white_texture.png" id="21_govxb"]
 [ext_resource type="Texture2D" uid="uid://ccdipsf3ap5n0" path="res://Graphics/Phantom/red_metal_texture.png" id="21_jwox6"]
@@ -385,9 +386,163 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ui_layer" type="CanvasLayer" parent="ui_control"]
+[node name="ui_layer_right_skew" type="CanvasLayer" parent="ui_control" groups=["ui_layer_right_skew"]]
+rotation = 0.0996687
+scale = Vector2(1.00499, 1)
+transform = Transform2D(1, 0.1, 0, 1, 0, 0)
 
-[node name="time_status" type="Label" parent="ui_control/ui_layer" groups=["receive_race_starting"]]
+[node name="leaderboard_status_list" type="ItemList" parent="ui_control/ui_layer_right_skew" groups=["always_visible_hud_element", "leaderboard_status_list"]]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(500, 200)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.818
+anchor_right = 1.0
+anchor_bottom = 0.818
+offset_left = -500.0
+offset_top = -226.2
+offset_bottom = -0.200012
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.580392, 0.580392, 0.580392, 1)
+theme_override_fonts/font = ExtResource("7_01b0a")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/panel = SubResource("StyleBoxLine_1ipyt")
+allow_search = false
+max_columns = 2
+script = ExtResource("14_wnhji")
+
+[node name="ui_layer_left_skew" type="CanvasLayer" parent="ui_control" groups=["ui_layer_left_skew"]]
+rotation = -0.0996687
+scale = Vector2(1.00499, 1)
+transform = Transform2D(1, -0.1, 0, 1, 0, 0)
+
+[node name="boost_meter" type="TextureRect" parent="ui_control/ui_layer_left_skew" groups=["always_visible_hud_element"]]
+visible = false
+texture_filter = 1
+layout_direction = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = -10.0
+grow_vertical = 0
+texture = ExtResource("6_0x7rd")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("7_3jp72")
+
+[node name="ui_container" type="HBoxContainer" parent="ui_control/ui_layer_left_skew"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -132.0
+offset_right = 526.0
+offset_bottom = -32.0
+grow_vertical = 0
+
+[node name="movement_mode" type="TextureRect" parent="ui_control/ui_layer_left_skew/ui_container" groups=["always_visible_hud_element"]]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("8_c28nh")
+stretch_mode = 4
+script = ExtResource("9_nqefh")
+
+[node name="collision_warning" type="TextureRect" parent="ui_control/ui_layer_left_skew/ui_container" groups=["always_visible_hud_element"]]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("10_s37jl")
+stretch_mode = 5
+script = ExtResource("11_6kbsb")
+
+[node name="ui_layer_centered" type="CanvasLayer" parent="ui_control"]
+
+[node name="hud_effect" type="CanvasLayer" parent="ui_control/ui_layer_centered"]
+script = ExtResource("16_xlwy7")
+
+[node name="circle_effect" type="TextureRect" parent="ui_control/ui_layer_centered/hud_effect"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_lce12")
+expand_mode = 2
+
+[node name="rectangle_effect" type="TextureRect" parent="ui_control/ui_layer_centered/hud_effect"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_j5ys2")
+expand_mode = 2
+
+[node name="ring_effect_grouping_node" type="Control" parent="ui_control/ui_layer_centered/hud_effect"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ring_effect1" type="TextureRect" parent="ui_control/ui_layer_centered/hud_effect/ring_effect_grouping_node"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_c75ph")
+expand_mode = 2
+
+[node name="ring_effect2" type="TextureRect" parent="ui_control/ui_layer_centered/hud_effect/ring_effect_grouping_node"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(800, 450)
+texture = ExtResource("17_c75ph")
+expand_mode = 2
+
+[node name="ring_effect3" type="TextureRect" parent="ui_control/ui_layer_centered/hud_effect/ring_effect_grouping_node"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(800, 450)
+texture = ExtResource("17_c75ph")
+expand_mode = 2
+
+[node name="pause_menu_layer" type="CanvasLayer" parent="ui_control/ui_layer_centered"]
+
+[node name="pause_handling" type="Node" parent="ui_control/ui_layer_centered/pause_menu_layer"]
+process_mode = 3
+script = ExtResource("36_53deo")
+
+[node name="pause_menu" parent="ui_control/ui_layer_centered/pause_menu_layer/pause_handling" instance=ExtResource("37_54nov")]
+visible = false
+
+[node name="time_status" type="Label" parent="ui_control/ui_layer_centered" groups=["always_visible_hud_element", "receive_race_starting"]]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 1
 anchor_left = 1.0
@@ -406,7 +561,8 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("13_j44g7")
 
-[node name="best_time_status" type="Label" parent="ui_control/ui_layer"]
+[node name="best_time_status" type="Label" parent="ui_control/ui_layer_centered" groups=["always_visible_hud_element"]]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 1
 anchor_left = 1.0
@@ -422,7 +578,19 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("12_amrpf")
 
-[node name="time_decrease_label" type="Label" parent="ui_control/ui_layer" groups=["time_decrease_label"]]
+[node name="medal_status" type="TextureRect" parent="ui_control/ui_layer_centered" groups=["medal_status"]]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+pivot_offset = Vector2(50, 50)
+stretch_mode = 5
+script = ExtResource("9_a8850")
+
+[node name="time_decrease_label" type="Label" parent="ui_control/ui_layer_centered" groups=["time_decrease_label"]]
 texture_filter = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -435,115 +603,6 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_5ucmm")
-
-[node name="medal_status" type="TextureRect" parent="ui_control/ui_layer" groups=["medal_status"]]
-texture_filter = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -100.0
-offset_bottom = 100.0
-grow_horizontal = 0
-pivot_offset = Vector2(50, 50)
-stretch_mode = 5
-script = ExtResource("9_a8850")
-
-[node name="boost_meter" type="TextureRect" parent="ui_control/ui_layer"]
-texture_filter = 1
-layout_direction = 2
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -42.0
-offset_right = 42.0
-offset_bottom = -10.0
-grow_vertical = 0
-texture = ExtResource("6_0x7rd")
-expand_mode = 1
-stretch_mode = 1
-script = ExtResource("7_3jp72")
-
-[node name="ui_container" type="HBoxContainer" parent="ui_control/ui_layer"]
-texture_filter = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -132.0
-offset_right = 526.0
-offset_bottom = -32.0
-grow_vertical = 0
-
-[node name="movement_mode" type="TextureRect" parent="ui_control/ui_layer/ui_container"]
-texture_filter = 1
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("8_c28nh")
-stretch_mode = 4
-script = ExtResource("9_nqefh")
-
-[node name="collision_warning" type="TextureRect" parent="ui_control/ui_layer/ui_container"]
-texture_filter = 1
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("10_s37jl")
-stretch_mode = 5
-script = ExtResource("11_6kbsb")
-
-[node name="leaderboard_status_list" type="ItemList" parent="ui_control/ui_layer" groups=["leaderboard_status_list"]]
-process_mode = 3
-custom_minimum_size = Vector2(500, 200)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -510.0
-offset_top = -236.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.580392, 0.580392, 0.580392, 1)
-theme_override_fonts/font = ExtResource("7_01b0a")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/panel = SubResource("StyleBoxLine_1ipyt")
-allow_search = false
-max_columns = 2
-script = ExtResource("14_wnhji")
-
-[node name="hud_effect" type="CanvasLayer" parent="ui_control/ui_layer"]
-script = ExtResource("16_xlwy7")
-
-[node name="circle_effect" type="TextureRect" parent="ui_control/ui_layer/hud_effect"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_lce12")
-expand_mode = 2
-
-[node name="rectangle_effect" type="TextureRect" parent="ui_control/ui_layer/hud_effect"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_j5ys2")
-expand_mode = 2
-
-[node name="pause_menu_layer" type="CanvasLayer" parent="ui_control/ui_layer"]
-
-[node name="pause_handling" type="Node" parent="ui_control/ui_layer/pause_menu_layer"]
-process_mode = 3
-script = ExtResource("36_53deo")
-
-[node name="pause_menu" parent="ui_control/ui_layer/pause_menu_layer/pause_handling" instance=ExtResource("37_54nov")]
-visible = false
 
 [node name="hlod_grouping_node" type="Node3D" parent="."]
 

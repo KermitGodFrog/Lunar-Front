@@ -84,30 +84,30 @@ func load_settings():
 	pass
 
 func reset_settings():
-	first_person_mouse_control = false
+	first_person_mouse_control = true
 	acceleration_camera_shake = true
-	third_person_camera_offset = false
+	third_person_camera_offset = true
 	third_person_sensitivity = 0.1
 	first_person_headlook_sensitivity = 1200
 	
 	pause_key = ["pause", KEY_ESCAPE]
-	fa_key = ["fa_toggle", KEY_QUOTELEFT]
-	first_third_person_key = ["first_person_toggle", KEY_SHIFT]
-	first_person_headlook_key = ["enable_first_person_headlook", KEY_COMMA]
+	fa_key = ["fa_toggle", KEY_Z]
+	first_third_person_key = ["first_person_toggle", KEY_QUOTELEFT]
+	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB]
 	boost_key = ["boost", KEY_SPACE]
 	
-	accelerate_forward_key = ["accelerate_forward", KEY_R]
-	accelerate_backward_key = ["accelerate_backward", KEY_F]
-	pitch_up_key = ["pitch_up", KEY_W]
-	pitch_down_key = ["pitch_down", KEY_S]
-	yaw_left_key = ["yaw_left", KEY_A]
-	yaw_right_key = ["yaw_right", KEY_D]
+	accelerate_forward_key = ["accelerate_forward", KEY_SHIFT]
+	accelerate_backward_key = ["accelerate_backward", KEY_CTRL]
+	pitch_up_key = ["pitch_up", KEY_UP]
+	pitch_down_key = ["pitch_down", KEY_DOWN]
+	yaw_left_key = ["yaw_left", KEY_LEFT]
+	yaw_right_key = ["yaw_right", KEY_RIGHT]
 	roll_left_key = ["roll_left", KEY_Q]
 	roll_right_key = ["roll_right", KEY_E]
-	move_up_key = ["move_up", KEY_UP]
-	move_down_key = ["move_down", KEY_DOWN]
-	move_left_key = ["move_left", KEY_LEFT]
-	move_right_key = ["move_right", KEY_RIGHT]
+	move_up_key = ["move_up", KEY_W]
+	move_down_key = ["move_down", KEY_S]
+	move_left_key = ["move_left", KEY_A]
+	move_right_key = ["move_right", KEY_D]
 	
 	sync_keybindings()
 	

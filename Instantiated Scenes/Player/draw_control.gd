@@ -7,9 +7,6 @@ var arrow_png = preload("res://Graphics/arrow_png.png")
 
 var pointer_margin = 10
 
-var draw_mouse_pointer_position: Vector2
-
-
 func _physics_process(delta):
 	queue_redraw()
 	pass
@@ -18,8 +15,6 @@ func _draw():
 	var next_checkpoint_one = map_data.get_next_checkpoint_one()
 	var next_checkpoint_two = map_data.get_next_checkpoint_two()
 	var viewport_midpoint = get_viewport_rect().size / 2
-	
-	#draw_rect(Rect2(draw_mouse_pointer_position.x, draw_mouse_pointer_position.y, 16, 16), Color.WHITE, true)
 	
 	#VELOCITY DIRECTION DRAWING
 	
@@ -63,8 +58,4 @@ func _draw():
 		
 		if not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_one.global_transform.origin) and not get_viewport().get_camera_3d().is_position_behind(next_checkpoint_two.global_transform.origin):
 			draw_line(get_parent().unproject_position(next_checkpoint_one.global_transform.origin), get_parent().unproject_position(next_checkpoint_two.global_transform.origin), Color.GREEN, 1)
-	pass
-
-func update_mouse_pointer_position(pos: Vector2):
-	draw_mouse_pointer_position = pos
 	pass
