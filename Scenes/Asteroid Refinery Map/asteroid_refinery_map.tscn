@@ -141,8 +141,5 @@ transform = Transform3D(0.455066, 0.838875, 0.298671, -0.21904, -0.219651, 0.950
 [node name="crystal_var1_5" parent="." instance=ExtResource("6_rcobg")]
 transform = Transform3D(0.84765, 0.439706, 0.296897, -0.444355, 0.282606, 0.850108, 0.289893, -0.852521, 0.434937, -1130.47, 64.5037, -1135.22)
 
-[node name="crystal_var1_7" parent="." instance=ExtResource("6_rcobg")]
-transform = Transform3D(0.84765, 0.439706, 0.296897, 0.103144, -0.68549, 0.720739, 0.520434, -0.580311, -0.626409, -1533.77, 257.45, -1336.36)
-
 [node name="crystal_var1_6" parent="." instance=ExtResource("6_rcobg")]
 transform = Transform3D(0.84765, 0.439706, 0.296897, -0.258579, 0.831016, -0.492492, -0.463278, 0.34069, 0.81811, -1908.96, 275.858, -1468.62)

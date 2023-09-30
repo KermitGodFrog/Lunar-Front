@@ -1,27 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpaycgnn8m7yn"]
+[gd_scene load_steps=5 format=3 uid="uid://cpaycgnn8m7yn"]
 
+[ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_n0s7t"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_cmg2u"]
 [ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="3_4h85f"]
-[ext_resource type="Script" path="res://Scenes/Main Menu/reset_player_data_button.gd" id="3_e0qxc"]
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_xvp1b"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_45hd5"]
-content_margin_left = 10.0
-color = Color(1, 1, 0, 1)
-thickness = 6
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_ltohk"]
-content_margin_left = 10.0
-color = Color(1, 1, 0, 1)
-thickness = 6
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_e7v0b"]
-content_margin_left = 40.0
-color = Color(1, 0, 0, 1)
-thickness = 6
-vertical = true
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -30,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n0s7t")
 
 [node name="title_text" type="Label" parent="."]
 layout_mode = 1
@@ -80,37 +63,3 @@ layout_mode = 2
 text = "QUIT"
 alignment = 0
 script = ExtResource("3_4h85f")
-
-[node name="data_ui_vbox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -81.0
-offset_right = 293.0
-offset_bottom = -10.0
-grow_vertical = 0
-theme = ExtResource("3_xvp1b")
-
-[node name="change_name_button" type="Button" parent="data_ui_vbox"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxLine_45hd5")
-text = "CHANGE USERNAME"
-alignment = 0
-script = ExtResource("2_cmg2u")
-to_scene = "res://Scenes/Name Setting/name_setting.tscn"
-
-[node name="reset_player_data_button" type="Button" parent="data_ui_vbox"]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxLine_ltohk")
-theme_override_styles/hover = SubResource("StyleBoxLine_e7v0b")
-text = "RESET PLAYER DATA"
-alignment = 0
-script = ExtResource("3_e0qxc")
-
-[connection signal="pressed" from="data_ui_vbox/reset_player_data_button" to="data_ui_vbox/reset_player_data_button" method="_on_pressed"]

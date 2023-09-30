@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqkui2ol3b4dx"]
+[gd_scene load_steps=6 format=3 uid="uid://bqkui2ol3b4dx"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_7uqfg"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/unpause_label.gd" id="2_kcpgw"]
+[ext_resource type="Script" path="res://Scenes/Pause Menu/restart_button.gd" id="3_afmqe"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/return_to_menu_button.gd" id="3_ugar4"]
 [ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="4_2p80r"]
 
@@ -47,6 +48,14 @@ text = "( PRESS TO RESUME )"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("2_kcpgw")
+
+[node name="restart_button" type="Button" parent="panel/container"]
+process_mode = 2
+layout_mode = 2
+text = "RESTART"
+flat = true
+alignment = 2
+script = ExtResource("3_afmqe")
 
 [node name="return_to_menu_button" type="Button" parent="panel/container"]
 process_mode = 2

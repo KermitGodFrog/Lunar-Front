@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://btvq3eidvws7c"]
+
+[ext_resource type="ArrayMesh" uid="uid://bf7qkealrk248" path="res://Models/Hard Scifi Freightor wreckpart2.obj" id="1_rmgfn"]
+[ext_resource type="Material" uid="uid://beheeryu8dgxt" path="res://Scenes/Scrapyard Map/freighter_metal_scrap.tres" id="2_1ajh2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl6il"]
+radius = 180.0
+height = 800.0
+
+[node name="freighter_upper_half" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+mesh = ExtResource("1_rmgfn")
+surface_material_override/0 = ExtResource("2_1ajh2")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 447.002, 0)
+shape = SubResource("CapsuleShape3D_dl6il")

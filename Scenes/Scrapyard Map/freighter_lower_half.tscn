@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://tuutff7bs71t"]
+
+[ext_resource type="ArrayMesh" uid="uid://vfooh4ohatjf" path="res://Models/Hard Scifi Freightor wreckpart1.obj" id="1_tbin6"]
+[ext_resource type="Texture2D" uid="uid://dedxv75yr5an2" path="res://Models/MetalScrap.png" id="2_j644u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8uly"]
+albedo_texture = ExtResource("2_j644u")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl6il"]
+radius = 18.0
+height = 100.0
+
+[node name="freighter_lower_half" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_tbin6")
+surface_material_override/0 = SubResource("StandardMaterial3D_t8uly")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.6136, 0)
+shape = SubResource("CapsuleShape3D_dl6il")

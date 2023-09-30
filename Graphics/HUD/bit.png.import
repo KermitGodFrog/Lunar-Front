@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmbgqeh4wpjun"
-path="res://.godot/imported/mouse_pointer_normal.png-fb435bb16f92364ea47af5ab2febe4ee.ctex"
+uid="uid://ctfl8dtgs3xv4"
+path="res://.godot/imported/bit.png-2278381b423cf46e3f1d991c5d285f70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/mouse_pointer_normal.png"
-dest_files=["res://.godot/imported/mouse_pointer_normal.png-fb435bb16f92364ea47af5ab2febe4ee.ctex"]
+source_file="res://Graphics/HUD/bit.png"
+dest_files=["res://.godot/imported/bit.png-2278381b423cf46e3f1d991c5d285f70.ctex"]
 
 [params]
 

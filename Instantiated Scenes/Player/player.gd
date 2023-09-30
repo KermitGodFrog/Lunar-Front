@@ -3,6 +3,8 @@ class_name Player
 
 @export var health: Health
 @onready var initial_first_person_camera_basis = $first_person_camera.transform.basis
+var bit_mouse_pointer = load("res://Graphics/HUD/bit.png")
+var normal_mouse_pointer = load("res://Graphics/HUD/mouse_pointer_normal.png")
 
 #GAMEPLAY
 
@@ -72,6 +74,7 @@ const MAIN_ENGINE_BOOST_LENGTH = 4.5
 const MAIN_ENGINE_INTERPOLATION = 0.15
 
 func _ready():
+	get_tree().paused = false
 	health.reset()
 	health.health_changed.connect(_on_health_changed)
 	game_data.player = self
@@ -98,16 +101,25 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		match is_first_person_toggle:
 			true:
+				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 				match is_headlook_toggle:
 					true:
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+						Input.set_custom_mouse_cursor(bit_mouse_pointer)
 						$first_person_camera.rotation.y -= event.relative.x / headlook_mouse_sens
 						$first_person_camera.rotation.x -= event.relative.y / headlook_mouse_sens
 						$first_person_camera.rotation.x = clamp($first_person_camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 					false:
-						Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+						var normalized = event.relative.normalized()
+						var distance = event.relative.distance_to(Vector2(0,0))
+						
+						YAW_TIME = lerp(YAW_TIME, -normalized.x * YAW_SPEED * clamp(distance, 0, YAW_SPEED / 5.0), ROTATION_INTERPOLATION)
+						#YAW_TIME = -normalized.x * YAW_SPEED
+						PITCH_TIME = lerp(PITCH_TIME, normalized.y * PITCH_SPEED * clamp(distance, 0, PITCH_SPEED / 5.0), ROTATION_INTERPOLATION)
+						#PITCH_TIME = normalized.y * PITCH_SPEED
 			false:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 				if is_right_mouse_button_down == true:
 					rot_x += event.relative.x * deg_to_rad(mouse_sens)
 					rot_y += event.relative.y * deg_to_rad(mouse_sens)
@@ -312,14 +324,21 @@ func camera(_delta):
 	
 	#MOUSE MOVEMENT
 	
-	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
-		var viewport_rect_size = get_viewport().get_visible_rect().size
-		var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
-		var mouse_pos_normalized = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0).normalized()
-		if mouse_pos.x > 25 or mouse_pos.x < -25:
-			YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED, ROTATION_INTERPOLATION)
-		if mouse_pos.y > 25 or mouse_pos.y < -25:
-			PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED, ROTATION_INTERPOLATION)
+	#if is_first_person_toggle == true and is_mouse_movement_toggle == true:
+		#var viewport_rect_size = get_viewport().get_visible_rect().size
+		
+		#var mouse_pos = Vector2(get_viewport().get_mouse_position().x - viewport_rect_size.x / 2.0, get_viewport().get_mouse_position().y - viewport_rect_size.y / 2.0)
+		#var mouse_pos_normalized = Vector2(mouse_pos).normalized()
+		
+		#var multiplication = clamp(mouse_pos.distance_to(Vector2.ZERO) / 100.0, 0, 1.5)
+		
+		#var reconstructed_clamped_pos = Vector2(clamp(mouse_pos.x, -245, 245) + viewport_rect_size.x / 2.0, clamp(mouse_pos.y, -245, 245) + viewport_rect_size.y / 2.0)
+		#get_tree().call_group("draw_control", "update_mouse_pointer_position", reconstructed_clamped_pos)
+		
+		#if mouse_pos.x > 25 or mouse_pos.x < -25:
+			#YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * multiplication, ROTATION_INTERPOLATION)
+		#if mouse_pos.y > 25 or mouse_pos.y < -25:
+			#PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * multiplication, ROTATION_INTERPOLATION)
 	
 	pass
 

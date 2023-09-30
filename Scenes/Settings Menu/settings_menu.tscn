@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8vo6k44dw41q"]
+[gd_scene load_steps=22 format=3 uid="uid://8vo6k44dw41q"]
 
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_eggyk"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/settings_menu.gd" id="1_quyhj"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Scenes/Settings Menu/slider_option.gd" id="9_v1mbt"]
 [ext_resource type="ButtonGroup" uid="uid://4vlcgormuav7" path="res://Scenes/Settings Menu/keybindings_button_group.tres" id="10_l66jm"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/keybind_option.gd" id="11_2mnd0"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/save_data_button.gd" id="12_elkfx"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/reset_player_data_button.gd" id="13_06uac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j4b4"]
 content_margin_left = 50.0
@@ -41,6 +43,24 @@ vertical = true
 content_margin_left = 15.0
 color = Color(0, 0.298039, 0, 1)
 thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_03rnc"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_omi5m"]
+content_margin_left = 10.0
+color = Color(1, 1, 0, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q5wv8"]
+content_margin_left = 40.0
+color = Color(1, 0, 0, 1)
+thickness = 6
 vertical = true
 
 [node name="settings_menu" type="Control"]
@@ -598,5 +618,55 @@ text = "< BACK"
 script = ExtResource("3_aywva")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
 
+[node name="data_ui_vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -81.0
+offset_right = 293.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("8_8d1gf")
+
+[node name="save_data_container" type="VBoxContainer" parent="data_ui_vbox"]
+layout_mode = 2
+
+[node name="save_data_button" type="Button" parent="data_ui_vbox/save_data_container"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SAVE PLAYER DATA"
+alignment = 0
+script = ExtResource("12_elkfx")
+
+[node name="save_data_label" type="Label" parent="data_ui_vbox/save_data_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eggyk")
+theme_override_font_sizes/font_size = 15
+text = "(autosaves on exit)"
+
+[node name="change_name_button" type="Button" parent="data_ui_vbox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxLine_03rnc")
+text = "CHANGE USERNAME"
+alignment = 0
+script = ExtResource("3_aywva")
+to_scene = "res://Scenes/Name Setting/name_setting.tscn"
+
+[node name="reset_player_data_button" type="Button" parent="data_ui_vbox"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxLine_omi5m")
+theme_override_styles/hover = SubResource("StyleBoxLine_q5wv8")
+text = "RESET PLAYER DATA"
+alignment = 0
+script = ExtResource("13_06uac")
+
 [connection signal="pressed" from="grid_container/save_restore_and_quit_options/save_button" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="grid_container/save_restore_and_quit_options/restore_defaults_button" to="." method="_on_restore_defaults_button_pressed"]
+[connection signal="pressed" from="data_ui_vbox/reset_player_data_button" to="data_ui_vbox/reset_player_data_button" method="_on_pressed"]

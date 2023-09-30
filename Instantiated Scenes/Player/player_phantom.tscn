@@ -43,7 +43,7 @@ max_health = 100
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_1ipyt"]
 content_margin_left = 10.0
-color = Color(0, 1, 0, 1)
+color = Color(0, 0.552941, 0, 1)
 thickness = 6
 vertical = true
 
@@ -354,7 +354,7 @@ health = SubResource("Resource_kysq3")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.1)
 far = 10000.0
 
-[node name="draw_control" type="Control" parent="first_person_camera"]
+[node name="draw_control" type="Control" parent="first_person_camera" groups=["draw_control"]]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -370,7 +370,7 @@ current = true
 size = 100.0
 far = 10000.0
 
-[node name="draw_control" type="Control" parent="camera_offset/camera"]
+[node name="draw_control" type="Control" parent="camera_offset/camera" groups=["draw_control"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -505,7 +505,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.580392, 0.580392, 0.580392, 1)
 theme_override_fonts/font = ExtResource("7_01b0a")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/panel = SubResource("StyleBoxLine_1ipyt")
