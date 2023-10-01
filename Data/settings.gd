@@ -10,11 +10,15 @@ var first_person_headlook_sensitivity: int
 
 #MISC 
 
+var third_person_rotate_camera_key
+var third_person_zoom_key
+
 var pause_key: Array
 var fa_key: Array
 var first_third_person_key: Array
 var first_person_headlook_key: Array
 var boost_key: Array
+var spacebrake_key: Array
 
 #MOVEMENT
 
@@ -39,7 +43,9 @@ func save_settings():
 	file.store_var(third_person_sensitivity)
 	file.store_var(first_person_headlook_sensitivity)
 	
-	var keybindings = [pause_key, fa_key, first_third_person_key, first_person_headlook_key, boost_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
+	file.store_var(third_person_rotate_camera_key)
+	file.store_var(third_person_zoom_key)
+	var keybindings = [pause_key, fa_key, first_third_person_key, first_person_headlook_key, boost_key, spacebrake_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
 	for keybind in keybindings:
 		file.store_var(keybind)
 	
@@ -56,11 +62,14 @@ func load_settings():
 		third_person_sensitivity = file.get_var(true)
 		first_person_headlook_sensitivity = file.get_var(true)
 		
+		third_person_rotate_camera_key = file.get_var(true)
+		third_person_zoom_key = file.get_var(true)
 		pause_key = file.get_var(true)
 		fa_key = file.get_var(true)
 		first_third_person_key = file.get_var(true)
 		first_person_headlook_key = file.get_var(true)
 		boost_key = file.get_var(true)
+		spacebrake_key = file.get_var(true)
 		
 		accelerate_forward_key = file.get_var(true)
 		accelerate_backward_key = file.get_var(true)
@@ -90,11 +99,14 @@ func reset_settings():
 	third_person_sensitivity = 0.1
 	first_person_headlook_sensitivity = 1200
 	
+	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
+	third_person_zoom_key = MOUSE_BUTTON_MIDDLE
 	pause_key = ["pause", KEY_ESCAPE]
 	fa_key = ["fa_toggle", KEY_Z]
 	first_third_person_key = ["first_person_toggle", KEY_QUOTELEFT]
 	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB]
 	boost_key = ["boost", KEY_SPACE]
+	spacebrake_key = ["space_brake", KEY_X]
 	
 	accelerate_forward_key = ["accelerate_forward", KEY_SHIFT]
 	accelerate_backward_key = ["accelerate_backward", KEY_CTRL]
@@ -116,7 +128,7 @@ func reset_settings():
 	pass
 
 func sync_keybindings():
-	var keybindings = [pause_key, fa_key, first_third_person_key, first_person_headlook_key, boost_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
+	var keybindings = [pause_key, fa_key, first_third_person_key, first_person_headlook_key, boost_key, spacebrake_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
 	
 	for keybind in keybindings:
 		var event = InputEventKey.new()

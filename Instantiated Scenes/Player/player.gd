@@ -96,9 +96,9 @@ func _input(event):
 	#SETTERS
 	
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.button_index == settings.third_person_rotate_camera_key:
 			is_right_mouse_button_down = event.pressed
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == settings.third_person_zoom_key:
 			is_left_mouse_button_down = event.pressed
 		
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
