@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cxti756p4u7rb" path="res://Graphics/monotone_arrow_texture.png" id="3_y736a"]
 [ext_resource type="Texture2D" uid="uid://o4t6idsmmdmv" path="res://Graphics/Phantom/grey_metal_texture.png" id="4_edi2f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ylaeg"]
-size = Vector3(16, 16, 3)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ycq0y"]
+height = 3.0
+radius = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyf6r"]
 albedo_color = Color(0.247059, 0.741176, 0, 1)
@@ -53,8 +54,8 @@ disable_receive_shadows = true
 script = ExtResource("1_1bo2i")
 
 [node name="collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-shape = SubResource("BoxShape3D_ylaeg")
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ycq0y")
 
 [node name="next_checkpoint_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(80, 0, 0, 0, -3.49691e-06, 80, 0, -80, -3.49691e-06, 0, 0, 0)

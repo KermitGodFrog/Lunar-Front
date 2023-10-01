@@ -1,6 +1,10 @@
 extends Control
+var normal_mouse_pointer = load("res://Graphics/HUD/mouse_pointer_normal.png")
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.set_custom_mouse_cursor(normal_mouse_pointer)
+	
 	get_tree().call_group("bool_option", "sync_settings_variable")
 	get_tree().call_group("slider_option", "sync_settings_variable")
 	pass

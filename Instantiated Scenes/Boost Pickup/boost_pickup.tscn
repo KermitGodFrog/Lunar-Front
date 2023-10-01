@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
 size = Vector3(15, 15, 15)
 
-[node name="boost_pickup" type="Area3D"]
+[node name="boost_pickup" type="Area3D" groups=["boost_pickup"]]
 script = ExtResource("1_0eu5u")
 
 [node name="collision" type="CollisionShape3D" parent="."]
@@ -14,8 +14,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_toffo")
 
 [node name="sprite" type="Sprite3D" parent="."]
-transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 0, 0, 0)
-billboard = 1
+transform = Transform3D(128, 0, 0, 0, 128, 0, 0, 0, 128, 0, 0, 0)
 texture_filter = 2
 texture = ExtResource("2_m0iqk")
 

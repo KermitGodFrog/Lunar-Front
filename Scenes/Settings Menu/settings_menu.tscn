@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8vo6k44dw41q"]
+[gd_scene load_steps=21 format=3 uid="uid://8vo6k44dw41q"]
 
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_eggyk"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/settings_menu.gd" id="1_quyhj"]
@@ -43,12 +43,6 @@ vertical = true
 content_margin_left = 15.0
 color = Color(0, 0.298039, 0, 1)
 thickness = 10
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_03rnc"]
-content_margin_left = 10.0
-color = Color(1, 1, 0, 1)
-thickness = 6
 vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_omi5m"]
@@ -646,16 +640,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_eggyk")
 theme_override_font_sizes/font_size = 15
 text = "(autosaves on exit)"
-
-[node name="change_name_button" type="Button" parent="data_ui_vbox"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxLine_03rnc")
-text = "CHANGE USERNAME"
-alignment = 0
-script = ExtResource("3_aywva")
-to_scene = "res://Scenes/Name Setting/name_setting.tscn"
 
 [node name="reset_player_data_button" type="Button" parent="data_ui_vbox"]
 layout_mode = 2

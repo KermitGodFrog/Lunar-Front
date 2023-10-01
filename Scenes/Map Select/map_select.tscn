@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6x1bosgruat1"]
+[gd_scene load_steps=22 format=3 uid="uid://b6x1bosgruat1"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_3t0nq"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_3vnmj"]
@@ -8,7 +8,11 @@
 [ext_resource type="FontFile" uid="uid://btfjklx8eldgs" path="res://Graphics/Fonts/RobotoMono Medium Italic.ttf" id="5_ahk7g"]
 [ext_resource type="Script" path="res://Scenes/Map Select/leaderboard_origin_label.gd" id="6_0cxqa"]
 [ext_resource type="Script" path="res://Scenes/Map Select/map_handling.gd" id="7_5fyyb"]
+[ext_resource type="Texture2D" uid="uid://bwnoshrsvh4v" path="res://Graphics/Medals/gold_medal.png" id="7_hdrhg"]
+[ext_resource type="Script" path="res://Scenes/Map Select/par_times_vbox.gd" id="7_s0fnn"]
+[ext_resource type="Texture2D" uid="uid://cbeeia5f1hj8i" path="res://Graphics/Medals/iron_medal.png" id="8_0dmqe"]
 [ext_resource type="Script" path="res://Scenes/Map Select/reload_leaderboard_button.gd" id="9_mu8ay"]
+[ext_resource type="Texture2D" uid="uid://bk5luja357egg" path="res://Graphics/Medals/bronze_medal.png" id="9_s0nk5"]
 [ext_resource type="Script" path="res://Scenes/Map Select/send_offline_scores_button.gd" id="10_1et5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkull"]
@@ -113,6 +117,64 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rnaln")
 vertical_alignment = 2
 script = ExtResource("6_0cxqa")
 
+[node name="par_times_vbox" type="VBoxContainer" parent="." groups=["map_par_times_handler"]]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_right = 0.422
+offset_left = -149.2
+offset_top = 107.0
+offset_right = 150.8
+offset_bottom = 557.0
+grow_horizontal = 2
+script = ExtResource("7_s0fnn")
+gold_label = NodePath("gold_hbox/gold label")
+iron_label = NodePath("iron_hbox/iron_label")
+bronze_label = NodePath("bronze_hbox/bronze_label")
+
+[node name="gold_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="gold label" type="Label" parent="par_times_vbox/gold_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m5wsd")
+theme_override_font_sizes/font_size = 30
+
+[node name="gold_texture" type="TextureRect" parent="par_times_vbox/gold_hbox"]
+layout_mode = 2
+texture = ExtResource("7_hdrhg")
+stretch_mode = 5
+
+[node name="iron_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="iron_label" type="Label" parent="par_times_vbox/iron_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m5wsd")
+theme_override_font_sizes/font_size = 30
+
+[node name="iron_texture" type="TextureRect" parent="par_times_vbox/iron_hbox"]
+layout_mode = 2
+texture = ExtResource("8_0dmqe")
+stretch_mode = 5
+
+[node name="bronze_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="bronze_label" type="Label" parent="par_times_vbox/bronze_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m5wsd")
+theme_override_font_sizes/font_size = 30
+
+[node name="bronze_texture" type="TextureRect" parent="par_times_vbox/bronze_hbox"]
+layout_mode = 2
+texture = ExtResource("9_s0nk5")
+stretch_mode = 5
+
 [node name="main_ui_vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
@@ -209,7 +271,7 @@ layout_mode = 2
 theme_override_constants/separation = 50
 script = ExtResource("7_5fyyb")
 to_scene = "res://Scenes/Fleet Map/fleet_map.tscn"
-requirements = ["scrapyard", 3]
+requirements = ["scrapyard", 2]
 scene_change_button = NodePath("fleet_button")
 requirements_label = NodePath("requirements_hbox/requirements_label")
 required_medal_texture_rect = NodePath("requirements_hbox/required_medal")

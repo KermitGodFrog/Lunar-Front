@@ -12,6 +12,10 @@ func _on_pressed():
 	var name_edit = owner.get_tree().get_first_node_in_group("name_edit")
 	var username = name_edit.text
 	
+	if username.is_empty():
+		print("PLAYER NAME CHANGE FAILED")
+		return
+	
 	for word in profanity_list_array:
 		var profanity_check = username.findn(str(word))
 		if profanity_check == -1:

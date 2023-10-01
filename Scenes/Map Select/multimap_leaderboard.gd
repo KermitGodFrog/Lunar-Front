@@ -50,15 +50,18 @@ func render(scores):
 
 func _on_scrapyard_button_mouse_entered():
 	update("scrapyard_map", false)
+	get_tree().call_group("map_par_times_handler", "update", "scrapyard")
 	last_selected_map = "scrapyard_map"
 	pass
 
 func _on_fleet_button_mouse_entered():
 	update("fleet_map", false)
+	get_tree().call_group("map_par_times_handler", "update", "fleet")
 	last_selected_map = "fleet_map"
 	pass
 
 func _on_asteroid_refinery_button_mouse_entered():
 	update("asteroid_refinery_map", false)
+	get_tree().call_group("map_par_times_handler", "update", "asteroid_refinery")
 	last_selected_map = "asteroid_refinery_map"
 	pass

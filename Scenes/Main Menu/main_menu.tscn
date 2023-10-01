@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpaycgnn8m7yn"]
 
-[ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_n0s7t"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/reset_mouse.gd" id="1_n0s7t"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_cmg2u"]
 [ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="3_4h85f"]
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_xvp1b"]

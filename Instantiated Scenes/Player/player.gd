@@ -85,9 +85,9 @@ func _ready():
 	$camera_offset/camera/draw_control.hide()
 	is_first_person_toggle = true
 	
-	#game_data.hud_effect.ring_effect(1)
-	
-	for element in get_tree().get_nodes_in_group("always_visible_hud_element"):
+	var always_visible_hud_elements = get_tree().get_nodes_in_group("always_visible_hud_element")
+	always_visible_hud_elements.shuffle()
+	for element in always_visible_hud_elements:
 		await get_tree().create_timer(global_data.get_randf(0.05, 0.60)).timeout
 		element.show()
 	pass
@@ -229,15 +229,27 @@ func movement(delta):
 		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(ROLL_TIME * delta))
 	
 	#FA
+	var cameras = [$first_person_camera, $camera_offset/camera]
+	for camera in cameras:
+		camera.set_fov(lerp(camera.fov, 75.0, 0.01))
 	
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+		if velocity.length() > 1.0:
+			for camera in cameras:
+				camera.set_fov(lerp(camera.fov, 70.0, 0.01))
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
+		if velocity.length() > 1.0:
+			for camera in cameras:
+				camera.set_fov(lerp(camera.fov, 72.5, 0.01))
 	
 	if Input.is_action_pressed("space_brake"):
 		velocity = lerp(velocity, Vector3.ZERO, SPACE_BRAKE_INTERPLATION)
+		if velocity.length() > 1.0:
+			for camera in cameras:
+				camera.set_fov(lerp(camera.fov, 65.0, 0.01))
 	
 	#BOOSTING
 	
@@ -246,6 +258,8 @@ func movement(delta):
 			BOOST_TIME = maxi(0, BOOST_TIME - delta)
 			if BOOST_TIME > 0:
 				BOOST = BOOST_MULTIPLIER
+				for camera in cameras:
+					camera.set_fov(lerp(camera.fov, 80.0, 0.01))
 				if accelerate_dir == 1:
 					main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
 			else:

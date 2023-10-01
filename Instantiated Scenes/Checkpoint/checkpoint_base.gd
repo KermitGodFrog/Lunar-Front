@@ -28,12 +28,13 @@ func _on_body_entered(body):
 					
 					get_tree().call_group("receive_race_starting", "_on_race_start")
 					get_tree().call_group("medal_status", "update_medal")
+					
 					if map_data.boost_pickups.size() > 0:
 						for boost_pickup in map_data.boost_pickups:
-							boost_pickup.is_used = false
+							boost_pickup.set_is_used(false)
 					if map_data.slingshot_pickups.size() > 0:
 						for slingshot_pickup in map_data.slingshot_pickups:
-							slingshot_pickup.is_used = false
+							slingshot_pickup.set_is_used(false)
 					
 		elif CHECKPOINT_NUMBER == 0:
 			body.current_checkpoint = self
@@ -43,7 +44,6 @@ func _on_body_entered(body):
 	pass
 
 func leaderboard_handling():
-	print(map_data.map_identifier)
 	var sw_save_score: Dictionary = await SilentWolf.Scores.save_score(global_data.player_name, global_data.get_best_time_current_map(), str(map_data.map_identifier, "_map")).sw_save_score_complete
 	get_tree().call_group("leaderboard_status_list", "update")
 	pass
