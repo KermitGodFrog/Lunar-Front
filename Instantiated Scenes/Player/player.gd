@@ -42,6 +42,8 @@ var mouse_sens = 0.1
 var headlook_mouse_sens = 1200
 
 var mouse_relative_matrix: Array = [Vector2(0,0), 0]
+var MOUSE_MOVEMENT_DEADZONE = 1.0
+var MOUSE_MOVEMENT_SENSITIVTY = 10.0
 
 #WEAPONS
 
@@ -124,9 +126,12 @@ func _input(event):
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 						var normalized = event.relative.normalized()
 						var distance = event.relative.distance_to(Vector2(0,0))
-						if event.relative.x > 20 or event.relative.x < -20 and event.relative.y > 20 or event.relative.y < -20:
+						if event.relative.x > MOUSE_MOVEMENT_DEADZONE or event.relative.x < -MOUSE_MOVEMENT_DEADZONE and event.relative.y > MOUSE_MOVEMENT_DEADZONE or event.relative.y < -MOUSE_MOVEMENT_DEADZONE:
 							mouse_relative_matrix[0] = normalized
-						mouse_relative_matrix[1] = distance
+							mouse_relative_matrix[1] = distance * MOUSE_MOVEMENT_SENSITIVTY
+						else:
+							mouse_relative_matrix[0] = Vector2(0,0)
+							mouse_relative_matrix[1] = 0
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
@@ -420,4 +425,6 @@ func sync_settings():
 	is_camera_offset_toggle = settings.third_person_camera_offset
 	mouse_sens = settings.third_person_sensitivity
 	headlook_mouse_sens = settings.first_person_headlook_sensitivity
+	MOUSE_MOVEMENT_SENSITIVTY = settings.mouse_movement_sensitivity
+	MOUSE_MOVEMENT_DEADZONE = settings.mouse_movement_deadzone
 	pass

@@ -182,6 +182,40 @@ theme_override_fonts/font = ExtResource("3_hw16d")
 theme_override_font_sizes/font_size = 30
 text = "FIRST PERSON HEADLOOK SENSITIVITY"
 
+[node name="mouse_movement_sensitivity" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="slider" type="HSlider" parent="scroll_container/options_container/mouse_movement_sensitivity" groups=["slider_option"]]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("8_8d1gf")
+max_value = 200.0
+value = 1.0
+script = ExtResource("9_v1mbt")
+settings_variable = "mouse_movement_sensitivity"
+
+[node name="label" type="Label" parent="scroll_container/options_container/mouse_movement_sensitivity"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOUSE MOVEMENT SENSITIVITY"
+
+[node name="mouse_movement_deadzone" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="slider" type="HSlider" parent="scroll_container/options_container/mouse_movement_deadzone" groups=["slider_option"]]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("8_8d1gf")
+script = ExtResource("9_v1mbt")
+settings_variable = "mouse_movement_deadzone"
+
+[node name="label" type="Label" parent="scroll_container/options_container/mouse_movement_deadzone"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "MOUSE MOVEMENT DEADZONE"
+
 [node name="third_person_rotate" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
 
