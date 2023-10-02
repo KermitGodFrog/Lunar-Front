@@ -198,7 +198,7 @@ settings_variable = "mouse_movement_sensitivity"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hw16d")
 theme_override_font_sizes/font_size = 30
-text = "MOUSE MOVEMENT SENSITIVITY"
+text = "FIRST PERSON MOUSE MOVEMENT SENSITIVITY"
 
 [node name="mouse_movement_deadzone" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
@@ -214,7 +214,8 @@ settings_variable = "mouse_movement_deadzone"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hw16d")
 theme_override_font_sizes/font_size = 30
-text = "MOUSE MOVEMENT DEADZONE"
+text = "FIRST PERSON MOUSE MOVEMENT DEADZONE
+"
 
 [node name="third_person_rotate" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
