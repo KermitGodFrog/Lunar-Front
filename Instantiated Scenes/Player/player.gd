@@ -124,7 +124,8 @@ func _input(event):
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 						var normalized = event.relative.normalized()
 						var distance = event.relative.distance_to(Vector2(0,0))
-						mouse_relative_matrix[0] = normalized
+						if event.relative.x > 20 or event.relative.x < -20 and event.relative.y > 20 or event.relative.y < -20:
+							mouse_relative_matrix[0] = normalized
 						mouse_relative_matrix[1] = distance
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
