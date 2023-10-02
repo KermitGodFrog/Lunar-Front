@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8vo6k44dw41q"]
+[gd_scene load_steps=26 format=3 uid="uid://8vo6k44dw41q"]
 
 [ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_eggyk"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/settings_menu.gd" id="1_quyhj"]
@@ -12,8 +12,10 @@
 [ext_resource type="Script" path="res://Scenes/Settings Menu/slider_option.gd" id="9_v1mbt"]
 [ext_resource type="ButtonGroup" uid="uid://4vlcgormuav7" path="res://Scenes/Settings Menu/keybindings_button_group.tres" id="10_l66jm"]
 [ext_resource type="Script" path="res://Scenes/Settings Menu/keybind_option.gd" id="11_2mnd0"]
+[ext_resource type="ButtonGroup" uid="uid://d052r745yqei5" path="res://Scenes/Settings Menu/restore_defaults_button_group.tres" id="12_6724r"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/save_data_button.gd" id="12_elkfx"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/reset_player_data_button.gd" id="13_06uac"]
+[ext_resource type="Script" path="res://Scenes/Settings Menu/control_option.gd" id="13_gaedm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j4b4"]
 content_margin_left = 50.0
@@ -46,6 +48,16 @@ color = Color(0, 0.298039, 0, 1)
 thickness = 10
 vertical = true
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_narxb"]
+content_margin_left = 4.0
+color = Color(0, 1, 0, 1)
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p01xc"]
+content_margin_left = 4.0
+color = Color(0, 1, 0, 1)
+vertical = true
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_omi5m"]
 content_margin_left = 10.0
 color = Color(1, 1, 0, 1)
@@ -66,6 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_quyhj")
+restore_defaults_button_group = ExtResource("12_6724r")
 
 [node name="scroll_container" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -658,8 +671,12 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxLine_e3gl8")
 theme_override_styles/hover = SubResource("StyleBoxLine_1nolc")
 text = "SAVE"
+alignment = 0
 
-[node name="restore_defaults_button" type="Button" parent="grid_container/save_restore_and_quit_options"]
+[node name="restore_defaults_hbox" type="HBoxContainer" parent="grid_container/save_restore_and_quit_options"]
+layout_mode = 2
+
+[node name="restore_defaults_button" type="Button" parent="grid_container/save_restore_and_quit_options/restore_defaults_hbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_eggyk")
@@ -669,6 +686,34 @@ theme_override_styles/hover = SubResource("StyleBoxLine_1nolc")
 text = "RESTORE
 DEFAULTS"
 
+[node name="control_options_vbox" type="VBoxContainer" parent="grid_container/save_restore_and_quit_options/restore_defaults_hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="keyboard_mouse_controls" type="Button" parent="grid_container/save_restore_and_quit_options/restore_defaults_hbox/control_options_vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eggyk")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxLine_narxb")
+toggle_mode = true
+button_group = ExtResource("12_6724r")
+alignment = 0
+script = ExtResource("13_gaedm")
+restore_string = "keyboard_mouse"
+button_text = "KEYBOARD + MOUSE"
+
+[node name="keyboard_controls" type="Button" parent="grid_container/save_restore_and_quit_options/restore_defaults_hbox/control_options_vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eggyk")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxLine_p01xc")
+toggle_mode = true
+button_group = ExtResource("12_6724r")
+alignment = 0
+script = ExtResource("13_gaedm")
+restore_string = "keyboard"
+button_text = "KEYBOARD"
+
 [node name="back_button" type="Button" parent="grid_container/save_restore_and_quit_options"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -677,6 +722,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxLine_e3gl8")
 theme_override_styles/hover = SubResource("StyleBoxLine_1nolc")
 text = "< BACK"
+alignment = 0
 script = ExtResource("3_aywva")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
 
@@ -720,5 +766,5 @@ alignment = 0
 script = ExtResource("13_06uac")
 
 [connection signal="pressed" from="grid_container/save_restore_and_quit_options/save_button" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="grid_container/save_restore_and_quit_options/restore_defaults_button" to="." method="_on_restore_defaults_button_pressed"]
+[connection signal="pressed" from="grid_container/save_restore_and_quit_options/restore_defaults_hbox/restore_defaults_button" to="." method="_on_restore_defaults_button_pressed"]
 [connection signal="pressed" from="data_ui_vbox/reset_player_data_button" to="data_ui_vbox/reset_player_data_button" method="_on_pressed"]

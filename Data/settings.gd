@@ -1,5 +1,7 @@
 extends Node
 
+var restore_defaults_type: String
+
 #CHECKBOXES AND SLIDERS
 
 var first_person_mouse_control: bool
@@ -93,6 +95,21 @@ func load_settings():
 	pass
 
 func reset_settings():
+	match restore_defaults_type:
+		"keyboard_mouse":
+			reset_to_keymap_one()
+		"keyboard":
+			reset_to_keymap_two()
+		_:
+			reset_to_keymap_one()
+	
+	sync_keybindings()
+	
+	save_settings()
+	
+	pass
+
+func reset_to_keymap_one():
 	first_person_mouse_control = true
 	acceleration_camera_shake = true
 	third_person_camera_offset = true
@@ -120,11 +137,36 @@ func reset_settings():
 	move_down_key = ["move_down", KEY_S]
 	move_left_key = ["move_left", KEY_A]
 	move_right_key = ["move_right", KEY_D]
+	pass
+
+func reset_to_keymap_two():
+	first_person_mouse_control = false
+	acceleration_camera_shake = true
+	third_person_camera_offset = true
+	third_person_sensitivity = 0.1
+	first_person_headlook_sensitivity = 1200
 	
-	sync_keybindings()
+	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
+	third_person_zoom_key = MOUSE_BUTTON_MIDDLE
+	pause_key = ["pause", KEY_ESCAPE]
+	fa_key = ["fa_toggle", KEY_QUOTELEFT]
+	first_third_person_key = ["first_person_toggle", KEY_SHIFT]
+	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB]
+	boost_key = ["boost", KEY_SPACE]
+	spacebrake_key = ["space_brake", KEY_X]
 	
-	save_settings()
-	
+	accelerate_forward_key = ["accelerate_forward", KEY_R]
+	accelerate_backward_key = ["accelerate_backward", KEY_F]
+	pitch_up_key = ["pitch_up", KEY_W]
+	pitch_down_key = ["pitch_down", KEY_S]
+	yaw_left_key = ["yaw_left", KEY_A]
+	yaw_right_key = ["yaw_right", KEY_D]
+	roll_left_key = ["roll_left", KEY_Q]
+	roll_right_key = ["roll_right", KEY_E]
+	move_up_key = ["move_up", KEY_UP]
+	move_down_key = ["move_down", KEY_DOWN]
+	move_left_key = ["move_left", KEY_LEFT]
+	move_right_key = ["move_right", KEY_RIGHT]
 	pass
 
 func sync_keybindings():

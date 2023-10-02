@@ -326,7 +326,7 @@ theme_override_styles/normal = SubResource("StyleBoxLine_bnseu")
 text = "SEND OFFLINE SCORES"
 alignment = 2
 script = ExtResource("10_1et5a")
-for_map_identifiers = PackedStringArray("scrapyard")
+for_map_identifiers = PackedStringArray("scrapyard", "asteroid_refinery", "fleet")
 
 [node name="reload_leaderboard_button" type="Button" parent="data_ui_vbox" groups=["reload_leaderboard_button"]]
 layout_mode = 2

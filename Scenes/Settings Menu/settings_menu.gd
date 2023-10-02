@@ -1,5 +1,6 @@
 extends Control
 var normal_mouse_pointer = load("res://Graphics/HUD/mouse_pointer_normal.png")
+@export var restore_defaults_button_group: ButtonGroup
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -33,6 +34,9 @@ func _on_save_button_pressed():
 	pass
 
 func _on_restore_defaults_button_pressed():
+	var pressed_button = restore_defaults_button_group.get_pressed_button()
+	if pressed_button:
+		settings.restore_defaults_type = pressed_button.restore_string
 	settings.reset_settings()
 	get_tree().call_group("bool_option", "sync_settings_variable")
 	get_tree().call_group("slider_option", "sync_settings_variable")

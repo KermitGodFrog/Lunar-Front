@@ -16,7 +16,7 @@ const ACCELERATION_MOVEMENT = 1.5
 const PITCH_SPEED = 70.0
 const YAW_SPEED = 50.0
 const ROLL_SPEED = 50.0
-const ROTATION_INTERPOLATION = 0.025
+var ROTATION_INTERPOLATION = 0.025
 const FA_INTERPOLATION = 0.015
 const SECRET_FA_INTERPOLATION = 0.010
 const SPACE_BRAKE_INTERPLATION = 0.020
@@ -40,6 +40,8 @@ var rot_x: float
 var rot_y: float
 var mouse_sens = 0.1
 var headlook_mouse_sens = 1200
+
+var mouse_relative_matrix: Array = [Vector2(0,0), 0]
 
 #WEAPONS
 
@@ -122,8 +124,8 @@ func _input(event):
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 						var normalized = event.relative.normalized()
 						var distance = event.relative.distance_to(Vector2(0,0))
-						YAW_TIME = -normalized.x * clamp(distance, 0, YAW_SPEED)
-						PITCH_TIME = normalized.y * clamp(distance, 0, PITCH_SPEED)
+						mouse_relative_matrix[0] = normalized
+						mouse_relative_matrix[1] = distance
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
@@ -221,6 +223,11 @@ func movement(delta):
 		if is_fa_toggle == true:
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
 	
+	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
+		YAW_TIME = -mouse_relative_matrix[0].x * clamp(mouse_relative_matrix[1], 0, YAW_SPEED)
+		PITCH_TIME = mouse_relative_matrix[0].y * clamp(mouse_relative_matrix[1], 0, PITCH_SPEED)
+	
+	
 	if PITCH_TIME != 0:
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
 	if YAW_TIME != 0:
@@ -230,26 +237,26 @@ func movement(delta):
 	
 	#FA
 	var cameras = [$first_person_camera, $camera_offset/camera]
-	for camera in cameras:
-		camera.set_fov(lerp(camera.fov, 75.0, 0.01))
+	for camera_type in cameras:
+		camera_type.set_fov(lerp(camera_type.fov, 75.0, 0.01))
 	
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 70.0, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 70.0, 0.01))
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 72.5, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 72.5, 0.01))
 	
 	if Input.is_action_pressed("space_brake"):
 		velocity = lerp(velocity, Vector3.ZERO, SPACE_BRAKE_INTERPLATION)
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 65.0, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 65.0, 0.01))
 	
 	#BOOSTING
 	
@@ -258,8 +265,8 @@ func movement(delta):
 			BOOST_TIME = maxi(0, BOOST_TIME - delta)
 			if BOOST_TIME > 0:
 				BOOST = BOOST_MULTIPLIER
-				for camera in cameras:
-					camera.set_fov(lerp(camera.fov, 80.0, 0.01))
+				for camera_type in cameras:
+					camera_type.set_fov(lerp(camera_type.fov, 80.0, 0.01))
 				if accelerate_dir == 1:
 					main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
 			else:
@@ -362,7 +369,6 @@ func camera(_delta):
 			#YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * multiplication, ROTATION_INTERPOLATION)
 		#if mouse_pos.y > 25 or mouse_pos.y < -25:
 			#PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * multiplication, ROTATION_INTERPOLATION)
-	
 	pass
 
 func proximity_camera_shake(_delta, body, amount: float, begin_distance: float):
