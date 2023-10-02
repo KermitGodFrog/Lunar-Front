@@ -116,7 +116,8 @@ text = "THE CONTROLS"
 layout_mode = 2
 theme_type_variation = &"Paragraph"
 text = "> The games controls are available to view and changes in the settings panel. The defaults are quite similar to other 3D space games. Feel free to enter a map to test out a control scheme, the race only starts once you go through the first checkpoint!
-"
+
+Note: If you do decide to use the standard mouse + keyboard controls, take a look at the first person mouse movement sensitivity/deadzone options as the optimal weights vary greatly mouse-to-mouse."
 autowrap_mode = 3
 
 [node name="panel3" type="Panel" parent="tutorial_container/tutorial_hbox"]
