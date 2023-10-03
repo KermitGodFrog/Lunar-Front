@@ -194,6 +194,10 @@ func sync_keybindings():
 				event = InputEventJoypadButton.new()
 				event.button_index = keybind[1]
 				event.pressed = true
+			"joy_motion":
+				event = InputEventJoypadMotion.new()
+				event.axis = keybind[1]
+				event.pressed = true
 		
 		if not InputMap.action_get_events(keybind[0]).is_empty():
 			InputMap.action_erase_event(keybind[0], InputMap.action_get_events(keybind[0])[0])

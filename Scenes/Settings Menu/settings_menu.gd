@@ -27,6 +27,8 @@ func _on_save_button_pressed():
 					settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].keycode, "key"])
 				"joy":
 					settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].button_index, "joy"])
+				"joy_motion":
+					settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].axis, "joy_motion"])
 	
 	for option in get_tree().get_nodes_in_group("psuedo_mouse_keybind_option"):
 		var settings_variable = option.get("settings_variable")
