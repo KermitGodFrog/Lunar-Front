@@ -3,6 +3,7 @@ extends Button
 
 @export var settings_variable: String
 @export var action_string: String
+var action_type: String
 
 func _process(delta):
 	if not InputMap.action_get_events(action_string).is_empty():
@@ -15,6 +16,12 @@ func _input(event):
 		if keybindings_button_group.get_pressed_button() == self:
 			change_key(event)
 			set("button_pressed", false)
+			set("action_type", "key")
+	if event is InputEventJoypadButton:
+		if keybindings_button_group.get_pressed_button() == self:
+			change_key(event)
+			set("button_pressed", false)
+			set("action_type", "joy")
 	pass
 
 func change_key(key):

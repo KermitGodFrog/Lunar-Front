@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=89 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -37,6 +37,7 @@
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="31_5tfth"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/pause_handling.gd" id="36_53deo"]
 [ext_resource type="PackedScene" uid="uid://bqkui2ol3b4dx" path="res://Scenes/Pause Menu/pause_menu.tscn" id="37_54nov"]
+[ext_resource type="AudioStream" uid="uid://dq6lw5t34bpm4" path="res://Sound Effects/final engine sound.wav" id="38_pcma1"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -1219,3 +1220,8 @@ texture_albedo = ExtResource("27_hs6ag")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146643, 1.88826, 1.55923)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("27_hs6ag")
+
+[node name="main_engine_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+stream = ExtResource("38_pcma1")
+max_db = 1.0

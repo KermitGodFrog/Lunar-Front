@@ -184,10 +184,12 @@ func movement(delta):
 		is_acceleration = true
 		if accelerate_dir == 1:
 			main_engine_shader_update(MAIN_ENGINE_ACCEL_LENGTH)
+			$main_engine_sound.play($main_engine_sound.get_playback_position())
 		else:
 			main_engine_shader_update(0.0)
 	else:
 		main_engine_shader_update(0.0)
+		$main_engine_sound.stop()
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
@@ -284,6 +286,11 @@ func movement(delta):
 	
 	if BOOST_TIME < BOOST_MAX_REGEN:
 		BOOST_TIME += delta / BOOST_REGEN_DIVIDER
+	
+	if BOOST == BOOST_MULTIPLIER:
+		$main_engine_sound.set_pitch_scale(2)
+	else:
+		$main_engine_sound.set_pitch_scale(1)
 	
 	#THRUSTERS
 	

@@ -30,6 +30,7 @@ func check_children(check_axis: int):
 	for child in get_children():
 		if child.is_in_group("axis_" + str(check_axis)):
 			child.set_emitting(true)
+			get_tree().call_group("thruster_sound", "queue")
 		else:
 			child.set_emitting(false)
 	pass

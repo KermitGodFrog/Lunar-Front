@@ -40,7 +40,7 @@ var move_left_key: Array
 var move_right_key: Array
 
 func save_settings():
-	var file = FileAccess.open("user://settings.save", FileAccess.WRITE)
+	var file = FileAccess.open("user://cosmic_time_trials_settings.save", FileAccess.WRITE)
 	file.store_var(first_person_mouse_control)
 	file.store_var(acceleration_camera_shake)
 	file.store_var(third_person_camera_offset)
@@ -60,8 +60,8 @@ func save_settings():
 	pass
 
 func load_settings():
-	if FileAccess.file_exists("user://settings.save"):
-		var file = FileAccess.open("user://settings.save", FileAccess.READ)
+	if FileAccess.file_exists("user://cosmic_time_trials_settings.save"):
+		var file = FileAccess.open("user://cosmic_time_trials_settings.save", FileAccess.READ)
 		first_person_mouse_control = file.get_var(true)
 		acceleration_camera_shake = file.get_var(true)
 		third_person_camera_offset = file.get_var(true)
@@ -126,25 +126,25 @@ func reset_to_keymap_one():
 	
 	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
 	third_person_zoom_key = MOUSE_BUTTON_MIDDLE
-	pause_key = ["pause", KEY_ESCAPE]
-	fa_key = ["fa_toggle", KEY_Z]
-	first_third_person_key = ["first_person_toggle", KEY_QUOTELEFT]
-	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB]
-	boost_key = ["boost", KEY_SPACE]
-	spacebrake_key = ["space_brake", KEY_X]
+	pause_key = ["pause", KEY_ESCAPE, "key"]
+	fa_key = ["fa_toggle", KEY_Z, "key"]
+	first_third_person_key = ["first_person_toggle", KEY_QUOTELEFT, "key"]
+	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB, "key"]
+	boost_key = ["boost", KEY_SPACE, "key"]
+	spacebrake_key = ["space_brake", KEY_X, "key"]
 	
-	accelerate_forward_key = ["accelerate_forward", KEY_SHIFT]
-	accelerate_backward_key = ["accelerate_backward", KEY_CTRL]
-	pitch_up_key = ["pitch_up", KEY_UP]
-	pitch_down_key = ["pitch_down", KEY_DOWN]
-	yaw_left_key = ["yaw_left", KEY_LEFT]
-	yaw_right_key = ["yaw_right", KEY_RIGHT]
-	roll_left_key = ["roll_left", KEY_Q]
-	roll_right_key = ["roll_right", KEY_E]
-	move_up_key = ["move_up", KEY_W]
-	move_down_key = ["move_down", KEY_S]
-	move_left_key = ["move_left", KEY_A]
-	move_right_key = ["move_right", KEY_D]
+	accelerate_forward_key = ["accelerate_forward", KEY_SHIFT, "key"]
+	accelerate_backward_key = ["accelerate_backward", KEY_CTRL, "key"]
+	pitch_up_key = ["pitch_up", KEY_UP, "key"]
+	pitch_down_key = ["pitch_down", KEY_DOWN, "key"]
+	yaw_left_key = ["yaw_left", KEY_LEFT, "key"]
+	yaw_right_key = ["yaw_right", KEY_RIGHT, "key"]
+	roll_left_key = ["roll_left", KEY_Q, "key"]
+	roll_right_key = ["roll_right", KEY_E, "key"]
+	move_up_key = ["move_up", KEY_W, "key"]
+	move_down_key = ["move_down", KEY_S, "key"]
+	move_left_key = ["move_left", KEY_A, "key"]
+	move_right_key = ["move_right", KEY_D, "key"]
 	pass
 
 func reset_to_keymap_two():
@@ -158,36 +158,44 @@ func reset_to_keymap_two():
 	
 	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
 	third_person_zoom_key = MOUSE_BUTTON_MIDDLE
-	pause_key = ["pause", KEY_ESCAPE]
-	fa_key = ["fa_toggle", KEY_QUOTELEFT]
-	first_third_person_key = ["first_person_toggle", KEY_SHIFT]
-	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB]
-	boost_key = ["boost", KEY_SPACE]
-	spacebrake_key = ["space_brake", KEY_X]
+	pause_key = ["pause", KEY_ESCAPE, "key"]
+	fa_key = ["fa_toggle", KEY_QUOTELEFT, "key"]
+	first_third_person_key = ["first_person_toggle", KEY_SHIFT, "key"]
+	first_person_headlook_key = ["enable_first_person_headlook", KEY_TAB, "key"]
+	boost_key = ["boost", KEY_SPACE, "key"]
+	spacebrake_key = ["space_brake", KEY_X, "key"]
 	
-	accelerate_forward_key = ["accelerate_forward", KEY_R]
-	accelerate_backward_key = ["accelerate_backward", KEY_F]
-	pitch_up_key = ["pitch_up", KEY_W]
-	pitch_down_key = ["pitch_down", KEY_S]
-	yaw_left_key = ["yaw_left", KEY_A]
-	yaw_right_key = ["yaw_right", KEY_D]
-	roll_left_key = ["roll_left", KEY_Q]
-	roll_right_key = ["roll_right", KEY_E]
-	move_up_key = ["move_up", KEY_UP]
-	move_down_key = ["move_down", KEY_DOWN]
-	move_left_key = ["move_left", KEY_LEFT]
-	move_right_key = ["move_right", KEY_RIGHT]
+	accelerate_forward_key = ["accelerate_forward", KEY_R, "key"]
+	accelerate_backward_key = ["accelerate_backward", KEY_F, "key"]
+	pitch_up_key = ["pitch_up", KEY_W, "key"]
+	pitch_down_key = ["pitch_down", KEY_S, "key"]
+	yaw_left_key = ["yaw_left", KEY_A, "key"]
+	yaw_right_key = ["yaw_right", KEY_D, "key"]
+	roll_left_key = ["roll_left", KEY_Q, "key"]
+	roll_right_key = ["roll_right", KEY_E, "key"]
+	move_up_key = ["move_up", KEY_UP, "key"]
+	move_down_key = ["move_down", KEY_DOWN, "key"]
+	move_left_key = ["move_left", KEY_LEFT, "key"]
+	move_right_key = ["move_right", KEY_RIGHT, "key"]
 	pass
 
 func sync_keybindings():
 	var keybindings = [pause_key, fa_key, first_third_person_key, first_person_headlook_key, boost_key, spacebrake_key, accelerate_forward_key, accelerate_backward_key, pitch_up_key, pitch_down_key, yaw_left_key, yaw_right_key, roll_left_key, roll_right_key, move_up_key, move_down_key, move_left_key, move_right_key]
 	
 	for keybind in keybindings:
-		var event = InputEventKey.new()
-		event.keycode = keybind.back()
-		event.pressed = true
+		var event
 		
-		if not InputMap.action_get_events(keybind.front()).is_empty():
-			InputMap.action_erase_event(keybind.front(), InputMap.action_get_events(keybind.front())[0])
-		InputMap.action_add_event(keybind.front(), event)
+		match keybind[2]:
+			"key":
+				event = InputEventKey.new()
+				event.keycode = keybind[1]
+				event.pressed = true
+			"joy":
+				event = InputEventJoypadButton.new()
+				event.button_index = keybind[1]
+				event.pressed = true
+		
+		if not InputMap.action_get_events(keybind[0]).is_empty():
+			InputMap.action_erase_event(keybind[0], InputMap.action_get_events(keybind[0])[0])
+		InputMap.action_add_event(keybind[0], event)
 	pass

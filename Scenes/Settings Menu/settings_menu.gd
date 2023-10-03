@@ -22,7 +22,11 @@ func _on_save_button_pressed():
 	for option in get_tree().get_nodes_in_group("keybind_option"):
 		var settings_variable = option.get("settings_variable")
 		if not InputMap.action_get_events(option.action_string).is_empty():
-			settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].keycode])
+			match option.action_type:
+				"key":
+					settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].keycode, "key"])
+				"joy":
+					settings.set(settings_variable, [option.action_string, InputMap.action_get_events(option.action_string)[0].button_index, "joy"])
 	
 	for option in get_tree().get_nodes_in_group("psuedo_mouse_keybind_option"):
 		var settings_variable = option.get("settings_variable")
