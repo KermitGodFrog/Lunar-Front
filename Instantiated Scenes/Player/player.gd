@@ -76,6 +76,8 @@ const MAIN_ENGINE_ACCEL_LENGTH = 3.0
 const MAIN_ENGINE_BOOST_LENGTH = 4.5
 const MAIN_ENGINE_INTERPOLATION = 0.15
 
+var previous_play_thruster_continuous: bool
+
 func _ready():
 	game_data.player = self
 	sync_settings()
@@ -94,6 +96,8 @@ func _ready():
 	for element in always_visible_hud_elements:
 		await get_tree().create_timer(global_data.get_randf(0.05, 0.60)).timeout
 		element.show()
+		var sfx = [$click_sound_one, $click_sound_two, $click_sound_three]
+		sfx.pick_random().play()
 	pass
 
 func _input(event):
@@ -248,23 +252,44 @@ func movement(delta):
 	for camera_type in cameras:
 		camera_type.set_fov(lerp(camera_type.fov, 75.0, 0.01))
 	
+	var is_fa_active: bool
+	
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
 			for camera_type in cameras:
 				camera_type.set_fov(lerp(camera_type.fov, 70.0, 0.01))
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
 			for camera_type in cameras:
 				camera_type.set_fov(lerp(camera_type.fov, 72.5, 0.01))
 	
 	if Input.is_action_pressed("space_brake"):
 		velocity = lerp(velocity, Vector3.ZERO, SPACE_BRAKE_INTERPLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
 			for camera_type in cameras:
 				camera_type.set_fov(lerp(camera_type.fov, 65.0, 0.01))
+	
+	#I fucking hate this block of code. SO fucking ugly.
+	
+	if is_fa_active == true:
+		if velocity.length() > 1.0:
+			if Input.is_action_pressed("space_brake"):
+				$fa_sound_high_pitch.play($fa_sound_high_pitch.get_playback_position())
+				$fa_sound.stop()
+			else:
+				$fa_sound.play($fa_sound.get_playback_position())
+		else:
+			$fa_sound.stop()
+			$fa_sound_high_pitch.stop()
+	else:
+		$fa_sound.stop()
+		$fa_sound_high_pitch.stop()
 	
 	#BOOSTING
 	
@@ -288,7 +313,7 @@ func movement(delta):
 		BOOST_TIME += delta / BOOST_REGEN_DIVIDER
 	
 	if BOOST == BOOST_MULTIPLIER:
-		$main_engine_sound.set_pitch_scale(2)
+		$main_engine_sound.set_pitch_scale(1.2)
 	else:
 		$main_engine_sound.set_pitch_scale(1)
 	
@@ -315,6 +340,54 @@ func movement(delta):
 		$acceleration_thrusters.update_time(0)
 		$movement_x_thrusters.update_time(0)
 		$movement_y_thrusters.update_time(0)
+	
+	var play_thruster_continuous: bool = false
+	var play_thruster_oneshot: bool = false
+	var votes: Array
+	
+	
+	var ROTATION_TIMES = [PITCH_TIME, YAW_TIME, -ROLL_TIME]
+	for TIME in ROTATION_TIMES:
+		if velocity.length() > 0.80:
+			if TIME > 0.80 or TIME < -0.80:
+				play_thruster_continuous = true
+				if TIME > 0:
+					votes.append(1)
+				if TIME < 0:
+					votes.append(-1)
+			elif previous_play_thruster_continuous == true:
+				play_thruster_oneshot = true
+	
+	var VELOCITY_TIMES = [velocity.normalized().dot(transform.basis.z), velocity.normalized().dot(transform.basis.x), -velocity.normalized().dot(transform.basis.y)]
+	for TIME in VELOCITY_TIMES:
+		if velocity.length() > 0.80:
+			if TIME > 0.80 or TIME < -0.80:
+				play_thruster_continuous = true
+				if TIME > 0:
+					votes.append(1)
+				if TIME < 0:
+					votes.append(-1)
+			elif previous_play_thruster_continuous == true:
+				play_thruster_oneshot = true
+	
+	var count_high = votes.count(1)
+	var count_low = votes.count(-1)
+	
+	if play_thruster_continuous == true:
+		if count_high > count_low:
+			$thruster_continuous.play($thruster_continuous.get_playback_position())
+		elif count_low > count_high:
+			$thruster_continuous_high_pitch.play($thruster_continuous_high_pitch.get_playback_position())
+	else:
+		$thruster_continuous.stop()
+		$thruster_continuous_high_pitch.stop()
+	
+	if play_thruster_oneshot == true:
+		$thruster_oneshot.play()
+	else:
+		$thruster_oneshot.stop()
+	
+	previous_play_thruster_continuous = play_thruster_continuous
 	
 	camera(delta)
 	

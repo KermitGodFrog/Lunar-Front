@@ -8,8 +8,8 @@ func _ready():
 	set_text(button_text)
 	pass
 
-func _on_toggled(is_pressed: bool):
-	match is_pressed:
+func _on_toggled(is_currently_pressed: bool):
+	match is_currently_pressed:
 		true:
 			set_text(str("< ", button_text))
 		false:

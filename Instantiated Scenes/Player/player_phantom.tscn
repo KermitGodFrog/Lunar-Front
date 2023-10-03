@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=97 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -37,7 +37,15 @@
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="31_5tfth"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/pause_handling.gd" id="36_53deo"]
 [ext_resource type="PackedScene" uid="uid://bqkui2ol3b4dx" path="res://Scenes/Pause Menu/pause_menu.tscn" id="37_54nov"]
-[ext_resource type="AudioStream" uid="uid://dq6lw5t34bpm4" path="res://Sound Effects/final engine sound.wav" id="38_pcma1"]
+[ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="38_v5e71"]
+[ext_resource type="AudioStream" uid="uid://6jl6ty7puomo" path="res://Sound Effects/fa_sound low pitch.wav" id="39_0smwg"]
+[ext_resource type="AudioStream" uid="uid://b0sfcestpu20d" path="res://Sound Effects/fa_sound 2.wav" id="39_psasc"]
+[ext_resource type="AudioStream" uid="uid://b35wadv2nqqnv" path="res://Sound Effects/click sound 1.wav" id="39_tom87"]
+[ext_resource type="AudioStream" uid="uid://nudf1ixp04od" path="res://Sound Effects/click sound 2.wav" id="40_ko3on"]
+[ext_resource type="AudioStream" uid="uid://cmvtste6n2yv" path="res://Sound Effects/thruster sound continuous.wav" id="43_lprhs"]
+[ext_resource type="AudioStream" uid="uid://dh3qybentqkdr" path="res://Sound Effects/clickity clackity sound.wav" id="43_oh378"]
+[ext_resource type="AudioStream" uid="uid://bkoqp7ky6m2ga" path="res://Sound Effects/thruster sound.wav" id="44_u6x1h"]
+[ext_resource type="AudioStream" uid="uid://1jcps2kx71f2" path="res://Sound Effects/thruster sound continuous high pitch.wav" id="45_q0c4d"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -1223,5 +1231,33 @@ texture_albedo = ExtResource("27_hs6ag")
 
 [node name="main_engine_sound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-stream = ExtResource("38_pcma1")
+stream = ExtResource("38_v5e71")
 max_db = 1.0
+
+[node name="fa_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+stream = ExtResource("39_0smwg")
+max_db = 1.0
+
+[node name="fa_sound_high_pitch" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+stream = ExtResource("39_psasc")
+max_db = 1.0
+
+[node name="click_sound_one" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_tom87")
+
+[node name="click_sound_two" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_ko3on")
+
+[node name="click_sound_three" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_oh378")
+
+[node name="thruster_continuous" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_lprhs")
+
+[node name="thruster_continuous_high_pitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_q0c4d")
+
+[node name="thruster_oneshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("44_u6x1h")

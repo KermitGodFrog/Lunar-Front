@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1jcps2kx71f2"
+path="res://.godot/imported/thruster sound continuous high pitch.wav-492784dd868e38ed4de0ee4ec992d1f7.sample"
+
+[deps]
+
+source_file="res://Sound Effects/thruster sound continuous high pitch.wav"
+dest_files=["res://.godot/imported/thruster sound continuous high pitch.wav-492784dd868e38ed4de0ee4ec992d1f7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
