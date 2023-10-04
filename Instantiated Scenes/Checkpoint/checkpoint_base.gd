@@ -36,6 +36,8 @@ func _on_body_entered(body):
 						for slingshot_pickup in map_data.slingshot_pickups:
 							slingshot_pickup.set_is_used(false)
 					
+					$success_sound.play()
+					
 		elif CHECKPOINT_NUMBER == 0:
 			body.current_checkpoint = self
 			game_data.hud_effect.rectangle_effect(Color.GREEN, 0.3)

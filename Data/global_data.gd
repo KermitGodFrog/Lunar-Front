@@ -180,7 +180,7 @@ func get_medal_int_from_map(map: String):
 	pass
 
 func save_player_data():
-	var file = FileAccess.open("user://saved_best_times.save", FileAccess.WRITE)
+	var file = FileAccess.open("user://cosmic_time_trials_player_data.save", FileAccess.WRITE)
 	file.store_var(player_name)
 	file.store_var(scrapyard_best_time)
 	file.store_var(asteroid_refinery_best_time)
@@ -189,8 +189,8 @@ func save_player_data():
 	pass
 
 func load_player_data():
-	if FileAccess.file_exists("user://saved_best_times.save"):
-		var file = FileAccess.open("user://saved_best_times.save", FileAccess.READ)
+	if FileAccess.file_exists("user://cosmic_time_trials_player_data.save"):
+		var file = FileAccess.open("user://cosmic_time_trials_player_data.save", FileAccess.READ)
 		player_name = file.get_var(true)
 		scrapyard_best_time = file.get_var(true)
 		asteroid_refinery_best_time = file.get_var(true)
@@ -204,7 +204,7 @@ func load_player_data():
 	pass
 
 func reset_player_data():
-	var file = FileAccess.open("user://saved_best_times.save", FileAccess.WRITE)
+	var file = FileAccess.open("user://cosmic_time_trials_player_data.save", FileAccess.WRITE)
 	file.close()
 	
 	player_name = ""

@@ -16,7 +16,7 @@ const ACCELERATION_MOVEMENT = 1.5
 const PITCH_SPEED = 70.0
 const YAW_SPEED = 50.0
 const ROLL_SPEED = 50.0
-const ROTATION_INTERPOLATION = 0.025
+var ROTATION_INTERPOLATION = 0.025
 const FA_INTERPOLATION = 0.015
 const SECRET_FA_INTERPOLATION = 0.010
 const SPACE_BRAKE_INTERPLATION = 0.020
@@ -40,6 +40,10 @@ var rot_x: float
 var rot_y: float
 var mouse_sens = 0.1
 var headlook_mouse_sens = 1200
+
+var mouse_relative_matrix: Array = [Vector2(0,0), 0]
+var MOUSE_MOVEMENT_DEADZONE = 1.0
+var MOUSE_MOVEMENT_SENSITIVTY = 10.0
 
 #WEAPONS
 
@@ -72,6 +76,8 @@ const MAIN_ENGINE_ACCEL_LENGTH = 3.0
 const MAIN_ENGINE_BOOST_LENGTH = 4.5
 const MAIN_ENGINE_INTERPOLATION = 0.15
 
+var previous_play_thruster_continuous: bool
+
 func _ready():
 	game_data.player = self
 	sync_settings()
@@ -90,15 +96,17 @@ func _ready():
 	for element in always_visible_hud_elements:
 		await get_tree().create_timer(global_data.get_randf(0.05, 0.60)).timeout
 		element.show()
+		var sfx = [$click_sound_one, $click_sound_two, $click_sound_three]
+		sfx.pick_random().play()
 	pass
 
 func _input(event):
 	#SETTERS
 	
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.button_index == settings.third_person_rotate_camera_key:
 			is_right_mouse_button_down = event.pressed
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == settings.third_person_zoom_key:
 			is_left_mouse_button_down = event.pressed
 		
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
@@ -122,8 +130,12 @@ func _input(event):
 						Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 						var normalized = event.relative.normalized()
 						var distance = event.relative.distance_to(Vector2(0,0))
-						YAW_TIME = -normalized.x * clamp(distance, 0, YAW_SPEED)
-						PITCH_TIME = normalized.y * clamp(distance, 0, PITCH_SPEED)
+						if event.relative.x > MOUSE_MOVEMENT_DEADZONE or event.relative.x < -MOUSE_MOVEMENT_DEADZONE and event.relative.y > MOUSE_MOVEMENT_DEADZONE or event.relative.y < -MOUSE_MOVEMENT_DEADZONE:
+							mouse_relative_matrix[0] = normalized
+							mouse_relative_matrix[1] = distance * MOUSE_MOVEMENT_SENSITIVTY
+						else:
+							mouse_relative_matrix[0] = Vector2(0,0)
+							mouse_relative_matrix[1] = 0
 			false:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if is_right_mouse_button_down == true:
@@ -176,10 +188,12 @@ func movement(delta):
 		is_acceleration = true
 		if accelerate_dir == 1:
 			main_engine_shader_update(MAIN_ENGINE_ACCEL_LENGTH)
+			$main_engine_sound.play($main_engine_sound.get_playback_position())
 		else:
 			main_engine_shader_update(0.0)
 	else:
 		main_engine_shader_update(0.0)
+		$main_engine_sound.stop()
 	
 	var move_x_dir = Input.get_axis("move_right", "move_left")
 	var move_y_dir = Input.get_axis("move_down", "move_up")
@@ -221,6 +235,11 @@ func movement(delta):
 		if is_fa_toggle == true:
 			ROLL_TIME = lerp(ROLL_TIME, 0.0, ROTATION_INTERPOLATION)
 	
+	if is_first_person_toggle == true and is_mouse_movement_toggle == true:
+		YAW_TIME = -mouse_relative_matrix[0].x * clamp(mouse_relative_matrix[1], 0, YAW_SPEED)
+		PITCH_TIME = mouse_relative_matrix[0].y * clamp(mouse_relative_matrix[1], 0, PITCH_SPEED)
+	
+	
 	if PITCH_TIME != 0:
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(PITCH_TIME * delta))
 	if YAW_TIME != 0:
@@ -230,26 +249,47 @@ func movement(delta):
 	
 	#FA
 	var cameras = [$first_person_camera, $camera_offset/camera]
-	for camera in cameras:
-		camera.set_fov(lerp(camera.fov, 75.0, 0.01))
+	for camera_type in cameras:
+		camera_type.set_fov(lerp(camera_type.fov, 75.0, 0.01))
+	
+	var is_fa_active: bool
 	
 	if is_fa_toggle == true and is_movement == false:
 		velocity = lerp(velocity, Vector3.ZERO, FA_INTERPOLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 70.0, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 70.0, 0.01))
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 72.5, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 72.5, 0.01))
 	
 	if Input.is_action_pressed("space_brake"):
 		velocity = lerp(velocity, Vector3.ZERO, SPACE_BRAKE_INTERPLATION)
+		is_fa_active = true
 		if velocity.length() > 1.0:
-			for camera in cameras:
-				camera.set_fov(lerp(camera.fov, 65.0, 0.01))
+			for camera_type in cameras:
+				camera_type.set_fov(lerp(camera_type.fov, 65.0, 0.01))
+	
+	#I fucking hate this block of code. SO fucking ugly.
+	
+	if is_fa_active == true:
+		if velocity.length() > 1.0:
+			if Input.is_action_pressed("space_brake"):
+				$fa_sound_high_pitch.play($fa_sound_high_pitch.get_playback_position())
+				$fa_sound.stop()
+			else:
+				$fa_sound.play($fa_sound.get_playback_position())
+		else:
+			$fa_sound.stop()
+			$fa_sound_high_pitch.stop()
+	else:
+		$fa_sound.stop()
+		$fa_sound_high_pitch.stop()
 	
 	#BOOSTING
 	
@@ -258,8 +298,8 @@ func movement(delta):
 			BOOST_TIME = maxi(0, BOOST_TIME - delta)
 			if BOOST_TIME > 0:
 				BOOST = BOOST_MULTIPLIER
-				for camera in cameras:
-					camera.set_fov(lerp(camera.fov, 80.0, 0.01))
+				for camera_type in cameras:
+					camera_type.set_fov(lerp(camera_type.fov, 80.0, 0.01))
 				if accelerate_dir == 1:
 					main_engine_shader_update(MAIN_ENGINE_BOOST_LENGTH)
 			else:
@@ -271,6 +311,11 @@ func movement(delta):
 	
 	if BOOST_TIME < BOOST_MAX_REGEN:
 		BOOST_TIME += delta / BOOST_REGEN_DIVIDER
+	
+	if BOOST == BOOST_MULTIPLIER:
+		$main_engine_sound.set_pitch_scale(1.2)
+	else:
+		$main_engine_sound.set_pitch_scale(1)
 	
 	#THRUSTERS
 	
@@ -295,6 +340,54 @@ func movement(delta):
 		$acceleration_thrusters.update_time(0)
 		$movement_x_thrusters.update_time(0)
 		$movement_y_thrusters.update_time(0)
+	
+	var play_thruster_continuous: bool = false
+	var play_thruster_oneshot: bool = false
+	var votes: Array
+	
+	
+	var ROTATION_TIMES = [PITCH_TIME, YAW_TIME, -ROLL_TIME]
+	for TIME in ROTATION_TIMES:
+		if velocity.length() > 0.80:
+			if TIME > 0.80 or TIME < -0.80:
+				play_thruster_continuous = true
+				if TIME > 0:
+					votes.append(1)
+				if TIME < 0:
+					votes.append(-1)
+			elif previous_play_thruster_continuous == true:
+				play_thruster_oneshot = true
+	
+	var VELOCITY_TIMES = [velocity.normalized().dot(transform.basis.z), velocity.normalized().dot(transform.basis.x), -velocity.normalized().dot(transform.basis.y)]
+	for TIME in VELOCITY_TIMES:
+		if velocity.length() > 0.80:
+			if TIME > 0.80 or TIME < -0.80:
+				play_thruster_continuous = true
+				if TIME > 0:
+					votes.append(1)
+				if TIME < 0:
+					votes.append(-1)
+			elif previous_play_thruster_continuous == true:
+				play_thruster_oneshot = true
+	
+	var count_high = votes.count(1)
+	var count_low = votes.count(-1)
+	
+	if play_thruster_continuous == true:
+		if count_high > count_low:
+			$thruster_continuous.play($thruster_continuous.get_playback_position())
+		elif count_low > count_high:
+			$thruster_continuous_high_pitch.play($thruster_continuous_high_pitch.get_playback_position())
+	else:
+		$thruster_continuous.stop()
+		$thruster_continuous_high_pitch.stop()
+	
+	if play_thruster_oneshot == true:
+		$thruster_oneshot.play()
+	else:
+		$thruster_oneshot.stop()
+	
+	previous_play_thruster_continuous = play_thruster_continuous
 	
 	camera(delta)
 	
@@ -362,7 +455,6 @@ func camera(_delta):
 			#YAW_TIME = lerp(YAW_TIME, -mouse_pos_normalized.x * YAW_SPEED * multiplication, ROTATION_INTERPOLATION)
 		#if mouse_pos.y > 25 or mouse_pos.y < -25:
 			#PITCH_TIME = lerp(PITCH_TIME, mouse_pos_normalized.y * PITCH_SPEED * multiplication, ROTATION_INTERPOLATION)
-	
 	pass
 
 func proximity_camera_shake(_delta, body, amount: float, begin_distance: float):
@@ -413,4 +505,6 @@ func sync_settings():
 	is_camera_offset_toggle = settings.third_person_camera_offset
 	mouse_sens = settings.third_person_sensitivity
 	headlook_mouse_sens = settings.first_person_headlook_sensitivity
+	MOUSE_MOVEMENT_SENSITIVTY = settings.mouse_movement_sensitivity
+	MOUSE_MOVEMENT_DEADZONE = settings.mouse_movement_deadzone
 	pass

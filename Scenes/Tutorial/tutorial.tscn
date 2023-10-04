@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cabv7pgj2xn6n"]
+[gd_scene load_steps=15 format=3 uid="uid://cabv7pgj2xn6n"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_ggtmp"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_uttbt"]
+[ext_resource type="Theme" uid="uid://cy3f6c8xlg072" path="res://Scenes/Tutorial/tutorial_theme.tres" id="3_rfcks"]
+[ext_resource type="Texture2D" uid="uid://ra072d3d58sg" path="res://Graphics/Tutorial/checkpoints.png" id="4_60djc"]
+[ext_resource type="Texture2D" uid="uid://cpt26dhcpsvrm" path="res://Graphics/HUD/boost_meter.png" id="4_jfovj"]
+[ext_resource type="Texture2D" uid="uid://cinamaxokgvx" path="res://Graphics/Tutorial/slingshot_pickup.png" id="5_nkbmp"]
+[ext_resource type="Texture2D" uid="uid://c80bihdxrmlc7" path="res://Graphics/HUD/direction_png.png" id="5_resjf"]
+[ext_resource type="Texture2D" uid="uid://c52egpbxhia6o" path="res://Graphics/HUD/movement_dir_png.png" id="6_qge6f"]
+[ext_resource type="Texture2D" uid="uid://dwflw8iucw3yi" path="res://Graphics/Tutorial/boost_pickup.png" id="6_tnnv5"]
+[ext_resource type="Texture2D" uid="uid://b8b7x24mgiu5e" path="res://Graphics/HUD/fa_png.png" id="7_4jine"]
+[ext_resource type="Texture2D" uid="uid://hshb1c6r7ofg" path="res://Graphics/Tutorial/personal_record.png" id="7_tu6vr"]
+[ext_resource type="Texture2D" uid="uid://x358m5ds7hii" path="res://Graphics/HUD/dc_png.png" id="8_wq25m"]
+[ext_resource type="Texture2D" uid="uid://dsjk042woblll" path="res://Graphics/HUD/collision_fine_png.png" id="9_3jyi0"]
+[ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Graphics/HUD/collision_warning_png.png" id="10_3a4n5"]
 
 [node name="tutorial" type="Control"]
 layout_mode = 3
@@ -26,3 +38,346 @@ theme_override_font_sizes/font_size = 30
 text = "< BACK"
 script = ExtResource("2_uttbt")
 to_scene = "res://Scenes/Main Menu/main_menu.tscn"
+
+[node name="tutorial_container" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.898
+offset_bottom = -0.200073
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_rfcks")
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+scroll_deadzone = 5000
+
+[node name="tutorial_hbox" type="HBoxContainer" parent="tutorial_container"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="panel" type="Panel" parent="tutorial_container/tutorial_hbox"]
+custom_minimum_size = Vector2(500, 800)
+layout_mode = 2
+theme = ExtResource("3_rfcks")
+theme_type_variation = &"DefaultPanel"
+
+[node name="objective_vbox" type="VBoxContainer" parent="tutorial_container/tutorial_hbox/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="tutorial_container/tutorial_hbox/panel/objective_vbox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "THE OBJECTIVE"
+
+[node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel/objective_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> To fly through every checkpoint within a level in the shortest time possible."
+autowrap_mode = 3
+
+[node name="header1" type="Label" parent="tutorial_container/tutorial_hbox/panel/objective_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "THE GOAL"
+autowrap_mode = 3
+
+[node name="paragraph2" type="Label" parent="tutorial_container/tutorial_hbox/panel/objective_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> To receieve medals for beating par times, to unlock new maps via unlocked medals, and to compete against other players for faster times on the global leaderboard."
+autowrap_mode = 3
+
+[node name="panel2" type="Panel" parent="tutorial_container/tutorial_hbox"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme = ExtResource("3_rfcks")
+theme_type_variation = &"DefaultPanel"
+
+[node name="controls_vbox" type="VBoxContainer" parent="tutorial_container/tutorial_hbox/panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="tutorial_container/tutorial_hbox/panel2/controls_vbox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "THE CONTROLS"
+
+[node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel2/controls_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> The games controls are available to view and changes in the settings panel. The defaults are quite similar to other 3D space games. Feel free to enter a map to test out a control scheme, the race only starts once you go through the first checkpoint!
+
+Note: If you do decide to use the standard mouse + keyboard controls, take a look at the first person mouse movement sensitivity/deadzone options as the optimal weights vary greatly mouse-to-mouse."
+autowrap_mode = 3
+
+[node name="panel3" type="Panel" parent="tutorial_container/tutorial_hbox"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme = ExtResource("3_rfcks")
+theme_type_variation = &"DefaultPanel"
+
+[node name="hud_scroll" type="ScrollContainer" parent="tutorial_container/tutorial_hbox/panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="hud_vbox" type="VBoxContainer" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="title" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "THE HUD"
+
+[node name="boost_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+texture = ExtResource("4_jfovj")
+stretch_mode = 1
+
+[node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Represents how much boost time you have left. Holding the boost key decreases boost time whilst increasing your velocity. Can be regained passively or via a boost pickup."
+autowrap_mode = 3
+
+[node name="direction_marker_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("5_resjf")
+stretch_mode = 4
+
+[node name="paragraph2" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Represents the direction your spaceship is facing. Not necessarily the direction it is travelling."
+autowrap_mode = 3
+
+[node name="direction_marker_texture2" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("6_qge6f")
+stretch_mode = 4
+
+[node name="paragraph3" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Represents the direction your spaceship is travelling. Referred to as the 'velocity marker' for the rest of this tutorial. If you have ever played/seen Star Citizen, you may notice the 'inspiration'."
+autowrap_mode = 3
+
+[node name="fa_dc_hbox" type="HBoxContainer" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_direction = 2
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="fa_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox/fa_dc_hbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("7_4jine")
+stretch_mode = 4
+
+[node name="dc_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox/fa_dc_hbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("8_wq25m")
+stretch_mode = 4
+
+[node name="paragraph4" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Flight Assist (left) and Direct Control (right). FA will allow your spaceship to automatically slow its velocity and rotation, while DC won't."
+autowrap_mode = 3
+
+[node name="collision_hbox" type="HBoxContainer" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_direction = 2
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="fine_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox/collision_hbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("9_3jyi0")
+stretch_mode = 4
+
+[node name="collision_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox/collision_hbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("10_3a4n5")
+stretch_mode = 4
+
+[node name="paragraph5" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Represents whether your ship is in threat of imminent collision. May or may not overreact."
+autowrap_mode = 3
+
+[node name="personal_best_texture" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture = ExtResource("7_tu6vr")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="paragraph6" type="Label" parent="tutorial_container/tutorial_hbox/panel3/hud_scroll/hud_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "^ Stands for 'personal record'. Your best time on the current map."
+autowrap_mode = 3
+
+[node name="panel4" type="Panel" parent="tutorial_container/tutorial_hbox"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme = ExtResource("3_rfcks")
+theme_type_variation = &"DefaultPanel"
+
+[node name="gameplay_scroll" type="ScrollContainer" parent="tutorial_container/tutorial_hbox/panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="gameplay_vbox" type="VBoxContainer" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="title" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "GAMEPLAY"
+
+[node name="header1" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "CHECKPOINT"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="texture1" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+texture = ExtResource("4_60djc")
+expand_mode = 5
+
+[node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> A checkpoint."
+autowrap_mode = 3
+
+[node name="header2" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "SLINGSHOT LAUNCHER"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="texture2" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+texture = ExtResource("5_nkbmp")
+expand_mode = 5
+
+[node name="paragraph2" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> A slingshot launcher. Fly into one to send yourself flying in your ships current direction (the green cross marker). Requires some clever manuevering to face where you want to go while simultaneously flying through."
+autowrap_mode = 3
+
+[node name="header3" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "BOOST PICKUP"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="texture3" type="TextureRect" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+texture = ExtResource("6_tnnv5")
+expand_mode = 5
+
+[node name="paragraph3" type="Label" parent="tutorial_container/tutorial_hbox/panel4/gameplay_scroll/gameplay_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> A boost pickup. Fly into one to gain some boost time."
+autowrap_mode = 3
+
+[node name="panel5" type="Panel" parent="tutorial_container/tutorial_hbox"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme = ExtResource("3_rfcks")
+theme_type_variation = &"DefaultPanel"
+
+[node name="mechanics_scroll" type="ScrollContainer" parent="tutorial_container/tutorial_hbox/panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="mechanics_vbox" type="VBoxContainer" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="title" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "MECHANICS"
+
+[node name="header1" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "MOVEMENT KEYS"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> The movement keys (in settings; 'move up', 'move down'... etc). Allow you to change the direction of your spaceship's velocity marker, without rotating your spaceship. In conjunction with boosting, they can be used to get around tight turns which you cannot rotate fast enough to face."
+autowrap_mode = 3
+
+[node name="header2" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "ROTATING AND ACCELERATING"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="paragraph2" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> Slowly rotating away from the velocity marker and accelerating forward will allow you to drift. Useful for quickly clearing checkpoints which are in a row."
+autowrap_mode = 3
+
+[node name="header3" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "DIRECT CONTROL"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="paragraph3" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
+layout_mode = 2
+theme_type_variation = &"Paragraph"
+text = "> Turning on Direct Control for short periods of time allows you to rotate your spaceship while still maintaining your velocity."
+autowrap_mode = 3

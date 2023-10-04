@@ -63,3 +63,17 @@ layout_mode = 2
 text = "QUIT"
 alignment = 0
 script = ExtResource("3_4h85f")
+
+[node name="credits_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -67.0
+offset_right = 500.0
+grow_vertical = 0
+theme = ExtResource("3_xvp1b")
+text = "CREDITS"
+alignment = 0
+script = ExtResource("2_cmg2u")
+to_scene = "res://Scenes/Credits/credits.tscn"

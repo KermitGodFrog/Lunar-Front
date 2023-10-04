@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ujrow563jj33"]
+
+[ext_resource type="Script" path="res://Scenes/Trade Route Map/trade_route_map.gd" id="1_tfop7"]
+
+[node name="trade_route_map" type="Node3D"]
+script = ExtResource("1_tfop7")

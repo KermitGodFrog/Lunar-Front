@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cy3f6c8xlg072"]
+
+[ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="1_ydrim"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu7dt"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+border_width_left = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r72ah"]
+content_margin_left = 15.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0.0117647, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0l4q"]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq8rv"]
+content_margin_left = 15.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0, 1, 0, 1)
+
+[resource]
+default_font = ExtResource("1_ydrim")
+DefaultPanel/base_type = &"Panel"
+DefaultPanel/styles/panel = SubResource("StyleBoxFlat_pu7dt")
+Header/base_type = &"Label"
+Header/colors/font_color = Color(1, 1, 1, 1)
+Header/font_sizes/font_size = 30
+Header/styles/normal = SubResource("StyleBoxFlat_r72ah")
+Paragraph/base_type = &"Label"
+Paragraph/colors/font_color = Color(1, 1, 1, 1)
+Paragraph/font_sizes/font_size = 20
+Paragraph/styles/normal = SubResource("StyleBoxEmpty_w0l4q")
+Title/base_type = &"Label"
+Title/colors/font_color = Color(1, 1, 1, 1)
+Title/font_sizes/font_size = 40
+Title/styles/normal = SubResource("StyleBoxFlat_cq8rv")

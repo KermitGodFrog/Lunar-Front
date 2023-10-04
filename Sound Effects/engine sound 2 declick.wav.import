@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp1kff5kkub18"
+path="res://.godot/imported/engine sound 2 declick.wav-8fd1fd8bc12dbadb524a067778fcdac7.sample"
+
+[deps]
+
+source_file="res://Sound Effects/engine sound 2 declick.wav"
+dest_files=["res://.godot/imported/engine sound 2 declick.wav-8fd1fd8bc12dbadb524a067778fcdac7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
