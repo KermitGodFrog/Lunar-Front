@@ -1,93 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://dw4in8hjxhx2n"]
+[gd_scene load_steps=19 format=3 uid="uid://dw4in8hjxhx2n"]
 
 [ext_resource type="ArrayMesh" uid="uid://d3t4515s07fxv" path="res://Models/Hard Scifi Freightor.obj" id="1_j117e"]
-[ext_resource type="Texture2D" uid="uid://c0yysu67p7x3k" path="res://Graphics/Shipping Containers/grey_shipping_container_normal.png" id="2_8debn"]
+[ext_resource type="Material" uid="uid://dr3pxns2gvtvl" path="res://Scenes/Fleet Map/shipping_container_white.tres" id="2_ojq4k"]
 [ext_resource type="Material" uid="uid://ccjq0idiexbrk" path="res://Scenes/Fleet Map/hull_plate_white.tres" id="3_cdtb0"]
-[ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="3_tvs2u"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="4_2yd6k"]
+[ext_resource type="Material" uid="uid://8cmob0bvooad" path="res://Scenes/Fleet Map/thruster_normal_freighter.tres" id="4_gqn28"]
 [ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="4_ljbhg"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="5_br5h3"]
+[ext_resource type="Material" uid="uid://dr7l0ut81obr7" path="res://Scenes/Fleet Map/thruster_black.tres" id="5_c1o5u"]
 [ext_resource type="Texture2D" uid="uid://4akym74dgeww" path="res://Graphics/Cruiser/burn_mark2.png" id="5_qmdf5"]
+[ext_resource type="Material" uid="uid://cfspkakurobpy" path="res://Scenes/Fleet Map/black.tres" id="6_x1b5s"]
 [ext_resource type="PackedScene" uid="uid://by5muei8v1481" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.tscn" id="7_d547l"]
 [ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="7_slrgb"]
 [ext_resource type="Texture2D" uid="uid://bx47f5nu6od6k" path="res://Graphics/Cruiser/burn_mark3.png" id="9_gkjma"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdlbv"]
-albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
-albedo_texture = ExtResource("2_8debn")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_offset = Vector3(0.3, 0, 0)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcsey"]
-albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
-albedo_texture = ExtResource("2_8debn")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_offset = Vector3(0.3, 0, 0)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7nmj"]
-albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
-albedo_texture = ExtResource("2_8debn")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_offset = Vector3(0.3, 0, 0)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roq7x"]
-albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
-albedo_texture = ExtResource("2_8debn")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_offset = Vector3(0.3, 0, 0)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a426"]
-albedo_texture = ExtResource("3_tvs2u")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlprh"]
-albedo_texture = ExtResource("3_tvs2u")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nwd4"]
-albedo_texture = ExtResource("3_tvs2u")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5bth"]
-albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
-albedo_texture = ExtResource("3_tvs2u")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23k87"]
-albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
-albedo_texture = ExtResource("3_tvs2u")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avrmw"]
-albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
-albedo_texture = ExtResource("3_tvs2u")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbble"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmaye"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5wmx"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5f141"]
 size = Vector3(40, 180, 13)
@@ -122,23 +47,23 @@ subdivide_depth = 32
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
 mesh = ExtResource("1_j117e")
-surface_material_override/0 = SubResource("StandardMaterial3D_tdlbv")
-surface_material_override/1 = SubResource("StandardMaterial3D_pcsey")
-surface_material_override/2 = SubResource("StandardMaterial3D_d7nmj")
-surface_material_override/3 = SubResource("StandardMaterial3D_d7nmj")
-surface_material_override/4 = SubResource("StandardMaterial3D_d7nmj")
-surface_material_override/5 = SubResource("StandardMaterial3D_roq7x")
+surface_material_override/0 = ExtResource("2_ojq4k")
+surface_material_override/1 = ExtResource("2_ojq4k")
+surface_material_override/2 = ExtResource("2_ojq4k")
+surface_material_override/3 = ExtResource("2_ojq4k")
+surface_material_override/4 = ExtResource("2_ojq4k")
+surface_material_override/5 = ExtResource("2_ojq4k")
 surface_material_override/6 = ExtResource("3_cdtb0")
 surface_material_override/7 = ExtResource("3_cdtb0")
-surface_material_override/8 = SubResource("StandardMaterial3D_5a426")
-surface_material_override/9 = SubResource("StandardMaterial3D_dlprh")
-surface_material_override/10 = SubResource("StandardMaterial3D_1nwd4")
-surface_material_override/11 = SubResource("StandardMaterial3D_w5bth")
-surface_material_override/12 = SubResource("StandardMaterial3D_23k87")
-surface_material_override/13 = SubResource("StandardMaterial3D_avrmw")
-surface_material_override/14 = SubResource("StandardMaterial3D_tbble")
-surface_material_override/15 = SubResource("StandardMaterial3D_bmaye")
-surface_material_override/16 = SubResource("StandardMaterial3D_y5wmx")
+surface_material_override/8 = ExtResource("4_gqn28")
+surface_material_override/9 = ExtResource("4_gqn28")
+surface_material_override/10 = ExtResource("4_gqn28")
+surface_material_override/11 = ExtResource("5_c1o5u")
+surface_material_override/12 = ExtResource("5_c1o5u")
+surface_material_override/13 = ExtResource("5_c1o5u")
+surface_material_override/14 = ExtResource("6_x1b5s")
+surface_material_override/15 = ExtResource("6_x1b5s")
+surface_material_override/16 = ExtResource("6_x1b5s")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

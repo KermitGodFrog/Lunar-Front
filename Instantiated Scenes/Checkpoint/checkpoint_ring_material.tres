@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4xuhdn5hn60y"]
+
+[ext_resource type="Texture2D" uid="uid://cxti756p4u7rb" path="res://Graphics/monotone_arrow_texture.png" id="1_8u18l"]
+
+[resource]
+albedo_color = Color(0.160784, 0.160784, 0.160784, 1)
+albedo_texture = ExtResource("1_8u18l")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 5.0
+uv1_world_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+distance_fade_min_distance = 450.0
+distance_fade_max_distance = 500.0

@@ -20,13 +20,13 @@ func _draw():
 	#SLINGSHOT DIRECTION DRAWING
 	
 	var closest_slingshot = game_data.get_closest_body(get_tree().get_nodes_in_group("slingshot_pickup"), game_data.player.global_transform.origin)
-	
-	if not closest_slingshot.is_used:
-		if closest_slingshot.global_transform.origin.distance_to(game_data.player.global_transform.origin) < 900:
-			if get_viewport().get_camera_3d().is_position_behind(closest_slingshot.global_transform.origin):
-				var slingshot_direction_position
-				slingshot_direction_position = viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(closest_slingshot.global_transform.origin)) * get_viewport_rect().size.y / 4
-				draw_texture(slingshot_png, Vector2(slingshot_direction_position.x - 16, slingshot_direction_position.y - 16))
+	if closest_slingshot:
+		if not closest_slingshot.is_used:
+			if closest_slingshot.global_transform.origin.distance_to(game_data.player.global_transform.origin) < 900:
+				if get_viewport().get_camera_3d().is_position_behind(closest_slingshot.global_transform.origin):
+					var slingshot_direction_position
+					slingshot_direction_position = viewport_midpoint + -viewport_midpoint.direction_to(get_parent().unproject_position(closest_slingshot.global_transform.origin)) * get_viewport_rect().size.y / 4
+					draw_texture(slingshot_png, Vector2(slingshot_direction_position.x - 16, slingshot_direction_position.y - 16))
 	
 	#VELOCITY DIRECTION DRAWING
 	

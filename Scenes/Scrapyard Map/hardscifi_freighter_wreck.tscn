@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3b0bep07bxib"]
+
+[ext_resource type="ArrayMesh" uid="uid://d35greqmc5o5n" path="res://Models/Hard Scifi Freightorwreck.obj" id="1_uorts"]
+[ext_resource type="Material" uid="uid://beheeryu8dgxt" path="res://Scenes/Scrapyard Map/freighter_metal_scrap.tres" id="2_k54cc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_emal1"]
+radius = 80.0
+height = 1720.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p1qi2"]
+radius = 150.0
+height = 1000.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ebdao"]
+radius = 160.0
+height = 500.0
+
+[node name="freighter_wreck" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+mesh = ExtResource("1_uorts")
+surface_material_override/0 = ExtResource("2_k54cc")
+surface_material_override/1 = ExtResource("2_k54cc")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -7, 0)
+shape = SubResource("CapsuleShape3D_emal1")
+
+[node name="collision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -320, 0)
+shape = SubResource("CapsuleShape3D_p1qi2")
+
+[node name="collision3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 620, 0)
+shape = SubResource("CapsuleShape3D_ebdao")

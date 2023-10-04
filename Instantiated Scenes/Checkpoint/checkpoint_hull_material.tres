@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://qnpqo33mbkx4"]
+
+[ext_resource type="Texture2D" uid="uid://o4t6idsmmdmv" path="res://Graphics/Phantom/grey_metal_texture.png" id="1_48t85"]
+
+[resource]
+albedo_color = Color(0.223529, 0.223529, 0.223529, 1)
+albedo_texture = ExtResource("1_48t85")
+uv1_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+distance_fade_min_distance = 450.0
+distance_fade_max_distance = 500.0

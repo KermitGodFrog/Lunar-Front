@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.gd" id="1_rj8nr"]
 [ext_resource type="Texture2D" uid="uid://bc0lx0tpwtsv" path="res://Graphics/instantanious_boost_png.png" id="2_ciq1d"]
-[ext_resource type="AudioStream" uid="uid://bg5twxfa2kew5" path="res://Sound Effects/gain sfx high.wav" id="3_lwktc"]
+[ext_resource type="AudioStream" uid="uid://wintira20rl4" path="res://Sound Effects/gain sfx high 2.wav" id="3_7rkp0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_peseu"]
 size = Vector3(15, 15, 15)
@@ -20,6 +20,7 @@ texture_filter = 0
 texture = ExtResource("2_ciq1d")
 
 [node name="sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_lwktc")
+stream = ExtResource("3_7rkp0")
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
