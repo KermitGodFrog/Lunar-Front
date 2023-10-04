@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://by5muei8v1481"]
+
+[ext_resource type="Script" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.gd" id="1_l72ox"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8k032"]
+size = Vector3(30, 15, 15)
+
+[node name="player_hurt_area" type="Area3D"]
+script = ExtResource("1_l72ox")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_8k032")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

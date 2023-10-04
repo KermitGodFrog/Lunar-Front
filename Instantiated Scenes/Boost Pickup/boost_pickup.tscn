@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj3hxgqwdtfjo"]
+[gd_scene load_steps=5 format=3 uid="uid://dj3hxgqwdtfjo"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Boost Pickup/boost_pickup_base.gd" id="1_0eu5u"]
 [ext_resource type="Texture2D" uid="uid://gnvghvxfwyf5" path="res://Graphics/boost_pickup_png.png" id="2_m0iqk"]
+[ext_resource type="AudioStream" uid="uid://cuc7yjqavxvvv" path="res://Sound Effects/gain sfx low.wav" id="3_rx5ym"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_toffo"]
 size = Vector3(15, 15, 15)
@@ -17,5 +18,9 @@ shape = SubResource("BoxShape3D_toffo")
 transform = Transform3D(128, 0, 0, 0, 128, 0, 0, 0, 128, 0, 0, 0)
 texture_filter = 2
 texture = ExtResource("2_m0iqk")
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rx5ym")
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

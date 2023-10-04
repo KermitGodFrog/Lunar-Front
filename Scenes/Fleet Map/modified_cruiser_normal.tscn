@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://0dmgvknuugft"]
+[gd_scene load_steps=29 format=3 uid="uid://0dmgvknuugft"]
 
 [ext_resource type="ArrayMesh" uid="uid://7yoxg16omygn" path="res://Models/Cruiser/ShipBroken.obj" id="1_axhhk"]
 [ext_resource type="Material" uid="uid://ca50c5fyxf31n" path="res://Scenes/Fleet Map/hull_plate_blue.tres" id="2_1tn7b"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://t80jffk363gw" path="res://Graphics/Cruiser/burning_hull.png" id="9_88v0c"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="10_3d1x8"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="11_2aiid"]
+[ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="11_rp24k"]
+[ext_resource type="PackedScene" uid="uid://by5muei8v1481" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.tscn" id="11_uc3jf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us4j0"]
 albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -202,7 +204,27 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -85
 mesh = SubResource("PlaneMesh_ehjdg")
 skeleton = NodePath("../..")
 
+[node name="player_hurt_area" parent="engines/engine" instance=ExtResource("11_uc3jf")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 70, 0)
+
 [node name="engine2" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -857, 182)
 mesh = SubResource("PlaneMesh_ehjdg")
 skeleton = NodePath("../..")
+
+[node name="player_hurt_area" parent="engines/engine2" instance=ExtResource("11_uc3jf")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 70, 0)
+
+[node name="engine_sound1" type="AudioStreamPlayer3D" parent="engines"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, -1, 1.31134e-07, -4.37114e-08, -1.31134e-07, -1, -5.73206e-15, 0, -857, -182)
+stream = ExtResource("11_rp24k")
+unit_size = 50.0
+autoplay = true
+panning_strength = 0.0
+
+[node name="engine_sound2" type="AudioStreamPlayer3D" parent="engines"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, -1, 1.31134e-07, -4.37114e-08, -1.31134e-07, -1, -5.73206e-15, 0, -857, 182)
+stream = ExtResource("11_rp24k")
+unit_size = 50.0
+autoplay = true
+panning_strength = 0.0

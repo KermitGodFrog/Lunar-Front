@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b40hi1cc0fmp2"]
+[gd_scene load_steps=36 format=3 uid="uid://b40hi1cc0fmp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://da1tgorns37l3" path="res://Models/Cruiser/Cruiserwreck.obj" id="1_ckhgp"]
 [ext_resource type="Material" uid="uid://ccjq0idiexbrk" path="res://Scenes/Fleet Map/hull_plate_white.tres" id="2_jbfub"]
@@ -8,6 +8,8 @@
 [ext_resource type="Material" uid="uid://ca50c5fyxf31n" path="res://Scenes/Fleet Map/hull_plate_blue.tres" id="4_u4dde"]
 [ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_8ex4q"]
 [ext_resource type="Material" uid="uid://hr16axt4xsh7" path="res://Scenes/Fleet Map/hull_burning.tres" id="6_yg5eq"]
+[ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="9_1sas8"]
+[ext_resource type="PackedScene" uid="uid://by5muei8v1481" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.tscn" id="10_6hist"]
 [ext_resource type="Texture2D" uid="uid://duhkmkp5dqlbb" path="res://Graphics/Cruiser/burn_mark1.png" id="11_nfrqm"]
 [ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="11_orclm"]
 [ext_resource type="Texture2D" uid="uid://4akym74dgeww" path="res://Graphics/Cruiser/burn_mark2.png" id="12_usgy0"]
@@ -141,30 +143,66 @@ shape = SubResource("ConcavePolygonShape3D_3bmy1")
 
 [node name="engines" type="Node3D" parent="."]
 
+[node name="engine_sound" type="AudioStreamPlayer3D" parent="engines"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, -1, 1.31134e-07, -4.37114e-08, -1.31134e-07, -1, -5.73206e-15, -150, -525, 0)
+stream = ExtResource("9_1sas8")
+unit_size = 50.0
+autoplay = true
+panning_strength = 0.0
+
+[node name="engine_sound2" type="AudioStreamPlayer3D" parent="engines"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, -1, 1.31134e-07, -4.37114e-08, -1.31134e-07, -1, -5.73206e-15, 0, -525, 0)
+stream = ExtResource("9_1sas8")
+unit_size = 50.0
+autoplay = true
+panning_strength = 0.0
+
+[node name="engine_sound3" type="AudioStreamPlayer3D" parent="engines"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, -1, 1.31134e-07, -4.37114e-08, -1.31134e-07, -1, -5.73206e-15, 150, -525, 75)
+stream = ExtResource("9_1sas8")
+unit_size = 50.0
+autoplay = true
+panning_strength = 0.0
+
 [node name="engine" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -525, -75)
 mesh = SubResource("PlaneMesh_c3ccl")
 skeleton = NodePath("../..")
+
+[node name="player_hurt_area" parent="engines/engine" instance=ExtResource("10_6hist")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 30, 0)
 
 [node name="engine2" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -525, 75)
 mesh = SubResource("PlaneMesh_4f0gd")
 skeleton = NodePath("../..")
 
+[node name="player_hurt_area" parent="engines/engine2" instance=ExtResource("10_6hist")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 30, 0)
+
 [node name="engine3" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 150, -525, 75)
 mesh = SubResource("PlaneMesh_8o5nw")
 skeleton = NodePath("../..")
+
+[node name="player_hurt_area" parent="engines/engine3" instance=ExtResource("10_6hist")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 30, 0)
 
 [node name="engine4" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -150, -525, 75)
 mesh = SubResource("PlaneMesh_an5g0")
 skeleton = NodePath("../..")
 
+[node name="player_hurt_area" parent="engines/engine4" instance=ExtResource("10_6hist")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 30, 0)
+
 [node name="engine5" type="MeshInstance3D" parent="engines"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -150, -525, -75)
 mesh = SubResource("PlaneMesh_rvuy4")
 skeleton = NodePath("../..")
+
+[node name="player_hurt_area" parent="engines/engine5" instance=ExtResource("10_6hist")]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 30, 0)
 
 [node name="insignia_decal" type="Decal" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 582, 70, 0)

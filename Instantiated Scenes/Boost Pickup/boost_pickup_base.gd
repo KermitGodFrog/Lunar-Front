@@ -2,7 +2,7 @@ extends Area3D
 class_name BoostPickup
 
 @export var BOOST_INCREASE: float
-var is_used = false
+@export var is_used = false
 
 var tween
 
@@ -35,4 +35,5 @@ func _on_body_entered(body):
 				body.BOOST_TIME += BOOST_INCREASE
 				set_is_used(true)
 				game_data.hud_effect.circle_effect(Color.GOLD, 0.5)
+				$sound.play()
 	pass

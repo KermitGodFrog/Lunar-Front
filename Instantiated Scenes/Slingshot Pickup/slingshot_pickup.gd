@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var BOOST_SPEED: float
-var is_used = false
+@export var is_used = false
 
 var tween
 
@@ -34,4 +34,5 @@ func _on_body_entered(body):
 				body.velocity = body.transform.basis.z * BOOST_SPEED
 				set_is_used(true)
 				game_data.hud_effect.circle_effect(Color.PURPLE, 3)
+				$sound.play()
 	pass
