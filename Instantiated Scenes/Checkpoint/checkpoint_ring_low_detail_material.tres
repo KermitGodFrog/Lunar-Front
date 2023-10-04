@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://fx0xayxrnwpn"]
+
+[resource]
+albedo_color = Color(0.101961, 0.101961, 0.101961, 1)
+normal_enabled = true
+uv1_triplanar_sharpness = 5.0
+uv1_world_triplanar = true
+disable_receive_shadows = true
