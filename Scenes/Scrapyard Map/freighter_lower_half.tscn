@@ -10,16 +10,16 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl6il"]
-radius = 18.0
-height = 100.0
+radius = 180.0
+height = 1000.0
 
 [node name="freighter_lower_half" type="StaticBody3D"]
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
 mesh = ExtResource("1_tbin6")
 surface_material_override/0 = SubResource("StandardMaterial3D_t8uly")
 
 [node name="collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.6136, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -345.218, 0)
 shape = SubResource("CapsuleShape3D_dl6il")

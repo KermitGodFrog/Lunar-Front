@@ -65,3 +65,9 @@ func _on_asteroid_refinery_button_mouse_entered():
 	get_tree().call_group("map_par_times_handler", "update", "asteroid_refinery")
 	last_selected_map = "asteroid_refinery_map"
 	pass
+
+func _on_trade_route_button_pressed():
+	update("trade_route_map", false)
+	get_tree().call_group("map_par_times_handler", "update", "trade_route")
+	last_selected_map = "trade_route_map"
+	pass 

@@ -1,37 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://b7u02yl1i6npp"]
+[gd_scene load_steps=27 format=3 uid="uid://b7u02yl1i6npp"]
 
 [ext_resource type="ArrayMesh" uid="uid://chdmtk1fjab42" path="res://Models/CruiserlightlyDamaged.obj" id="1_yo0t1"]
 [ext_resource type="Material" uid="uid://ccjq0idiexbrk" path="res://Scenes/Fleet Map/hull_plate_white.tres" id="2_drp3i"]
-[ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="3_n4yxs"]
+[ext_resource type="Material" uid="uid://cfspkakurobpy" path="res://Scenes/Fleet Map/black.tres" id="3_6rel2"]
+[ext_resource type="Material" uid="uid://dr7l0ut81obr7" path="res://Scenes/Fleet Map/thruster_black.tres" id="4_d8tf0"]
 [ext_resource type="Material" uid="uid://ca50c5fyxf31n" path="res://Scenes/Fleet Map/hull_plate_blue.tres" id="4_eg6m0"]
 [ext_resource type="Material" uid="uid://hr16axt4xsh7" path="res://Scenes/Fleet Map/hull_burning.tres" id="6_aoalq"]
-[ext_resource type="Texture2D" uid="uid://b3dmftvb8y1jb" path="res://Graphics/radiator_texture.png" id="6_x1yry"]
+[ext_resource type="Material" uid="uid://gcic5grqvlgu" path="res://Scenes/Fleet Map/thruster_normal.tres" id="6_pn2yu"]
+[ext_resource type="Material" uid="uid://c1wo3jkn6mvs5" path="res://Scenes/Fleet Map/radiator_cruiser.tres" id="7_0kgyr"]
 [ext_resource type="Texture2D" uid="uid://eus84i86fx67" path="res://Graphics/Cruiser/military_insignia.png" id="8_5pnh3"]
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="8_5qgad"]
 [ext_resource type="PackedScene" uid="uid://by5muei8v1481" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.tscn" id="9_alkut"]
 [ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="9_wul8j"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="9_xfrtl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vt07"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wgf3"]
-albedo_color = Color(0.219608, 0.219608, 0.219608, 1)
-albedo_texture = ExtResource("3_n4yxs")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ieb"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m77qy"]
-albedo_texture = ExtResource("3_n4yxs")
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgtbv"]
-albedo_texture = ExtResource("6_x1yry")
-texture_filter = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e55ca"]
 radius = 292.009
@@ -115,12 +96,12 @@ subdivide_depth = 32
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)
 mesh = ExtResource("1_yo0t1")
 surface_material_override/0 = ExtResource("2_drp3i")
-surface_material_override/1 = SubResource("StandardMaterial3D_8vt07")
-surface_material_override/2 = SubResource("StandardMaterial3D_0wgf3")
+surface_material_override/1 = ExtResource("3_6rel2")
+surface_material_override/2 = ExtResource("4_d8tf0")
 surface_material_override/3 = ExtResource("4_eg6m0")
-surface_material_override/4 = SubResource("StandardMaterial3D_16ieb")
-surface_material_override/5 = SubResource("StandardMaterial3D_m77qy")
-surface_material_override/6 = SubResource("StandardMaterial3D_mgtbv")
+surface_material_override/4 = ExtResource("3_6rel2")
+surface_material_override/5 = ExtResource("6_pn2yu")
+surface_material_override/6 = ExtResource("7_0kgyr")
 surface_material_override/7 = ExtResource("6_aoalq")
 
 [node name="collision" type="CollisionShape3D" parent="."]
