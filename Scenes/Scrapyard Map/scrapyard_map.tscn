@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=3 uid="uid://b8nt2637s1y5r"]
+[gd_scene load_steps=215 format=3 uid="uid://b8nt2637s1y5r"]
 
 [ext_resource type="Script" path="res://Scenes/Scrapyard Map/scrapyard_map.gd" id="1_olbxj"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_1t4si"]
@@ -24,6 +24,8 @@
 [ext_resource type="Shader" path="res://Instantiated Scenes/Player/thruster_shader.gdshader" id="14_tad36"]
 [ext_resource type="Texture2D" uid="uid://b431tuvj3555f" path="res://Graphics/Phantom/reactor_texture.png" id="15_lea70"]
 [ext_resource type="ArrayMesh" uid="uid://dennpuurbghw8" path="res://Models/FreighterUpdated.obj" id="16_0esfa"]
+[ext_resource type="AudioStream" uid="uid://dnyjw524qtssn" path="res://Sound Effects/engine sound 2 declick fixed.wav" id="16_wwsd0"]
+[ext_resource type="PackedScene" uid="uid://by5muei8v1481" path="res://Instantiated Scenes/Player Hurt Area/player_hurt_area.tscn" id="19_cl8nc"]
 [ext_resource type="ArrayMesh" uid="uid://xx1g0v10fyen" path="res://Models/Barge.obj" id="19_lvi1r"]
 [ext_resource type="Texture2D" uid="uid://cxkjrvmv360ce" path="res://Graphics/Shipping Containers/green_shipping_container_scrap.png" id="21_q1fjw"]
 [ext_resource type="Texture2D" uid="uid://bqpmxgo7uthpo" path="res://Models/Thruster.png" id="21_wulef"]
@@ -146,6 +148,114 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("freighter/main_engine/engine_sound1:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("freighter/main_engine2/engine_sound2:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("freighter/main_engine3/engine_sound3:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("freighter/boost_pickup:is_used")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("freighter/boost_pickup2:is_used")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("freighter/slingshot_pickup:is_used")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("freighter/player_hurt_area:is_active")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("freighter/player_hurt_area2:is_active")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("freighter/player_hurt_area3:is_active")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_oy8q4"]
 resource_name = "spaceship_train_movement"
@@ -254,6 +364,114 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0, 45.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("freighter/main_engine/engine_sound1:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 34, 45.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("freighter/main_engine2/engine_sound2:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 34, 45.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("freighter/main_engine3/engine_sound3:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 34, 45.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("freighter/boost_pickup:is_used")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 45.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("freighter/boost_pickup2:is_used")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 45.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("freighter/slingshot_pickup:is_used")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 45.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("freighter/player_hurt_area:is_active")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("freighter/player_hurt_area2:is_active")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("freighter/player_hurt_area3:is_active")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 34),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -1211,13 +1429,29 @@ shape = SubResource("CapsuleShape3D_4rhpg")
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, 0)
 mesh = SubResource("PlaneMesh_aiog5")
 
+[node name="engine_sound1" type="AudioStreamPlayer3D" parent="freighter/main_engine"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -6.10352e-05, 35, 0)
+stream = ExtResource("16_wwsd0")
+unit_size = 100.0
+doppler_tracking = 2
+
 [node name="main_engine2" type="MeshInstance3D" parent="freighter" groups=["main_engine"]]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, 100)
 mesh = SubResource("PlaneMesh_aiog5")
 
+[node name="engine_sound2" type="AudioStreamPlayer3D" parent="freighter/main_engine2"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -6.10352e-05, 35, 0)
+stream = ExtResource("16_wwsd0")
+unit_size = 100.0
+
 [node name="main_engine3" type="MeshInstance3D" parent="freighter" groups=["main_engine"]]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 765, 0, -100)
 mesh = SubResource("PlaneMesh_aiog5")
+
+[node name="engine_sound3" type="AudioStreamPlayer3D" parent="freighter/main_engine3"]
+transform = Transform3D(-4.37114e-08, -3.59989e-21, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -6.10352e-05, 35, 0)
+stream = ExtResource("16_wwsd0")
+unit_size = 100.0
 
 [node name="boost_pickup" parent="freighter" instance=ExtResource("11_yl3bw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 160, 0)
@@ -1230,6 +1464,18 @@ BOOST_INCREASE = 200.0
 [node name="slingshot_pickup" parent="freighter" instance=ExtResource("10_5rogf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -780, 160, 0)
 BOOST_SPEED = 750.0
+
+[node name="player_hurt_area" parent="freighter" instance=ExtResource("19_cl8nc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 850, 0, 0)
+is_active = false
+
+[node name="player_hurt_area2" parent="freighter" instance=ExtResource("19_cl8nc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 850, 0, 100)
+is_active = false
+
+[node name="player_hurt_area3" parent="freighter" instance=ExtResource("19_cl8nc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 850, 0, -100)
+is_active = false
 
 [node name="checkpoint1" parent="." instance=ExtResource("3_sok7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)

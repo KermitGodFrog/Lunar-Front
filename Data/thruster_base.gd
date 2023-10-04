@@ -27,7 +27,6 @@ func _physics_process(delta):
 	pass
 
 func check_children(check_axis: int):
-	var thruster_sound = get_tree().get_first_node_in_group("thruster_sound")
 	for child in get_children():
 		if child.is_in_group("axis_" + str(check_axis)):
 			child.set_emitting(true)

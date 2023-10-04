@@ -13,6 +13,8 @@ func _physics_process(delta):
 	
 	if intersection:
 		set_texture(collision_warning_png)
+		$collision_warning_sfx.play($collision_warning_sfx.get_playback_position())
 	else:
 		set_texture(collision_fine_png)
+		$collision_warning_sfx.stop()
 	pass

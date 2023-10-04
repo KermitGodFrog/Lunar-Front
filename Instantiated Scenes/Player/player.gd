@@ -76,8 +76,6 @@ const MAIN_ENGINE_ACCEL_LENGTH = 3.0
 const MAIN_ENGINE_BOOST_LENGTH = 4.5
 const MAIN_ENGINE_INTERPOLATION = 0.15
 
-var previous_play_thruster_continuous: bool
-
 func _ready():
 	game_data.player = self
 	sync_settings()
@@ -96,7 +94,7 @@ func _ready():
 	for element in always_visible_hud_elements:
 		await get_tree().create_timer(global_data.get_randf(0.05, 0.60)).timeout
 		element.show()
-		var sfx = [$click_sound_one, $click_sound_two, $click_sound_three]
+		var sfx = [$click_sound_one, $click_sound_two]
 		sfx.pick_random().play()
 	pass
 
@@ -167,6 +165,10 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
 		health.remove_health(abs(velocity.length()))
 		game_data.hud_effect.circle_effect(Color.RED, 1)
+		if velocity.length() < 50 and velocity.length() > 0 or velocity.length() > -50 and velocity.length() < 0:
+			get_tree().get_nodes_in_group("damage_low").pick_random().play()
+		else:
+			get_tree().get_nodes_in_group("damage_high").pick_random().play()
 	pass
 
 func movement(delta):
@@ -178,6 +180,7 @@ func movement(delta):
 	
 	if Input.is_action_just_pressed("fa_toggle"):
 		is_fa_toggle = !is_fa_toggle
+		$fa_toggle_sound.play()
 	
 	#ACCELERATION
 	
@@ -263,7 +266,6 @@ func movement(delta):
 	
 	if is_fa_toggle == true and is_rotation == true and is_acceleration == false:
 		velocity = lerp(velocity, Vector3.ZERO, SECRET_FA_INTERPOLATION)
-		is_fa_active = true
 		if velocity.length() > 1.0:
 			for camera_type in cameras:
 				camera_type.set_fov(lerp(camera_type.fov, 72.5, 0.01))
@@ -275,7 +277,7 @@ func movement(delta):
 			for camera_type in cameras:
 				camera_type.set_fov(lerp(camera_type.fov, 65.0, 0.01))
 	
-	#I fucking hate this block of code. SO fucking ugly.
+	#I fucking hate this block of code (below). SO fucking ugly. 
 	
 	if is_fa_active == true:
 		if velocity.length() > 1.0:
@@ -341,53 +343,37 @@ func movement(delta):
 		$movement_x_thrusters.update_time(0)
 		$movement_y_thrusters.update_time(0)
 	
-	var play_thruster_continuous: bool = false
-	var play_thruster_oneshot: bool = false
-	var votes: Array
+	#SFX
 	
+	var play_thruster_normal: bool = false
+	var play_thruster_high_pitch: bool = false
+	
+	var AXES = [pitch_axis, yaw_axis, -roll_axis, accelerate_dir, move_x_dir, -move_y_dir]
+	for axis in AXES:
+		if axis == 1 or axis == -1:
+			play_thruster_high_pitch = true
 	
 	var ROTATION_TIMES = [PITCH_TIME, YAW_TIME, -ROLL_TIME]
-	for TIME in ROTATION_TIMES:
-		if velocity.length() > 0.80:
+	if is_fa_toggle == true and is_movement == false:
+		for TIME in ROTATION_TIMES:
 			if TIME > 0.80 or TIME < -0.80:
-				play_thruster_continuous = true
-				if TIME > 0:
-					votes.append(1)
-				if TIME < 0:
-					votes.append(-1)
-			elif previous_play_thruster_continuous == true:
-				play_thruster_oneshot = true
+				play_thruster_normal = true
 	
 	var VELOCITY_TIMES = [velocity.normalized().dot(transform.basis.z), velocity.normalized().dot(transform.basis.x), -velocity.normalized().dot(transform.basis.y)]
-	for TIME in VELOCITY_TIMES:
-		if velocity.length() > 0.80:
-			if TIME > 0.80 or TIME < -0.80:
-				play_thruster_continuous = true
-				if TIME > 0:
-					votes.append(1)
-				if TIME < 0:
-					votes.append(-1)
-			elif previous_play_thruster_continuous == true:
-				play_thruster_oneshot = true
+	if is_fa_toggle == true and is_movement == false:
+		for TIME in VELOCITY_TIMES:
+			if velocity.length() > 0.80:
+				if TIME > 0.80 or TIME < -0.80:
+					play_thruster_normal = true
 	
-	var count_high = votes.count(1)
-	var count_low = votes.count(-1)
-	
-	if play_thruster_continuous == true:
-		if count_high > count_low:
-			$thruster_continuous.play($thruster_continuous.get_playback_position())
-		elif count_low > count_high:
-			$thruster_continuous_high_pitch.play($thruster_continuous_high_pitch.get_playback_position())
+	if play_thruster_normal == true:
+		$thruster_continuous.play($thruster_continuous.get_playback_position())
 	else:
 		$thruster_continuous.stop()
-		$thruster_continuous_high_pitch.stop()
-	
-	if play_thruster_oneshot == true:
-		$thruster_oneshot.play()
+	if play_thruster_high_pitch == true:
+		$thruster_continuous_high_pitch.play($thruster_continuous_high_pitch.get_playback_position())
 	else:
-		$thruster_oneshot.stop()
-	
-	previous_play_thruster_continuous = play_thruster_continuous
+		$thruster_continuous_high_pitch.stop()
 	
 	camera(delta)
 	

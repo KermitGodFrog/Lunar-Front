@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=105 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c3s6tt81ffpk5" path="res://Graphics/HUD/collision_warning_png.png" id="10_s37jl"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/collision_warning.gd" id="11_6kbsb"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/best_time_status.gd" id="12_amrpf"]
+[ext_resource type="AudioStream" uid="uid://dtl1e64kfwt1i" path="res://Sound Effects/alarm 2 declick.wav" id="12_c1qor"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/time_status.gd" id="13_j44g7"]
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/UI Elements/leaderboard_status_list.gd" id="14_wnhji"]
 [ext_resource type="Texture2D" uid="uid://ck674fflp478q" path="res://Graphics/hud_effect.svg" id="15_j5ys2"]
@@ -43,9 +44,16 @@
 [ext_resource type="AudioStream" uid="uid://b35wadv2nqqnv" path="res://Sound Effects/click sound 1.wav" id="39_tom87"]
 [ext_resource type="AudioStream" uid="uid://nudf1ixp04od" path="res://Sound Effects/click sound 2.wav" id="40_ko3on"]
 [ext_resource type="AudioStream" uid="uid://cmvtste6n2yv" path="res://Sound Effects/thruster sound continuous.wav" id="43_lprhs"]
-[ext_resource type="AudioStream" uid="uid://dh3qybentqkdr" path="res://Sound Effects/clickity clackity sound.wav" id="43_oh378"]
-[ext_resource type="AudioStream" uid="uid://bkoqp7ky6m2ga" path="res://Sound Effects/thruster sound.wav" id="44_u6x1h"]
 [ext_resource type="AudioStream" uid="uid://1jcps2kx71f2" path="res://Sound Effects/thruster sound continuous high pitch.wav" id="45_q0c4d"]
+[ext_resource type="AudioStream" uid="uid://bcelolee4pgh3" path="res://Sound Effects/activation sfx.wav" id="45_tq43t"]
+[ext_resource type="AudioStream" uid="uid://dj1am8gccks2l" path="res://Sound Effects/crash_low 1.wav" id="47_oim0q"]
+[ext_resource type="AudioStream" uid="uid://bg4vn2c80s2kj" path="res://Sound Effects/crash low 2.wav" id="48_eqnn2"]
+[ext_resource type="AudioStream" uid="uid://cs7e56r7f5d8v" path="res://Sound Effects/crash low 3.wav" id="49_mj4nh"]
+[ext_resource type="AudioStream" uid="uid://d3kianworuxlb" path="res://Sound Effects/crash low 4.wav" id="50_npwy7"]
+[ext_resource type="AudioStream" uid="uid://dhj2wv0h5e8kj" path="res://Sound Effects/crash low 5.wav" id="51_se2nc"]
+[ext_resource type="AudioStream" uid="uid://d0iueqx0b5q4q" path="res://Sound Effects/crash high 1.wav" id="52_2ayls"]
+[ext_resource type="AudioStream" uid="uid://dyff1xj4cqof8" path="res://Sound Effects/crash high 2.wav" id="53_kj3wm"]
+[ext_resource type="AudioStream" uid="uid://cm0gq55wa5n5v" path="res://Sound Effects/crash high 3.wav" id="54_6vjiv"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -472,6 +480,9 @@ layout_mode = 2
 texture = ExtResource("10_s37jl")
 stretch_mode = 5
 script = ExtResource("11_6kbsb")
+
+[node name="collision_warning_sfx" type="AudioStreamPlayer" parent="ui_control/ui_layer_left_skew/ui_container/collision_warning"]
+stream = ExtResource("12_c1qor")
 
 [node name="ui_layer_centered" type="CanvasLayer" parent="ui_control"]
 
@@ -1232,17 +1243,21 @@ texture_albedo = ExtResource("27_hs6ag")
 [node name="main_engine_sound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 stream = ExtResource("38_v5e71")
+volume_db = 1.0
 max_db = 1.0
 
 [node name="fa_sound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 stream = ExtResource("39_0smwg")
-max_db = 1.0
+volume_db = 0.5
+max_db = 0.5
+pitch_scale = 0.5
 
 [node name="fa_sound_high_pitch" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 stream = ExtResource("39_psasc")
-max_db = 1.0
+volume_db = 0.5
+max_db = 0.5
 
 [node name="click_sound_one" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_tom87")
@@ -1250,14 +1265,42 @@ stream = ExtResource("39_tom87")
 [node name="click_sound_two" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("40_ko3on")
 
-[node name="click_sound_three" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("43_oh378")
-
-[node name="thruster_continuous" type="AudioStreamPlayer" parent="."]
+[node name="thruster_continuous" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("43_lprhs")
+volume_db = 0.1
+max_db = 0.1
 
-[node name="thruster_continuous_high_pitch" type="AudioStreamPlayer" parent="."]
+[node name="thruster_continuous_high_pitch" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("45_q0c4d")
+volume_db = 0.1
+max_db = 0.1
 
-[node name="thruster_oneshot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("44_u6x1h")
+[node name="fa_toggle_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_tq43t")
+volume_db = -20.0
+
+[node name="damage_sfx" type="Node" parent="."]
+
+[node name="damage_low_one" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_low"]]
+stream = ExtResource("47_oim0q")
+
+[node name="damage_low_two" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_low"]]
+stream = ExtResource("48_eqnn2")
+
+[node name="damage_low_three" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_low"]]
+stream = ExtResource("49_mj4nh")
+
+[node name="damage_low_four" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_low"]]
+stream = ExtResource("50_npwy7")
+
+[node name="damage_low_five" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_low"]]
+stream = ExtResource("51_se2nc")
+
+[node name="damage_high_one" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_high"]]
+stream = ExtResource("52_2ayls")
+
+[node name="damage_high_two" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_high"]]
+stream = ExtResource("53_kj3wm")
+
+[node name="damage_high_three" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_high"]]
+stream = ExtResource("54_6vjiv")
