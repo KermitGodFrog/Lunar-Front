@@ -14,7 +14,7 @@ func _on_body_entered(body):
 					
 					if global_data.get_best_time_current_map() == 0:
 						global_data.set_best_time_current_map(game_data.player.current_time)
-						leaderboard_handling()
+ 						leaderboard_handling()
 						
 					if game_data.player.current_time < global_data.get_best_time_current_map():
 						get_tree().call_group("time_decrease_label", "show_new_time", global_data.get_best_time_current_map() - game_data.player.current_time)
