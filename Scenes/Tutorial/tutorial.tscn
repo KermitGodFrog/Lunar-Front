@@ -353,7 +353,7 @@ autowrap_mode = 3
 [node name="paragraph1" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]
 layout_mode = 2
 theme_type_variation = &"Paragraph"
-text = "> The movement keys (in settings; 'move up', 'move down'... etc). Allow you to change the direction of your spaceship's velocity marker, without rotating your spaceship. In conjunction with boosting, they can be used to get around tight turns which you cannot rotate fast enough to face."
+text = "> The movement keys (in settings; 'move up', 'move down'... etc). Allow you to change the direction of your spaceship's velocity marker, without rotating your spaceship. In conjunction with boosting, they can be used to get around tight turns which you cannot rotate fast enough to face. The game is designed in expectation that you make ample use of them."
 autowrap_mode = 3
 
 [node name="header2" type="Label" parent="tutorial_container/tutorial_hbox/panel5/mechanics_scroll/mechanics_vbox"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6x1bosgruat1"]
+[gd_scene load_steps=24 format=3 uid="uid://b6x1bosgruat1"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_3t0nq"]
+[ext_resource type="Script" path="res://Scenes/Map Select/background_handling.gd" id="1_adlut"]
+[ext_resource type="StyleBox" uid="uid://nk7ign2xsfnl" path="res://Scenes/Map Select/background_stylebox.tres" id="1_ca43u"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_3vnmj"]
 [ext_resource type="Script" path="res://Scenes/Map Select/multimap_leaderboard.gd" id="3_0gmnt"]
 [ext_resource type="Script" path="res://Scenes/Map Select/medal_texture_handling.gd" id="3_kj5i4"]
@@ -55,6 +57,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="background_panel" type="Panel" parent="." groups=["background_handler"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_ca43u")
+script = ExtResource("1_adlut")
 
 [node name="back_button" type="Button" parent="."]
 layout_mode = 1
@@ -311,7 +323,7 @@ layout_mode = 2
 theme_override_constants/separation = 50
 script = ExtResource("7_5fyyb")
 to_scene = "res://Scenes/Trade Route Map/trade_route_map.tscn"
-requirements = ["fleet", 2]
+requirements = ["fleet", 3]
 scene_change_button = NodePath("trade_route_button")
 requirements_label = NodePath("requirements_hbox/requirements_label")
 required_medal_texture_rect = NodePath("requirements_hbox/required_medal")
@@ -380,4 +392,4 @@ script = ExtResource("9_mu8ay")
 [connection signal="mouse_entered" from="main_ui_vbox/asteroid_refinery_container/asteroid_refinery_button" to="leaderboard_status_list" method="_on_asteroid_refinery_button_mouse_entered"]
 [connection signal="mouse_entered" from="main_ui_vbox/scrapyard_container/scrapyard_button" to="leaderboard_status_list" method="_on_scrapyard_button_mouse_entered"]
 [connection signal="mouse_entered" from="main_ui_vbox/fleet_container/fleet_button" to="leaderboard_status_list" method="_on_fleet_button_mouse_entered"]
-[connection signal="pressed" from="main_ui_vbox/trade_route_container/trade_route_button" to="leaderboard_status_list" method="_on_trade_route_button_pressed"]
+[connection signal="mouse_entered" from="main_ui_vbox/trade_route_container/trade_route_button" to="leaderboard_status_list" method="_on_trade_route_button_mouse_entered"]

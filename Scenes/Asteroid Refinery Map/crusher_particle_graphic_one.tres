@@ -1,0 +1,8 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://drd3tyco15qln"]
+
+[ext_resource type="Material" uid="uid://bf86wxypiwb3v" path="res://Scenes/Asteroid Refinery Map/crusher_particle_material.tres" id="1_80cex"]
+
+[resource]
+material = ExtResource("1_80cex")
+size = Vector2(4, 4)
+orientation = 2

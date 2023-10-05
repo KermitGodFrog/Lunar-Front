@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqkui2ol3b4dx"]
+[gd_scene load_steps=11 format=3 uid="uid://bqkui2ol3b4dx"]
 
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="1_7uqfg"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/unpause_label.gd" id="2_kcpgw"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/restart_button.gd" id="3_afmqe"]
 [ext_resource type="Script" path="res://Scenes/Pause Menu/return_to_menu_button.gd" id="3_ugar4"]
 [ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="4_2p80r"]
+[ext_resource type="Script" path="res://Scenes/Pause Menu/pause_menu_par_times.gd" id="6_x4b3r"]
+[ext_resource type="FontFile" uid="uid://bfd1fnf5v2qm6" path="res://Graphics/Fonts/RobotoMono Medium.ttf" id="7_fkhdn"]
+[ext_resource type="Texture2D" uid="uid://bwnoshrsvh4v" path="res://Graphics/Medals/gold_medal.png" id="8_83opm"]
+[ext_resource type="Texture2D" uid="uid://cbeeia5f1hj8i" path="res://Graphics/Medals/iron_medal.png" id="9_ffhlb"]
+[ext_resource type="Texture2D" uid="uid://bk5luja357egg" path="res://Graphics/Medals/bronze_medal.png" id="10_pkcld"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 2
@@ -82,3 +87,56 @@ text = "QUIT TO DESKTOP"
 flat = true
 alignment = 2
 script = ExtResource("4_2p80r")
+
+[node name="par_times_vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 450.0
+script = ExtResource("6_x4b3r")
+gold_label = NodePath("gold_hbox/gold label")
+iron_label = NodePath("iron_hbox/iron_label")
+bronze_label = NodePath("bronze_hbox/bronze_label")
+
+[node name="gold_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="gold label" type="Label" parent="par_times_vbox/gold_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_fkhdn")
+theme_override_font_sizes/font_size = 30
+
+[node name="gold_texture" type="TextureRect" parent="par_times_vbox/gold_hbox"]
+layout_mode = 2
+texture = ExtResource("8_83opm")
+stretch_mode = 5
+
+[node name="iron_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="iron_label" type="Label" parent="par_times_vbox/iron_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_fkhdn")
+theme_override_font_sizes/font_size = 30
+
+[node name="iron_texture" type="TextureRect" parent="par_times_vbox/iron_hbox"]
+layout_mode = 2
+texture = ExtResource("9_ffhlb")
+stretch_mode = 5
+
+[node name="bronze_hbox" type="GridContainer" parent="par_times_vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="bronze_label" type="Label" parent="par_times_vbox/bronze_hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_fkhdn")
+theme_override_font_sizes/font_size = 30
+
+[node name="bronze_texture" type="TextureRect" parent="par_times_vbox/bronze_hbox"]
+layout_mode = 2
+texture = ExtResource("10_pkcld")
+stretch_mode = 5
+
+[connection signal="visibility_changed" from="par_times_vbox" to="par_times_vbox" method="_on_visibility_changed"]

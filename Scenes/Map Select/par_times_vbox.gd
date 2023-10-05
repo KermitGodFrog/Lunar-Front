@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name ParTimes
 
 @export_node_path("Label") var gold_label
 @export_node_path("Label") var iron_label

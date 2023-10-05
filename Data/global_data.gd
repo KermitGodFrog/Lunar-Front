@@ -5,10 +5,12 @@ var player_name: String
 var scrapyard_best_time: float
 var asteroid_refinery_best_time: float
 var fleet_best_time: float
+var trade_route_best_time: float
 
 var scrapyard_par_times = [70, 50, 45]
 var asteroid_refinery_par_times = [60, 45, 35]
 var fleet_par_times = [70, 60, 55]
+var trade_route_par_times = [60, 55, 45]
 
 @onready var bronze_medal = preload("res://Graphics/Medals/bronze_medal.png")
 @onready var iron_medal = preload("res://Graphics/Medals/iron_medal.png")
@@ -43,6 +45,8 @@ func get_best_time_current_map():
 			return asteroid_refinery_best_time
 		"fleet":
 			return fleet_best_time
+		"trade_route":
+			return trade_route_best_time
 		_:
 			return 0
 
@@ -54,6 +58,8 @@ func get_best_time_from_map(map: String):
 			return asteroid_refinery_best_time
 		"fleet":
 			return fleet_best_time
+		"trade_route":
+			return trade_route_best_time
 		_:
 			return 0
 
@@ -65,6 +71,8 @@ func set_best_time_current_map(time: float):
 			asteroid_refinery_best_time = time
 		"fleet":
 			fleet_best_time = time
+		"trade_route":
+			trade_route_best_time = time
 		_:
 			return
 
@@ -98,6 +106,15 @@ func get_medal_current_map():
 				if time <= fleet_par_times[1] and time >= fleet_par_times[2]:
 					return iron_medal
 				if time < fleet_par_times[2]:
+					return gold_medal
+			"trade_route":
+				if time > trade_route_par_times[0]:
+					return no_medal
+				if time > trade_route_par_times[1] and time < trade_route_par_times[0]:
+					return bronze_medal
+				if time <= trade_route_par_times[1] and time >= trade_route_par_times[2]:
+					return iron_medal
+				if time < trade_route_par_times[2]:
 					return gold_medal
 			_:
 				return null
@@ -136,6 +153,15 @@ func get_medal_from_map(map: String):
 					return iron_medal
 				if time < fleet_par_times[2]:
 					return gold_medal
+			"trade_route":
+				if time > trade_route_par_times[0]:
+					return no_medal
+				if time > trade_route_par_times[1] and time < trade_route_par_times[0]:
+					return bronze_medal
+				if time <= trade_route_par_times[1] and time >= trade_route_par_times[2]:
+					return iron_medal
+				if time < trade_route_par_times[2]:
+					return gold_medal
 			_:
 				return null
 	else:
@@ -173,6 +199,15 @@ func get_medal_int_from_map(map: String):
 					return 2
 				if time < fleet_par_times[2]:
 					return 3
+			"trade_route":
+				if time > trade_route_par_times[0]:
+					return 0
+				if time > trade_route_par_times[1] and time < trade_route_par_times[0]:
+					return 1
+				if time <= trade_route_par_times[1] and time >= trade_route_par_times[2]:
+					return 2
+				if time < trade_route_par_times[2]:
+					return 3
 			_:
 				return 0
 	else:
@@ -185,6 +220,7 @@ func save_player_data():
 	file.store_var(scrapyard_best_time)
 	file.store_var(asteroid_refinery_best_time)
 	file.store_var(fleet_best_time)
+	file.store_var(trade_route_best_time)
 	file.close()
 	pass
 
@@ -195,12 +231,14 @@ func load_player_data():
 		scrapyard_best_time = file.get_var(true)
 		asteroid_refinery_best_time = file.get_var(true)
 		fleet_best_time = file.get_var(true)
+		trade_route_best_time = file.get_var(true)
 		file.close()
 	else:
 		player_name = ""
 		scrapyard_best_time = 0
 		asteroid_refinery_best_time = 0
 		fleet_best_time = 0
+		trade_route_best_time = 0
 	pass
 
 func reset_player_data():
@@ -211,6 +249,7 @@ func reset_player_data():
 	scrapyard_best_time = 0
 	asteroid_refinery_best_time = 0
 	fleet_best_time = 0
+	trade_route_best_time = 0
 	pass
 
 func get_randi(from: int, to: int):
