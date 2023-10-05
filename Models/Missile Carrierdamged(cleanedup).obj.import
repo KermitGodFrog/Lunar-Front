@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgu1hf7ehmxir"
+path="res://.godot/imported/Missile Carrierdamged(cleanedup).obj-dedeb6d5a97a8aa54295caff3bc63ab9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Missile Carrierdamged(cleanedup).obj-dedeb6d5a97a8aa54295caff3bc63ab9.mesh"]
+
+source_file="res://Models/Missile Carrierdamged(cleanedup).obj"
+dest_files=["res://.godot/imported/Missile Carrierdamged(cleanedup).obj-dedeb6d5a97a8aa54295caff3bc63ab9.mesh", "res://.godot/imported/Missile Carrierdamged(cleanedup).obj-dedeb6d5a97a8aa54295caff3bc63ab9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

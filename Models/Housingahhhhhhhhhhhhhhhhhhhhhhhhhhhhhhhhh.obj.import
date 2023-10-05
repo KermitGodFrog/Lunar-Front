@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgfb23oifd4ya"
+path="res://.godot/imported/Housingahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.obj-4522b94eeba13e2f8b9cb75acfc35fb2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Housingahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.obj-4522b94eeba13e2f8b9cb75acfc35fb2.mesh"]
+
+source_file="res://Models/Housingahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.obj"
+dest_files=["res://.godot/imported/Housingahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.obj-4522b94eeba13e2f8b9cb75acfc35fb2.mesh", "res://.godot/imported/Housingahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh.obj-4522b94eeba13e2f8b9cb75acfc35fb2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -7,4 +7,5 @@ var advertisement_three = preload("res://Scenes/Trade Route Map/advertisement_th
 
 func _on_timer_timeout():
 	set_texture(advertisements.pick_random())
+	$timer.start(global_data.get_randf(15,30))
 	pass 

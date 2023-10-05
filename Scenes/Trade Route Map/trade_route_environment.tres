@@ -1,0 +1,65 @@
+[gd_resource type="Environment" load_steps=12 format=3 uid="uid://bfcpmqnby2nbn"]
+
+[ext_resource type="Shader" path="res://Scenes/Fleet Map/fleet_sky_shader.gdshader" id="1_6hucx"]
+[ext_resource type="Texture2D" uid="uid://sc0h8j3to4lq" path="res://stolen_star_image.jpeg" id="2_v2tgf"]
+
+[sub_resource type="Gradient" id="Gradient_gmwh2"]
+offsets = PackedFloat32Array(0.358108, 0.722973)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_otgw4"]
+frequency = 0.03
+fractal_octaves = 10
+fractal_weighted_strength = 0.5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f4730"]
+seamless = true
+color_ramp = SubResource("Gradient_gmwh2")
+noise = SubResource("FastNoiseLite_otgw4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a4w63"]
+seed = 8
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1gxvh"]
+seamless = true
+noise = SubResource("FastNoiseLite_a4w63")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hdnyb"]
+frequency = 0.0475
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q0mpg"]
+seamless = true
+noise = SubResource("FastNoiseLite_hdnyb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q16g"]
+shader = ExtResource("1_6hucx")
+shader_parameter/planet_colour = Color(0, 0, 1, 1)
+shader_parameter/star_colour = Color(1, 0.490196, 0, 1)
+shader_parameter/source_panorama = ExtResource("2_v2tgf")
+shader_parameter/land_noise = SubResource("NoiseTexture2D_1gxvh")
+shader_parameter/cloud_noise = SubResource("NoiseTexture2D_f4730")
+shader_parameter/star_noise = SubResource("NoiseTexture2D_q0mpg")
+
+[sub_resource type="Sky" id="Sky_c1v7o"]
+sky_material = SubResource("ShaderMaterial_0q16g")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_c1v7o")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.2
+reflected_light_source = 2
+tonemap_mode = 2
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.7
+glow_bloom = 0.15
+glow_blend_mode = 0
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.254902, 0.254902, 0.254902, 1)
+volumetric_fog_ambient_inject = 4.0

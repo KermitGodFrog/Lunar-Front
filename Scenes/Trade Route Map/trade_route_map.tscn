@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://ujrow563jj33"]
+[gd_scene load_steps=8 format=3 uid="uid://ujrow563jj33"]
 
 [ext_resource type="Script" path="res://Scenes/Trade Route Map/trade_route_map.gd" id="1_tfop7"]
+[ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_0oas7"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bo74mvig8pshl" path="res://Scenes/Trade Route Map/trade_route_occluder.tres" id="2_c33g2"]
+[ext_resource type="PackedScene" uid="uid://630rx63qsuh7" path="res://Scenes/Trade Route Map/station.tscn" id="3_6du31"]
+[ext_resource type="Environment" uid="uid://bfcpmqnby2nbn" path="res://Scenes/Trade Route Map/trade_route_environment.tres" id="3_bjftx"]
+[ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="4_070yr"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wj5yu"]
+dof_blur_near_distance = 5.0
 
 [node name="trade_route_map" type="Node3D"]
 script = ExtResource("1_tfop7")
+
+[node name="occluder" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("2_c33g2")
+
+[node name="environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_bjftx")
+camera_attributes = SubResource("CameraAttributesPractical_wj5yu")
+
+[node name="the_sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 1, 0.788235, 1)
+light_volumetric_fog_energy = 2.0
+light_angular_distance = 40.0
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_0oas7")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 500, 0, 0)
+
+[node name="station" parent="." instance=ExtResource("3_6du31")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1000, 0, 0)
+
+[node name="checkpoint" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

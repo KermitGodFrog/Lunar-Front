@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ejuahwmegov4"]
+[gd_scene load_steps=14 format=3 uid="uid://ejuahwmegov4"]
 
 [ext_resource type="Script" path="res://Scenes/Asteroid Refinery Map/asteroid_refinery_map.gd" id="1_l8gp1"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="1_ml2ub"]
+[ext_resource type="ArrayOccluder3D" uid="uid://cthcn1rfby8hm" path="res://Scenes/Asteroid Refinery Map/asteroid_refinery_occluder.tres" id="2_2hfgr"]
 [ext_resource type="Environment" uid="uid://cywu6x06t78ra" path="res://Scenes/Asteroid Refinery Map/asteroid_refinery_map_environment.tres" id="2_f4s01"]
 [ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="2_kfyu2"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="4_n3q3w"]
@@ -10,12 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://ccqupj8yg8h3n" path="res://Scenes/Asteroid Refinery Map/asteroid_var2.tscn" id="7_ry82a"]
 [ext_resource type="PackedScene" uid="uid://chsftl43oybye" path="res://Scenes/Asteroid Refinery Map/asteroid_var3.tscn" id="8_domq3"]
 [ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="10_de8wg"]
+[ext_resource type="PackedScene" uid="uid://coukgastldee0" path="res://Scenes/Asteroid Refinery Map/station.tscn" id="11_0k8xq"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gdow2"]
 dof_blur_near_distance = 5.0
 
 [node name="asteroid_refinery_map" type="Node3D"]
 script = ExtResource("1_l8gp1")
+
+[node name="occluder" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("2_2hfgr")
 
 [node name="environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4s01")
@@ -31,7 +36,7 @@ shadow_enabled = true
 [node name="checkpoint" parent="." instance=ExtResource("1_ml2ub")]
 
 [node name="checkpoint2" parent="." instance=ExtResource("1_ml2ub")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -500, 0, 1500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -500, 0, 1900)
 CHECKPOINT_NUMBER = 1
 
 [node name="checkpoint3" parent="." instance=ExtResource("1_ml2ub")]
@@ -63,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1624.59, 695.059, -1115.63)
 BOOST_INCREASE = 250.0
 
 [node name="slingshot_pickup" parent="." instance=ExtResource("10_de8wg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1500)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1500)
 BOOST_SPEED = 800.0
 
 [node name="player_phantom" parent="." instance=ExtResource("4_n3q3w")]
@@ -123,8 +128,14 @@ transform = Transform3D(0.121194, -0.293797, -0.948154, -0.459934, 0.829849, -0.
 [node name="asteroid_var1_6" parent="." instance=ExtResource("6_qq705")]
 transform = Transform3D(0.0490416, -0.440098, -0.896609, 0, 0.897689, -0.440629, 0.998797, 0.0216091, 0.0440241, -1012.38, 0, 256.384)
 
+[node name="asteroid_var1_7" parent="." instance=ExtResource("6_qq705")]
+transform = Transform3D(0.0490416, -0.440098, -0.896609, 0.441506, -0.795672, 0.414703, -0.895917, -0.416196, 0.155285, 304.673, -314.211, -1620.2)
+
 [node name="asteroid_var2_6" parent="." instance=ExtResource("7_ry82a")]
 transform = Transform3D(0.989841, -0.0584909, -0.129591, -0.0148791, 0.863842, -0.503544, 0.141399, 0.500356, 0.854196, -1240.52, 0, -214.763)
+
+[node name="asteroid_var2_7" parent="." instance=ExtResource("7_ry82a")]
+transform = Transform3D(-0.216206, -0.494465, -0.841879, 0.657457, 0.563739, -0.499948, 0.721807, -0.661591, 0.203206, 409.211, 282.388, -1624.17)
 
 [node name="crystal_var1_1" parent="." instance=ExtResource("6_rcobg")]
 transform = Transform3D(0.909216, -0.362649, -0.204479, 0.370476, 0.928842, 0, 0.189929, -0.0757546, 0.978871, -1704.12, 847.533, -1664.28)
@@ -143,3 +154,11 @@ transform = Transform3D(0.84765, 0.439706, 0.296897, -0.444355, 0.282606, 0.8501
 
 [node name="crystal_var1_6" parent="." instance=ExtResource("6_rcobg")]
 transform = Transform3D(0.84765, 0.439706, 0.296897, -0.258579, 0.831016, -0.492492, -0.463278, 0.34069, 0.81811, -1908.96, 275.858, -1468.62)
+
+[node name="crystal_var1_7" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.275485, 0.650194, -0.708064, -0.391877, -0.596628, -0.700334, -0.877805, 0.470405, 0.0904333, 163.702, -218.394, -1973.52)
+
+[node name="crystal_var1_8" parent="." instance=ExtResource("6_rcobg")]
+transform = Transform3D(0.248052, -0.94216, -0.225396, -0.0284493, -0.239651, 0.970442, -0.968329, -0.234307, -0.0862501, 78.6821, -218.394, -1378.75)
+
+[node name="station" parent="." instance=ExtResource("11_0k8xq")]
