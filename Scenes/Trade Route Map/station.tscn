@@ -184,6 +184,11 @@ surface_material_override/2 = SubResource("StandardMaterial3D_x84eo")
 
 [node name="checkpoint" parent="ring_two/mesh" instance=ExtResource("12_uuth4")]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -6, 27, -9)
+CHECKPOINT_NUMBER = 3
+
+[node name="checkpoint2" parent="ring_two/mesh" instance=ExtResource("12_uuth4")]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -6, -27, 9)
+CHECKPOINT_NUMBER = 6
 
 [node name="collision" type="CollisionShape3D" parent="ring_two"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)

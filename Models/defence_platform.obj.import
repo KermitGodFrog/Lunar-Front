@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccyviqip8j2ux"
+path="res://.godot/imported/defence_platform.obj-89a5646e1dfed128d650aae5fe22ceaa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/defence_platform.obj-89a5646e1dfed128d650aae5fe22ceaa.mesh"]
+
+source_file="res://Models/defence_platform.obj"
+dest_files=["res://.godot/imported/defence_platform.obj-89a5646e1dfed128d650aae5fe22ceaa.mesh", "res://.godot/imported/defence_platform.obj-89a5646e1dfed128d650aae5fe22ceaa.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

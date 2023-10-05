@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7sfr3v2rmqbj"]
+
+[ext_resource type="ArrayMesh" uid="uid://xx1g0v10fyen" path="res://Models/Barge.obj" id="1_cqk0m"]
+[ext_resource type="Material" uid="uid://doqrv26yh853y" path="res://Scenes/Trade Route Map/barge_green_shipping_container.tres" id="2_m6hrj"]
+[ext_resource type="Material" uid="uid://b23fr76ucghlp" path="res://Scenes/Trade Route Map/barge_red_shipping_container.tres" id="3_jgjna"]
+[ext_resource type="Material" uid="uid://bebdkj87cpe27" path="res://Scenes/Trade Route Map/barge_grey_shipping_container.tres" id="4_ec475"]
+[ext_resource type="Texture2D" uid="uid://7olploeu7cq7" path="res://Graphics/civilian_hull.png" id="5_1ln0a"]
+[ext_resource type="Material" uid="uid://dr7l0ut81obr7" path="res://Scenes/Fleet Map/thruster_black.tres" id="6_nj5qm"]
+[ext_resource type="Material" uid="uid://cfspkakurobpy" path="res://Scenes/Fleet Map/black.tres" id="7_csewt"]
+[ext_resource type="Material" uid="uid://de00374sq2r3w" path="res://Scenes/Trade Route Map/metal_scrap_striped.tres" id="8_qf46u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rauo"]
+albedo_texture = ExtResource("5_1ln0a")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rhv6"]
+albedo_texture = ExtResource("5_1ln0a")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sqgag"]
+radius = 4.95931
+height = 31.2525
+
+[node name="freighter_var2_" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_cqk0m")
+surface_material_override/0 = ExtResource("2_m6hrj")
+surface_material_override/1 = ExtResource("3_jgjna")
+surface_material_override/2 = ExtResource("2_m6hrj")
+surface_material_override/3 = ExtResource("3_jgjna")
+surface_material_override/4 = ExtResource("3_jgjna")
+surface_material_override/5 = ExtResource("4_ec475")
+surface_material_override/6 = ExtResource("3_jgjna")
+surface_material_override/7 = ExtResource("4_ec475")
+surface_material_override/8 = ExtResource("4_ec475")
+surface_material_override/9 = ExtResource("2_m6hrj")
+surface_material_override/10 = ExtResource("3_jgjna")
+surface_material_override/11 = ExtResource("3_jgjna")
+surface_material_override/12 = ExtResource("4_ec475")
+surface_material_override/13 = ExtResource("4_ec475")
+surface_material_override/14 = ExtResource("4_ec475")
+surface_material_override/15 = ExtResource("3_jgjna")
+surface_material_override/16 = ExtResource("2_m6hrj")
+surface_material_override/17 = ExtResource("2_m6hrj")
+surface_material_override/18 = SubResource("StandardMaterial3D_8rauo")
+surface_material_override/19 = ExtResource("6_nj5qm")
+surface_material_override/20 = ExtResource("6_nj5qm")
+surface_material_override/21 = ExtResource("6_nj5qm")
+surface_material_override/22 = SubResource("StandardMaterial3D_2rhv6")
+surface_material_override/23 = ExtResource("6_nj5qm")
+surface_material_override/24 = ExtResource("7_csewt")
+surface_material_override/25 = ExtResource("6_nj5qm")
+surface_material_override/26 = ExtResource("7_csewt")
+surface_material_override/27 = ExtResource("6_nj5qm")
+surface_material_override/28 = ExtResource("7_csewt")
+surface_material_override/29 = ExtResource("8_qf46u")
+surface_material_override/30 = ExtResource("7_csewt")
+surface_material_override/31 = ExtResource("7_csewt")
+surface_material_override/32 = ExtResource("7_csewt")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19987, 0)
+shape = SubResource("CapsuleShape3D_sqgag")

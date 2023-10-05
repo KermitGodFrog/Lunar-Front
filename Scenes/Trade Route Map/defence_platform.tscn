@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dswcsbjekqynb"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccyviqip8j2ux" path="res://Models/defence_platform.obj" id="1_akj2u"]
+[ext_resource type="Material" uid="uid://cfspkakurobpy" path="res://Scenes/Fleet Map/black.tres" id="2_ao3qo"]
+[ext_resource type="ArrayMesh" uid="uid://44r84vvbld3e" path="res://Models/Railgun.obj" id="2_gfxkw"]
+[ext_resource type="ArrayMesh" uid="uid://bqjiq7m6gy3j7" path="res://Models/Railgun barrel.obj" id="3_7ggxb"]
+[ext_resource type="Material" uid="uid://w6rhv4gys2jv" path="res://Scenes/Trade Route Map/civilian_hull.tres" id="3_nar87"]
+[ext_resource type="PackedScene" uid="uid://chlow0a8sob5c" path="res://Scenes/Trade Route Map/advertisement.tscn" id="4_7x3r2"]
+[ext_resource type="Material" uid="uid://gcic5grqvlgu" path="res://Scenes/Fleet Map/thruster_normal.tres" id="6_8y8lg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g5k2h"]
+radius = 10.0
+height = 20.0
+
+[node name="defence_platform" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = ExtResource("1_akj2u")
+surface_material_override/0 = ExtResource("6_8y8lg")
+surface_material_override/1 = ExtResource("3_nar87")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_g5k2h")
+
+[node name="advertisement" parent="." instance=ExtResource("4_7x3r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="railgun_mesh_one" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.39876e-07, 0, 3.2, 0, 3.2, 0, -3.2, 0, -1.39876e-07, 0, 1, -5)
+mesh = ExtResource("2_gfxkw")
+surface_material_override/0 = ExtResource("6_8y8lg")
+
+[node name="barrel_mesh_one" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.39876e-07, 0, 3.2, 0, 3.2, 0, -3.2, 0, -1.39876e-07, 0, 1, -5)
+mesh = ExtResource("3_7ggxb")
+surface_material_override/0 = ExtResource("2_ao3qo")
+surface_material_override/1 = ExtResource("2_ao3qo")
+surface_material_override/2 = ExtResource("2_ao3qo")
+
+[node name="railgun_mesh_two" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.39876e-07, 0, -3.2, 0, 3.2, 0, 3.2, 0, -1.39876e-07, 0, 1, 5)
+mesh = ExtResource("2_gfxkw")
+surface_material_override/0 = ExtResource("6_8y8lg")
+
+[node name="barrel_mesh_two" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.39876e-07, 0, -3.2, 0, 3.2, 0, 3.2, 0, -1.39876e-07, 0, 1, 5)
+mesh = ExtResource("3_7ggxb")
+surface_material_override/0 = ExtResource("2_ao3qo")
+surface_material_override/1 = ExtResource("2_ao3qo")
+surface_material_override/2 = ExtResource("2_ao3qo")

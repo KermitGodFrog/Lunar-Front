@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://hp1lkfm65bst"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3t4515s07fxv" path="res://Models/Hard Scifi Freightor.obj" id="1_imbmi"]
+[ext_resource type="Material" uid="uid://cbhuv4idj4ukh" path="res://Scenes/Trade Route Map/red_shipping_container_normal.tres" id="2_6ios1"]
+[ext_resource type="Material" uid="uid://dgyhnuc01jsb8" path="res://Scenes/Trade Route Map/green_shipping_container_normal.tres" id="3_2nvh0"]
+[ext_resource type="Material" uid="uid://dr3pxns2gvtvl" path="res://Scenes/Fleet Map/shipping_container_white.tres" id="4_jefrp"]
+[ext_resource type="Material" uid="uid://w6rhv4gys2jv" path="res://Scenes/Trade Route Map/civilian_hull.tres" id="5_lw580"]
+[ext_resource type="Material" uid="uid://8cmob0bvooad" path="res://Scenes/Fleet Map/thruster_normal_freighter.tres" id="6_tl8sf"]
+[ext_resource type="Material" uid="uid://dr7l0ut81obr7" path="res://Scenes/Fleet Map/thruster_black.tres" id="7_jo0cq"]
+[ext_resource type="Material" uid="uid://cfspkakurobpy" path="res://Scenes/Fleet Map/black.tres" id="8_1user"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vi251"]
+radius = 20.0
+height = 170.0
+
+[node name="freighter_var1_" type="StaticBody3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_imbmi")
+surface_material_override/0 = ExtResource("2_6ios1")
+surface_material_override/1 = ExtResource("3_2nvh0")
+surface_material_override/2 = ExtResource("4_jefrp")
+surface_material_override/3 = ExtResource("3_2nvh0")
+surface_material_override/4 = ExtResource("4_jefrp")
+surface_material_override/5 = ExtResource("3_2nvh0")
+surface_material_override/6 = ExtResource("5_lw580")
+surface_material_override/7 = ExtResource("5_lw580")
+surface_material_override/8 = ExtResource("6_tl8sf")
+surface_material_override/9 = ExtResource("6_tl8sf")
+surface_material_override/10 = ExtResource("6_tl8sf")
+surface_material_override/11 = ExtResource("7_jo0cq")
+surface_material_override/12 = ExtResource("7_jo0cq")
+surface_material_override/13 = ExtResource("7_jo0cq")
+surface_material_override/14 = ExtResource("8_1user")
+surface_material_override/15 = ExtResource("8_1user")
+surface_material_override/16 = ExtResource("8_1user")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vi251")

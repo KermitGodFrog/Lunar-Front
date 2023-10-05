@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ujrow563jj33"]
+[gd_scene load_steps=31 format=3 uid="uid://ujrow563jj33"]
 
 [ext_resource type="Script" path="res://Scenes/Trade Route Map/trade_route_map.gd" id="1_tfop7"]
 [ext_resource type="PackedScene" uid="uid://b1jbitn8dtmim" path="res://Instantiated Scenes/Player/player_phantom.tscn" id="2_0oas7"]
@@ -6,9 +6,131 @@
 [ext_resource type="PackedScene" uid="uid://630rx63qsuh7" path="res://Scenes/Trade Route Map/station.tscn" id="3_6du31"]
 [ext_resource type="Environment" uid="uid://bfcpmqnby2nbn" path="res://Scenes/Trade Route Map/trade_route_environment.tres" id="3_bjftx"]
 [ext_resource type="PackedScene" uid="uid://1cdn6gf8jn6h" path="res://Instantiated Scenes/Checkpoint/checkpoint.tscn" id="4_070yr"]
+[ext_resource type="PackedScene" uid="uid://hp1lkfm65bst" path="res://Scenes/Trade Route Map/freighter_one.tscn" id="7_4qpvk"]
+[ext_resource type="PackedScene" uid="uid://b7sfr3v2rmqbj" path="res://Scenes/Trade Route Map/freighter_two.tscn" id="8_dilg8"]
+[ext_resource type="Texture2D" uid="uid://bjjkxxtsh2u0f" path="res://Graphics/Arrow.png" id="9_ah0u0"]
+[ext_resource type="PackedScene" uid="uid://dj3hxgqwdtfjo" path="res://Instantiated Scenes/Boost Pickup/boost_pickup.tscn" id="10_ry0xj"]
+[ext_resource type="PackedScene" uid="uid://dswcsbjekqynb" path="res://Scenes/Trade Route Map/defence_platform.tscn" id="11_7ib4a"]
+[ext_resource type="PackedScene" uid="uid://hicfw0oyaceb" path="res://Instantiated Scenes/Slingshot Pickup/slingshot_pickup.tscn" id="12_bmdcv"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wj5yu"]
 dof_blur_near_distance = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466ny"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcpfq"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk80d"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxly5"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brae7"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h2mo"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_164yt"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y8wo"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihwhh"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvg3x"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn6p0"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc5kg"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kc6r"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkgg"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlihu"]
+atlas = ExtResource("9_ah0u0")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rppxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_466ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcpfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk80d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxly5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brae7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h2mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_164yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y8wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihwhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvg3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn6p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc5kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kc6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlihu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_660ui"]
+size = Vector3(1, 0.4, 0.2)
 
 [node name="trade_route_map" type="Node3D"]
 script = ExtResource("1_tfop7")
@@ -22,8 +144,14 @@ camera_attributes = SubResource("CameraAttributesPractical_wj5yu")
 
 [node name="the_sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-light_color = Color(1, 1, 0.788235, 1)
+light_color = Color(0.815686, 1, 1, 1)
 light_volumetric_fog_energy = 2.0
+light_angular_distance = 40.0
+shadow_enabled = true
+
+[node name="the_sun2" type="DirectionalLight3D" parent="."]
+light_color = Color(1, 0.654902, 0.6, 1)
+light_energy = 0.5
 light_angular_distance = 40.0
 shadow_enabled = true
 
@@ -35,3 +163,154 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1000, 0, 0)
 
 [node name="checkpoint" parent="." instance=ExtResource("4_070yr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="checkpoint2" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -4786.86, 379.073, -1100)
+CHECKPOINT_NUMBER = 4
+
+[node name="checkpoint3" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(-0.3431, 0, 0.363707, 0, 0.5, 0, -0.363707, 0, -0.3431, -5649.07, 173.395, -1100)
+CHECKPOINT_NUMBER = 5
+
+[node name="checkpoint4" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1000, 0, 600)
+CHECKPOINT_NUMBER = 7
+
+[node name="checkpoint5" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 1704.76, 476.994, 1275.71)
+CHECKPOINT_NUMBER = 8
+
+[node name="checkpoint6" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 2776.51, 476.994, 1275.71)
+CHECKPOINT_NUMBER = 9
+
+[node name="checkpoint7" parent="." instance=ExtResource("4_070yr")]
+transform = Transform3D(-0.600755, 0, -0.799433, 0, 1, 0, 0.799433, 0, -0.600755, 3148.49, 208.059, 1016.48)
+CHECKPOINT_NUMBER = 10
+
+[node name="defence_platform" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -4000, 300, -900)
+
+[node name="defence_platform2" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -4500, 300, -900)
+
+[node name="defence_platform11" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -4500, 0, -400)
+
+[node name="defence_platform12" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -4500, -300, 100)
+
+[node name="defence_platform3" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -5000, 300, -900)
+
+[node name="defence_platform4" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -5500, 300, -900)
+
+[node name="defence_platform5" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -6000, 300, -900)
+
+[node name="freighter_var1_1" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(0.0528074, 1.99919, -0.0215993, 9.44461e-10, -0.0216068, -1.99988, -1.9993, 0.0528044, -0.000570502, -3870, 300, -1100)
+
+[node name="freighter_var1_4" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(2.62268e-07, 2, 8.74228e-08, 7.64274e-15, 8.74228e-08, -2, -2, 2.62268e-07, 3.82137e-15, -2249.97, 80.414, -75.3853)
+
+[node name="freighter_var1_2" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(0.0433505, 1.99953, -8.74022e-08, 0, -8.74228e-08, -2, -1.99953, 0.0433505, -1.89491e-09, -4786.86, 300, -1100)
+
+[node name="freighter_var1_5" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(-1.99788, 0.0921139, -0.00111419, 0.0310943, 0.651542, -1.89064, -0.0867142, -1.88865, -0.652282, -4786.86, 100, -525.96)
+
+[node name="freighter_var1_3" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(-1.74803e-07, 1.99902, 0.0626106, -2.7368e-09, 0.0626106, -1.99902, -2, -1.74803e-07, -2.73679e-09, -5278.57, 300, -1100)
+
+[node name="freighter_var2_1" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(-4.65286e-07, 9.97775, -0.666744, 4.06997e-07, 0.666744, 9.97775, 10, 4.37114e-07, -4.37114e-07, -4355.11, 300, -1100)
+
+[node name="freighter_var2_2" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(0.270572, 9.99282, -0.265085, 0.0071754, 0.264987, 9.99649, 9.99634, -0.270667, -4.36954e-07, -5689.49, 300, -1100)
+
+[node name="freighter_var2_4" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(9.96692, -0.759192, -0.290262, 0.5641, 3.89015, 9.19503, -0.585163, -9.18098, 3.9201, -4786.86, -50, -117.38)
+
+[node name="freighter_var2_3" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -1362, 0, 208)
+
+[node name="arrow_sign1" type="StaticBody3D" parent="."]
+transform = Transform3D(-68.6573, -13.587, 71.4253, -19.4132, 98.0976, -9.53674e-07, -70.0665, -13.8659, -69.9888, -5084.66, 414.646, -1100)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign1"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign1"]
+shape = SubResource("BoxShape3D_660ui")
+
+[node name="boost_pickup" parent="." instance=ExtResource("10_ry0xj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5233.81, 376.149, -1100)
+BOOST_INCREASE = 200.0
+
+[node name="slingshot_pickup" parent="." instance=ExtResource("12_bmdcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4786.86, -112.357, 80.6784)
+BOOST_SPEED = 500.0
+
+[node name="freighter_var2_5" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, 1736.71, 300, 1275.71)
+
+[node name="freighter_var2_7" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, 2835.66, 300, 1275.71)
+
+[node name="freighter_var2_8" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(0.330331, 2.88785e-08, -9.99454, 8.74228e-07, -10, 3.10588e-21, -9.99454, -8.7375e-07, -0.330331, 1978.08, 997.57, 1275.71)
+
+[node name="freighter_var2_6" parent="." instance=ExtResource("8_dilg8")]
+transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -10, 4.37114e-07, 1.91069e-14, 1239.07, 300, 1275.71)
+
+[node name="freighter_var1_6" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(-8.74228e-08, -2, 8.74228e-08, 0, -8.74228e-08, -2, 2, -8.74228e-08, 3.82137e-15, 2343.97, 300, 1275.71)
+
+[node name="freighter_var1_8" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(-0.133732, -0.281689, 1.97554, 1.60754e-07, -1.97997, -0.282321, 1.99552, -0.0188775, 0.132393, 2017.71, 526.211, 1275.71)
+
+[node name="freighter_var1_7" parent="." instance=ExtResource("7_4qpvk")]
+transform = Transform3D(-8.74228e-08, -2, 8.74228e-08, 0, -8.74228e-08, -2, 2, -8.74228e-08, 3.82137e-15, 3334.15, 300, 1275.71)
+
+[node name="defence_platform6" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 1012.73, 300, 1084.28)
+
+[node name="defence_platform7" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 1512.72, 300, 1087.59)
+
+[node name="defence_platform8" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 2012.71, 300, 1090.89)
+
+[node name="defence_platform13" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 2012.7, 600, 1090.89)
+
+[node name="defence_platform14" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 2012.7, 900, 1090.89)
+
+[node name="defence_platform9" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 2512.69, 300, 1094.2)
+
+[node name="defence_platform10" parent="." instance=ExtResource("11_7ib4a")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 3012.68, 300, 1097.51)

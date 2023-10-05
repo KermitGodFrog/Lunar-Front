@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bebdkj87cpe27"]
+
+[ext_resource type="Texture2D" uid="uid://c0yysu67p7x3k" path="res://Graphics/Shipping Containers/grey_shipping_container_normal.png" id="1_u5f1m"]
+
+[resource]
+albedo_color = Color(0.537255, 0.537255, 0.537255, 1)
+albedo_texture = ExtResource("1_u5f1m")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
