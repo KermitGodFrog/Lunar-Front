@@ -11,6 +11,8 @@ var third_person_sensitivity: float
 var first_person_headlook_sensitivity: int
 var mouse_movement_sensitivity: float
 var mouse_movement_deadzone: float
+var sfx_volume: float
+var sfx_mute: bool
 
 #MISC 
 
@@ -48,6 +50,8 @@ func save_settings():
 	file.store_var(first_person_headlook_sensitivity)
 	file.store_var(mouse_movement_sensitivity)
 	file.store_var(mouse_movement_deadzone)
+	file.store_var(sfx_volume)
+	file.store_var(sfx_mute)
 	
 	file.store_var(third_person_rotate_camera_key)
 	file.store_var(third_person_zoom_key)
@@ -69,6 +73,8 @@ func load_settings():
 		first_person_headlook_sensitivity = file.get_var(true)
 		mouse_movement_sensitivity = file.get_var(true)
 		mouse_movement_deadzone = file.get_var(true)
+		sfx_volume = file.get_var(true)
+		sfx_mute = file.get_var(true)
 		
 		third_person_rotate_camera_key = file.get_var(true)
 		third_person_zoom_key = file.get_var(true)
@@ -123,6 +129,8 @@ func reset_to_keymap_one():
 	first_person_headlook_sensitivity = 1200
 	mouse_movement_deadzone = 1.0
 	mouse_movement_sensitivity = 10.0
+	sfx_volume = 1.0
+	sfx_mute = false
 	
 	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
 	third_person_zoom_key = MOUSE_BUTTON_MIDDLE
@@ -155,6 +163,8 @@ func reset_to_keymap_two():
 	first_person_headlook_sensitivity = 1200
 	mouse_movement_deadzone = 1.0
 	mouse_movement_sensitivity = 10.0
+	sfx_volume = 1.0
+	sfx_mute = false
 	
 	third_person_rotate_camera_key = MOUSE_BUTTON_RIGHT
 	third_person_zoom_key = MOUSE_BUTTON_MIDDLE

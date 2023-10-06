@@ -2,7 +2,7 @@ extends Area3D
 
 @export var is_active: bool = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_active == true:
 		if $cooldown.is_stopped():
 			for body in get_overlapping_bodies():

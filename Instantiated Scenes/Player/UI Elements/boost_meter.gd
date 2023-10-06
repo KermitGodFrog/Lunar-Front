@@ -1,6 +1,6 @@
 extends TextureRect
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	size.x = maxi(0, game_data.player.BOOST_TIME)
 	
 	if game_data.player.BOOST_TIME <= 300:

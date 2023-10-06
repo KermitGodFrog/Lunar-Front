@@ -2,8 +2,10 @@ extends ItemList
 class_name GlobalLeaderboard
 
 var last_selected_map: String
+var is_updating: bool = false
 
 func update(leaderboard_identifier: String, force_update: bool):
+	is_updating = true
 	clear()
 	var scores = []
 	if force_update == false:
@@ -19,6 +21,8 @@ func update(leaderboard_identifier: String, force_update: bool):
 		var sw_get_high_scores = await SilentWolf.Scores.get_scores(0, leaderboard_identifier).sw_get_scores_complete
 		scores = sw_get_high_scores["scores"]
 		render(scores)
+	
+	is_updating = false
 	pass
 
 func render(scores):
@@ -49,6 +53,9 @@ func render(scores):
 	pass
 
 func _on_scrapyard_button_mouse_entered():
+	if is_updating == true:
+		return
+	
 	update("scrapyard_map", false)
 	get_tree().call_group("map_par_times_handler", "update", "scrapyard")
 	get_tree().call_group("background_handler", "update", "scrapyard")
@@ -56,6 +63,9 @@ func _on_scrapyard_button_mouse_entered():
 	pass
 
 func _on_fleet_button_mouse_entered():
+	if is_updating == true:
+		return
+	
 	update("fleet_map", false)
 	get_tree().call_group("map_par_times_handler", "update", "fleet")
 	get_tree().call_group("background_handler", "update", "fleet")
@@ -63,6 +73,9 @@ func _on_fleet_button_mouse_entered():
 	pass
 
 func _on_asteroid_refinery_button_mouse_entered():
+	if is_updating == true:
+		return
+	
 	update("asteroid_refinery_map", false)
 	get_tree().call_group("map_par_times_handler", "update", "asteroid_refinery")
 	get_tree().call_group("background_handler", "update", "asteroid_refinery")
@@ -70,6 +83,9 @@ func _on_asteroid_refinery_button_mouse_entered():
 	pass
 
 func _on_trade_route_button_mouse_entered():
+	if is_updating == true:
+		return
+	
 	update("trade_route_map", false)
 	get_tree().call_group("map_par_times_handler", "update", "trade_route")
 	get_tree().call_group("background_handler", "update", "trade_route")
