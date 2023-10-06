@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpaycgnn8m7yn"]
+[gd_scene load_steps=7 format=3 uid="uid://cpaycgnn8m7yn"]
 
 [ext_resource type="Script" path="res://Scenes/Main Menu/reset_mouse.gd" id="1_n0s7t"]
+[ext_resource type="StyleBox" uid="uid://b71fgpamgihv6" path="res://Scenes/Main Menu/main_menu_background_stylebox.tres" id="2_7bbjh"]
 [ext_resource type="Script" path="res://Data/scene_change_button_base.gd" id="2_cmg2u"]
 [ext_resource type="Script" path="res://Data/quit_to_desktop_button.gd" id="3_4h85f"]
 [ext_resource type="Theme" uid="uid://10wnoidg1agh" path="res://Scenes/Main Menu/menu_main_theme.tres" id="3_xvp1b"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/main_menu_background_handler.gd" id="5_ntphf"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -13,6 +15,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n0s7t")
+
+[node name="background_texture" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_7bbjh")
+script = ExtResource("5_ntphf")
 
 [node name="title_text" type="Label" parent="."]
 layout_mode = 1

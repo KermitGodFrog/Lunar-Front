@@ -237,7 +237,7 @@ transform = Transform3D(9.96692, -0.759192, -0.290262, 0.5641, 3.89015, 9.19503,
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -1362, 0, 208)
 
 [node name="arrow_sign1" type="StaticBody3D" parent="."]
-transform = Transform3D(-68.6573, -13.587, 71.4253, -19.4132, 98.0976, -9.53674e-07, -70.0665, -13.8659, -69.9888, -5084.66, 414.646, -1100)
+transform = Transform3D(70.7107, 0, 70.7107, 0, 100, 0, -70.7107, 0, 70.7107, 2000, 526, 1226)
 
 [node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign1"]
 transparent = false
@@ -265,6 +265,35 @@ speed_scale = 5.0
 [node name="collision" type="CollisionShape3D" parent="arrow_sign1"]
 shape = SubResource("BoxShape3D_660ui")
 
+[node name="arrow_sign2" type="StaticBody3D" parent="."]
+transform = Transform3D(70.7107, 0, -70.7107, 0, 100, 0, 70.7107, 0, 70.7107, 2000, 526, 1326)
+
+[node name="arrow_animation" type="AnimatedSprite3D" parent="arrow_sign2"]
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation2" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="arrow_animation3" type="AnimatedSprite3D" parent="arrow_sign2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+transparent = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_rppxm")
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="arrow_sign2"]
+shape = SubResource("BoxShape3D_660ui")
+
 [node name="boost_pickup" parent="." instance=ExtResource("10_ry0xj")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5233.81, 376.149, -1100)
 BOOST_INCREASE = 200.0
@@ -289,7 +318,7 @@ transform = Transform3D(-4.37114e-07, -10, -4.37114e-07, 0, -4.37114e-07, 10, -1
 transform = Transform3D(-8.74228e-08, -2, 8.74228e-08, 0, -8.74228e-08, -2, 2, -8.74228e-08, 3.82137e-15, 2343.97, 300, 1275.71)
 
 [node name="freighter_var1_8" parent="." instance=ExtResource("7_4qpvk")]
-transform = Transform3D(-0.133732, -0.281689, 1.97554, 1.60754e-07, -1.97997, -0.282321, 1.99552, -0.0188775, 0.132393, 2017.71, 526.211, 1275.71)
+transform = Transform3D(-0.133732, -0.281689, 1.97554, 1.60754e-07, -1.97997, -0.282321, 1.99552, -0.0188775, 0.132393, 2017, 526, 1276)
 
 [node name="freighter_var1_7" parent="." instance=ExtResource("7_4qpvk")]
 transform = Transform3D(-8.74228e-08, -2, 8.74228e-08, 0, -8.74228e-08, -2, 2, -8.74228e-08, 3.82137e-15, 3334.15, 300, 1275.71)
