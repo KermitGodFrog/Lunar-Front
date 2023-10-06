@@ -217,6 +217,40 @@ theme_override_font_sizes/font_size = 30
 text = "FIRST PERSON MOUSE MOVEMENT DEADZONE
 "
 
+[node name="sfx_volume" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="slider" type="HSlider" parent="scroll_container/options_container/sfx_volume" groups=["slider_option"]]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("8_8d1gf")
+min_value = -20.0
+max_value = 10.0
+step = 0.01
+script = ExtResource("9_v1mbt")
+settings_variable = "sfx_volume"
+
+[node name="label" type="Label" parent="scroll_container/options_container/sfx_volume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+text = "SFX VOLUME
+"
+
+[node name="sfx_mute" type="HBoxContainer" parent="scroll_container/options_container"]
+layout_mode = 2
+
+[node name="checkbox" type="CheckBox" parent="scroll_container/options_container/sfx_mute" groups=["bool_option"]]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_fonts/font = ExtResource("3_hw16d")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/checked = ExtResource("4_6k5lr")
+theme_override_icons/unchecked = ExtResource("5_s38sc")
+text = "MUTE SFX"
+script = ExtResource("7_w8c2q")
+settings_variable = "sfx_mute"
+
 [node name="third_person_rotate" type="HBoxContainer" parent="scroll_container/options_container"]
 layout_mode = 2
 

@@ -15,9 +15,10 @@ func update():
 
 func render(scores):
 	clear()
-	add_item(str(global_data.player_name, ": "))
-	var add_player_score = add_item(str(snapped(global_data.get_best_time_current_map(), 0.001)))
-	set_item_custom_bg_color(add_player_score, Color.DARK_RED)
+	if global_data.get_best_time_current_map() > 0:
+		add_item(str(global_data.player_name, ": "))
+		var add_player_score = add_item(str(snapped(global_data.get_best_time_current_map(), 0.001)))
+		set_item_custom_bg_color(add_player_score, Color.DARK_RED)
 	
 	for score in scores:
 		if score.player_name == global_data.player_name:

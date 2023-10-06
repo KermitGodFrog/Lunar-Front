@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://b1jbitn8dtmim"]
+[gd_scene load_steps=106 format=3 uid="uid://b1jbitn8dtmim"]
 
 [ext_resource type="Script" path="res://Instantiated Scenes/Player/player.gd" id="1_oahw1"]
 [ext_resource type="Script" path="res://Data/health.gd" id="2_130vq"]
@@ -54,6 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://d0iueqx0b5q4q" path="res://Sound Effects/crash high 1.wav" id="52_2ayls"]
 [ext_resource type="AudioStream" uid="uid://dyff1xj4cqof8" path="res://Sound Effects/crash high 2.wav" id="53_kj3wm"]
 [ext_resource type="AudioStream" uid="uid://cm0gq55wa5n5v" path="res://Sound Effects/crash high 3.wav" id="54_6vjiv"]
+[ext_resource type="Script" path="res://Instantiated Scenes/Player/volume_handler.gd" id="55_0i8qq"]
 
 [sub_resource type="Resource" id="Resource_kysq3"]
 script = ExtResource("2_130vq")
@@ -1304,3 +1305,7 @@ stream = ExtResource("53_kj3wm")
 
 [node name="damage_high_three" type="AudioStreamPlayer" parent="damage_sfx" groups=["damage_high"]]
 stream = ExtResource("54_6vjiv")
+
+[node name="volume_handling" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("55_0i8qq")

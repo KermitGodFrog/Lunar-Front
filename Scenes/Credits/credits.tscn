@@ -54,9 +54,9 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxLine_7lgy5")
-text = "Programming/UI - KermitTheGodFrog"
+text = "Programming/UI/SFX - KermitTheGodFrog"
 
-[node name="programming2" type="Label" parent="credits_vbox"]
+[node name="modelling" type="Label" parent="credits_vbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxLine_1w47i")
